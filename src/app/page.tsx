@@ -42,8 +42,8 @@ export default function LandingPage() {
           </div>
           
           <h1 className="text-4xl md:text-7xl font-black text-white leading-tight mb-8 font-headline uppercase tracking-tight">
-            When storms stop you,<br />
-            <span className="text-highlight-shimmer">we pay you instantly.</span>
+            When storms stop <span className="text-highlight-shimmer">you,</span><br />
+            WE PAY YOU INSTANTLY.
           </h1>
           
           <p className="text-lg md:text-xl text-white/70 mb-12 max-w-xl font-medium leading-relaxed">
@@ -51,30 +51,32 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 items-center">
-            <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)]">
-              <Link href="/login" className="flex items-center gap-4 uppercase">
+            <Button asChild size="lg" className="rounded-none px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)] h-20">
+              <Link href="/login" className="flex items-center gap-6 uppercase">
                 Start Coverage 
                 <div className="p-2 bg-white/20 rounded-xl">
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-6 h-6" />
                 </div>
               </Link>
             </Button>
             
-            <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-8 text-xl border-primary/40 text-white hover:bg-primary/10 btn-hover-effect font-black shadow-xl">
-              <Link href="/login" className="flex items-center gap-4 uppercase">
+            <Button asChild variant="outline" size="lg" className="rounded-none px-10 py-8 text-xl border-none bg-white/90 text-[#006064] hover:bg-white btn-hover-effect font-black shadow-xl h-20">
+              <Link href="/login" className="flex items-center gap-6 uppercase">
                 Login
-                <div className="p-2 bg-primary/20 rounded-xl">
-                  <LogIn className="w-5 h-5 text-primary" />
+                <div className="p-2 bg-[#00ACC1]/20 rounded-xl">
+                  <LogIn className="w-6 h-6 text-[#00ACC1]" />
                 </div>
               </Link>
             </Button>
           </div>
           
-          <div className="mt-10 flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl btn-hover-effect cursor-default group w-fit">
-            <div className="p-2.5 bg-primary/10 rounded-xl">
-              <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
+          <div className="mt-10 p-5 bg-white/5 border border-white/10 rounded-none w-fit btn-hover-effect cursor-default group backdrop-blur-md">
+            <div className="flex items-center gap-4">
+              <div className="p-2.5 bg-primary/10 rounded-xl border border-primary/20">
+                <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
+              </div>
+              <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">IRDAI REGISTERED</span>
             </div>
-            <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">IRDAI REGISTERED</span>
           </div>
         </div>
 
@@ -88,7 +90,7 @@ export default function LandingPage() {
               {weatherCards.map((card, idx) => (
                 <CarouselItem key={idx} className="basis-full">
                   <div className="p-2">
-                    <Card className={`overflow-hidden card-neon-glow border-t-8 ${card.border} rounded-[2.5rem] btn-hover-effect transition-all duration-300 shadow-2xl ${card.bg}`}>
+                    <Card className={`overflow-hidden card-neon-glow border-none rounded-[2.5rem] btn-hover-effect transition-all duration-300 shadow-2xl ${card.bg}`}>
                       <CardContent className="p-6 flex flex-col items-center text-center h-full">
                         <div className="w-full flex justify-between items-center mb-4">
                           <Badge variant="outline" className="text-[7px] font-black tracking-[0.3em] text-white/20 uppercase border-white/5 px-3 py-1 rounded-full">
@@ -103,7 +105,7 @@ export default function LandingPage() {
                           <DeliveryGuy weather={card.type as any} className="w-full h-full" />
                         </div>
                         
-                        <div className="space-y-2 p-5 bg-black/60 rounded-[1.75rem] border border-white/10 w-full shadow-inner">
+                        <div className="space-y-2 p-5 bg-black/80 rounded-[1.75rem] border border-white/10 w-full shadow-inner">
                           <h3 className="text-lg font-black text-white font-headline uppercase tracking-tight">{card.label}</h3>
                           <p className={`text-sm font-black ${card.iconColor} uppercase tracking-tighter icon-neon-glow`}>{card.trigger}</p>
                         </div>
@@ -115,11 +117,11 @@ export default function LandingPage() {
             </CarouselContent>
             
             <div className="flex justify-center gap-4 mt-6">
-              <CarouselPrevious className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
-              <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
+              <CarouselPrevious className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-xl text-primary btn-hover-effect hover:bg-primary hover:text-white" />
+              <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-xl text-primary btn-hover-effect hover:bg-primary hover:text-white" />
             </div>
+            <p className="text-center mt-3 text-[8px] font-black text-white/10 uppercase tracking-[0.4em] animate-pulse">SWIPE TO VIEW MODES</p>
           </Carousel>
-          <p className="text-center mt-3 text-[8px] font-black text-white/10 uppercase tracking-[0.4em] animate-pulse">SWIPE TO VIEW MODES</p>
         </div>
       </section>
 
