@@ -32,7 +32,8 @@
     @apply border-border;
   }
   html {
-    background: linear-gradient(180deg, #E0F7FA 0%, #80DEEA 100%) fixed !important;
+    /* Maldives Light Teal to Ocean Blue Gradient */
+    background: linear-gradient(180deg, #B2EBF2 0%, #00ACC1 100%) fixed !important;
     min-height: 100vh;
     color-scheme: light;
   }
@@ -45,7 +46,7 @@
 }
 
 .btn-hover-effect {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95;
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 hover:-translate-y-1;
 }
 
 /* Ensure all primary icons on blue backgrounds are crisp white */
@@ -70,11 +71,11 @@
     opacity: 0;
   }
   25% {
-    opacity: 0.9;
+    opacity: 0.8;
   }
   50% {
     opacity: 1;
-    transform: translate(var(--move-x), var(--move-y)) scale(1.2);
+    transform: translate(var(--move-x), var(--move-y)) scale(1);
   }
   75% {
     opacity: 0.8;
@@ -91,15 +92,15 @@
 
 @keyframes neon-white-glow {
   0%, 100% {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00e5ff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff;
     color: #fff;
   }
   50% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00e5ff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
     color: #fff;
   }
 }
 
 .animate-neon-white {
-  animation: neon-white-glow 2.5s ease-in-out infinite;
+  animation: neon-white-glow 2s ease-in-out infinite;
 }
