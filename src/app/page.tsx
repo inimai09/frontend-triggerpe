@@ -32,10 +32,11 @@ export default function LandingPage() {
           </Badge>
           <h1 className="text-5xl md:text-6xl font-black text-[#006064] leading-tight mb-6">
             When storms stop you,<br />
-            <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] brightness-125">we pay you </span>
-            <span className="animate-neon underline decoration-white/20">instantly.</span>
+            <span className="text-white block mt-4">
+              <span className="animate-neon">we pay you instantly.</span>
+            </span>
           </h1>
-          <p className="text-lg text-[#00838F] mb-10 max-w-xl font-bold">
+          <p className="text-lg text-[#00838F] mt-8 mb-10 max-w-xl font-bold">
             India's first zero-touch parametric insurance for delivery workers. No forms, no waiting, automatic payouts.
           </p>
           
