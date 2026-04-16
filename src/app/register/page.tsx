@@ -59,17 +59,17 @@ export default function RegisterPage() {
         {[1, 2, 3, 4, 5].map((s) => (
           <React.Fragment key={s}>
             <div className={cn(
-              "w-10 h-10 rounded-full flex items-center justify-center font-black transition-all border-2",
+              "w-12 h-12 rounded-full flex items-center justify-center font-black transition-all border-2",
               step >= s ? "bg-primary text-white border-primary shadow-[0_0_15px_rgba(0,172,193,0.3)]" : "bg-black/40 text-white/30 border-white/10"
             )}>
-              {step > s ? <CheckCircle2 className="w-6 h-6" /> : s}
+              {step > s ? <CheckCircle2 className="w-7 h-7" /> : s}
             </div>
             {s < 5 && <div className={cn("h-1 flex-1 rounded-full", step > s ? "bg-primary" : "bg-white/10")} />}
           </React.Fragment>
         ))}
       </div>
 
-      <Card className="w-full max-w-2xl card-neon-glow rounded-[2.5rem] overflow-hidden p-8 md:p-12 animate-in fade-in zoom-in-95 duration-700">
+      <Card className="w-full max-w-2xl card-neon-glow rounded-[3.5rem] overflow-hidden p-8 md:p-12 animate-in fade-in zoom-in-95 duration-700">
         
         {step === 1 && (
           <div className="space-y-10 animate-in fade-in slide-in-from-right duration-500">
@@ -80,19 +80,19 @@ export default function RegisterPage() {
             <div className="space-y-5">
               <Input 
                 placeholder="Full Name" 
-                className="h-14 font-bold border-white/10 bg-white/5 text-white placeholder:text-white/20 focus:border-primary/50 rounded-xl" 
+                className="h-14 font-bold border-white/10 bg-white/5 text-white placeholder:text-white/20 focus:border-primary/50 rounded-2xl px-6" 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
               <Input 
                 placeholder="Phone Number (+91)" 
-                className="h-14 font-bold border-white/10 bg-white/5 text-white placeholder:text-white/20 focus:border-primary/50 rounded-xl" 
+                className="h-14 font-bold border-white/10 bg-white/5 text-white placeholder:text-white/20 focus:border-primary/50 rounded-2xl px-6" 
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
               <Input 
                 placeholder="Email Address" 
-                className="h-14 font-bold border-white/10 bg-white/5 text-white placeholder:text-white/20 focus:border-primary/50 rounded-xl" 
+                className="h-14 font-bold border-white/10 bg-white/5 text-white placeholder:text-white/20 focus:border-primary/50 rounded-2xl px-6" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -106,12 +106,12 @@ export default function RegisterPage() {
                     variant="outline"
                     onClick={() => setPlatform(p)}
                     className={cn(
-                      "h-20 font-black transition-all rounded-3xl flex flex-col items-center justify-center gap-2 border-white/10",
+                      "h-24 font-black transition-all rounded-[2rem] flex flex-col items-center justify-center gap-2 border-white/10",
                       "bg-black/40 backdrop-blur-md text-white hover:bg-black/60 hover:border-primary/40 btn-hover-effect",
                       platform === p && "bg-primary border-primary shadow-[0_0_20px_rgba(0,172,193,0.4)] ring-2 ring-primary/30"
                     )}
                   >
-                    <div className="p-2 bg-white/5 rounded-xl">
+                    <div className="p-3 bg-white/5 rounded-full">
                       <Building2 className="w-5 h-5 text-white/40 group-hover:text-white" />
                     </div>
                     <span className="text-xs uppercase tracking-tight">{p}</span>
@@ -131,8 +131,8 @@ export default function RegisterPage() {
               <h2 className="text-3xl font-black text-white font-headline uppercase tracking-tighter">Your Location</h2>
               <p className="text-sm font-bold text-white/50">We use local weather data for your specific city.</p>
             </div>
-            <div className="p-12 border-2 border-dashed border-primary/20 rounded-[2.5rem] flex flex-col items-center gap-8 bg-white/5">
-              <div className="w-24 h-24 bg-primary/20 rounded-3xl flex items-center justify-center border border-primary/30">
+            <div className="p-12 border-2 border-dashed border-primary/20 rounded-[3rem] flex flex-col items-center gap-8 bg-white/5">
+              <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center border border-primary/30">
                 <MapPin className="w-12 h-12 text-primary animate-bounce icon-neon-glow" />
               </div>
               <Button variant="outline" className="font-black h-14 rounded-full px-10 border-primary text-primary hover:bg-primary hover:text-white btn-hover-effect uppercase">
@@ -142,7 +142,7 @@ export default function RegisterPage() {
             </div>
             <Input 
               placeholder="Enter City Manually" 
-              className="h-14 font-bold border-white/10 bg-white/5 text-white rounded-xl px-6" 
+              className="h-14 font-bold border-white/10 bg-white/5 text-white rounded-2xl px-6" 
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
@@ -165,7 +165,7 @@ export default function RegisterPage() {
                 <span className="text-5xl font-black text-white tracking-tighter">₹{earnings[0]}</span>
               </div>
               <Slider value={earnings} onValueChange={setEarnings} min={100} max={2000} step={50} className="py-4" />
-              <div className="p-8 bg-white/5 rounded-[2rem] border border-primary/20">
+              <div className="p-8 bg-white/5 rounded-[2.5rem] border border-primary/20">
                 <p className="text-[10px] text-primary font-black uppercase tracking-widest mb-3">Coverage Preview</p>
                 <p className="text-4xl font-black text-white tracking-tighter">₹{Math.min(earnings[0] * 0.8, 800).toFixed(0)} <span className="text-xs font-bold text-primary">/ event</span></p>
                 <p className="text-[10px] font-black text-white/30 uppercase mt-4">Calculated as 80% of daily income</p>
@@ -182,13 +182,13 @@ export default function RegisterPage() {
           <div className="space-y-10 animate-in fade-in slide-in-from-right duration-500">
             <div className="space-y-2">
               <h2 className="text-3xl font-black text-white flex items-center gap-4 font-headline uppercase tracking-tighter">
-                <div className="p-2.5 bg-primary/20 rounded-xl">
+                <div className="p-3 bg-primary/20 rounded-full">
                   <ShieldAlert className="w-7 h-7 text-primary icon-neon-glow" />
                 </div> Exclusions
               </h2>
               <p className="text-sm font-bold text-white/50">Transparency is our core value. Please note what's not covered.</p>
             </div>
-            <div className="space-y-4 bg-white/5 p-8 rounded-[2rem] border border-white/5">
+            <div className="space-y-4 bg-white/5 p-8 rounded-[2.5rem] border border-white/5">
               {[
                 'Vehicle mechanical/electrical repairs',
                 'Personal health or medical costs',
@@ -196,14 +196,14 @@ export default function RegisterPage() {
                 'Personal platform suspension'
               ].map((ex, i) => (
                 <div key={i} className="flex items-center gap-4 text-sm font-bold text-white/70 group">
-                  <div className="p-1 bg-primary/20 rounded-xl group-hover:bg-primary transition-colors">
-                    <CheckCircle2 className="w-3 h-3 text-white" />
+                  <div className="p-1.5 bg-primary/20 rounded-full group-hover:bg-primary transition-colors">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-white" />
                   </div>
                   {ex}
                 </div>
               ))}
             </div>
-            <div className="flex items-center space-x-4 p-6 bg-white/5 rounded-[1.5rem] border border-primary/20 cursor-pointer btn-hover-effect" onClick={() => setAgreed(!agreed)}>
+            <div className="flex items-center space-x-4 p-6 bg-white/5 rounded-full border border-primary/20 cursor-pointer btn-hover-effect" onClick={() => setAgreed(!agreed)}>
               <Checkbox id="terms" checked={agreed} onCheckedChange={(v) => setAgreed(!!v)} className="border-primary data-[state=checked]:bg-primary w-6 h-6 rounded-md" />
               <label htmlFor="terms" className="text-sm font-bold text-white/80 cursor-pointer uppercase tracking-tight">
                 I understand and agree to these exclusions
@@ -232,7 +232,7 @@ export default function RegisterPage() {
                   key={plan.name}
                   onClick={() => setSelectedPlan(plan.name)}
                   className={cn(
-                    "p-8 border-2 rounded-[2rem] flex flex-col items-center transition-all btn-hover-effect",
+                    "p-8 border-2 rounded-[2.5rem] flex flex-col items-center transition-all btn-hover-effect",
                     selectedPlan === plan.name ? "border-primary bg-primary/10 shadow-[0_0_20px_rgba(0,172,193,0.3)] scale-105" : "border-white/10 bg-white/5"
                   )}
                 >
