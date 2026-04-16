@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react';
@@ -10,7 +9,7 @@ interface DashboardLayoutProps {
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="flex min-h-screen bg-[#E0F7FA]">
+    <div className="flex min-h-screen bg-transparent">
       <DashboardSidebar />
       <main className="flex-grow p-8 overflow-x-hidden">
         <div className="max-w-7xl mx-auto">

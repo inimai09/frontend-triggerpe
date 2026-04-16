@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -52,7 +51,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#E0F7FA] p-8 flex flex-col items-center">
+    <div className="min-h-screen p-8 flex flex-col items-center relative z-10">
       <h1 className="text-3xl font-black text-[#006064] mb-12 uppercase tracking-tighter">PARTNER ONBOARDING</h1>
       
       {/* Step Indicator */}
