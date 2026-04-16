@@ -31,11 +31,13 @@
   * {
     @apply border-border;
   }
-  html, body {
+  html {
     background-color: #E0F7FA !important;
-    color: #006064;
+    color-scheme: light;
   }
   body {
+    background-color: transparent !important;
+    color: #006064;
     @apply font-body antialiased;
     min-height: 100vh;
   }
@@ -48,7 +50,7 @@
   @apply transition-all duration-200 hover:scale-[1.02] active:scale-95;
 }
 
-/* Strict solid rules - NO transparency, NO glassmorphism */
+/* Strict solid rules - NO transparency */
 .card, .popover, .dialog, .sheet, .accordion-item {
   @apply bg-white opacity-100 shadow-sm !important;
   backdrop-filter: none !important;
