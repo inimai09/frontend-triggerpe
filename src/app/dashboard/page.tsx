@@ -47,7 +47,7 @@ export default function Dashboard() {
         {/* Boxed Title Section */}
         <Card className="card-neon-glow p-6 rounded-[2rem] border-none">
           <header className="flex flex-col gap-2">
-            <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter drop-shadow-sm">Welcome, {user.name}! 👋</h1>
+            <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter drop-shadow-sm font-headline">Welcome, {user.name}! 👋</h1>
             <div className="inline-flex items-center gap-3 w-fit px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#00ACC1]" />
               <p className="text-primary font-black uppercase tracking-widest text-[9px] icon-neon-glow">Active Parametric Monitoring</p>
@@ -58,7 +58,6 @@ export default function Dashboard() {
         {/* Boxed Weather Widget */}
         <Card className="card-neon-glow overflow-hidden rounded-[2.5rem]">
           <CardContent className="p-8 flex flex-col xl:flex-row justify-between items-center gap-8">
-            {/* Big Temp Box */}
             <div className="p-8 bg-black/40 border border-white/5 rounded-[2.5rem] w-full xl:w-auto btn-hover-effect">
               <div className="flex items-center gap-3 mb-4">
                 <Badge className="bg-primary/20 text-primary border-primary/30 font-black px-4 py-1 uppercase tracking-widest text-[8px] rounded-full">CHENNAI CENTRAL</Badge>
@@ -67,9 +66,9 @@ export default function Dashboard() {
                 </span>
               </div>
               <div className="flex items-end gap-6">
-                <span className="text-[60px] md:text-[80px] font-black text-white leading-none tracking-tighter drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">31°</span>
+                <span className="text-[60px] md:text-[80px] font-black text-white leading-none tracking-tighter drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] font-headline">31°</span>
                 <div className="mb-3">
-                  <p className="text-xl md:text-2xl font-black text-primary uppercase tracking-tight">Cloudy</p>
+                  <p className="text-xl md:text-2xl font-black text-primary uppercase tracking-tight font-headline">Cloudy</p>
                   <p className="text-[8px] font-black text-white/40 uppercase tracking-widest">Feels like 34°C</p>
                 </div>
               </div>
@@ -83,7 +82,9 @@ export default function Dashboard() {
                 { label: 'Humidity', value: '64%', icon: Droplets },
               ].map((m, i) => (
                 <div key={i} className="flex flex-col items-center p-5 rounded-[1.5rem] bg-black/40 border border-white/5 btn-hover-effect min-w-[100px]">
-                  <m.icon className="w-6 h-6 mb-2 text-primary icon-neon-glow" />
+                  <div className="p-2.5 rounded-xl bg-white/5 mb-2">
+                    <m.icon className="w-6 h-6 text-primary icon-neon-glow" />
+                  </div>
                   <span className="text-[8px] font-black text-white/40 uppercase tracking-widest mb-1">{m.label}</span>
                   <span className="text-xs font-black text-white">{m.value}</span>
                 </div>
@@ -114,8 +115,10 @@ export default function Dashboard() {
 
         {/* Trigger Monitor Boxed Group */}
         <Card className="card-neon-glow p-8 rounded-[2.5rem] space-y-8 border-none">
-          <h2 className="text-xl font-black text-white flex items-center gap-4 uppercase tracking-tighter">
-            <Activity className="w-6 h-6 text-primary icon-neon-glow" /> Live Trigger Monitor
+          <h2 className="text-xl font-black text-white flex items-center gap-4 uppercase tracking-tighter font-headline">
+            <div className="p-2 bg-primary/20 rounded-xl">
+              <Activity className="w-6 h-6 text-primary icon-neon-glow" />
+            </div> Live Trigger Monitor
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {[
@@ -127,8 +130,8 @@ export default function Dashboard() {
             ].map((t, i) => (
               <div key={i} className="p-6 bg-black/40 border border-white/5 rounded-[1.75rem] space-y-4 btn-hover-effect">
                 <div className="flex justify-between items-start">
-                  <span className="text-xs font-black text-white/80 uppercase tracking-tight">{t.label}</span>
-                  <Badge variant="outline" className="text-[8px] font-black text-primary border-primary/30 bg-primary/10">{t.payout}</Badge>
+                  <span className="text-xs font-black text-white/80 uppercase tracking-tight font-headline">{t.label}</span>
+                  <Badge variant="outline" className="text-[8px] font-black text-primary border-primary/30 bg-primary/10 rounded-xl">{t.payout}</Badge>
                 </div>
                 <div className="space-y-3">
                   <div className="flex justify-between text-[8px] font-black uppercase tracking-widest">
@@ -145,56 +148,6 @@ export default function Dashboard() {
             ))}
           </div>
         </Card>
-
-        {/* Bottom Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <Card className="lg:col-span-2 card-neon-glow rounded-[2.5rem] overflow-hidden">
-            <CardHeader className="flex flex-row items-center justify-between border-b border-white/5 px-8 py-6 bg-white/5">
-              <CardTitle className="text-base font-black text-white uppercase tracking-widest">Recent Claims</CardTitle>
-              <Button variant="ghost" className="text-[9px] font-black text-primary hover:text-white hover:bg-primary/20 uppercase tracking-widest btn-hover-effect">View History</Button>
-            </CardHeader>
-            <CardContent className="p-0">
-              <div className="p-12 text-center">
-                <div className="w-16 h-16 bg-black/40 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 btn-hover-effect">
-                  <History className="w-8 h-8 text-primary opacity-20 icon-neon-glow" />
-                </div>
-                <p className="text-xl font-black text-white mb-2 tracking-tight">No active claims found</p>
-                <p className="text-[9px] font-black text-white/40 uppercase tracking-widest">Payouts process automatically upon trigger validation.</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="card-neon-glow rounded-[2.5rem] overflow-hidden">
-            <CardHeader className="border-b border-white/5 px-8 py-6 bg-white/5">
-              <CardTitle className="text-base font-black text-white uppercase tracking-widest">System Health</CardTitle>
-            </CardHeader>
-            <CardContent className="p-8 space-y-6">
-              <div className="flex items-center justify-between p-4 bg-black/40 border border-white/5 rounded-[1.5rem] btn-hover-effect">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 bg-success rounded-full animate-pulse shadow-[0_0_10px_#26A69A]" />
-                  <span className="text-xs font-black text-white">Neural Watchdog</span>
-                </div>
-                <Badge className="bg-success/20 text-success border-success/30 font-black text-[8px]">ACTIVE</Badge>
-              </div>
-              
-              <div className="p-5 bg-black/40 border border-white/5 rounded-[1.5rem] space-y-4 btn-hover-effect">
-                <div className="flex justify-between text-[8px] font-black uppercase tracking-widest">
-                  <span className="text-white/40">Macro-Risk Score</span>
-                  <span className="text-white">0.35 / 1.0</span>
-                </div>
-                <Progress value={35} className="h-1.5 bg-white/5" indicatorClassName="bg-primary shadow-[0_0_10px_#00ACC1]" />
-                <p className="text-[8px] text-white/20 font-black uppercase tracking-widest">Safe operational window</p>
-              </div>
-
-              <div className="p-4 bg-primary/5 rounded-[1.25rem] border border-primary/20 flex items-center justify-between btn-hover-effect">
-                <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">Premium Model</span>
-                <span className="text-xs font-black text-primary flex items-center gap-2 icon-neon-glow">
-                  DYNAMIC <ArrowUpRight className="w-4 h-4" />
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </DashboardLayout>
   );
