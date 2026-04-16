@@ -72,13 +72,13 @@ export default function LoginPage() {
           <Tabs defaultValue="mobile" className="w-full">
             <TabsList className="grid grid-cols-2 mb-8 bg-white/5 p-1.5 h-14 rounded-2xl border border-white/5">
               <TabsTrigger value="mobile" className="rounded-xl font-black data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-xl flex gap-2 uppercase tracking-tighter text-[10px]">
-                <div className="p-1.5 bg-white/10 rounded-lg">
+                <div className="p-1.5 bg-white/10 rounded-xl">
                   <Phone className="w-3.5 h-3.5" />
                 </div>
                 Mobile
               </TabsTrigger>
               <TabsTrigger value="email" className="rounded-xl font-black data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-xl flex gap-2 uppercase tracking-tighter text-[10px]">
-                <div className="p-1.5 bg-white/10 rounded-lg">
+                <div className="p-1.5 bg-white/10 rounded-xl">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
                 Email
@@ -168,13 +168,13 @@ export default function LoginPage() {
           
           <div className="mt-8 flex justify-center gap-6 opacity-30">
             <div className="flex items-center gap-2 text-[8px] font-black text-white uppercase tracking-widest">
-              <div className="p-1.5 bg-white/10 rounded-lg">
+              <div className="p-1.5 bg-white/10 rounded-xl">
                 <ShieldCheck className="w-3 h-3" />
               </div>
               PCI DSS
             </div>
             <div className="flex items-center gap-2 text-[8px] font-black text-white uppercase tracking-widest">
-              <div className="p-1.5 bg-white/10 rounded-lg">
+              <div className="p-1.5 bg-white/10 rounded-xl">
                 <ShieldCheck className="w-3 h-3" />
               </div>
               IRDAI
