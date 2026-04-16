@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect, useState } from 'react';
@@ -55,14 +54,14 @@ export function DashboardSidebar() {
 
   return (
     <aside className="w-[260px] min-w-[260px] max-w-[260px] bg-black/90 backdrop-blur-3xl border-r border-primary/20 h-screen flex flex-col sticky top-0 overflow-hidden z-50">
-      {/* Logo Section - More Compact */}
+      {/* Logo Section - Compact */}
       <div className="px-6 py-6">
         <h1 className="text-xl font-headline font-black text-primary tracking-tighter uppercase drop-shadow-[0_0_10px_rgba(0,172,193,0.5)]">TRIGGERPE</h1>
         <p className="text-[7px] font-black text-white/20 uppercase tracking-[0.3em] mt-1">Parametric Shield v2.0</p>
       </div>
 
       {/* Navigation - Compact spacing to avoid scroll */}
-      <nav className="flex-1 px-3 space-y-1 py-1">
+      <nav className="flex-1 px-3 space-y-1 py-1 overflow-y-auto no-scrollbar">
         {navItems.map((item) => (
           <Link
             key={item.href}
@@ -96,10 +95,10 @@ export function DashboardSidebar() {
         ))}
       </nav>
 
-      {/* Footer / Profile Section - More Compact */}
+      {/* Footer / Profile Section - Compact */}
       <div className="p-4 mt-auto bg-black/20 border-t border-white/5">
-        <div className="flex items-center gap-3 mb-4 p-3 bg-white/5 rounded-xl border border-white/5 btn-hover-effect cursor-pointer">
-          <Avatar className="w-8 h-8 border border-primary/30 bg-black shadow-[0_0_10px_rgba(0,172,193,0.2)] rounded-xl">
+        <div className="flex items-center gap-3 mb-3 p-3 bg-white/5 rounded-xl border border-white/5 btn-hover-effect cursor-pointer">
+          <Avatar className="w-8 h-8 border border-primary/30 bg-black shadow-[0_0_10px_rgba(0,172,193,0.2)] rounded-xl overflow-hidden">
             <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
             <AvatarFallback className="bg-primary/10 text-primary font-black text-xs rounded-xl">{user.name[0] || 'P'}</AvatarFallback>
           </Avatar>
@@ -114,9 +113,9 @@ export function DashboardSidebar() {
         <Button 
           variant="ghost" 
           onClick={handleLogout}
-          className="w-full flex items-center justify-start gap-3 px-4 py-3 text-destructive/50 hover:text-destructive hover:bg-destructive/10 rounded-xl font-black transition-all duration-300 border border-transparent btn-hover-effect h-auto"
+          className="w-full flex items-center justify-start gap-3 px-4 py-2.5 text-destructive/50 hover:text-destructive hover:bg-destructive/10 rounded-xl font-black transition-all duration-300 border border-transparent btn-hover-effect h-auto"
         >
-          <div className="p-1.5 bg-destructive/10 rounded-lg">
+          <div className="p-1.5 bg-destructive/10 rounded-xl">
             <LogOut className="w-4 h-4" />
           </div>
           <span className="text-[9px] uppercase tracking-widest font-headline">Logout</span>

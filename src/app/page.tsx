@@ -9,7 +9,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { Sun, CloudRain, Snowflake, Zap, ArrowRight, ShieldCheck, Cpu, Smartphone } from 'lucide-react';
+import { Sun, CloudRain, Snowflake, Zap, ArrowRight, ShieldCheck, Cpu, Smartphone, LogIn } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -50,7 +50,7 @@ export default function LandingPage() {
             Zero-touch parametric insurance for delivery heroes. No forms, no waiting, automatic payouts pushed to your UPI.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 items-center">
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
             <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)]">
               <Link href="/register" className="flex items-center gap-4 uppercase">
                 Start Coverage 
@@ -59,12 +59,22 @@ export default function LandingPage() {
                 </div>
               </Link>
             </Button>
-            <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl btn-hover-effect cursor-default group">
-              <div className="p-2.5 bg-primary/10 rounded-xl">
-                <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
-              </div>
-              <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">IRDAI REGISTERED</span>
+            
+            <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-8 text-xl border-primary/40 text-white hover:bg-primary/10 btn-hover-effect font-black shadow-xl">
+              <Link href="/login" className="flex items-center gap-4 uppercase">
+                Login
+                <div className="p-2 bg-primary/20 rounded-xl">
+                  <LogIn className="w-5 h-5 text-primary" />
+                </div>
+              </Link>
+            </Button>
+          </div>
+          
+          <div className="mt-10 flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl btn-hover-effect cursor-default group w-fit">
+            <div className="p-2.5 bg-primary/10 rounded-xl">
+              <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
             </div>
+            <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">IRDAI REGISTERED</span>
           </div>
         </div>
 

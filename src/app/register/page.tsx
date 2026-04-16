@@ -111,8 +111,8 @@ export default function RegisterPage() {
                       platform === p && "bg-primary border-primary shadow-[0_0_20px_rgba(0,172,193,0.4)] ring-2 ring-primary/30"
                     )}
                   >
-                    <div className="p-1.5 bg-white/5 rounded-lg">
-                      <Building2 className="w-4 h-4 text-white/40 group-hover:text-white" />
+                    <div className="p-2 bg-white/5 rounded-xl">
+                      <Building2 className="w-5 h-5 text-white/40 group-hover:text-white" />
                     </div>
                     <span className="text-xs uppercase tracking-tight">{p}</span>
                   </Button>
@@ -196,7 +196,7 @@ export default function RegisterPage() {
                 'Personal platform suspension'
               ].map((ex, i) => (
                 <div key={i} className="flex items-center gap-4 text-sm font-bold text-white/70 group">
-                  <div className="p-1 bg-primary/20 rounded-md group-hover:bg-primary transition-colors">
+                  <div className="p-1 bg-primary/20 rounded-xl group-hover:bg-primary transition-colors">
                     <CheckCircle2 className="w-3 h-3 text-white" />
                   </div>
                   {ex}
