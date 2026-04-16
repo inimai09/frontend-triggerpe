@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect, useState } from 'react';
@@ -55,13 +54,13 @@ export function DashboardSidebar() {
 
   return (
     <aside className="w-[280px] min-w-[280px] max-w-[280px] bg-black/90 backdrop-blur-3xl border-r border-primary/20 h-screen flex flex-col sticky top-0 overflow-hidden z-50">
-      {/* Logo Section - Compacted */}
+      {/* Logo Section */}
       <div className="px-8 py-8">
         <h1 className="text-2xl font-headline font-black text-primary tracking-tighter uppercase drop-shadow-[0_0_10px_rgba(0,172,193,0.5)]">TRIGGERPE</h1>
         <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mt-1.5">Parametric Shield v2.0</p>
       </div>
 
-      {/* Navigation - Optimized spacing with pop effect */}
+      {/* Navigation */}
       <nav className="flex-1 px-4 space-y-2 overflow-y-auto no-scrollbar py-2">
         {navItems.map((item) => (
           <Link
@@ -74,14 +73,19 @@ export function DashboardSidebar() {
                 : "text-white/40 hover:bg-white/5 hover:text-white border border-transparent hover:border-white/5"
             )}
           >
-            <item.icon className={cn(
-              "w-5 h-5 transition-all duration-300",
-              pathname === item.href 
-                ? "text-primary drop-shadow-[0_0_8px_rgba(0,172,193,0.8)] scale-110" 
-                : "text-white/20 group-hover:text-primary/70 group-hover:drop-shadow-[0_0_5px_#00ACC1]"
-            )} />
+            <div className={cn(
+              "p-2 rounded-xl transition-all duration-300",
+              pathname === item.href ? "bg-primary/20" : "bg-white/5"
+            )}>
+              <item.icon className={cn(
+                "w-5 h-5 transition-all duration-300",
+                pathname === item.href 
+                  ? "text-primary drop-shadow-[0_0_8px_rgba(0,172,193,0.8)] scale-110" 
+                  : "text-white/20 group-hover:text-primary/70 group-hover:drop-shadow-[0_0_5px_#00ACC1]"
+              )} />
+            </div>
             <span className={cn(
-              "text-[11px] uppercase tracking-widest transition-colors",
+              "text-[11px] uppercase tracking-widest transition-colors font-headline",
               pathname === item.href ? "text-white" : "text-inherit"
             )}>{item.label}</span>
             {pathname === item.href && (
@@ -91,15 +95,15 @@ export function DashboardSidebar() {
         ))}
       </nav>
 
-      {/* Footer / Profile Section - Clean & Fixed */}
+      {/* Footer / Profile Section */}
       <div className="p-6 mt-auto bg-black/20 border-t border-white/5">
-        <div className="flex items-center gap-4 mb-6 p-3 bg-white/5 rounded-2xl border border-white/5 btn-hover-effect cursor-pointer">
+        <div className="flex items-center gap-4 mb-6 p-4 bg-white/5 rounded-2xl border border-white/5 btn-hover-effect cursor-pointer">
           <Avatar className="w-10 h-10 border border-primary/30 bg-black shadow-[0_0_10px_rgba(0,172,193,0.2)]">
             <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
             <AvatarFallback className="bg-primary/10 text-primary font-black text-sm">{user.name[0] || 'P'}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col min-w-0">
-            <span className="text-[11px] font-black text-white truncate uppercase tracking-tight">{user.name}</span>
+            <span className="text-[11px] font-black text-white truncate uppercase tracking-tight font-headline">{user.name}</span>
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className="text-[7px] px-1.5 py-0.5 bg-primary/20 text-primary font-black rounded-full uppercase tracking-tighter border border-primary/20">{user.platform}</span>
               <BadgeCheck className="w-3 h-3 text-primary icon-neon-glow" />
@@ -111,8 +115,10 @@ export function DashboardSidebar() {
           onClick={handleLogout}
           className="w-full flex items-center justify-start gap-4 px-5 py-4 text-destructive/50 hover:text-destructive hover:bg-destructive/10 rounded-xl font-black transition-all duration-300 border border-transparent btn-hover-effect"
         >
-          <LogOut className="w-5 h-5" />
-          <span className="text-[10px] uppercase tracking-widest">Logout</span>
+          <div className="p-2 bg-destructive/10 rounded-lg">
+            <LogOut className="w-5 h-5" />
+          </div>
+          <span className="text-[10px] uppercase tracking-widest font-headline">Logout</span>
         </Button>
       </div>
     </aside>

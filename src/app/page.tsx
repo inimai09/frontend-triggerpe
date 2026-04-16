@@ -41,7 +41,7 @@ export default function LandingPage() {
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-7xl font-bold text-white leading-tight mb-8 font-headline uppercase tracking-tight">
+          <h1 className="text-4xl md:text-7xl font-black text-white leading-tight mb-8 font-headline uppercase tracking-tight">
             When storms stop you,<br />
             <span className="text-highlight-shimmer">we pay you instantly.</span>
           </h1>
@@ -51,12 +51,14 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 items-center">
-            <Button asChild size="lg" className="rounded-full px-12 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-bold shadow-[0_0_30px_rgba(0,172,193,0.4)]">
+            <Button asChild size="lg" className="rounded-full px-12 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)]">
               <Link href="/register" className="flex items-center gap-3 uppercase">Start Coverage <ArrowRight className="w-6 h-6" /></Link>
             </Button>
-            <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl btn-hover-effect cursor-pointer group">
-              <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
-              <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">IRDAI REGISTERED</span>
+            <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl btn-hover-effect cursor-default group">
+              <div className="p-2 bg-primary/10 rounded-xl">
+                <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
+              </div>
+              <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">IRDAI REGISTERED</span>
             </div>
           </div>
         </div>
@@ -87,7 +89,7 @@ export default function LandingPage() {
                         </div>
                         
                         <div className="space-y-3 p-6 bg-black/60 rounded-[2rem] border border-white/10 w-full shadow-inner">
-                          <h3 className="text-xl font-bold text-white font-headline uppercase tracking-tight">{card.label}</h3>
+                          <h3 className="text-xl font-black text-white font-headline uppercase tracking-tight">{card.label}</h3>
                           <p className={`text-base font-black ${card.iconColor} uppercase tracking-tighter icon-neon-glow`}>{card.trigger}</p>
                         </div>
                       </CardContent>
@@ -102,7 +104,7 @@ export default function LandingPage() {
               <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-12 h-12 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
             </div>
           </Carousel>
-          <p className="text-center mt-4 text-[9px] font-bold text-white/10 uppercase tracking-[0.4em] animate-pulse">SWIPE TO VIEW MODES</p>
+          <p className="text-center mt-4 text-[9px] font-black text-white/10 uppercase tracking-[0.4em] animate-pulse">SWIPE TO VIEW MODES</p>
         </div>
       </section>
 
@@ -110,7 +112,7 @@ export default function LandingPage() {
       <section className="py-24 px-6 lg:px-20 relative z-10">
         <div className="max-w-6xl mx-auto">
           <header className="text-center mb-20 space-y-4">
-            <h2 className="text-4xl font-bold text-white uppercase tracking-tight font-headline">Three Steps to Safety</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tight font-headline">Three Steps to Safety</h2>
             <div className="w-20 h-1.5 bg-primary mx-auto rounded-full icon-neon-glow" />
           </header>
           
@@ -120,7 +122,7 @@ export default function LandingPage() {
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary/20 transition-all shadow-lg">
                   <step.icon className="w-8 h-8 text-primary icon-neon-glow" />
                 </div>
-                <h3 className="text-2xl font-bold text-white uppercase tracking-tight mb-4">{step.title}</h3>
+                <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4 font-headline">{step.title}</h3>
                 <p className="text-base font-medium text-white/40 leading-relaxed">
                   {step.desc}
                 </p>
@@ -134,8 +136,8 @@ export default function LandingPage() {
       <section id="pricing" className="py-24 px-6 lg:px-20 relative z-10 bg-black/10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl font-bold text-white uppercase tracking-tight font-headline mb-4">Simple Weekly Pricing</h2>
-            <p className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] icon-neon-glow">No hidden fees. Cancel anytime.</p>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tight font-headline mb-4">Simple Weekly Pricing</h2>
+            <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] icon-neon-glow">No hidden fees. Cancel anytime.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -146,10 +148,10 @@ export default function LandingPage() {
             ].map((plan, i) => (
               <Card key={i} className={`p-10 flex flex-col items-center card-neon-glow border-2 rounded-[3rem] btn-hover-effect ${plan.badge ? 'border-primary shadow-[0_0_50px_rgba(0,172,193,0.3)] scale-105 z-20' : 'border-white/5'}`}>
                 {plan.badge && <Badge className="bg-primary text-white mb-8 font-black py-1.5 px-6 rounded-full text-[9px] tracking-[0.2em] shadow-lg">{plan.badge}</Badge>}
-                <h3 className="text-lg font-bold text-primary mb-4 uppercase tracking-[0.2em]">{plan.name}</h3>
+                <h3 className="text-lg font-black text-primary mb-4 uppercase tracking-[0.2em] font-headline">{plan.name}</h3>
                 <div className="flex items-baseline gap-1 mb-3">
                   <span className="text-6xl font-black text-white tracking-tighter">{plan.price}</span>
-                  <span className="text-[10px] font-bold text-white/30 uppercase">/week</span>
+                  <span className="text-[10px] font-black text-white/30 uppercase">/week</span>
                 </div>
                 <p className="text-[10px] font-black text-primary/40 mb-10 uppercase tracking-[0.2em]">{plan.coverage}</p>
                 
@@ -174,7 +176,7 @@ export default function LandingPage() {
       <section className="py-24 px-6 lg:px-20 relative z-10" id="faq">
         <div className="max-w-3xl mx-auto">
           <header className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white uppercase tracking-tight font-headline">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-black text-white uppercase tracking-tight font-headline">Frequently Asked Questions</h2>
             <div className="w-12 h-1 bg-primary/30 mx-auto mt-4 rounded-full" />
           </header>
           <Accordion type="single" collapsible className="w-full space-y-4">
@@ -185,7 +187,7 @@ export default function LandingPage() {
               { q: "Can I cancel anytime?", a: "Yes. Coverage is weekly, you can stop renewal at any time through your dashboard." }
             ].map((item, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="card-neon-glow rounded-3xl px-8 mb-4 border-none shadow-xl bg-black/40">
-                <AccordionTrigger className="font-bold text-white hover:no-underline text-base py-7 uppercase tracking-tight text-left">{item.q}</AccordionTrigger>
+                <AccordionTrigger className="font-black text-white hover:no-underline text-base py-7 uppercase tracking-tight text-left font-headline">{item.q}</AccordionTrigger>
                 <AccordionContent className="font-medium text-white/40 leading-relaxed text-base pb-8">{item.a}</AccordionContent>
               </AccordionItem>
             ))}
@@ -197,17 +199,17 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="flex flex-col items-center md:items-start">
             <h2 className="text-4xl font-black text-primary uppercase tracking-tighter font-headline icon-neon-glow">TRIGGERPE</h2>
-            <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mt-3">Parametric Shield for Bharat</p>
+            <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] mt-3">Parametric Shield for Bharat</p>
           </div>
           <div className="text-center md:text-right space-y-4">
-            <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em] leading-loose">
+            <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] leading-loose">
               © 2026 TriggerPe Parametric Insurance.<br />
               Protected by Neural Watchdog AI.
             </p>
             <div className="flex justify-center md:justify-end gap-6 opacity-40">
-              <ShieldCheck className="w-5 h-5 text-white" />
-              <div className="w-5 h-5 rounded-full border-2 border-white" />
-              <div className="w-5 h-5 bg-white rounded-sm" />
+              <div className="p-1.5 bg-white/5 rounded-lg"><ShieldCheck className="w-5 h-5 text-white" /></div>
+              <div className="w-8 h-8 rounded-lg border-2 border-white/20" />
+              <div className="w-8 h-8 bg-white/10 rounded-lg" />
             </div>
           </div>
         </div>
