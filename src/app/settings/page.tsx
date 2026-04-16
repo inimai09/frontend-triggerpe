@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { User, Bell, Shield, Smartphone, CreditCard, ChevronRight, Save, Trash2, Key, HelpCircle } from 'lucide-react';
@@ -10,9 +10,49 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { DashboardLayout } from '@/components/DashboardLayout';
+import { useToast } from '@/hooks/use-toast';
 
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState('profile');
+  const [userData, setUserData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    city: '',
+    platform: ''
+  });
+  const { toast } = useToast();
+
+  useEffect(() => {
+    const saved = localStorage.getItem('tp_user');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setUserData({
+          name: parsed.name || 'Partner',
+          phone: parsed.phone || '+91 98765 43210',
+          email: parsed.email || 'partner@triggerpe.com',
+          city: parsed.city || 'Chennai',
+          platform: parsed.platform || 'Swiggy'
+        });
+      } catch (e) {
+        console.error("Failed to parse user session");
+      }
+    }
+  }, []);
+
+  const handleSaveProfile = () => {
+    localStorage.setItem('tp_user', JSON.stringify(userData));
+    toast({
+      title: "Profile Updated!",
+      description: "Your information has been successfully saved."
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserData(prev => ({ ...prev, [name]: value }));
+  };
 
   return (
     <DashboardLayout>
@@ -46,26 +86,26 @@ export default function SettingsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Full Name</label>
-                    <Input defaultValue="Rajesh Kumar" className="h-12 border-2 rounded-xl font-bold" />
+                    <Input name="name" value={userData.name} onChange={handleChange} className="h-12 border-2 rounded-xl font-bold" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Phone Number</label>
-                    <Input defaultValue="+91 98765 43210" className="h-12 border-2 rounded-xl font-bold" />
+                    <Input name="phone" value={userData.phone} onChange={handleChange} className="h-12 border-2 rounded-xl font-bold" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Email Address</label>
-                    <Input defaultValue="rajesh.k@delivery.com" className="h-12 border-2 rounded-xl font-bold" />
+                    <Input name="email" value={userData.email} onChange={handleChange} className="h-12 border-2 rounded-xl font-bold" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">City</label>
-                    <Input defaultValue="Chennai" className="h-12 border-2 rounded-xl font-bold" />
+                    <Input name="city" value={userData.city} onChange={handleChange} className="h-12 border-2 rounded-xl font-bold" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Delivery Platform</label>
-                    <Input defaultValue="Swiggy" disabled className="h-12 bg-muted border-none rounded-xl font-bold" />
+                    <Input value={userData.platform} disabled className="h-12 bg-muted border-none rounded-xl font-bold" />
                   </div>
                 </div>
-                <Button className="rounded-full bg-primary font-black px-10 h-14 btn-hover-effect">
+                <Button onClick={handleSaveProfile} className="rounded-full bg-primary font-black px-10 h-14 btn-hover-effect">
                   <Save className="w-5 h-5 mr-2" /> Save Profile
                 </Button>
               </CardContent>

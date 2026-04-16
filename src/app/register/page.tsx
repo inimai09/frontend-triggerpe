@@ -42,7 +42,9 @@ export default function RegisterPage() {
       const userData = { 
         name: name || 'Partner', 
         platform: platform || 'Swiggy',
-        city: city || 'Chennai'
+        city: city || 'Chennai',
+        phone: phone || '+91 00000 00000',
+        email: email || 'partner@triggerpe.com'
       };
       localStorage.setItem('tp_user', JSON.stringify(userData));
       router.push('/dashboard');
