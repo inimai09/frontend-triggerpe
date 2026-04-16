@@ -15,14 +15,14 @@ export default {
         code: ['monospace'],
       },
       colors: {
-        background: '#0a192f',
+        background: '#020c1b',
         foreground: '#f8fafc',
         card: {
-          DEFAULT: '#112240',
+          DEFAULT: '#051a3d',
           foreground: '#f8fafc',
         },
         popover: {
-          DEFAULT: '#112240',
+          DEFAULT: '#051a3d',
           foreground: '#f8fafc',
         },
         primary: {
@@ -30,11 +30,11 @@ export default {
           foreground: '#ffffff',
         },
         secondary: {
-          DEFAULT: '#1e293b',
+          DEFAULT: '#0c2447',
           foreground: '#ffffff',
         },
         muted: {
-          DEFAULT: '#1e293b',
+          DEFAULT: '#0c2447',
           foreground: '#94a3b8',
         },
         accent: {
@@ -57,17 +57,17 @@ export default {
           DEFAULT: '#ef4444',
           foreground: '#ffffff',
         },
-        border: '#1e293b',
-        input: '#1e293b',
+        border: '#162e52',
+        input: '#162e52',
         ring: '#0ea5e9',
         sidebar: {
-          DEFAULT: '#112240',
+          DEFAULT: '#051a3d',
           foreground: '#f8fafc',
           primary: '#0ea5e9',
           'primary-foreground': '#ffffff',
-          accent: '#1e293b',
+          accent: '#0c2447',
           'accent-foreground': '#0ea5e9',
-          border: '#1e293b',
+          border: '#162e52',
           ring: '#0ea5e9',
         },
       },
@@ -85,10 +85,6 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
-        'sparkle': {
-          '0%, 100%': { opacity: '0', transform: 'scale(0)' },
-          '50%': { opacity: '1', transform: 'scale(1)' },
-        },
         'pulse-glow': {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' },
@@ -97,7 +93,6 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'sparkle': 'sparkle 2s infinite',
         'pulse-glow': 'pulse-glow 2s infinite ease-in-out',
       },
     },
