@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --background: 187 71% 93%;
-    --foreground: 187 100% 19%;
-    --card: 0 0% 0%; /* Black cards */
-    --card-foreground: 0 0% 100%; /* White text on black cards */
+    --background: 187 71% 10%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
     --popover: 0 0% 0%;
     --popover-foreground: 0 0% 100%;
     --primary: 187 100% 38%;
@@ -29,11 +29,10 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-white/10;
   }
   html {
-    /* Dark to Light Maldives Ocean Gradient */
-    background: linear-gradient(180deg, #003033 0%, #006064 35%, #00838F 70%, #80DEEA 100%) fixed !important;
+    background: linear-gradient(180deg, #001A1C 0%, #003033 35%, #006064 70%, #00ACC1 100%) fixed !important;
     min-height: 100vh;
     color-scheme: dark;
   }
@@ -49,59 +48,38 @@
   @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,172,193,0.5)] active:scale-95 hover:-translate-y-1;
 }
 
-/* Ensure all primary icons on blue backgrounds are crisp white */
-.bg-primary .lucide, 
-.bg-primary svg,
-[data-state=active] .lucide,
-[data-state=active] svg,
-.btn-hover-effect:hover .lucide,
-.btn-hover-effect:hover svg {
-  color: white !important;
-  stroke: white !important;
+.card-neon-glow {
+  @apply bg-black/60 backdrop-blur-xl border border-primary/20 shadow-[0_0_25px_rgba(0,172,193,0.1)] !important;
 }
 
-/* Black cards with border glow */
-.card, .popover, .dialog, .sheet {
-  @apply bg-black/80 backdrop-blur-xl !important;
-  border: 1px solid rgba(0, 172, 193, 0.2) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+.icon-neon-glow {
+  filter: drop-shadow(0 0 5px rgba(0, 172, 193, 0.8));
+}
+
+.text-neon-white {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 172, 193, 0.3);
 }
 
 @keyframes sparkle-float {
-  0% {
-    transform: translate(0, 0) scale(0.5);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-    transform: translate(var(--move-x), var(--move-y)) scale(1.2);
-  }
-  100% {
-    transform: translate(0, 0) scale(0.5);
-    opacity: 0;
-  }
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  50% { opacity: 0.8; transform: translate(var(--move-x), var(--move-y)) scale(1); }
+  100% { transform: translate(0, 0) scale(0.5); opacity: 0; }
 }
 
 .animate-sparkle-float {
   animation: sparkle-float var(--duration) ease-in-out infinite;
 }
 
-@keyframes neon-white-glow {
-  0%, 100% {
-    text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
-    opacity: 0.95;
-  }
-  50% {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.5);
-    opacity: 1;
-  }
+@keyframes neon-pulse {
+  0%, 100% { opacity: 0.9; filter: drop-shadow(0 0 5px white); }
+  50% { opacity: 1; filter: drop-shadow(0 0 15px white); }
 }
 
 .animate-neon-white {
-  animation: neon-white-glow 3s ease-in-out infinite;
+  animation: neon-pulse 3s ease-in-out infinite;
 }
 
-@keyframes text-shimmer {
+@keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
@@ -111,5 +89,5 @@
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: text-shimmer 4s linear infinite;
+  animation: shimmer 4s linear infinite;
 }

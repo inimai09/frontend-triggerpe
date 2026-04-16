@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react';
@@ -17,15 +16,15 @@ export default function AdminPage() {
   return (
     <DashboardLayout>
       <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
-        <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
-            <h1 className="text-3xl font-black text-[#006064] uppercase tracking-tighter">Admin Console</h1>
-            <p className="text-[#00838F] font-bold uppercase tracking-widest text-xs">Monitoring platform health & risk exposure.</p>
+            <h1 className="text-4xl font-black text-white uppercase tracking-tighter">Admin Console</h1>
+            <p className="text-primary font-bold uppercase tracking-widest text-[10px] icon-neon-glow">Monitoring platform health & risk exposure.</p>
           </div>
-          <Badge className="bg-destructive text-white font-black px-6 py-2 uppercase">System Live</Badge>
+          <Badge className="bg-destructive text-white font-black px-8 py-2.5 uppercase text-xs shadow-[0_0_15px_rgba(239,83,80,0.4)]">System Live</Badge>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {[
             { label: 'Total Workers', value: '2,847', icon: Users, color: 'text-primary' },
             { label: 'Active Policies', value: '2,801', icon: FileCheck, color: 'text-success' },
@@ -33,90 +32,90 @@ export default function AdminPage() {
             { label: 'Total Payouts', value: '₹12.0L', icon: Zap, color: 'text-warning' },
             { label: 'Loss Ratio', value: '65%', icon: Activity, color: 'text-destructive' },
           ].map((stat, i) => (
-            <Card key={i} className="bg-white border border-border shadow-sm p-6 flex items-center gap-4">
-              <div className={cn("p-3 rounded-xl bg-[#E0F7FA]", stat.color)}>
-                <stat.icon className="w-6 h-6" />
+            <Card key={i} className="card-neon-glow p-8 flex items-center gap-6 rounded-3xl btn-hover-effect">
+              <div className={cn("p-4 rounded-2xl bg-white/5", stat.color)}>
+                <stat.icon className="w-7 h-7 icon-neon-glow" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{stat.label}</span>
-                <span className="text-xl font-black text-[#006064]">{stat.value}</span>
+                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest mb-1">{stat.label}</span>
+                <span className="text-2xl font-black text-white">{stat.value}</span>
               </div>
             </Card>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <Card className="lg:col-span-2 bg-white border border-border shadow-sm overflow-hidden">
-            <CardHeader className="bg-[#E0F7FA] border-b px-8 py-6">
-              <CardTitle className="text-lg font-black text-[#006064] uppercase tracking-widest flex items-center gap-3">
-                <Zap className="w-6 h-6 text-primary" /> Trigger Control Panel
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <Card className="lg:col-span-2 card-neon-glow rounded-3xl overflow-hidden">
+            <CardHeader className="bg-primary/10 border-b border-white/5 px-10 py-8">
+              <CardTitle className="text-lg font-black text-white uppercase tracking-widest flex items-center gap-4">
+                <Zap className="w-6 h-6 text-primary icon-neon-glow" /> Trigger Control Panel
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-8 space-y-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <CardContent className="p-10 space-y-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {/* Curfew Control */}
-                <div className="space-y-4 p-6 bg-muted/30 rounded-2xl border-2 border-border">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="font-black text-[#006064] uppercase tracking-widest text-xs">Curfew / Lockdown</h3>
-                    <Badge variant="outline" className="font-black bg-white">AUTO</Badge>
+                <div className="space-y-5 p-8 bg-white/5 rounded-3xl border border-white/5">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-black text-white/60 uppercase tracking-widest text-[10px]">Curfew / Lockdown</h3>
+                    <Badge variant="outline" className="font-black bg-white/5 text-primary border-primary/20">AUTO</Badge>
                   </div>
                   <Select>
-                    <SelectTrigger className="h-12 font-bold bg-white">
+                    <SelectTrigger className="h-14 font-bold bg-black/40 border-white/10 text-white rounded-2xl">
                       <SelectValue placeholder="Select City" />
                     </SelectTrigger>
-                    <SelectContent className="bg-white">
+                    <SelectContent className="bg-black/90 backdrop-blur-xl text-white border-white/10">
                       <SelectItem value="chennai">Chennai</SelectItem>
                       <SelectItem value="mumbai">Mumbai</SelectItem>
                     </SelectContent>
                   </Select>
-                  <Button className="w-full h-12 bg-primary font-black rounded-xl">ACTIVATE TRIGGER</Button>
+                  <Button className="w-full h-14 bg-primary text-white font-black rounded-full btn-hover-effect">ACTIVATE TRIGGER</Button>
                 </div>
 
                 {/* Outage Control */}
-                <div className="space-y-4 p-6 bg-muted/30 rounded-2xl border-2 border-border">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="font-black text-[#006064] uppercase tracking-widest text-xs">Platform Outage</h3>
-                    <Badge variant="outline" className="font-black bg-white">AUTO</Badge>
+                <div className="space-y-5 p-8 bg-white/5 rounded-3xl border border-white/5">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-black text-white/60 uppercase tracking-widest text-[10px]">Platform Outage</h3>
+                    <Badge variant="outline" className="font-black bg-white/5 text-primary border-primary/20">AUTO</Badge>
                   </div>
                   <Select>
-                    <SelectTrigger className="h-12 font-bold bg-white">
+                    <SelectTrigger className="h-14 font-bold bg-black/40 border-white/10 text-white rounded-2xl">
                       <SelectValue placeholder="Select Platform" />
                     </SelectTrigger>
-                    <SelectContent className="bg-white">
+                    <SelectContent className="bg-black/90 backdrop-blur-xl text-white border-white/10">
                       <SelectItem value="swiggy">Swiggy</SelectItem>
                       <SelectItem value="zomato">Zomato</SelectItem>
                     </SelectContent>
                   </Select>
-                  <Button className="w-full h-12 bg-primary font-black rounded-xl">ACTIVATE TRIGGER</Button>
+                  <Button className="w-full h-14 bg-primary text-white font-black rounded-full btn-hover-effect">ACTIVATE TRIGGER</Button>
                 </div>
               </div>
 
-              <div className="pt-8 border-t space-y-6">
-                <h3 className="font-black text-[#006064] uppercase tracking-widest text-xs">Manual Simulation (Debug)</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <Select><SelectTrigger className="h-12 font-bold bg-white"><SelectValue placeholder="Trigger" /></SelectTrigger></Select>
-                  <Select><SelectTrigger className="h-12 font-bold bg-white"><SelectValue placeholder="City" /></SelectTrigger></Select>
-                  <Button className="h-12 bg-destructive font-black text-xs uppercase rounded-xl">SIMULATE PAYOUT</Button>
+              <div className="pt-10 border-t border-white/5 space-y-8">
+                <h3 className="font-black text-white/40 uppercase tracking-widest text-[10px]">Manual Simulation (Debug)</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <Select><SelectTrigger className="h-14 font-bold bg-black/40 border-white/10 text-white rounded-2xl"><SelectValue placeholder="Trigger" /></SelectTrigger></Select>
+                  <Select><SelectTrigger className="h-14 font-bold bg-black/40 border-white/10 text-white rounded-2xl"><SelectValue placeholder="City" /></SelectTrigger></Select>
+                  <Button className="h-14 bg-destructive text-white font-black text-xs uppercase rounded-full btn-hover-effect">SIMULATE PAYOUT</Button>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border border-border shadow-sm">
-            <CardHeader className="border-b px-8 py-6">
-              <CardTitle className="text-lg font-black text-[#006064] uppercase tracking-widest">Fraud Alerts</CardTitle>
+          <Card className="card-neon-glow rounded-3xl">
+            <CardHeader className="border-b border-white/5 px-10 py-8">
+              <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Fraud Alerts</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="p-8 text-center text-muted-foreground">
-                <ShieldAlert className="w-12 h-12 mx-auto mb-4 opacity-20" />
-                <p className="text-xs font-black uppercase tracking-widest">No active fraud flags</p>
+              <div className="p-16 text-center text-white/20">
+                <ShieldAlert className="w-16 h-16 mx-auto mb-6 opacity-30 icon-neon-glow" />
+                <p className="text-[10px] font-black uppercase tracking-widest">No active fraud flags</p>
               </div>
               <Table>
-                <TableHeader className="bg-muted/30">
-                  <TableRow>
-                    <TableHead className="px-6 font-black text-[10px] uppercase">Claim</TableHead>
-                    <TableHead className="px-6 font-black text-[10px] uppercase">Score</TableHead>
-                    <TableHead className="px-6 font-black text-[10px] uppercase text-right">Action</TableHead>
+                <TableHeader className="bg-white/5">
+                  <TableRow className="border-white/5">
+                    <TableHead className="px-10 font-black text-[9px] uppercase tracking-widest text-white/40">Claim</TableHead>
+                    <TableHead className="px-10 font-black text-[9px] uppercase tracking-widest text-white/40">Score</TableHead>
+                    <TableHead className="px-10 font-black text-[9px] uppercase tracking-widest text-white/40 text-right">Action</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -124,11 +123,11 @@ export default function AdminPage() {
                     { id: 'C-9921', score: '0.82', flag: 'GPS' },
                     { id: 'C-9925', score: '0.75', flag: 'ACC' },
                   ].map((row, i) => (
-                    <TableRow key={i}>
-                      <TableCell className="px-6 font-bold">{row.id}</TableCell>
-                      <TableCell className="px-6"><Badge className="bg-destructive text-white">{row.score}</Badge></TableCell>
-                      <TableCell className="px-6 text-right">
-                        <Button variant="ghost" size="icon" className="text-destructive"><Ban className="w-4 h-4" /></Button>
+                    <TableRow key={i} className="border-white/5 hover:bg-white/5 transition-colors">
+                      <TableCell className="px-10 py-6 font-bold text-white">{row.id}</TableCell>
+                      <TableCell className="px-10 py-6"><Badge className="bg-destructive/20 text-destructive border-destructive/30">{row.score}</Badge></TableCell>
+                      <TableCell className="px-10 py-6 text-right">
+                        <Button variant="ghost" size="icon" className="text-destructive hover:bg-destructive/10"><Ban className="w-4 h-4" /></Button>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -138,24 +137,24 @@ export default function AdminPage() {
           </Card>
         </div>
 
-        <Card className="bg-white border border-border shadow-sm">
-          <CardHeader className="border-b px-8 py-6 flex flex-row justify-between items-center">
-            <CardTitle className="text-lg font-black text-[#006064] uppercase tracking-widest">Worker Management</CardTitle>
-            <div className="flex gap-4">
-              <Input className="w-64 h-10 font-bold" placeholder="Search Partner ID..." />
-              <Button className="h-10 bg-primary font-black uppercase text-xs rounded-xl">Export</Button>
+        <Card className="card-neon-glow rounded-3xl overflow-hidden">
+          <CardHeader className="border-b border-white/5 px-10 py-8 flex flex-row justify-between items-center">
+            <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Worker Management</CardTitle>
+            <div className="flex gap-6">
+              <Input className="w-72 h-12 font-bold bg-white/5 border-white/10 text-white rounded-2xl" placeholder="Search Partner ID..." />
+              <Button className="h-12 bg-primary text-white font-black uppercase text-[10px] rounded-full px-8 btn-hover-effect">Export</Button>
             </div>
           </CardHeader>
           <CardContent className="p-0">
             <Table>
-              <TableHeader className="bg-muted/30">
-                <TableRow>
-                  <TableHead className="px-8 py-5 font-black text-[10px] uppercase tracking-widest">Worker ID</TableHead>
-                  <TableHead className="px-8 py-5 font-black text-[10px] uppercase tracking-widest">Name</TableHead>
-                  <TableHead className="px-8 py-5 font-black text-[10px] uppercase tracking-widest">Platform</TableHead>
-                  <TableHead className="px-8 py-5 font-black text-[10px] uppercase tracking-widest">City</TableHead>
-                  <TableHead className="px-8 py-5 font-black text-[10px] uppercase tracking-widest">Risk</TableHead>
-                  <TableHead className="px-8 py-5 font-black text-[10px] uppercase tracking-widest text-right">Status</TableHead>
+              <TableHeader className="bg-white/5">
+                <TableRow className="border-white/5">
+                  <TableHead className="px-10 py-6 font-black text-[9px] uppercase tracking-widest text-white/40">Worker ID</TableHead>
+                  <TableHead className="px-10 py-6 font-black text-[9px] uppercase tracking-widest text-white/40">Name</TableHead>
+                  <TableHead className="px-10 py-6 font-black text-[9px] uppercase tracking-widest text-white/40">Platform</TableHead>
+                  <TableHead className="px-10 py-6 font-black text-[9px] uppercase tracking-widest text-white/40">City</TableHead>
+                  <TableHead className="px-10 py-6 font-black text-[9px] uppercase tracking-widest text-white/40">Risk</TableHead>
+                  <TableHead className="px-10 py-6 font-black text-[9px] uppercase tracking-widest text-white/40 text-right">Status</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -164,16 +163,18 @@ export default function AdminPage() {
                   { id: 'TP-W8842', name: 'Amit Singh', platform: 'Zomato', city: 'Delhi', risk: '0.12', status: 'Active' },
                   { id: 'TP-W8843', name: 'Sunita Rao', platform: 'Zepto', city: 'Mumbai', risk: '0.64', status: 'Flagged' },
                 ].map((row, i) => (
-                  <TableRow key={i} className="hover:bg-muted/10">
-                    <TableCell className="px-8 py-6 font-mono text-xs font-black">{row.id}</TableCell>
-                    <TableCell className="px-8 py-6 font-bold text-[#006064]">{row.name}</TableCell>
-                    <TableCell className="px-8 py-6"><Badge variant="outline" className="font-black text-primary border-primary/20">{row.platform}</Badge></TableCell>
-                    <TableCell className="px-8 py-6 font-bold">{row.city}</TableCell>
-                    <TableCell className="px-8 py-6">
-                      <Progress value={parseFloat(row.risk) * 100} className="w-16 h-1.5" indicatorClassName={parseFloat(row.risk) > 0.5 ? 'bg-destructive' : 'bg-primary'} />
+                  <TableRow key={i} className="hover:bg-white/5 border-white/5 transition-colors">
+                    <TableCell className="px-10 py-8 font-mono text-[10px] font-black text-white/60">{row.id}</TableCell>
+                    <TableCell className="px-10 py-8 font-black text-white">{row.name}</TableCell>
+                    <TableCell className="px-10 py-8"><Badge variant="outline" className="font-black text-primary border-primary/30 bg-primary/10">{row.platform}</Badge></TableCell>
+                    <TableCell className="px-10 py-8 font-bold text-white/80">{row.city}</TableCell>
+                    <TableCell className="px-10 py-8">
+                      <div className="w-24">
+                        <Progress value={parseFloat(row.risk) * 100} className="h-1.5 bg-white/5" indicatorClassName={parseFloat(row.risk) > 0.5 ? 'bg-destructive' : 'bg-primary shadow-[0_0_8px_rgba(0,172,193,0.5)]'} />
+                      </div>
                     </TableCell>
-                    <TableCell className="px-8 py-6 text-right">
-                      <Badge className={cn("font-black text-[10px]", row.status === 'Active' ? "bg-success" : "bg-warning")}>{row.status}</Badge>
+                    <TableCell className="px-10 py-8 text-right">
+                      <Badge className={cn("font-black text-[9px] uppercase tracking-widest px-4", row.status === 'Active' ? "bg-success/20 text-success border-success/30" : "bg-warning/20 text-warning border-warning/30")}>{row.status}</Badge>
                     </TableCell>
                   </TableRow>
                 ))}

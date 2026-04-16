@@ -53,50 +53,50 @@ export function DashboardSidebar() {
   };
 
   return (
-    <aside className="w-[280px] bg-white border-r border-border h-screen flex flex-col sticky top-0 overflow-y-auto z-50">
-      <div className="p-8">
-        <h1 className="text-2xl font-headline font-black text-[#006064] tracking-tighter uppercase">TRIGGERPE</h1>
+    <aside className="w-[280px] bg-black/40 backdrop-blur-2xl border-r border-primary/20 h-screen flex flex-col sticky top-0 overflow-y-auto z-50">
+      <div className="p-10">
+        <h1 className="text-3xl font-headline font-black text-primary tracking-tighter uppercase drop-shadow-[0_0_10px_rgba(0,172,193,0.5)]">TRIGGERPE</h1>
       </div>
 
-      <nav className="flex-1 px-4 py-4 space-y-2">
+      <nav className="flex-1 px-6 py-4 space-y-3">
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center gap-3 px-5 py-3.5 rounded-xl transition-all font-black group",
+              "flex items-center gap-4 px-5 py-4 rounded-2xl transition-all font-black group",
               pathname === item.href 
-                ? "bg-primary text-white shadow-md" 
-                : "text-secondary hover:bg-[#E0F7FA] hover:text-primary"
+                ? "bg-primary text-white shadow-[0_0_20px_rgba(0,172,193,0.4)]" 
+                : "text-white/60 hover:bg-white/5 hover:text-white"
             )}
           >
             <item.icon className={cn(
               "w-5 h-5 transition-colors",
-              pathname === item.href ? "text-white" : "text-secondary group-hover:text-primary"
+              pathname === item.href ? "text-white icon-neon-glow" : "text-white/40 group-hover:text-primary group-hover:icon-neon-glow"
             )} />
             {item.label}
           </Link>
         ))}
       </nav>
 
-      <div className="p-6 border-t border-border mt-auto">
-        <div className="flex items-center gap-3 mb-6">
-          <Avatar className="w-10 h-10 border-2 border-primary/20 bg-muted">
+      <div className="p-8 border-t border-white/10 mt-auto bg-black/20">
+        <div className="flex items-center gap-4 mb-8">
+          <Avatar className="w-12 h-12 border-2 border-primary/40 bg-black/40">
             <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
-            <AvatarFallback className="bg-primary/10 text-primary font-black">{user.name[0] || 'P'}</AvatarFallback>
+            <AvatarFallback className="bg-primary/20 text-primary font-black">{user.name[0] || 'P'}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col min-w-0">
-            <span className="text-sm font-black text-foreground truncate">{user.name}</span>
-            <div className="flex items-center gap-1">
-              <span className="text-[10px] px-2 py-0.5 bg-primary text-white font-bold rounded-full uppercase tracking-wider">{user.platform}</span>
-              <BadgeCheck className="w-3 h-3 text-primary" />
+            <span className="text-sm font-black text-white truncate">{user.name}</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[9px] px-2 py-0.5 bg-primary/20 text-primary font-bold rounded-full uppercase tracking-wider border border-primary/30">{user.platform}</span>
+              <BadgeCheck className="w-3 h-3 text-primary icon-neon-glow" />
             </div>
           </div>
         </div>
         <Button 
           variant="ghost" 
           onClick={handleLogout}
-          className="w-full flex items-center justify-start gap-3 px-5 py-3 text-destructive hover:text-destructive hover:bg-destructive/10 rounded-xl font-black transition-all"
+          className="w-full flex items-center justify-start gap-4 px-5 py-4 text-destructive hover:text-white hover:bg-destructive/20 rounded-2xl font-black transition-all"
         >
           <LogOut className="w-5 h-5" />
           Logout
