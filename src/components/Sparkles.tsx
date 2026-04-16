@@ -22,7 +22,7 @@ export function Sparkles() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-[#E0F7FA]">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-transparent">
       {sparkles.map((s) => (
         <div
           key={s.id}
