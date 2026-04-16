@@ -7,18 +7,18 @@ export function Sparkles() {
 
   useEffect(() => {
     // Generate sparkles on mount to avoid hydration mismatch
-    const sparkleCount = 80;
+    const sparkleCount = 60;
     const newSparkles = Array.from({ length: sparkleCount }).map((_, i) => ({
       id: i,
-      size: Math.random() * 20 + 10, // Larger sparkles
+      size: Math.random() * 6 + 2, // Smaller, more delicate sparkles
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
-      duration: `${10 + Math.random() * 10}s`,
-      delay: `${Math.random() * -20}s`,
-      moveX: `${(Math.random() - 0.5) * 1000}px`,
-      moveY: `${(Math.random() - 0.5) * 1000}px`,
-      // Intense neon cyan glow for maximum visibility
-      glowColor: i % 2 === 0 ? '#00E5FF' : '#80DEEA',
+      duration: `${15 + Math.random() * 15}s`, // Slower, more graceful movement
+      delay: `${Math.random() * -30}s`,
+      moveX: `${(Math.random() - 0.5) * 600}px`,
+      moveY: `${(Math.random() - 0.5) * 600}px`,
+      // Cyan glow for the magical ocean feel
+      glowColor: i % 2 === 0 ? '#00E5FF' : '#B2EBF2',
     }));
     setSparkles(newSparkles);
   }, []);
@@ -34,8 +34,8 @@ export function Sparkles() {
             left: s.left,
             width: `${s.size}px`,
             height: `${s.size}px`,
-            backgroundColor: '#E0F7FA', // Bright core
-            boxShadow: `0 0 25px 10px ${s.glowColor}, 0 0 50px 20px rgba(0, 172, 193, 0.6)`,
+            backgroundColor: '#FFFFFF', // Bright white core
+            boxShadow: `0 0 15px 5px ${s.glowColor}, 0 0 30px 10px rgba(0, 229, 255, 0.4)`,
             '--duration': s.duration,
             '--move-x': s.moveX,
             '--move-y': s.moveY,
