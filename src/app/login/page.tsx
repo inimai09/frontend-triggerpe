@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from 'react';
@@ -30,7 +31,15 @@ export default function LoginPage() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      localStorage.setItem('tp_user', JSON.stringify({ name: 'Rajesh Kumar', platform: 'Swiggy' }));
+      // Simulate successful login with complete profile data
+      const mockUser = { 
+        name: 'Rajesh Kumar', 
+        platform: 'Swiggy',
+        phone: '+91 98765 43210',
+        email: 'rajesh.kumar@swiggy.com',
+        city: 'Chennai'
+      };
+      localStorage.setItem('tp_user', JSON.stringify(mockUser));
       router.push('/dashboard');
     }, 1200);
   };
@@ -40,7 +49,10 @@ export default function LoginPage() {
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
-    if (value && index < 5) document.getElementById(`otp-${index + 1}`)?.focus();
+    if (value && index < 5) {
+      const nextInput = document.getElementById(`otp-${index + 1}`) as HTMLInputElement;
+      if (nextInput) nextInput.focus();
+    }
   };
 
   return (

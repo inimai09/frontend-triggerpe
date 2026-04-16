@@ -102,7 +102,7 @@ export default function SettingsPage() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">Delivery Platform</label>
-                    <Input value={userData.platform} disabled className="h-12 bg-muted border-none rounded-xl font-bold" />
+                    <Input value={userData.platform} disabled className="h-12 bg-muted border-none rounded-xl font-bold opacity-60" />
                   </div>
                 </div>
                 <Button onClick={handleSaveProfile} className="rounded-full bg-primary font-black px-10 h-14 btn-hover-effect">
