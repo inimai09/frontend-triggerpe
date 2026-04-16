@@ -9,7 +9,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { Sun, CloudRain, Snowflake, Zap, ShieldCheck, ZapIcon, WalletCards, ArrowRight, Star } from 'lucide-react';
+import { Sun, CloudRain, Snowflake, Zap, ShieldCheck, ZapIcon, WalletCards, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -32,7 +32,8 @@ export default function LandingPage() {
           </Badge>
           <h1 className="text-5xl md:text-6xl font-black text-[#006064] leading-tight mb-6">
             When storms stop you,<br />
-            <span className="text-white drop-shadow-md">we pay you instantly.</span>
+            <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] brightness-125">we pay you </span>
+            <span className="text-[#00E5FF] drop-shadow-[0_0_20px_rgba(0,229,255,0.9)] brightness-150 underline decoration-white/20">instantly.</span>
           </h1>
           <p className="text-lg text-[#00838F] mb-10 max-w-xl font-bold">
             India's first zero-touch parametric insurance for delivery workers. No forms, no waiting, automatic payouts.
