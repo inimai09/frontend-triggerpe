@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,7 +34,7 @@
   }
   html {
     /* Refined Maldives Gradient: Dark Teal to Light Teal */
-    background: linear-gradient(180deg, #00332E 0%, #004D40 35%, #00838F 70%, #00ACC1 100%) fixed !important;
+    background: linear-gradient(180deg, #001A1A 0%, #00332E 35%, #006064 70%, #00838F 100%) fixed !important;
     min-height: 100vh;
     color-scheme: dark;
     scroll-behavior: smooth;
@@ -60,11 +61,11 @@
 
 @keyframes neon-pulse-white {
   0%, 100% { 
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
-    opacity: 0.95;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+    opacity: 0.9;
   }
   50% { 
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
     opacity: 1;
   }
 }
@@ -94,4 +95,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 4s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
