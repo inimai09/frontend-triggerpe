@@ -30,10 +30,10 @@ export default function ClaimsPage() {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'Paid': return <Badge className="bg-success/20 text-success border-success/30 font-black px-3 uppercase text-[8px]">PAID</Badge>;
-      case 'Approved': return <Badge className="bg-primary/20 text-primary border-primary/30 font-black px-3 uppercase text-[8px]">APPROVED</Badge>;
-      case 'Pending': return <Badge className="bg-warning/20 text-warning border-warning/30 font-black px-3 uppercase text-[8px]">PENDING</Badge>;
-      default: return <Badge className="bg-white/10 text-white font-black px-3 uppercase text-[8px]">{status}</Badge>;
+      case 'Paid': return <Badge className="bg-success/20 text-success border-success/30 font-black px-4 py-1.5 uppercase text-[8px] rounded-full">PAID</Badge>;
+      case 'Approved': return <Badge className="bg-primary/20 text-primary border-primary/30 font-black px-4 py-1.5 uppercase text-[8px] rounded-full">APPROVED</Badge>;
+      case 'Pending': return <Badge className="bg-warning/20 text-warning border-warning/30 font-black px-4 py-1.5 uppercase text-[8px] rounded-full">PENDING</Badge>;
+      default: return <Badge className="bg-white/10 text-white font-black px-4 py-1.5 uppercase text-[8px] rounded-full">{status}</Badge>;
     }
   };
 
@@ -44,7 +44,7 @@ export default function ClaimsPage() {
         <Card className="card-neon-glow p-6 rounded-[2rem] border-none">
           <header className="space-y-4">
             <div className="p-6 bg-black/40 border border-white/5 rounded-[1.75rem] w-full md:w-fit btn-hover-effect">
-              <h1 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">Claims History</h1>
+              <h1 className="text-3xl font-black text-white uppercase tracking-tighter mb-2 font-headline">Claims History</h1>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#00ACC1]" />
                 <p className="text-primary font-black uppercase tracking-widest text-[9px] icon-neon-glow">Parametric Auto-Payouts Active</p>
@@ -63,7 +63,7 @@ export default function ClaimsPage() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[8px] font-black text-white/40 uppercase tracking-widest mb-1">{item.label}</span>
-                  <span className="text-xl font-black text-white tracking-tight">{item.value}</span>
+                  <span className="text-xl font-black text-white tracking-tight font-headline">{item.value}</span>
                 </div>
               </CardContent>
             </Card>
@@ -104,7 +104,7 @@ export default function ClaimsPage() {
         {/* Boxed Table Log */}
         <Card className="card-neon-glow rounded-[2.5rem] border-none overflow-hidden">
           <CardHeader className="bg-white/5 px-8 py-5 border-b border-white/5">
-            <CardTitle className="text-base font-black text-white uppercase tracking-widest">Transaction Log</CardTitle>
+            <CardTitle className="text-base font-black text-white uppercase tracking-widest font-headline">Transaction Log</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             <Table>
@@ -133,13 +133,13 @@ export default function ClaimsPage() {
                         <span className="text-[9px] font-black text-primary uppercase tracking-tight icon-neon-glow">{claim.trigger}</span>
                       </div>
                     </TableCell>
-                    <TableCell className="px-8 py-6 font-black text-white/80 text-sm">{claim.location}</TableCell>
+                    <TableCell className="px-8 py-6 font-black text-white/80 text-sm font-headline">{claim.location}</TableCell>
                     <TableCell className="px-8 py-6">
-                      <span className="text-xl font-black text-primary icon-neon-glow tracking-tighter">{claim.amount}</span>
+                      <span className="text-xl font-black text-primary icon-neon-glow tracking-tighter font-headline">{claim.amount}</span>
                     </TableCell>
                     <TableCell className="px-8 py-6">{getStatusBadge(claim.status)}</TableCell>
                     <TableCell className="px-8 py-6 text-right">
-                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors ml-auto border border-white/10">
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors ml-auto border border-white/10 shadow-sm">
                         <ChevronRight className="w-5 h-5 text-white/40 group-hover:text-white" />
                       </div>
                     </TableCell>
@@ -147,14 +147,6 @@ export default function ClaimsPage() {
                 ))}
               </TableBody>
             </Table>
-            {claims.length === 0 && (
-              <div className="p-16 text-center flex flex-col items-center gap-4">
-                <div className="p-4 rounded-full bg-white/5 border border-white/10">
-                  <AlertCircle className="w-12 h-12 text-white/10" />
-                </div>
-                <p className="text-xl font-black text-white/20 uppercase tracking-widest">No claims detected.</p>
-              </div>
-            )}
           </CardContent>
         </Card>
 
@@ -163,8 +155,8 @@ export default function ClaimsPage() {
           <DialogContent className="max-w-md bg-black/95 backdrop-blur-3xl border border-primary/20 p-0 overflow-hidden rounded-[2.5rem] shadow-[0_0_100px_rgba(0,0,0,0.8)]">
             <DialogHeader className="bg-primary/10 p-8 border-b border-white/10">
               <div className="flex justify-between items-center">
-                <DialogTitle className="text-2xl font-black text-white uppercase tracking-tighter">Claim: {selectedClaim?.id}</DialogTitle>
-                <div className="p-2 bg-primary/20 rounded-full border border-primary/30">
+                <DialogTitle className="text-2xl font-black text-white uppercase tracking-tighter font-headline">Claim: {selectedClaim?.id}</DialogTitle>
+                <div className="p-3 bg-primary/20 rounded-full border border-primary/30 shadow-lg">
                   <CheckCircle2 className="w-6 h-6 text-primary icon-neon-glow" />
                 </div>
               </div>
@@ -173,16 +165,16 @@ export default function ClaimsPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-6 bg-white/5 rounded-[1.5rem] border border-white/5 btn-hover-effect">
                   <span className="text-[9px] font-black text-white/40 uppercase tracking-widest block mb-1">Event</span>
-                  <p className="font-black text-white text-lg uppercase tracking-tighter">{selectedClaim?.trigger}</p>
+                  <p className="font-black text-white text-lg uppercase tracking-tighter font-headline">{selectedClaim?.trigger}</p>
                 </div>
                 <div className="p-6 bg-white/5 rounded-[1.5rem] border border-white/5 text-right btn-hover-effect">
                   <span className="text-[9px] font-black text-white/40 uppercase tracking-widest block mb-1">Payout</span>
-                  <p className="font-black text-primary text-2xl icon-neon-glow tracking-tighter">{selectedClaim?.amount}</p>
+                  <p className="font-black text-primary text-2xl icon-neon-glow tracking-tighter font-headline">{selectedClaim?.amount}</p>
                 </div>
               </div>
 
               <div className="space-y-6">
-                <h4 className="text-[10px] font-black text-white/40 uppercase tracking-widest flex items-center gap-2">
+                <h4 className="text-[10px] font-black text-white/40 uppercase tracking-widest flex items-center gap-2 font-headline">
                   <div className="p-1.5 bg-primary/20 rounded-full border border-primary/30">
                     <Clock className="w-4 h-4 text-primary" />
                   </div> Verification Lifecycle
@@ -197,10 +189,10 @@ export default function ClaimsPage() {
                       <div className="w-[18px] h-[18px] rounded-full bg-primary border-[3px] border-black shadow-[0_0_10px_rgba(0,172,193,0.6)]" />
                       <div className="flex-1 bg-white/5 p-4 rounded-full border border-white/5 flex justify-between items-center btn-hover-effect">
                         <div>
-                          <p className="text-sm font-black text-white leading-none mb-1">{step.label}</p>
+                          <p className="text-sm font-black text-white leading-none mb-1 font-headline">{step.label}</p>
                           <p className="text-[9px] font-black text-white/30 uppercase tracking-widest">{step.time}</p>
                         </div>
-                        <Badge variant="outline" className="text-[7px] font-black text-success border-success/30 bg-success/5 px-2 py-0.5">VERIFIED</Badge>
+                        <Badge variant="outline" className="text-[7px] font-black text-success border-success/30 bg-success/5 px-3 py-1 rounded-full">VERIFIED</Badge>
                       </div>
                     </div>
                   ))}
@@ -212,7 +204,7 @@ export default function ClaimsPage() {
                 <span className="text-[8px] font-black text-primary uppercase tracking-widest icon-neon-glow">Secured</span>
               </div>
               
-              <Button onClick={() => setSelectedClaim(null)} className="w-full h-14 bg-primary text-white font-black rounded-full btn-hover-effect text-lg shadow-xl">Close Detail</Button>
+              <Button onClick={() => setSelectedClaim(null)} className="w-full h-14 bg-primary text-white font-black rounded-full btn-hover-effect text-lg shadow-xl uppercase font-headline">Close Detail</Button>
             </div>
           </DialogContent>
         </Dialog>
