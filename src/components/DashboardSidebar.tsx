@@ -53,9 +53,9 @@ export function DashboardSidebar() {
   };
 
   return (
-    <aside className="w-[280px] bg-black/40 backdrop-blur-2xl border-r border-primary/20 h-screen flex flex-col sticky top-0 overflow-y-auto z-50">
+    <aside className="w-[280px] bg-black/60 backdrop-blur-2xl border-r border-primary/20 h-screen flex flex-col sticky top-0 overflow-y-auto z-50">
       <div className="p-10">
-        <h1 className="text-3xl font-headline font-black text-primary tracking-tighter uppercase drop-shadow-[0_0_10px_rgba(0,172,193,0.5)]">TRIGGERPE</h1>
+        <h1 className="text-3xl font-headline font-black text-primary tracking-tighter uppercase drop-shadow-[0_0_15px_rgba(0,172,193,0.5)]">TRIGGERPE</h1>
       </div>
 
       <nav className="flex-1 px-6 py-4 space-y-3">
@@ -72,7 +72,7 @@ export function DashboardSidebar() {
           >
             <item.icon className={cn(
               "w-5 h-5 transition-colors",
-              pathname === item.href ? "text-white icon-neon-glow" : "text-white/40 group-hover:text-primary group-hover:icon-neon-glow"
+              pathname === item.href ? "text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" : "text-white/40 group-hover:text-primary"
             )} />
             {item.label}
           </Link>

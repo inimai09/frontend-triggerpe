@@ -33,7 +33,7 @@ export default function LandingPage() {
           <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6 drop-shadow-2xl font-headline">
             When storms stop you,<br />
             <span className="block mt-4">
-              <span className="animate-neon-white text-white">we pay you instantly.</span>
+              <span className="animate-neon-white text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">we pay you instantly.</span>
             </span>
           </h1>
           <p className="text-lg text-white/90 mt-8 mb-10 max-w-xl font-bold animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 drop-shadow">
@@ -42,7 +42,7 @@ export default function LandingPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
             <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black">
-              <Link href="/login" className="flex items-center gap-3">Get Protected <ArrowRight className="w-6 h-6" /></Link>
+              <Link href="/register" className="flex items-center gap-3">Get Protected <ArrowRight className="w-6 h-6" /></Link>
             </Button>
           </div>
           
@@ -59,10 +59,10 @@ export default function LandingPage() {
             <CarouselContent>
               {weatherCards.map((card, idx) => (
                 <CarouselItem key={idx}>
-                  <Card className={`overflow-hidden border border-primary/20 shadow-2xl bg-black border-t-[6px] ${card.border} rounded-2xl transform transition-transform duration-500 hover:scale-105`}>
+                  <Card className={`overflow-hidden card-neon-glow border-t-[6px] ${card.border} rounded-2xl transform transition-transform duration-500 hover:scale-105`}>
                     <CardContent className="p-10 flex flex-col items-center text-center">
                       <div className="w-full flex justify-between items-center mb-6">
-                        <span className="text-[10px] font-black tracking-widest text-muted-foreground uppercase">Trigger Unit {idx + 1}</span>
+                        <span className="text-[10px] font-black tracking-widest text-white/40 uppercase">Trigger Unit {idx + 1}</span>
                         <card.icon className={`w-8 h-8 ${card.iconColor}`} />
                       </div>
                       <div className="w-64 h-64 mb-8">
@@ -76,8 +76,8 @@ export default function LandingPage() {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-8">
-              <CarouselPrevious className="static translate-y-0 bg-black shadow-md border border-primary/20 w-12 h-12 rounded-full text-primary btn-hover-effect" />
-              <CarouselNext className="static translate-y-0 bg-black shadow-md border border-primary/20 w-12 h-12 rounded-full text-primary btn-hover-effect" />
+              <CarouselPrevious className="static translate-y-0 bg-black/60 shadow-md border border-primary/20 w-12 h-12 rounded-full text-primary btn-hover-effect" />
+              <CarouselNext className="static translate-y-0 bg-black/60 shadow-md border border-primary/20 w-12 h-12 rounded-full text-primary btn-hover-effect" />
             </div>
           </Carousel>
         </div>
@@ -93,12 +93,12 @@ export default function LandingPage() {
               { title: 'Live Monitoring', desc: 'Our engine tracks live satellite weather data 24/7 for your specific zone.' },
               { title: 'Auto Payouts', desc: 'Money hits your UPI automatically within minutes of the weather trigger.' }
             ].map((item, idx) => (
-              <Card key={idx} className="p-10 text-center bg-black border border-primary/10 shadow-2xl rounded-2xl btn-hover-effect group overflow-hidden">
+              <Card key={idx} className="p-10 text-center card-neon-glow rounded-2xl btn-hover-effect group overflow-hidden">
                 <div className="relative z-10">
                   <h3 className="text-2xl font-black mb-6 uppercase tracking-tight text-highlight-shimmer transition-transform group-hover:scale-110 duration-500 font-headline">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground font-bold leading-relaxed">{item.desc}</p>
+                  <p className="text-white/70 font-bold leading-relaxed">{item.desc}</p>
                 </div>
               </Card>
             ))}
@@ -116,7 +116,7 @@ export default function LandingPage() {
               { name: 'STANDARD', price: '₹79', coverage: '₹1400 max', perks: ['All 5 triggers'], badge: 'MOST POPULAR', btn: 'Get Standard' },
               { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + Priority'], btn: 'Get Premium' },
             ].map((plan, i) => (
-              <Card key={i} className={`p-12 flex flex-col items-center bg-black border-2 rounded-2xl btn-hover-effect ${plan.badge ? 'border-primary shadow-[0_0_30px_rgba(0,172,193,0.3)] scale-105' : 'border-primary/10 shadow-2xl'}`}>
+              <Card key={i} className={`p-12 flex flex-col items-center card-neon-glow border-2 rounded-2xl btn-hover-effect ${plan.badge ? 'border-primary shadow-[0_0_30px_rgba(0,172,193,0.3)] scale-105' : 'border-primary/10'}`}>
                 {plan.badge && <Badge className="bg-primary text-white mb-6 font-black py-1 px-4">{plan.badge}</Badge>}
                 <h3 className="text-xl font-black text-primary mb-3 uppercase tracking-widest">{plan.name}</h3>
                 <p className="text-5xl font-black text-white mb-2">{plan.price}<span className="text-lg opacity-50">/wk</span></p>
@@ -124,8 +124,8 @@ export default function LandingPage() {
                 <ul className="space-y-4 mb-10 w-full">
                   {plan.perks.map((p, j) => <li key={j} className="text-sm font-bold text-center text-white/70">✓ {p}</li>)}
                 </ul>
-                <Button className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-14 text-lg text-white btn-hover-effect">
-                  {plan.btn}
+                <Button asChild className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-14 text-lg text-white btn-hover-effect">
+                  <Link href="/register">{plan.btn}</Link>
                 </Button>
               </Card>
             ))}
@@ -144,16 +144,16 @@ export default function LandingPage() {
               { q: "How do I get paid?", a: "Payouts are pushed directly to your registered UPI ID (GPay/PhonePe/Paytm) within minutes." },
               { q: "Can I cancel anytime?", a: "Yes. Coverage is weekly, you can stop renewal at any time through your dashboard." }
             ].map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="bg-black/60 border border-primary/10 rounded-2xl px-8 shadow-2xl mb-4 transition-all hover:bg-black" style={{ animationDelay: `${i * 100}ms` }}>
+              <AccordionItem key={i} value={`item-${i}`} className="card-neon-glow rounded-2xl px-8 mb-4 transition-all" style={{ animationDelay: `${i * 100}ms` }}>
                 <AccordionTrigger className="font-black text-white hover:no-underline text-lg font-headline">{item.q}</AccordionTrigger>
-                <AccordionContent className="font-bold text-muted-foreground leading-relaxed">{item.a}</AccordionContent>
+                <AccordionContent className="font-bold text-white/60 leading-relaxed">{item.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </div>
       </section>
 
-      <footer className="bg-black py-20 px-12 border-t border-primary/10 relative z-10">
+      <footer className="bg-black/60 backdrop-blur-md py-20 px-12 border-t border-primary/10 relative z-10">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
           <div>
             <h4 className="font-black text-primary mb-6 uppercase tracking-widest text-xs">Product</h4>

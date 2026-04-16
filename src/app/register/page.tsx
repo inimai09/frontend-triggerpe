@@ -52,7 +52,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen p-8 flex flex-col items-center bg-transparent relative z-10">
-      <h1 className="text-4xl font-black text-white mb-12 uppercase tracking-tighter font-headline animate-in fade-in slide-in-from-top-4 duration-1000">PARTNER ONBOARDING</h1>
+      <h1 className="text-5xl font-black text-white mb-12 uppercase tracking-tighter font-headline animate-in fade-in slide-in-from-top-4 duration-1000 drop-shadow-[0_0_15px_rgba(0,172,193,0.5)]">GET PROTECTED</h1>
       
       {/* Step Indicator */}
       <div className="flex items-center gap-4 mb-12 w-full max-w-2xl px-4">
@@ -69,7 +69,7 @@ export default function RegisterPage() {
         ))}
       </div>
 
-      <Card className="w-full max-w-2xl bg-black border border-primary/20 shadow-2xl rounded-3xl overflow-hidden p-8 md:p-12 animate-in fade-in zoom-in-95 duration-700">
+      <Card className="w-full max-w-2xl card-neon-glow rounded-3xl overflow-hidden p-8 md:p-12 animate-in fade-in zoom-in-95 duration-700">
         
         {step === 1 && (
           <div className="space-y-10 animate-in fade-in slide-in-from-right duration-500">
