@@ -56,16 +56,16 @@ export default function SettingsPage() {
 
   return (
     <DashboardLayout>
-      <div className="max-w-5xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10">
         <header>
-          <div className="p-8 bg-black/40 border border-white/5 rounded-[2.5rem] w-fit btn-hover-effect">
-            <h1 className="text-4xl font-black text-white uppercase tracking-tighter">Settings</h1>
-            <p className="text-primary font-bold uppercase tracking-widest text-[10px] icon-neon-glow">Manage your account and app preferences.</p>
+          <div className="p-6 bg-black/40 border border-white/5 rounded-[2rem] w-fit btn-hover-effect">
+            <h1 className="text-3xl font-black text-white uppercase tracking-tighter">Settings</h1>
+            <p className="text-primary font-bold uppercase tracking-widest text-[9px] icon-neon-glow">Manage your account and app preferences.</p>
           </div>
         </header>
 
         <Tabs defaultValue="profile" onValueChange={setActiveTab} className="w-full">
-          <TabsList className="flex overflow-x-auto bg-black/40 backdrop-blur-xl border border-white/10 p-2 h-20 rounded-[2rem] mb-12">
+          <TabsList className="flex overflow-x-auto bg-black/40 backdrop-blur-xl border border-white/10 p-1.5 h-16 rounded-[1.75rem] mb-8">
             {[
               { id: 'profile', icon: User, label: 'Profile' },
               { id: 'notifications', icon: Bell, label: 'Alerts' },
@@ -73,60 +73,60 @@ export default function SettingsPage() {
               { id: 'privacy', icon: Shield, label: 'Privacy' },
               { id: 'support', icon: HelpCircle, label: 'Support' },
             ].map(tab => (
-              <TabsTrigger key={tab.id} value={tab.id} className="flex-1 rounded-[1.25rem] font-black data-[state=active]:bg-primary data-[state=active]:text-white gap-3 min-w-[140px] text-white/60 btn-hover-effect">
-                <tab.icon className="w-5 h-5" /> {tab.label}
+              <TabsTrigger key={tab.id} value={tab.id} className="flex-1 rounded-[1.25rem] font-black data-[state=active]:bg-primary data-[state=active]:text-white gap-2 min-w-[120px] text-[11px] text-white/60 btn-hover-effect">
+                <tab.icon className="w-4 h-4" /> {tab.label}
               </TabsTrigger>
             ))}
           </TabsList>
 
-          <TabsContent value="profile" className="space-y-10">
-            <Card className="card-neon-glow rounded-[2.5rem]">
-              <CardHeader className="border-b border-white/5 px-12 py-10">
-                <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Personal Information</CardTitle>
+          <TabsContent value="profile" className="space-y-6">
+            <Card className="card-neon-glow rounded-[2rem]">
+              <CardHeader className="border-b border-white/5 px-8 py-6">
+                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Personal Information</CardTitle>
               </CardHeader>
-              <CardContent className="p-12 space-y-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <CardContent className="p-8 space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[
                     { label: 'Full Name', name: 'name', value: userData.name },
                     { label: 'Phone Number', name: 'phone', value: userData.phone },
                     { label: 'Email Address', name: 'email', value: userData.email },
                     { label: 'City', name: 'city', value: userData.city },
                   ].map((field) => (
-                    <div key={field.name} className="space-y-3">
-                      <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">{field.label}</label>
-                      <Input name={field.name} value={field.value} onChange={handleChange} className="h-16 bg-white/5 border-white/10 rounded-[1.25rem] font-black text-white focus:border-primary/40 px-6 text-lg" />
+                    <div key={field.name} className="space-y-2">
+                      <label className="text-[9px] font-black text-white/40 uppercase tracking-widest ml-1">{field.label}</label>
+                      <Input name={field.name} value={field.value} onChange={handleChange} className="h-14 bg-white/5 border-white/10 rounded-[1rem] font-black text-white focus:border-primary/40 px-5 text-base" />
                     </div>
                   ))}
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">Delivery Platform</label>
-                    <Input value={userData.platform} disabled className="h-16 bg-black/40 border-white/5 rounded-[1.25rem] font-black text-primary opacity-60 px-6 text-lg cursor-not-allowed" />
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-black text-white/40 uppercase tracking-widest ml-1">Delivery Platform</label>
+                    <Input value={userData.platform} disabled className="h-14 bg-black/40 border-white/5 rounded-[1rem] font-black text-primary opacity-60 px-5 text-base cursor-not-allowed" />
                   </div>
                 </div>
-                <Button onClick={handleSaveProfile} className="rounded-full bg-primary text-white font-black px-12 h-20 btn-hover-effect text-lg shadow-2xl">
-                  <Save className="w-6 h-6 mr-3" /> Save Profile Changes
+                <Button onClick={handleSaveProfile} className="rounded-full bg-primary text-white font-black px-10 h-16 btn-hover-effect text-lg shadow-xl">
+                  <Save className="w-5 h-5 mr-3" /> Save Changes
                 </Button>
               </CardContent>
             </Card>
           </TabsContent>
 
           <TabsContent value="notifications">
-            <Card className="card-neon-glow rounded-[2.5rem]">
-              <CardHeader className="border-b border-white/5 px-12 py-10">
-                <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Notification Channels</CardTitle>
+            <Card className="card-neon-glow rounded-[2rem]">
+              <CardHeader className="border-b border-white/5 px-8 py-6">
+                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Notification Channels</CardTitle>
               </CardHeader>
-              <CardContent className="p-12 space-y-12">
+              <CardContent className="p-8 space-y-8">
                 {[
                   { label: 'SMS Notifications', desc: 'Real-time alerts for weather triggers' },
                   { label: 'Email Alerts', desc: 'Policy renewal and weekly summaries' },
                   { label: 'Push Notifications', desc: 'Live payout status and app updates' },
                   { label: 'Premium Due Alerts', desc: 'Reminders before auto-debit' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between p-8 bg-white/5 rounded-[1.5rem] border border-white/5 btn-hover-effect">
-                    <div className="space-y-2">
-                      <p className="font-black text-white text-lg">{item.label}</p>
-                      <p className="text-sm font-bold text-white/40">{item.desc}</p>
+                  <div key={i} className="flex items-center justify-between p-6 bg-white/5 rounded-[1.25rem] border border-white/5 btn-hover-effect">
+                    <div className="space-y-1">
+                      <p className="font-black text-white text-base">{item.label}</p>
+                      <p className="text-xs font-bold text-white/40">{item.desc}</p>
                     </div>
-                    <Switch defaultChecked className="data-[state=checked]:bg-primary" />
+                    <Switch defaultChecked className="data-[state=checked]:bg-primary scale-90" />
                   </div>
                 ))}
               </CardContent>
@@ -134,32 +134,32 @@ export default function SettingsPage() {
           </TabsContent>
 
           <TabsContent value="payments">
-            <Card className="card-neon-glow rounded-[2.5rem]">
-              <CardHeader className="border-b border-white/5 px-12 py-10">
-                <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Payout Methods</CardTitle>
+            <Card className="card-neon-glow rounded-[2rem]">
+              <CardHeader className="border-b border-white/5 px-8 py-6">
+                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Payout Methods</CardTitle>
               </CardHeader>
-              <CardContent className="p-12 space-y-10">
-                <div className="p-10 bg-primary/10 rounded-[2rem] border border-primary/20 flex items-center justify-between group btn-hover-effect">
-                  <div className="flex items-center gap-8">
-                    <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center font-black text-primary border-2 border-primary/30 text-xl shadow-[0_0_15px_rgba(0,172,193,0.3)]">UPI</div>
+              <CardContent className="p-8 space-y-6">
+                <div className="p-8 bg-primary/10 rounded-[1.5rem] border border-primary/20 flex items-center justify-between group btn-hover-effect">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center font-black text-primary border-2 border-primary/30 text-lg shadow-[0_0_15px_rgba(0,172,193,0.3)]">UPI</div>
                     <div>
-                      <p className="font-black text-white text-xl">rajesh.kumar@okaxis</p>
-                      <p className="text-[10px] font-black text-primary uppercase tracking-widest mt-1 icon-neon-glow">Primary Payout Method</p>
+                      <p className="font-black text-white text-lg">rajesh.kumar@okaxis</p>
+                      <p className="text-[9px] font-black text-primary uppercase tracking-widest mt-0.5 icon-neon-glow">Primary Payout Method</p>
                     </div>
                   </div>
-                  <Button variant="ghost" className="font-black text-primary hover:text-white uppercase tracking-widest text-[11px] btn-hover-effect">Edit</Button>
+                  <Button variant="ghost" className="font-black text-primary hover:text-white uppercase tracking-widest text-[10px] btn-hover-effect">Edit</Button>
                 </div>
-                <div className="p-10 bg-white/5 rounded-[2rem] border border-white/10 flex items-center justify-between opacity-60 btn-hover-effect">
-                  <div className="flex items-center gap-8">
-                    <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center font-black text-white/20 border-2 border-white/10 text-xl">BANK</div>
+                <div className="p-8 bg-white/5 rounded-[1.5rem] border border-white/10 flex items-center justify-between opacity-60 btn-hover-effect">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center font-black text-white/20 border-2 border-white/10 text-lg">BANK</div>
                     <div>
                       <p className="font-black text-white">ICICI Bank • **** 8841</p>
-                      <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mt-1">Secondary Account</p>
+                      <p className="text-[9px] font-black text-white/30 uppercase tracking-widest mt-0.5">Secondary Account</p>
                     </div>
                   </div>
-                  <Button variant="ghost" className="font-black text-white/30 hover:text-destructive uppercase tracking-widest text-[11px] btn-hover-effect">Remove</Button>
+                  <Button variant="ghost" className="font-black text-white/30 hover:text-destructive uppercase tracking-widest text-[10px] btn-hover-effect">Remove</Button>
                 </div>
-                <Button variant="outline" className="w-full h-24 rounded-[2rem] border-2 border-primary/30 border-dashed font-black text-primary hover:bg-primary/5 text-lg btn-hover-effect">
+                <Button variant="outline" className="w-full h-16 rounded-[1.5rem] border-2 border-primary/30 border-dashed font-black text-primary hover:bg-primary/5 text-base btn-hover-effect">
                   + Link New Payment Method
                 </Button>
               </CardContent>
@@ -167,32 +167,32 @@ export default function SettingsPage() {
           </TabsContent>
 
           <TabsContent value="privacy">
-            <Card className="card-neon-glow rounded-[2.5rem]">
-              <CardHeader className="border-b border-white/5 px-12 py-10">
-                <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Security Controls</CardTitle>
+            <Card className="card-neon-glow rounded-[2rem]">
+              <CardHeader className="border-b border-white/5 px-8 py-6">
+                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Security Controls</CardTitle>
               </CardHeader>
-              <CardContent className="p-12 space-y-12">
-                <div className="flex items-center justify-between p-10 bg-white/5 rounded-[2rem] border border-white/10 btn-hover-effect">
-                  <div className="flex items-center gap-8">
-                    <div className="p-5 bg-primary/20 rounded-2xl">
-                      <Key className="w-8 h-8 text-primary icon-neon-glow" />
+              <CardContent className="p-8 space-y-8">
+                <div className="flex items-center justify-between p-8 bg-white/5 rounded-[1.5rem] border border-white/10 btn-hover-effect">
+                  <div className="flex items-center gap-6">
+                    <div className="p-4 bg-primary/20 rounded-xl">
+                      <Key className="w-6 h-6 text-primary icon-neon-glow" />
                     </div>
                     <div>
-                      <p className="font-black text-white text-xl">Two-Factor Authentication</p>
-                      <p className="text-sm font-bold text-white/40">Highly recommended for payout safety</p>
+                      <p className="font-black text-white text-lg">Two-Factor Authentication</p>
+                      <p className="text-xs font-bold text-white/40">Highly recommended for payout safety</p>
                     </div>
                   </div>
-                  <Switch className="data-[state=checked]:bg-primary" />
+                  <Switch className="data-[state=checked]:bg-primary scale-90" />
                 </div>
-                <div className="space-y-6">
-                  <Button variant="outline" className="w-full h-20 rounded-[1.5rem] font-black justify-between btn-hover-effect px-10 text-lg border-white/10 bg-white/5">
-                    Change Login Password <ChevronRight className="w-6 h-6 text-white/20" />
+                <div className="space-y-4">
+                  <Button variant="outline" className="w-full h-16 rounded-[1.25rem] font-black justify-between btn-hover-effect px-8 text-base border-white/10 bg-white/5">
+                    Change Password <ChevronRight className="w-5 h-5 text-white/20" />
                   </Button>
-                  <Button variant="outline" className="w-full h-20 rounded-[1.5rem] font-black justify-between btn-hover-effect px-10 text-lg border-white/10 bg-white/5">
-                    Manage Active Sessions <ChevronRight className="w-6 h-6 text-white/20" />
+                  <Button variant="outline" className="w-full h-16 rounded-[1.25rem] font-black justify-between btn-hover-effect px-8 text-base border-white/10 bg-white/5">
+                    Manage Sessions <ChevronRight className="w-5 h-5 text-white/20" />
                   </Button>
-                  <Button variant="ghost" className="w-full h-20 rounded-[1.5rem] font-black text-destructive/60 hover:text-destructive justify-between hover:bg-destructive/10 px-10 text-lg mt-10 btn-hover-effect">
-                    Permanently Delete Account <Trash2 className="w-6 h-6" />
+                  <Button variant="ghost" className="w-full h-16 rounded-[1.25rem] font-black text-destructive/60 hover:text-destructive justify-between hover:bg-destructive/10 px-8 text-base mt-6 btn-hover-effect">
+                    Delete Account <Trash2 className="w-5 h-5" />
                   </Button>
                 </div>
               </CardContent>
@@ -200,26 +200,26 @@ export default function SettingsPage() {
           </TabsContent>
 
           <TabsContent value="support">
-            <Card className="card-neon-glow rounded-[2.5rem]">
-              <CardHeader className="border-b border-white/5 px-12 py-10">
-                <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Help & Support</CardTitle>
+            <Card className="card-neon-glow rounded-[2rem]">
+              <CardHeader className="border-b border-white/5 px-8 py-6">
+                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Help & Support</CardTitle>
               </CardHeader>
-              <CardContent className="p-12 space-y-12">
-                <Accordion type="single" collapsible className="w-full space-y-4">
+              <CardContent className="p-8 space-y-8">
+                <Accordion type="single" collapsible className="w-full space-y-3">
                   {[
                     { q: "How do I update my UPI ID?", a: "Go to the Payouts tab and click 'Edit' on your primary UPI method. Verification takes 2 minutes." },
                     { q: "What if a trigger occurred but I didn't get paid?", a: "Parametric verification takes up to 15 mins. Check the 'Claims' tab for live status." },
                     { q: "How to pause my coverage?", a: "You can pause coverage from the 'My Policy' page if you're taking a break from work." },
                   ].map((item, i) => (
-                    <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white/5 rounded-[1.5rem] px-10 overflow-hidden btn-hover-effect">
-                      <AccordionTrigger className="font-black text-white text-lg hover:no-underline py-8">{item.q}</AccordionTrigger>
-                      <AccordionContent className="font-bold text-white/50 text-base pb-8">{item.a}</AccordionContent>
+                    <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white/5 rounded-[1.25rem] px-8 overflow-hidden btn-hover-effect">
+                      <AccordionTrigger className="font-black text-white text-base hover:no-underline py-6">{item.q}</AccordionTrigger>
+                      <AccordionContent className="font-bold text-white/50 text-sm pb-6">{item.a}</AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>
-                <div className="flex flex-col gap-6 pt-10">
-                  <Button className="h-20 rounded-full bg-primary text-white font-black text-xl btn-hover-effect shadow-2xl">Contact 24/7 Live Support</Button>
-                  <p className="text-center text-[10px] font-black text-white/20 uppercase tracking-widest">TriggerPe Build v2.8.4 • Stable Distribution</p>
+                <div className="flex flex-col gap-4 pt-6">
+                  <Button className="h-16 rounded-full bg-primary text-white font-black text-lg btn-hover-effect shadow-xl">Contact Live Support</Button>
+                  <p className="text-center text-[9px] font-black text-white/20 uppercase tracking-widest">TriggerPe Build v2.8.4 • Stable Distribution</p>
                 </div>
               </CardContent>
             </Card>
