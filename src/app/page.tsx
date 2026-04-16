@@ -9,7 +9,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { Sun, CloudRain, Snowflake, Zap, ArrowRight, ShieldCheck, Cpu, Smartphone, LogIn } from 'lucide-react';
+import { Sun, CloudRain, Snowflake, Zap, ArrowRight, ShieldCheck, Cpu, Smartphone } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -61,11 +61,8 @@ export default function LandingPage() {
             </Button>
             
             <Button asChild variant="outline" size="lg" className="rounded-none px-10 py-8 text-xl border-none bg-white/90 text-[#006064] hover:bg-white btn-hover-effect font-black shadow-xl h-20">
-              <Link href="/login" className="flex items-center gap-6 uppercase">
+              <Link href="/login" className="flex items-center justify-center uppercase">
                 Login
-                <div className="p-2 bg-[#00ACC1]/20 rounded-xl">
-                  <LogIn className="w-6 h-6 text-[#00ACC1]" />
-                </div>
               </Link>
             </Button>
           </div>
