@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 187 71% 93%; /* #E0F7FA */
-    --foreground: 187 100% 19%; /* #006064 */
-    --card: 0 0% 100%;
-    --card-foreground: 187 100% 19%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 187 100% 19%;
-    --primary: 187 100% 38%; /* #00ACC1 */
-    --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 187 40% 28%; /* #00838F */
+    --background: 187 71% 93%;
+    --foreground: 187 100% 19%;
+    --card: 0 0% 0%; /* Black cards */
+    --card-foreground: 0 0% 100%; /* White text on black cards */
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 187 100% 38%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 187 40% 28%;
     --secondary-foreground: 187 71% 93%;
-    --muted: 187 20% 96%;
-    --muted-foreground: 187 40% 40%;
+    --muted: 187 20% 10%;
+    --muted-foreground: 187 40% 60%;
     --accent: 187 100% 38%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 63%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
+    --border: 187 20% 20%;
+    --input: 187 20% 20%;
     --ring: 187 100% 38%;
-    --radius: 1rem;
+    --radius: 1.25rem;
   }
 }
 
@@ -32,21 +32,21 @@
     @apply border-border;
   }
   html {
-    /* Dark Ocean to Light Maldives Gradient */
-    background: linear-gradient(180deg, #006064 0%, #00838F 30%, #E0F7FA 100%) fixed !important;
+    /* Dark to Light Maldives Gradient */
+    background: linear-gradient(180deg, #004D40 0%, #00838F 40%, #E0F7FA 100%) fixed !important;
     min-height: 100vh;
-    color-scheme: light;
+    color-scheme: dark;
   }
   body {
     background: transparent !important;
-    color: #006064;
+    color: white;
     @apply font-body antialiased;
     min-height: 100vh;
   }
 }
 
 .btn-hover-effect {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 hover:-translate-y-1;
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,172,193,0.5)] active:scale-95 hover:-translate-y-1;
 }
 
 /* Ensure all primary icons on blue backgrounds are crisp white */
@@ -60,11 +60,11 @@
   stroke: white !important;
 }
 
-/* Solid white cards to contrast with ocean background */
+/* Black cards with border glow */
 .card, .popover, .dialog, .sheet {
-  @apply bg-white opacity-100 shadow-sm !important;
-  backdrop-filter: none !important;
-  border: 1px solid #E2E8F0 !important;
+  @apply bg-black opacity-100 shadow-2xl !important;
+  border: 1px solid rgba(0, 172, 193, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 @keyframes sparkle-float {
@@ -72,15 +72,9 @@
     transform: translate(0, 0) scale(0.5);
     opacity: 0;
   }
-  25% {
-    opacity: 0.6;
-  }
   50% {
     opacity: 0.8;
-    transform: translate(var(--move-x), var(--move-y)) scale(1);
-  }
-  75% {
-    opacity: 0.6;
+    transform: translate(var(--move-x), var(--move-y)) scale(1.2);
   }
   100% {
     transform: translate(0, 0) scale(0.5);
@@ -95,11 +89,11 @@
 @keyframes neon-white-glow {
   0%, 100% {
     text-shadow: 0 0 2px #fff, 0 0 5px #fff;
-    color: #ffffff;
+    opacity: 0.9;
   }
   50% {
-    text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 15px rgba(255,255,255,0.5);
-    color: #ffffff;
+    text-shadow: 0 0 5px #fff, 0 0 15px #fff, 0 0 25px rgba(255,255,255,0.8);
+    opacity: 1;
   }
 }
 
@@ -113,7 +107,7 @@
 }
 
 .text-highlight-shimmer {
-  background: linear-gradient(90deg, #006064 0%, #00ACC1 50%, #006064 100%);
+  background: linear-gradient(90deg, #00ACC1 0%, #FFFFFF 50%, #00ACC1 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
