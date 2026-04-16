@@ -24,7 +24,7 @@ export function DeliveryGuy({ weather = 'SUNNY', className = "" }: DeliveryGuyPr
 
       {/* Frame & Body */}
       <path d="M50 165H150" stroke="#00ACC1" strokeWidth="12" strokeLinecap="round" />
-      <path d="M140 165L155 120H130" stroke="#00ACC1" strokeWidth="8" strokeLinecap="round" strokeJoin="round" />
+      <path d="M140 165L155 120H130" stroke="#00ACC1" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M60 165L70 145H130" fill="#00ACC1" />
       <rect x="70" y="140" width="60" height="12" rx="4" fill="#333" /> {/* Seat */}
       
@@ -93,7 +93,7 @@ export function DeliveryGuy({ weather = 'SUNNY', className = "" }: DeliveryGuyPr
         <g>
           {/* Heavy grey jacket */}
           <path d="M100 145V105" stroke="#455A64" strokeWidth="34" strokeLinecap="round" />
-          {/* Shivering lines */}
+          {/* Shivering motion lines */}
           <path d="M80 110L75 112M80 125L75 127" stroke="#00838F" strokeWidth="1.5" />
           <path d="M120 110L125 112M120 125L125 127" stroke="#00838F" strokeWidth="1.5" />
           {/* Snowflakes */}
@@ -106,8 +106,8 @@ export function DeliveryGuy({ weather = 'SUNNY', className = "" }: DeliveryGuyPr
       {weather === 'THUNDER' && (
         <g>
           {/* Lightning bolts */}
-          <path d="M160 10L145 40L165 40L145 85" stroke="#FFB74D" strokeWidth="4" strokeLinecap="round" strokeJoin="round" fill="none" />
-          <path d="M40 10L25 40L45 40L25 85" stroke="#FFB74D" strokeWidth="4" strokeLinecap="round" strokeJoin="round" fill="none" />
+          <path d="M160 10L145 40L165 40L145 85" stroke="#FFB74D" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <path d="M40 10L25 40L45 40L25 85" stroke="#FFB74D" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
           {/* Surprise expression */}
           <circle cx="100" cy="94" r="3" fill="black" /> {/* O-mouth */}
           {/* Arms raised */}
