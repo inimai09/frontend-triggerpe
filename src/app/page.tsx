@@ -50,7 +50,7 @@ export default function LandingPage() {
       <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center px-6 lg:px-20 py-20 gap-20">
         <div className="flex-1 space-y-12 animate-in fade-in slide-in-from-left-8 duration-1000">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-white rounded-full shadow-sm icon-container-rounded">
+            <div className="p-2 bg-white rounded-full shadow-sm flex items-center justify-center">
               <ShieldCheck className="w-5 h-5 text-primary" />
             </div>
             <Badge className="bg-white/20 backdrop-blur-md text-[#006064] py-2 px-6 rounded-full font-black text-xs uppercase tracking-widest border border-white/30">
@@ -83,7 +83,7 @@ export default function LandingPage() {
                     <CardContent className="p-12 flex flex-col items-center text-center">
                       <div className="w-full flex justify-between items-center mb-10">
                         <Badge variant="outline" className="text-[10px] font-black text-[#00838F]/40 border-[#00838F]/10 rounded-full px-4">SENSOR MODE {idx + 1}</Badge>
-                        <div className={cn("p-4 rounded-full flex items-center justify-center icon-container-rounded", card.bg)}>
+                        <div className={cn("p-4 rounded-full flex items-center justify-center bg-[#E0F7FA]", card.bg)}>
                           <card.icon className={cn("w-8 h-8", card.color)} />
                         </div>
                       </div>
@@ -100,8 +100,8 @@ export default function LandingPage() {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-6 mt-10">
-              <CarouselPrevious className="static translate-y-0 bg-white border-none shadow-lg w-14 h-14 rounded-full text-primary hover:text-primary/80" />
-              <CarouselNext className="static translate-y-0 bg-white border-none shadow-lg w-14 h-14 rounded-full text-primary hover:text-primary/80" />
+              <CarouselPrevious className="static translate-y-0 bg-white border-none shadow-lg w-14 h-14 rounded-full text-primary hover:text-primary/80 flex items-center justify-center" />
+              <CarouselNext className="static translate-y-0 bg-white border-none shadow-lg w-14 h-14 rounded-full text-primary hover:text-primary/80 flex items-center justify-center" />
             </div>
           </Carousel>
         </div>
@@ -122,12 +122,14 @@ export default function LandingPage() {
               { title: 'Live Monitoring', desc: 'Our neural engine watches weather and platform status in your zone.', icon: Cpu, delay: 'delay-200' },
               { title: 'Auto Payout', desc: 'When triggers hit, money is pushed instantly to your wallet.', icon: Zap, delay: 'delay-300' },
             ].map((step, i) => (
-              <div key={i} className={cn("space-y-8 text-center md:text-left group animate-in fade-in slide-in-from-bottom-8 duration-700", step.delay)}>
-                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border border-primary/20 mx-auto md:mx-0 transition-transform group-hover:scale-110 shadow-inner icon-container-rounded">
+              <div key={i} className={cn("space-y-8 text-center md:text-left group animate-in fade-in slide-in-from-bottom-8 duration-700 transition-all hover:scale-105", step.delay)}>
+                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border border-primary/20 mx-auto md:mx-0 shadow-inner">
                   <step.icon className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-3xl font-black font-headline text-[#006064]">{step.title}</h3>
-                <p className="text-lg font-medium text-[#00838F] leading-relaxed">{step.desc}</p>
+                <div className="p-8 border-2 border-primary/20 rounded-[2.5rem] bg-white/50 backdrop-blur-sm group-hover:border-primary/50 transition-colors">
+                  <h3 className="text-3xl font-black font-headline text-[#006064] mb-4">{step.title}</h3>
+                  <p className="text-lg font-medium text-[#00838F] leading-relaxed">{step.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -159,7 +161,7 @@ export default function LandingPage() {
                   <div className="space-y-4 flex-1">
                     {plan.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3 text-sm font-bold text-[#006064]">
-                        <div className="p-1 bg-[#E0F7FA] rounded-full icon-container-rounded">
+                        <div className="p-1 bg-[#E0F7FA] rounded-full flex items-center justify-center">
                           <CheckCircle2 className="w-3 h-3 text-primary" />
                         </div>
                         {feature}
@@ -167,7 +169,7 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <Button asChild className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-xs mt-12 shadow-lg btn-hover-effect">
-                    <Link href="/login">Get {plan.name} Shield</Link>
+                    <Link href="/">Get {plan.name} Shield</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -180,7 +182,7 @@ export default function LandingPage() {
       <section className="py-32 px-6 lg:px-20 bg-transparent">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md icon-container-rounded">
+            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
               <HelpCircle className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-5xl font-black tracking-tighter font-headline text-[#006064] uppercase">Common Questions</h2>
