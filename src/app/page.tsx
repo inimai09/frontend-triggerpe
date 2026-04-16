@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react';
@@ -70,7 +69,7 @@ export default function LandingPage() {
               storms stop <br />
               you,
             </h1>
-            <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter font-headline text-white text-glow">
+            <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter font-headline text-white animate-highlight-glow">
               we pay you <br />
               instantly.
             </h1>
@@ -137,7 +136,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               { title: 'One-Time Setup', desc: 'Link your platform ID and UPI in 30 seconds. No paperwork or long forms.', icon: Smartphone, step: '01' },
-              { title: 'Live Monitoring', desc: 'Our neural engine watches weather telemetry and platform status in your specific zone.', icon: Cpu, step: '02' },
+              { title: 'Live Monitoring', desc: 'Our neural engine watches weather telemetry and platform status in your zone.', icon: Cpu, step: '02' },
               { title: 'Auto Payout', desc: 'When data triggers hit thresholds, money is pushed instantly to your linked wallet.', icon: Zap, step: '03' },
             ].map((step, i) => (
               <div key={i} className="group relative animate-in fade-in slide-in-from-bottom-8 duration-700 transition-all hover:scale-[1.03] cursor-default">

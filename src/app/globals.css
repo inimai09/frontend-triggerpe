@@ -63,13 +63,22 @@
 
 @keyframes sparkle-float {
   0% { transform: translate(0, 0) scale(0); opacity: 0; }
-  20% { opacity: 0.8; }
-  50% { transform: translate(var(--move-x), var(--move-y)) scale(1.2); opacity: 0.4; }
+  20% { opacity: 0.9; }
+  50% { transform: translate(var(--move-x), var(--move-y)) scale(1.4); opacity: 0.6; }
   100% { transform: translate(calc(var(--move-x) * 1.5), calc(var(--move-y) * 1.5)) scale(0); opacity: 0; }
 }
 
 .animate-sparkle-float {
   animation: sparkle-float var(--duration) linear infinite;
+}
+
+@keyframes text-highlight-glow {
+  0%, 100% { color: #FFFFFF; text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+  50% { color: #00ACC1; text-shadow: 0 0 30px rgba(0, 172, 193, 0.8), 0 0 60px rgba(0, 172, 193, 0.4); }
+}
+
+.animate-highlight-glow {
+  animation: text-highlight-glow 3s ease-in-out infinite;
 }
 
 .text-glow {
