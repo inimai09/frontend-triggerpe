@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Zap, CheckCircle2, Clock, ShieldAlert, Search, Filter, Calendar as CalendarIcon, MapPin, ChevronRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function ClaimsPage() {
   const [selectedClaim, setSelectedClaim] = useState<any>(null);

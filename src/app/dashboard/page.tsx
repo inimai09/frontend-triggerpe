@@ -20,13 +20,20 @@ import {
 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export default function Dashboard() {
   const [user, setUser] = useState({ name: 'Partner', platform: 'Swiggy' });
 
   useEffect(() => {
     const saved = localStorage.getItem('tp_user');
-    if (saved) setUser(JSON.parse(saved));
+    if (saved) {
+      try {
+        setUser(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse user session");
+      }
+    }
   }, []);
 
   return (
@@ -118,7 +125,7 @@ export default function Dashboard() {
                 <Progress 
                   value={t.progress} 
                   className="h-2 bg-[#E0F7FA]" 
-                  indicatorClassName={t.progress > 80 ? 'bg-destructive' : t.progress > 50 ? 'bg-warning' : 'bg-success'}
+                  indicatorClassName={cn(t.progress > 80 ? 'bg-destructive' : t.progress > 50 ? 'bg-warning' : 'bg-success')}
                 />
               </div>
             </Card>

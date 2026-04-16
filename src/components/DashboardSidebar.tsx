@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { 
@@ -31,8 +31,18 @@ const navItems = [
 export function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  
-  const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('tp_user') || '{"name":"Partner","platform":"Swiggy"}') : { name: 'Partner', platform: 'Swiggy' };
+  const [user, setUser] = useState({ name: 'Partner', platform: 'Swiggy' });
+
+  useEffect(() => {
+    const saved = localStorage.getItem('tp_user');
+    if (saved) {
+      try {
+        setUser(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse user session");
+      }
+    }
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('tp_user');
@@ -70,7 +80,7 @@ export function DashboardSidebar() {
         <div className="flex items-center gap-3 mb-6">
           <Avatar className="w-10 h-10 border-2 border-primary/20">
             <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
-            <AvatarFallback>{user.name[0]}</AvatarFallback>
+            <AvatarFallback>{user.name[0] || 'P'}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col min-w-0">
             <span className="text-sm font-black text-foreground truncate">{user.name}</span>
