@@ -33,7 +33,7 @@
   }
   html {
     /* Refined Maldives Gradient: Dark Teal to Light Teal */
-    background: linear-gradient(180deg, #004D40 0%, #006064 35%, #00ACC1 70%, #E0F7FA 100%) fixed !important;
+    background: linear-gradient(180deg, #00332E 0%, #004D40 35%, #00838F 70%, #00ACC1 100%) fixed !important;
     min-height: 100vh;
     color-scheme: dark;
     scroll-behavior: smooth;
@@ -60,22 +60,22 @@
 
 @keyframes neon-pulse-white {
   0%, 100% { 
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    opacity: 0.95;
   }
   50% { 
-    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1));
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
     opacity: 1;
   }
 }
 
 .animate-neon-white {
-  animation: neon-pulse-white 2.5s ease-in-out infinite;
+  animation: neon-pulse-white 3s ease-in-out infinite;
 }
 
 @keyframes sparkle-float {
   0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
-  50% { opacity: 0.8; transform: translate(var(--move-x), var(--move-y)) scale(1.2); }
+  50% { opacity: 0.9; transform: translate(var(--move-x), var(--move-y)) scale(1.1); }
   100% { transform: translate(0, 0) scale(0.5); opacity: 0; }
 }
 

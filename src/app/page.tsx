@@ -25,7 +25,7 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen bg-transparent scroll-smooth">
       
       {/* Hero Section */}
-      <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10 overflow-hidden">
+      <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10 overflow-hidden">
         <div className="flex-1 flex flex-col justify-center px-12 lg:px-24 py-12 animate-in fade-in slide-in-from-left-8 duration-1000">
           <Badge className="w-fit mb-6 bg-primary/20 text-white border-primary/40 py-1.5 px-4 rounded-full font-black animate-in fade-in zoom-in duration-700">
             INDIA'S FIRST PARAMETRIC INSURANCE
@@ -134,7 +134,7 @@ export default function LandingPage() {
                   {plan.perks.map((p, j) => <li key={j} className="text-sm font-bold text-center text-white/70">✓ {p}</li>)}
                 </ul>
                 <Button asChild className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-14 text-lg text-white btn-hover-effect shadow-xl border-none">
-                  <Link href="#get-protected-now">{plan.btn}</Link>
+                  <Link href="#hero">{plan.btn}</Link>
                 </Button>
               </Card>
             ))}

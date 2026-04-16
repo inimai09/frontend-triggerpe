@@ -7,17 +7,17 @@ export function Sparkles() {
 
   useEffect(() => {
     // Generate sparkles on mount to avoid hydration mismatch
-    const sparkleCount = 30; // Slightly fewer but bigger/bolder
+    const sparkleCount = 25; 
     const newSparkles = Array.from({ length: sparkleCount }).map((_, i) => ({
       id: i,
-      size: Math.random() * 3 + 2, // Increased size for better visibility
+      size: Math.random() * 4 + 3, // Increased size for better impact as requested
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
-      duration: `${12 + Math.random() * 15}s`, 
+      duration: `${15 + Math.random() * 20}s`, 
       delay: `${Math.random() * -30}s`,
-      moveX: `${(Math.random() - 0.5) * 400}px`,
-      moveY: `${(Math.random() - 0.5) * 400}px`,
-      glowColor: i % 2 === 0 ? '#FFFFFF' : '#00ACC1', // Use teal for Maldives theme
+      moveX: `${(Math.random() - 0.5) * 500}px`,
+      moveY: `${(Math.random() - 0.5) * 500}px`,
+      glowColor: i % 2 === 0 ? '#FFFFFF' : '#00ACC1',
     }));
     setSparkles(newSparkles);
   }, []);
@@ -34,7 +34,7 @@ export function Sparkles() {
             width: `${s.size}px`,
             height: `${s.size}px`,
             backgroundColor: '#FFFFFF',
-            boxShadow: `0 0 10px 2px ${s.glowColor}, 0 0 20px 4px rgba(255, 255, 255, 0.3)`,
+            boxShadow: `0 0 12px 3px ${s.glowColor}, 0 0 25px 6px rgba(255, 255, 255, 0.4)`,
             '--duration': s.duration,
             '--move-x': s.moveX,
             '--move-y': s.moveY,
