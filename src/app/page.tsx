@@ -52,7 +52,7 @@ export default function LandingPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 items-center">
             <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)]">
-              <Link href="/register" className="flex items-center gap-4 uppercase">
+              <Link href="/login" className="flex items-center gap-4 uppercase">
                 Start Coverage 
                 <div className="p-2 bg-white/20 rounded-xl">
                   <ArrowRight className="w-5 h-5" />

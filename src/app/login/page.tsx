@@ -56,7 +56,10 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-transparent p-6 relative z-10">
       <Link href="/" className="mb-8 flex items-center gap-2 text-[10px] font-black text-white/40 uppercase tracking-[0.3em] hover:text-primary transition-colors btn-hover-effect">
-        <ArrowLeft className="w-4 h-4" /> Back to Home
+        <div className="p-2 bg-white/5 rounded-xl">
+          <ArrowLeft className="w-4 h-4" />
+        </div>
+        Back to Home
       </Link>
 
       <Card className="w-full max-w-md bg-black border border-primary/20 shadow-2xl rounded-[2.5rem] overflow-hidden card-neon-glow">
@@ -69,10 +72,16 @@ export default function LoginPage() {
           <Tabs defaultValue="mobile" className="w-full">
             <TabsList className="grid grid-cols-2 mb-8 bg-white/5 p-1.5 h-14 rounded-2xl border border-white/5">
               <TabsTrigger value="mobile" className="rounded-xl font-black data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-xl flex gap-2 uppercase tracking-tighter text-[10px]">
-                <div className="p-1 bg-white/10 rounded-lg"><Phone className="w-3 h-3" /></div> Mobile
+                <div className="p-1.5 bg-white/10 rounded-lg">
+                  <Phone className="w-3.5 h-3.5" />
+                </div>
+                Mobile
               </TabsTrigger>
               <TabsTrigger value="email" className="rounded-xl font-black data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-xl flex gap-2 uppercase tracking-tighter text-[10px]">
-                <div className="p-1 bg-white/10 rounded-lg"><Mail className="w-3 h-3" /></div> Email
+                <div className="p-1.5 bg-white/10 rounded-lg">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                Email
               </TabsTrigger>
             </TabsList>
             
@@ -153,16 +162,22 @@ export default function LoginPage() {
           
           <div className="mt-8 pt-6 border-t border-primary/10">
             <p className="text-center font-bold text-white/50 text-sm">
-              New Hero? <Link href="/register" className="text-primary font-black hover:underline uppercase tracking-tighter">Register Now</Link>
+              New Hero? <Link href="/register" className="text-primary font-black hover:underline uppercase tracking-tighter ml-2">Register Now</Link>
             </p>
           </div>
           
           <div className="mt-8 flex justify-center gap-6 opacity-30">
             <div className="flex items-center gap-2 text-[8px] font-black text-white uppercase tracking-widest">
-              <div className="p-1.5 bg-white/10 rounded-lg"><ShieldCheck className="w-3 h-3" /></div> PCI DSS
+              <div className="p-1.5 bg-white/10 rounded-lg">
+                <ShieldCheck className="w-3 h-3" />
+              </div>
+              PCI DSS
             </div>
             <div className="flex items-center gap-2 text-[8px] font-black text-white uppercase tracking-widest">
-              <div className="p-1.5 bg-white/10 rounded-lg"><ShieldCheck className="w-3 h-3" /></div> IRDAI
+              <div className="p-1.5 bg-white/10 rounded-lg">
+                <ShieldCheck className="w-3 h-3" />
+              </div>
+              IRDAI
             </div>
           </div>
         </CardContent>
