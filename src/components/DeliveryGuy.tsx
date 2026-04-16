@@ -13,53 +13,47 @@ export function DeliveryGuy({ weather = 'SUNNY', className = "" }: DeliveryGuyPr
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* SCOOTER BASE */}
+      {/* SCOOTER PARTS */}
       {/* Back Wheel */}
-      <circle cx="50" cy="160" r="15" fill="#333" />
-      <circle cx="50" cy="160" r="8" fill="#999" />
+      <circle cx="50" cy="165" r="16" fill="#1A1A1A" />
+      <circle cx="50" cy="165" r="8" fill="#BDBDBD" />
       
       {/* Front Wheel */}
-      <circle cx="150" cy="160" r="15" fill="#333" />
-      <circle cx="150" cy="160" r="8" fill="#999" />
+      <circle cx="150" cy="165" r="16" fill="#1A1A1A" />
+      <circle cx="150" cy="165" r="8" fill="#BDBDBD" />
 
-      {/* Frame */}
-      <path d="M50 160 L70 160 L140 160 L150 160" stroke="#00ACC1" strokeWidth="10" strokeLinecap="round" />
-      <path d="M140 160 L155 120" stroke="#00ACC1" strokeWidth="8" strokeLinecap="round" />
-      <path d="M155 120 L135 120" stroke="#333" strokeWidth="5" strokeLinecap="round" /> {/* Handlebars */}
+      {/* Frame & Body */}
+      <path d="M50 165H150" stroke="#00ACC1" strokeWidth="12" strokeLinecap="round" />
+      <path d="M140 165L155 120H130" stroke="#00ACC1" strokeWidth="8" strokeLinecap="round" strokeJoin="round" />
+      <path d="M60 165L70 145H130" fill="#00ACC1" />
+      <rect x="70" y="140" width="60" height="12" rx="4" fill="#333" /> {/* Seat */}
       
-      {/* Body / Seat */}
-      <rect x="65" y="145" width="60" height="15" rx="5" fill="#333" />
-      
-      {/* DELIVERY BOX */}
-      <rect x="35" y="100" width="45" height="45" rx="4" fill="#006064" />
-      <text x="45" y="130" fill="white" fontSize="18" fontWeight="bold" fontFamily="Space Grotesk">TP</text>
+      {/* Delivery Box */}
+      <rect x="30" y="95" width="50" height="50" rx="4" fill="#006064" />
+      <text x="40" y="128" fill="white" fontSize="22" fontWeight="bold" fontFamily="Space Grotesk">TP</text>
 
-      {/* DELIVERY PERSON */}
-      {/* Body */}
-      <path d="M100 145 L100 100" stroke="#FF7043" strokeWidth="25" strokeLinecap="round" /> {/* Jacket */}
-      <path d="M100 115 L100 105" stroke="white" strokeWidth="2" strokeDasharray="4 2" /> {/* Reflective stripes */}
-      
-      {/* Arms */}
-      <path d="M100 110 L135 120" stroke="#FF7043" strokeWidth="8" strokeLinecap="round" />
-      
-      {/* Legs */}
-      <path d="M90 145 L110 160" stroke="#333" strokeWidth="10" strokeLinecap="round" />
+      {/* CHARACTER */}
+      {/* Jacket & Body */}
+      <path d="M100 145V105" stroke="#FF7043" strokeWidth="26" strokeLinecap="round" />
+      <path d="M87 115H113M87 125H113" stroke="white" strokeWidth="3" opacity="0.8" /> {/* Reflective stripes */}
       
       {/* Head & Helmet */}
-      <circle cx="100" cy="85" r="15" fill="#FFCCBC" /> {/* Face */}
-      {/* Face features */}
-      <circle cx="95" cy="85" r="1.5" fill="black" />
-      <circle cx="105" cy="85" r="1.5" fill="black" />
-      <path d="M97 92 Q100 95 103 92" stroke="black" strokeWidth="1" fill="none" /> {/* Smile */}
+      <circle cx="100" cy="88" r="16" fill="#FFCCBC" /> {/* Face */}
+      <circle cx="95" cy="85" r="2" fill="black" /> {/* Eyes */}
+      <circle cx="105" cy="85" r="2" fill="black" />
+      <path d="M96 95Q100 98 104 95" stroke="black" strokeWidth="1.5" fill="none" /> {/* Smile */}
       
       {/* Helmet */}
-      <path d="M85 85 A15 15 0 0 1 115 85" fill="#00ACC1" />
-      <rect x="85" y="75" width="30" height="10" rx="2" fill="#00ACC1" />
-      <rect x="90" y="80" width="20" height="6" fill="#E0F7FA" opacity="0.6" /> {/* Visor */}
+      <path d="M84 88C84 79.1634 91.1634 72 100 72C108.837 72 116 79.1634 116 88H84Z" fill="#00ACC1" />
+      <rect x="84" y="80" width="32" height="6" rx="1" fill="#E0F7FA" opacity="0.9" /> {/* Visor */}
 
-      {/* WEATHER VARIATIONS */}
+      {/* Arms to Handlebars */}
+      <path d="M100 110L135 120" stroke="#FF7043" strokeWidth="8" strokeLinecap="round" />
+
+      {/* WEATHER SPECIFIC DRAWINGS */}
       {weather === 'SUNNY' && (
         <g>
+          {/* Sun background */}
           <circle cx="170" cy="30" r="15" fill="#FFB74D" />
           {[0, 45, 90, 135, 180, 225, 270, 315].map(deg => (
             <line 
@@ -68,54 +62,57 @@ export function DeliveryGuy({ weather = 'SUNNY', className = "" }: DeliveryGuyPr
               y1={30 + 20 * Math.sin(deg * Math.PI / 180)}
               x2={170 + 28 * Math.cos(deg * Math.PI / 180)} 
               y2={30 + 28 * Math.sin(deg * Math.PI / 180)}
-              stroke="#FFB74D" strokeWidth="2"
+              stroke="#FFB74D" strokeWidth="3" strokeLinecap="round"
             />
           ))}
           {/* Hand wiping forehead */}
-          <path d="M100 110 Q90 90 95 75" stroke="#FFCCBC" strokeWidth="6" strokeLinecap="round" />
+          <path d="M100 110Q90 90 92 78" stroke="#FFCCBC" strokeWidth="7" strokeLinecap="round" />
+          <path d="M96 86Q94 88 92 86" stroke="black" strokeWidth="1" /> {/* Squint eye */}
+          <path d="M104 86Q106 88 108 86" stroke="black" strokeWidth="1" />
         </g>
       )}
 
       {weather === 'RAIN' && (
         <g>
-          {/* Raincoat overlay */}
-          <path d="M100 145 L100 100" stroke="#FDD835" strokeWidth="28" strokeLinecap="round" opacity="0.9" />
+          {/* Yellow Raincoat overlay */}
+          <path d="M100 145V105" stroke="#FDD835" strokeWidth="28" strokeLinecap="round" />
           {/* Umbrella */}
-          <path d="M70 60 Q100 20 130 60" fill="#EF5350" />
-          <line x1="100" y1="30" x2="100" y2="70" stroke="#333" strokeWidth="2" />
-          {/* Raindrops */}
-          {[1,2,3,4,5].map(i => (
-            <line key={i} x1={30 + i*30} y1="20" x2={25 + i*30} y2="40" stroke="#4FC3F7" strokeWidth="2" strokeLinecap="round" />
+          <path d="M70 65C70 45 100 25 130 65H70Z" fill="#EF5350" />
+          <line x1="100" y1="35" x2="100" y2="70" stroke="#333" strokeWidth="3" />
+          {/* Rain drops */}
+          {[1,2,3,4,5,6,7].map(i => (
+            <line key={i} x1={20 + i*25} y1="10" x2={15 + i*25} y2="30" stroke="#4FC3F7" strokeWidth="2.5" strokeLinecap="round" />
           ))}
-          {[1,2,3,4,5].map(i => (
-            <line key={i+5} x1={40 + i*30} y1="50" x2={35 + i*30} y2="70" stroke="#4FC3F7" strokeWidth="2" strokeLinecap="round" />
+          {[1,2,3,4,5,6,7].map(i => (
+            <line key={i+10} x1={30 + i*25} y1="40" x2={25 + i*25} y2="60" stroke="#4FC3F7" strokeWidth="2.5" strokeLinecap="round" />
           ))}
         </g>
       )}
 
       {weather === 'SNOW' && (
         <g>
-          {/* Thick jacket */}
-          <path d="M100 145 L100 100" stroke="#546E7A" strokeWidth="32" strokeLinecap="round" />
+          {/* Heavy grey jacket */}
+          <path d="M100 145V105" stroke="#455A64" strokeWidth="34" strokeLinecap="round" />
           {/* Shivering lines */}
-          <path d="M80 110 L82 115" stroke="#333" strokeWidth="1" />
-          <path d="M120 110 L122 115" stroke="#333" strokeWidth="1" />
+          <path d="M80 110L75 112M80 125L75 127" stroke="#00838F" strokeWidth="1.5" />
+          <path d="M120 110L125 112M120 125L125 127" stroke="#00838F" strokeWidth="1.5" />
           {/* Snowflakes */}
-          {[1,2,3,4,5,6,7,8].map(i => (
-            <circle key={i} cx={20 + (i*22) % 160} cy={10 + (i*25) % 100} r="2.5" fill="white" />
+          {[1,2,3,4,5,6,7,8,9,10].map(i => (
+            <circle key={i} cx={20 + (i*19)%160} cy={10 + (i*23)%120} r="3" fill="white" stroke="#E2E8F0" strokeWidth="0.5" />
           ))}
         </g>
       )}
 
       {weather === 'THUNDER' && (
         <g>
-          {/* Lightning */}
-          <path d="M160 10 L140 40 L160 40 L140 80" stroke="#FDD835" strokeWidth="3" strokeLinecap="round" fill="none" />
-          {/* Surprised expression */}
-          <circle cx="100" cy="91" r="2" fill="black" /> {/* Mouth open */}
+          {/* Lightning bolts */}
+          <path d="M160 10L145 40L165 40L145 85" stroke="#FFB74D" strokeWidth="4" strokeLinecap="round" strokeJoin="round" fill="none" />
+          <path d="M40 10L25 40L45 40L25 85" stroke="#FFB74D" strokeWidth="4" strokeLinecap="round" strokeJoin="round" fill="none" />
+          {/* Surprise expression */}
+          <circle cx="100" cy="94" r="3" fill="black" /> {/* O-mouth */}
           {/* Arms raised */}
-          <path d="M100 110 L80 90" stroke="#FF7043" strokeWidth="8" strokeLinecap="round" />
-          <path d="M100 110 L120 90" stroke="#FF7043" strokeWidth="8" strokeLinecap="round" />
+          <path d="M100 110L75 85" stroke="#FF7043" strokeWidth="9" strokeLinecap="round" />
+          <path d="M100 110L125 85" stroke="#FF7043" strokeWidth="9" strokeLinecap="round" />
         </g>
       )}
     </svg>

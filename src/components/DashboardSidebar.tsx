@@ -32,8 +32,7 @@ export function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   
-  // Mock auth state - in real app would come from context
-  const user = { name: 'Rajesh Kumar', platform: 'Swiggy' };
+  const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('tp_user') || '{"name":"Partner","platform":"Swiggy"}') : { name: 'Partner', platform: 'Swiggy' };
 
   const handleLogout = () => {
     localStorage.removeItem('tp_user');
@@ -43,7 +42,7 @@ export function DashboardSidebar() {
   return (
     <aside className="w-[280px] bg-white border-r border-border h-screen flex flex-col sticky top-0 overflow-y-auto z-50">
       <div className="p-8">
-        <h1 className="text-2xl font-headline font-bold text-foreground tracking-tighter">TRIGGERPE</h1>
+        <h1 className="text-2xl font-headline font-black text-foreground tracking-tighter uppercase">TRIGGERPE</h1>
       </div>
 
       <nav className="flex-1 px-4 py-4 space-y-1">
@@ -52,10 +51,10 @@ export function DashboardSidebar() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-secondary group",
+              "flex items-center gap-3 px-5 py-3.5 rounded-xl transition-all font-bold text-secondary group",
               pathname === item.href 
                 ? "bg-background text-primary" 
-                : "hover:bg-muted hover:text-foreground"
+                : "hover:bg-muted/50 hover:text-foreground"
             )}
           >
             <item.icon className={cn(
@@ -69,14 +68,14 @@ export function DashboardSidebar() {
 
       <div className="p-6 border-t border-border mt-auto">
         <div className="flex items-center gap-3 mb-6">
-          <Avatar className="w-10 h-10 border-2 border-primary/20 shadow-sm">
-            <AvatarImage src="https://picsum.photos/seed/rajesh/100/100" />
-            <AvatarFallback>RK</AvatarFallback>
+          <Avatar className="w-10 h-10 border-2 border-primary/20">
+            <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
+            <AvatarFallback>{user.name[0]}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col min-w-0">
-            <span className="text-sm font-bold text-foreground truncate">{user.name}</span>
+            <span className="text-sm font-black text-foreground truncate">{user.name}</span>
             <div className="flex items-center gap-1">
-              <span className="text-[10px] px-2 py-0.5 bg-accent text-primary font-bold rounded-full uppercase tracking-wider">{user.platform}</span>
+              <span className="text-[10px] px-2 py-0.5 bg-primary text-white font-bold rounded-full uppercase tracking-wider">{user.platform}</span>
               <BadgeCheck className="w-3 h-3 text-primary" />
             </div>
           </div>
@@ -84,7 +83,7 @@ export function DashboardSidebar() {
         <Button 
           variant="ghost" 
           onClick={handleLogout}
-          className="w-full flex items-center justify-start gap-3 px-4 py-3 text-danger hover:text-danger hover:bg-danger/10 rounded-xl font-bold"
+          className="w-full flex items-center justify-start gap-3 px-5 py-3 text-destructive hover:text-destructive hover:bg-destructive/10 rounded-xl font-black"
         >
           <LogOut className="w-5 h-5" />
           Logout
