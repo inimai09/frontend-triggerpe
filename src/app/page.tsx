@@ -9,7 +9,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { Sun, CloudRain, Snowflake, Zap, ArrowRight, ShieldCheck, Cpu, Smartphone } from 'lucide-react';
+import { Sun, CloudRain, Snowflake, Zap, ShieldCheck, Cpu, Smartphone } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -43,7 +43,7 @@ export default function LandingPage() {
           
           <h1 className="text-5xl md:text-8xl font-black text-white leading-tight mb-8 font-headline uppercase tracking-tight">
             When storms stop <span className="text-highlight-shimmer">you,</span><br />
-            WE PAY YOU INSTANTLY.
+            <span className="text-primary icon-neon-glow">WE PAY YOU INSTANTLY.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-white/70 mb-12 max-w-xl font-medium leading-relaxed">
