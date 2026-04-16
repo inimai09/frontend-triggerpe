@@ -34,7 +34,7 @@ export default function LandingPage() {
       <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10 px-6 lg:px-20 py-12 gap-12 lg:gap-20">
         <div className="flex-1 flex flex-col justify-center animate-in fade-in slide-in-from-left-8 duration-1000">
           <div className="inline-block w-fit mb-8">
-            <div className="p-2 bg-black/40 border border-white/5 rounded-2xl">
+            <div className="p-2 bg-black/40 border border-white/5 rounded-[1.5rem]">
               <Badge className="bg-primary/20 text-white border-primary/40 py-1.5 px-5 rounded-full font-bold uppercase tracking-[0.2em] text-[8px] icon-neon-glow">
                 INDIA'S FIRST PARAMETRIC INSURANCE
               </Badge>
@@ -51,7 +51,7 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 items-center">
-            <Button asChild size="lg" className="rounded-none px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)] h-20">
+            <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)] h-20">
               <Link href="/login" className="flex items-center gap-6 uppercase">
                 Start Coverage 
                 <div className="p-2 bg-white/20 rounded-xl">
@@ -60,14 +60,14 @@ export default function LandingPage() {
               </Link>
             </Button>
             
-            <Button asChild variant="outline" size="lg" className="rounded-none px-10 py-8 text-xl border-none bg-white/90 text-[#006064] hover:bg-white btn-hover-effect font-black shadow-xl h-20">
+            <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-8 text-xl border-none bg-white/90 text-[#006064] hover:bg-white btn-hover-effect font-black shadow-xl h-20">
               <Link href="/login" className="flex items-center justify-center uppercase">
                 Login
               </Link>
             </Button>
           </div>
           
-          <div className="mt-10 p-5 bg-white/5 border border-white/10 rounded-none w-fit btn-hover-effect cursor-default group backdrop-blur-md">
+          <div className="mt-10 p-5 bg-white/5 border border-white/10 rounded-[1.75rem] w-fit btn-hover-effect cursor-default group backdrop-blur-md">
             <div className="flex items-center gap-4">
               <div className="p-2.5 bg-primary/10 rounded-xl border border-primary/20">
                 <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
