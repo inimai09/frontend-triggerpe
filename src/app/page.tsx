@@ -22,7 +22,8 @@ import {
   Cpu,
   CircleCheck,
   CircleHelp,
-  IndianRupee
+  IndianRupee,
+  ArrowRight
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -54,29 +55,35 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen font-body text-[#006064]">
       {/* Hero Section */}
-      <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center px-6 lg:px-20 py-20 gap-20">
-        <div className="flex-1 space-y-12 animate-in fade-in slide-in-from-left-8 duration-1000">
+      <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[95vh] items-center px-6 lg:px-24 py-20 gap-20">
+        <div className="flex-1 space-y-10 animate-in fade-in slide-in-from-left-8 duration-1000">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-white rounded-full shadow-sm flex items-center justify-center border border-[#00ACC1]/20">
-              <ShieldCheck className="w-5 h-5 text-primary" />
-            </div>
-            <Badge className="bg-white/20 backdrop-blur-md text-[#006064] py-2 px-6 rounded-full font-black text-xs uppercase tracking-widest border border-white/30">
-              India's First Parametric Shield
+            <Badge className="bg-white/10 backdrop-blur-md text-white py-2.5 px-8 rounded-full font-bold text-xs uppercase tracking-widest border border-white/20">
+              INDIA'S FIRST PARAMETRIC INSURANCE
             </Badge>
           </div>
           
-          <h1 className="text-7xl md:text-8xl font-black leading-[1.05] tracking-tighter font-headline">
-            When weather stops you, <br />
-            <span className="text-primary drop-shadow-[0_0_15px_rgba(0,172,193,0.3)]">WE PAY YOU INSTANTLY.</span>
-          </h1>
+          <div className="space-y-6">
+            <h1 className="text-7xl md:text-8xl font-black leading-[1] tracking-tighter font-headline text-white">
+              When <br />
+              storms stop <br />
+              you,
+            </h1>
+            <h1 className="text-7xl md:text-8xl font-black leading-[1] tracking-tighter font-headline text-white text-glow">
+              we pay you <br />
+              instantly.
+            </h1>
+          </div>
           
-          <p className="text-xl text-[#00838F] max-w-xl font-medium leading-relaxed">
-            Zero-touch parametric insurance for delivery heroes. No forms, no waiting, automatic payouts pushed to your UPI.
+          <p className="text-xl text-white/90 max-w-xl font-medium leading-relaxed">
+            India's first zero-touch parametric insurance for delivery workers. No forms, no waiting, automatic payouts.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-start gap-6">
-            <Button asChild size="lg" className="rounded-full px-12 h-16 text-xl bg-primary hover:bg-primary/90 text-white font-black shadow-xl btn-hover-effect border-none">
-              <Link href="/login">Start Coverage</Link>
+          <div className="flex flex-col sm:flex-row items-start gap-6 pt-4">
+            <Button asChild size="lg" className="rounded-full px-12 h-18 text-xl bg-primary hover:bg-primary/90 text-white font-black shadow-2xl btn-hover-effect border-none flex items-center gap-4">
+              <Link href="/login">
+                Get Protected Now <ArrowRight className="w-6 h-6" />
+              </Link>
             </Button>
           </div>
         </div>
@@ -115,7 +122,7 @@ export default function LandingPage() {
       </section>
 
       {/* Steps Section: How it Works */}
-      <section className="py-32 px-6 lg:px-20 bg-white/40 backdrop-blur-md">
+      <section className="py-32 px-6 lg:px-24 bg-white/40 backdrop-blur-md">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-5xl font-black tracking-tighter font-headline text-[#006064] uppercase">Three Steps to Safety</h2>
@@ -133,7 +140,7 @@ export default function LandingPage() {
                 <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border-2 border-primary/20 mx-auto md:mx-0 shadow-inner group-hover:border-primary transition-colors">
                   <step.icon className="w-10 h-10 text-primary" />
                 </div>
-                <div className="p-8 border-2 border-primary/20 rounded-[2.5rem] bg-white/50 backdrop-blur-sm group-hover:border-primary/50 transition-colors">
+                <div className="p-10 border-2 border-primary/20 rounded-[3rem] bg-white/50 backdrop-blur-sm group-hover:border-primary/50 transition-colors shadow-sm">
                   <h3 className="text-3xl font-black font-headline text-[#006064] mb-4">{step.title}</h3>
                   <p className="text-lg font-medium text-[#00838F] leading-relaxed">{step.desc}</p>
                 </div>
@@ -144,7 +151,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-32 px-6 lg:px-20 bg-white/10 backdrop-blur-md">
+      <section className="py-32 px-6 lg:px-24 bg-white/10 backdrop-blur-md">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-5xl font-black tracking-tighter font-headline text-[#006064] uppercase">Simple Pricing</h2>
@@ -154,7 +161,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingPlans.map((plan, i) => (
-              <Card key={i} className={cn("border-none shadow-xl rounded-[3rem] overflow-hidden flex flex-col transition-all hover:scale-105 duration-300 animate-in fade-in slide-in-from-bottom-12", plan.color)}>
+              <Card key={i} className={cn("border-none shadow-xl rounded-[3.5rem] overflow-hidden flex flex-col transition-all hover:scale-105 duration-300 animate-in fade-in slide-in-from-bottom-12", plan.color)}>
                 <CardContent className="p-12 flex flex-col flex-1">
                   <span className="text-[10px] font-black uppercase text-primary tracking-[0.3em] mb-4">{plan.name}</span>
                   <div 
@@ -172,7 +179,7 @@ export default function LandingPage() {
                     {plan.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3 text-sm font-bold text-[#006064]">
                         <div className="p-1 bg-[#E0F7FA] rounded-full flex items-center justify-center border border-[#00ACC1]/20">
-                          <CircleCheck className="w-3 h-3 text-primary" />
+                          <CircleCheck className="w-3.5 h-3.5 text-primary" />
                         </div>
                         {feature}
                       </div>
@@ -180,7 +187,7 @@ export default function LandingPage() {
                   </div>
                   <Button 
                     onClick={handlePriceClick}
-                    className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-xs mt-12 shadow-lg btn-hover-effect border-none"
+                    className="w-full h-16 rounded-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-xs mt-12 shadow-lg btn-hover-effect border-none"
                   >
                     Get {plan.name} Shield
                   </Button>
@@ -192,7 +199,7 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-32 px-6 lg:px-20 bg-transparent">
+      <section className="py-32 px-6 lg:px-24 bg-transparent">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border border-[#00ACC1]/20">
@@ -202,7 +209,7 @@ export default function LandingPage() {
             <div className="w-24 h-1.5 bg-primary mx-auto rounded-full" />
           </div>
 
-          <Card className="bg-white border-none shadow-2xl rounded-[3rem] p-10 animate-in fade-in slide-in-from-bottom-12 duration-1000">
+          <Card className="bg-white border-none shadow-2xl rounded-[3.5rem] p-12 animate-in fade-in slide-in-from-bottom-12 duration-1000">
             <Accordion type="single" collapsible className="w-full">
               {[
                 { q: "How fast is the payout?", a: "TriggerPe uses parametric triggers. As soon as the weather station or platform data hits the threshold, the payout is triggered and pushed to your linked UPI ID within 5-10 minutes." },
@@ -212,7 +219,7 @@ export default function LandingPage() {
                 { q: "Can I cancel my subscription?", a: "Absolutely. TriggerPe is a weekly subscription. You can pause or cancel your coverage anytime through the Settings tab in your dashboard." }
               ].map((item, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-border/50 px-4 py-2">
-                  <AccordionTrigger className="text-lg font-black text-[#006064] hover:no-underline font-headline text-left">
+                  <AccordionTrigger className="text-xl font-black text-[#006064] hover:no-underline font-headline text-left">
                     {item.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-lg font-medium text-[#00838F] leading-relaxed pt-4">
@@ -225,7 +232,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="py-20 px-6 lg:px-20 bg-[#006064] text-white">
+      <footer className="py-20 px-6 lg:px-24 bg-[#006064] text-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="text-center md:text-left">
             <h2 className="text-4xl font-black tracking-tighter font-headline uppercase">TRIGGERPE</h2>

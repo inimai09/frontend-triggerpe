@@ -38,7 +38,7 @@
 }
 
 .font-headline {
-  font-family: 'Fraunces', serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .font-body {
@@ -79,6 +79,10 @@
 
 .animate-count-up {
   animation: countUp 0.5s ease-out forwards;
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(0, 172, 193, 0.4);
 }
 
 /* Custom rounded corners for all interactive elements as requested */
