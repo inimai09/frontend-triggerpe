@@ -50,7 +50,7 @@
 }
 
 .card-shadow {
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -92,4 +92,9 @@ button, .button, .rounded-full-force {
 
 .icon-container-rounded {
   @apply rounded-full flex items-center justify-center !important;
+}
+
+/* Smooth Scrolling for entire app */
+html {
+  scroll-behavior: smooth;
 }
