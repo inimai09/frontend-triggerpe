@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect, useState } from 'react';
@@ -59,21 +58,21 @@ export function DashboardSidebar() {
         <h1 className="text-2xl font-headline font-black text-[#006064] tracking-tighter uppercase">TRIGGERPE</h1>
       </div>
 
-      <nav className="flex-1 px-4 py-4 space-y-1">
+      <nav className="flex-1 px-4 py-4 space-y-2">
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center gap-3 px-5 py-3.5 rounded-xl transition-all font-bold group",
+              "flex items-center gap-3 px-5 py-3.5 rounded-xl transition-all font-black group",
               pathname === item.href 
-                ? "bg-[#E0F7FA] text-primary shadow-sm" 
-                : "text-secondary hover:bg-muted/50 hover:text-foreground"
+                ? "bg-primary text-white shadow-md" 
+                : "text-secondary hover:bg-[#E0F7FA] hover:text-primary"
             )}
           >
             <item.icon className={cn(
               "w-5 h-5 transition-colors",
-              pathname === item.href ? "text-primary" : "text-secondary group-hover:text-foreground"
+              pathname === item.href ? "text-white" : "text-secondary group-hover:text-primary"
             )} />
             {item.label}
           </Link>
