@@ -51,25 +51,22 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 items-center">
-            <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)] h-20">
-              <Link href="/login" className="flex items-center gap-6 uppercase">
+            <Button asChild size="lg" className="!rounded-full px-12 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)] h-20">
+              <Link href="/login" className="flex items-center justify-center uppercase">
                 Start Coverage 
-                <div className="p-2.5 bg-white/20 rounded-full">
-                  <ArrowRight className="w-6 h-6" />
-                </div>
               </Link>
             </Button>
             
-            <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-8 text-xl border-none bg-white/90 text-[#006064] hover:bg-white btn-hover-effect font-black shadow-xl h-20">
+            <Button asChild variant="outline" size="lg" className="!rounded-full px-12 py-8 text-xl border-none bg-white/90 text-[#006064] hover:bg-white btn-hover-effect font-black shadow-xl h-20">
               <Link href="/login" className="flex items-center justify-center uppercase">
                 Login
               </Link>
             </Button>
           </div>
           
-          <div className="mt-10 p-5 bg-white/5 border border-white/10 rounded-full w-fit btn-hover-effect cursor-default group backdrop-blur-md">
+          <div className="mt-10 p-5 bg-white/5 border border-white/10 !rounded-full w-fit btn-hover-effect cursor-default group backdrop-blur-md">
             <div className="flex items-center gap-4">
-              <div className="p-2.5 bg-primary/10 rounded-full border border-primary/20">
+              <div className="p-2.5 bg-primary/10 !rounded-full border border-primary/20">
                 <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
               </div>
               <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">IRDAI REGISTERED</span>
@@ -90,10 +87,10 @@ export default function LandingPage() {
                     <Card className={`overflow-hidden card-neon-glow border-none rounded-[3.5rem] btn-hover-effect transition-all duration-300 shadow-2xl ${card.bg}`}>
                       <CardContent className="p-8 flex flex-col items-center text-center h-full">
                         <div className="w-full flex justify-between items-center mb-4">
-                          <Badge variant="outline" className="text-[7px] font-black tracking-[0.3em] text-white/20 uppercase border-white/5 px-3 py-1 rounded-full">
+                          <Badge variant="outline" className="text-[7px] font-black tracking-[0.3em] text-white/20 uppercase border-white/5 px-3 py-1 !rounded-full">
                             MODE {idx + 1}
                           </Badge>
-                          <div className={`p-3 rounded-full bg-black/60 border border-white/10 ${card.iconColor}`}>
+                          <div className={`p-3 !rounded-full bg-black/60 border border-white/10 ${card.iconColor}`}>
                             <card.icon className="w-5 h-5 icon-neon-glow" />
                           </div>
                         </div>
@@ -114,8 +111,8 @@ export default function LandingPage() {
             </CarouselContent>
             
             <div className="flex justify-center gap-4 mt-6">
-              <CarouselPrevious className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
-              <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
+              <CarouselPrevious className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 !rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
+              <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 !rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
             </div>
             <p className="text-center mt-3 text-[8px] font-black text-white/10 uppercase tracking-[0.4em] animate-pulse">SWIPE TO VIEW MODES</p>
           </Carousel>
@@ -127,13 +124,13 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto">
           <header className="text-center mb-20 space-y-4">
             <h2 className="text-4xl font-black text-white uppercase tracking-tight font-headline">Three Steps to Safety</h2>
-            <div className="w-20 h-1.5 bg-primary mx-auto rounded-full icon-neon-glow" />
+            <div className="w-20 h-1.5 bg-primary mx-auto !rounded-full icon-neon-glow" />
           </header>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step, i) => (
-              <Card key={i} className="card-neon-glow p-10 btn-hover-effect border-none group bg-black/60 backdrop-blur-3xl rounded-[3.5rem]">
-                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary/20 transition-all shadow-lg">
+              <Card key={i} className="card-neon-glow p-10 btn-hover-effect border-none bg-black/60 backdrop-blur-3xl rounded-[3.5rem]">
+                <div className="w-20 h-20 !rounded-full bg-primary/10 flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary/20 transition-all shadow-lg">
                   <step.icon className="w-10 h-10 text-primary icon-neon-glow" />
                 </div>
                 <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4 font-headline">{step.title}</h3>
@@ -161,7 +158,7 @@ export default function LandingPage() {
               { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + Priority'], btn: 'Get Protected' },
             ].map((plan, i) => (
               <Card key={i} className={`p-10 flex flex-col items-center card-neon-glow border-2 rounded-[3.5rem] btn-hover-effect ${plan.badge ? 'border-primary shadow-[0_0_50px_rgba(0,172,193,0.3)] scale-105 z-20' : 'border-white/5'}`}>
-                {plan.badge && <Badge className="bg-primary text-white mb-8 font-black py-1.5 px-6 rounded-full text-[9px] tracking-[0.2em] shadow-lg">{plan.badge}</Badge>}
+                {plan.badge && <Badge className="bg-primary text-white mb-8 font-black py-1.5 px-6 !rounded-full text-[9px] tracking-[0.2em] shadow-lg">{plan.badge}</Badge>}
                 <h3 className="text-lg font-black text-primary mb-4 uppercase tracking-[0.2em] font-headline">{plan.name}</h3>
                 <div className="flex items-baseline gap-1 mb-3">
                   <span className="text-6xl font-black text-white tracking-tighter">{plan.price}</span>
@@ -172,13 +169,13 @@ export default function LandingPage() {
                 <ul className="space-y-5 mb-12 w-full">
                   {plan.perks.map((p, j) => (
                     <li key={j} className="flex items-center gap-4 text-sm font-bold text-white/50 justify-center">
-                      <div className="w-2 h-2 rounded-full bg-primary shadow-sm" /> {p}
+                      <div className="w-2 h-2 !rounded-full bg-primary shadow-sm" /> {p}
                     </li>
                   ))}
                 </ul>
                 
-                <Button asChild className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-16 text-lg text-white btn-hover-effect shadow-2xl border-none uppercase">
-                  <Link href="#hero">{plan.btn}</Link>
+                <Button asChild className="w-full !rounded-full bg-primary hover:bg-primary/90 font-black h-16 text-lg text-white btn-hover-effect shadow-2xl border-none uppercase">
+                  <Link href="/login">{plan.btn}</Link>
                 </Button>
               </Card>
             ))}
@@ -191,7 +188,7 @@ export default function LandingPage() {
         <div className="max-w-3xl mx-auto">
           <header className="text-center mb-16">
             <h2 className="text-3xl font-black text-white uppercase tracking-tight font-headline">Frequently Asked Questions</h2>
-            <div className="w-12 h-1 bg-primary/30 mx-auto mt-4 rounded-full" />
+            <div className="w-12 h-1 bg-primary/30 mx-auto mt-4 !rounded-full" />
           </header>
           <Accordion type="single" collapsible className="w-full space-y-4">
             {[
@@ -221,9 +218,9 @@ export default function LandingPage() {
               Protected by Neural Watchdog AI.
             </p>
             <div className="flex justify-center md:justify-end gap-6 opacity-40">
-              <div className="p-2.5 bg-white/5 rounded-full border border-white/10"><ShieldCheck className="w-5 h-5 text-white" /></div>
-              <div className="w-10 h-10 rounded-full border-2 border-white/20" />
-              <div className="w-10 h-10 bg-white/10 rounded-full" />
+              <div className="p-2.5 bg-white/5 !rounded-full border border-white/10"><ShieldCheck className="w-5 h-5 text-white" /></div>
+              <div className="w-10 h-10 !rounded-full border-2 border-white/20" />
+              <div className="w-10 h-10 bg-white/10 !rounded-full" />
             </div>
           </div>
         </div>
