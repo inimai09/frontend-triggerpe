@@ -7,30 +7,30 @@ export function Sparkles() {
 
   useEffect(() => {
     // Generate sparkles on mount to avoid hydration mismatch
-    const sparkleCount = 45;
+    const sparkleCount = 50;
     const newSparkles = Array.from({ length: sparkleCount }).map((_, i) => ({
       id: i,
-      size: Math.random() * 6 + 4,
+      size: Math.random() * 8 + 4,
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
-      duration: `${12 + Math.random() * 18}s`,
-      delay: `${Math.random() * 10}s`,
-      moveX20: `${(Math.random() - 0.5) * 150}px`,
-      moveY20: `${(Math.random() - 0.5) * 150}px`,
-      moveX50: `${(Math.random() - 0.5) * 400}px`,
-      moveY50: `${(Math.random() - 0.5) * 400}px`,
-      moveX80: `${(Math.random() - 0.5) * 150}px`,
-      moveY80: `${(Math.random() - 0.5) * 150}px`,
+      duration: `${15 + Math.random() * 20}s`,
+      delay: `${Math.random() * -20}s`,
+      moveX20: `${(Math.random() - 0.5) * 400}px`,
+      moveY20: `${(Math.random() - 0.5) * 400}px`,
+      moveX50: `${(Math.random() - 0.5) * 800}px`,
+      moveY50: `${(Math.random() - 0.5) * 800}px`,
+      moveX80: `${(Math.random() - 0.5) * 400}px`,
+      moveY80: `${(Math.random() - 0.5) * 400}px`,
     }));
     setSparkles(newSparkles);
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-[#E0F7FA]">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[-1] bg-[#E0F7FA]">
       {sparkles.map((s) => (
         <div
           key={s.id}
-          className="absolute bg-white rounded-full animate-sparkle-float opacity-0 shadow-[0_0_15px_5px_rgba(255,255,255,0.8)]"
+          className="absolute bg-white rounded-full animate-sparkle-float opacity-0 shadow-[0_0_20px_10px_rgba(255,255,255,1)]"
           style={{
             top: s.top,
             left: s.left,
@@ -44,9 +44,7 @@ export function Sparkles() {
             '--move-y-50': s.moveY50,
             '--move-x-80': s.moveX80,
             '--move-y-80': s.moveY80,
-            '--move-x-100': '0px',
-            '--move-y-100': '0px',
-          } as React.CSSProperties}
+          } as any}
         />
       ))}
     </div>
