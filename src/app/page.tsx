@@ -10,7 +10,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { CheckCircle2, Sun, CloudRain, Snowflake, Zap, ShieldCheck, ZapIcon, WalletCards, ArrowRight } from 'lucide-react';
+import { Sun, CloudRain, Snowflake, Zap, ShieldCheck, ZapIcon, WalletCards, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 export default function LandingPage() {
@@ -22,135 +22,110 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background selection:bg-primary selection:text-white">
+    <div className="flex flex-col min-h-screen bg-background selection:bg-primary selection:text-white relative">
+      <Sparkles />
+      
       {/* Hero Section */}
-      <section className="relative flex flex-col lg:flex-row w-full min-h-screen overflow-hidden bg-gradient-to-b from-[#b2ebf2] via-[#80deea] to-[#4dd0e1]">
-        <Sparkles />
-        
-        {/* Left Side Content */}
-        <div className="flex-1 flex flex-col justify-center p-8 md:p-12 lg:p-20 z-10">
-          <Badge className="w-fit mb-6 bg-white/40 text-primary border-white/60 py-2 px-5 rounded-full font-bold tracking-tight backdrop-blur-md">
+      <section className="relative flex flex-col lg:flex-row w-full min-h-[90vh] items-center px-6 md:px-12 lg:px-24 py-12 lg:py-0">
+        <div className="flex-1 flex flex-col justify-center z-10 text-center lg:text-left">
+          <Badge className="w-fit mb-4 bg-primary/10 text-primary border-primary/20 py-1.5 px-4 rounded-full font-bold mx-auto lg:mx-0">
             INDIA'S FIRST PARAMETRIC INSURANCE
           </Badge>
-          <h1 className="text-5xl md:text-8xl font-headline font-bold text-[#006064] leading-[1.1] mb-8">
-            When weather stops you, <br />
-            <span className="text-white drop-shadow-lg">we pay instantly</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground leading-[1.1] mb-6">
+            When weather stops you,<br />
+            <span className="text-primary">we pay instantly.</span>
           </h1>
-          <p className="text-lg md:text-2xl text-[#004d40] mb-10 max-w-xl leading-relaxed font-medium">
+          <p className="text-base md:text-xl text-secondary-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0 font-medium">
             Zero-touch parametric protection for delivery heroes. 
-            Automatic payouts triggered by real-time weather data.
+            Automatic payouts triggered by real-time climate data.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 mb-12">
-            <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-[#00acc1] hover:bg-[#0097a7] btn-hover-effect shadow-2xl text-white">
-              <Link href="/login" className="flex items-center gap-2">Get Protected Now <ArrowRight className="w-6 h-6" /></Link>
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
+            <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg bg-primary hover:bg-primary/90 btn-hover-effect">
+              <Link href="/login" className="flex items-center gap-2">Get Protected <ArrowRight className="w-5 h-5" /></Link>
             </Button>
-            <Button variant="outline" size="lg" className="rounded-full px-10 py-8 text-xl border-[#00acc1]/40 text-[#00acc1] bg-white/30 backdrop-blur-md hover:bg-white/50 btn-hover-effect">
-              Learn How It Works
+            <Button variant="outline" size="lg" className="rounded-full px-8 py-6 text-lg border-primary/40 text-primary bg-white/50 backdrop-blur-sm btn-hover-effect">
+              Learn More
             </Button>
           </div>
           
-          <div className="flex items-center gap-6 mb-10">
-            <div className="flex -space-x-4">
+          <div className="flex items-center gap-4 mb-10 justify-center lg:justify-start">
+            <div className="flex -space-x-3">
               {[1, 2, 3, 4].map(i => (
-                <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden shadow-xl">
-                  <img src={`https://picsum.photos/seed/${i + 20}/150/150`} alt="user" className="w-full h-full object-cover" />
+                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-secondary overflow-hidden shadow-sm">
+                  <img src={`https://picsum.photos/seed/${i + 50}/100/100`} alt="user" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
-            <p className="text-sm md:text-base font-bold text-[#006064]">
-              <span className="text-white drop-shadow-sm">2,847+</span> Workers Protected • 
-              <span className="text-white drop-shadow-sm"> ₹12L+</span> Auto-Paid
+            <p className="text-xs md:text-sm font-bold text-foreground/60">
+              <span className="text-primary">2,847+</span> Workers Protected
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              { label: 'Auto Claims', icon: ZapIcon },
-              { label: 'Zero Forms', icon: ShieldCheck },
-              { label: 'Instant Payout', icon: WalletCards }
-            ].map((feature, i) => (
-              <div key={i} className="flex items-center gap-3 text-base font-bold text-[#006064] bg-white/20 p-3 rounded-2xl backdrop-blur-sm">
-                <feature.icon className="w-6 h-6 text-white" />
-                {feature.label}
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* Right Side - Swipeable Weather Flashcards */}
-        <div className="flex-1 p-8 md:p-12 lg:p-20 flex items-center justify-center relative z-10">
-          <div className="w-full max-w-md group">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {weatherCards.map((card, idx) => (
-                  <CarouselItem key={idx}>
-                    <Card className={`w-full h-auto min-h-[500px] border-none bg-white/80 backdrop-blur-xl shadow-2xl transition-all border-t-[12px] ${card.border} hover:shadow-primary/40 rounded-[2.5rem]`}>
-                      <CardContent className="p-12 flex flex-col items-center text-center h-full justify-between">
-                        <div className="w-full flex justify-between items-center mb-4">
-                          <span className="text-xs font-black tracking-[0.2em] text-slate-400 uppercase">Flashcard {idx + 1}</span>
-                          <card.icon className={`w-14 h-14 ${card.iconColor}`} />
-                        </div>
-                        <div className="w-72 h-72 my-8 transform group-hover:rotate-3 transition-transform duration-700">
-                          <DeliveryGuy weather={card.type as any} className="w-full h-full drop-shadow-2xl" />
-                        </div>
-                        <div className="space-y-4">
-                          <h3 className="text-4xl font-black text-[#006064] mb-2">{card.label}</h3>
-                          <div className="inline-block px-6 py-3 bg-[#e0f7fa] rounded-2xl border-2 border-[#00acc1]/20">
-                            <p className="text-[#00acc1] font-black text-2xl">{card.trigger}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-center gap-8 mt-12">
-                <CarouselPrevious className="static translate-y-0 bg-white shadow-xl border-none hover:bg-[#00acc1] hover:text-white w-14 h-14 btn-hover-effect" />
-                <CarouselNext className="static translate-y-0 bg-white shadow-xl border-none hover:bg-[#00acc1] hover:text-white w-14 h-14 btn-hover-effect" />
-              </div>
-            </Carousel>
-          </div>
+        {/* Right Side - Weather Flashcards */}
+        <div className="flex-1 w-full max-w-lg lg:max-w-md mx-auto z-10 mt-12 lg:mt-0">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {weatherCards.map((card, idx) => (
+                <CarouselItem key={idx}>
+                  <Card className={`overflow-hidden border-none glass-card border-t-[8px] ${card.border} rounded-[2rem] transition-all duration-500`}>
+                    <CardContent className="p-10 flex flex-col items-center text-center">
+                      <div className="w-full flex justify-between items-center mb-6">
+                        <span className="text-[10px] font-black tracking-widest text-muted-foreground uppercase">Flashcard {idx + 1}</span>
+                        <card.icon className={`w-10 h-10 ${card.iconColor}`} />
+                      </div>
+                      <div className="w-56 h-56 mb-8 transform hover:scale-105 transition-transform">
+                        <DeliveryGuy weather={card.type as any} className="w-full h-full drop-shadow-xl" />
+                      </div>
+                      <h3 className="text-3xl font-black text-foreground mb-3">{card.label}</h3>
+                      <div className="inline-block px-4 py-2 bg-primary/5 rounded-xl border border-primary/10">
+                        <p className="text-primary font-bold text-lg">{card.trigger}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-8">
+              <CarouselPrevious className="static translate-y-0 bg-white shadow-md border-none hover:bg-primary hover:text-white w-12 h-12 btn-hover-effect" />
+              <CarouselNext className="static translate-y-0 bg-white shadow-md border-none hover:bg-primary hover:text-white w-12 h-12 btn-hover-effect" />
+            </div>
+          </Carousel>
         </div>
       </section>
 
-      {/* Simplified Features for this turn */}
-      <section className="py-24 px-8 bg-white relative overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-headline font-black text-[#006064] mb-20 tracking-tight">How TriggerPe Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+      {/* Simplified Features */}
+      <section className="py-20 px-6 bg-white/40 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-black text-foreground text-center mb-16">How TriggerPe Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { icon: WalletCards, title: 'Register', desc: 'Sign up in 2 minutes, choose your delivery platform and link UPI.' },
-              { icon: ShieldCheck, title: 'We Monitor', desc: 'Our AI engine monitors live weather data 24/7 for your specific operational zone.' },
-              { icon: ZapIcon, title: 'Auto Payout', desc: 'When weather hits the trigger point, money is pushed to your account instantly.' }
+              { icon: WalletCards, title: 'Register', desc: 'Sign up in 2 mins, link your platform & UPI.' },
+              { icon: ShieldCheck, title: 'We Monitor', desc: 'Our AI engine tracks live weather data 24/7.' },
+              { icon: ZapIcon, title: 'Auto Payout', desc: 'Money is pushed to your account instantly.' }
             ].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center group">
-                <div className="w-28 h-28 rounded-[2.5rem] bg-[#e0f7fa] flex items-center justify-center mb-10 shadow-lg border-4 border-white transition-all group-hover:scale-110 group-hover:rotate-6">
-                  <item.icon className="w-14 h-14 text-[#00acc1]" />
+              <div key={idx} className="flex flex-col items-center text-center group">
+                <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-all border-2 border-white">
+                  <item.icon className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-3xl font-black text-[#006064] mb-5">{item.title}</h3>
-                <p className="text-slate-500 text-xl leading-relaxed max-w-xs">{item.desc}</p>
+                <h3 className="text-2xl font-black text-foreground mb-3">{item.title}</h3>
+                <p className="text-secondary-foreground/60 font-medium leading-relaxed max-w-[200px]">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#e0f7fa] text-[#006064] py-24 px-8 border-t border-white/40">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="space-y-4 text-center md:text-left">
-            <h2 className="text-4xl font-headline font-black tracking-tighter text-[#00acc1]">TRIGGERPE</h2>
-            <p className="text-[#004d40] font-medium max-w-sm">India's most trusted parametric shield for the gig economy.</p>
+      <footer className="bg-secondary/30 py-12 px-6 border-t border-primary/10">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <h2 className="text-2xl font-black tracking-tighter text-primary">TRIGGERPE</h2>
+          <div className="flex gap-8 text-sm font-bold text-secondary-foreground/60">
+            <Link href="/login" className="hover:text-primary transition-colors">LOGIN</Link>
+            <Link href="/register" className="hover:text-primary transition-colors">REGISTER</Link>
+            <Link href="#" className="hover:text-primary transition-colors">HELP</Link>
           </div>
-          <div className="flex gap-10">
-            <Link href="/login" className="font-black hover:text-[#00acc1] transition-colors">LOGIN</Link>
-            <Link href="/register" className="font-black hover:text-[#00acc1] transition-colors">REGISTER</Link>
-            <Link href="#" className="font-black hover:text-[#00acc1] transition-colors">HELP</Link>
-          </div>
-        </div>
-        <div className="max-w-6xl mx-auto mt-16 pt-10 border-t border-[#00acc1]/10 text-center">
-           <p className="text-sm font-bold opacity-60">© 2026 TriggerPe Parametric Insurance Pvt Ltd.</p>
+          <p className="text-xs font-bold opacity-40">© 2026 TriggerPe Parametric Insurance.</p>
         </div>
       </footer>
     </div>

@@ -21,7 +21,7 @@
     --border: 187 30% 90%;
     --input: 187 30% 90%;
     --ring: 187 100% 42%;
-    --radius: 1.25rem;
+    --radius: 1rem;
   }
 }
 
@@ -33,13 +33,13 @@
     @apply bg-background text-foreground font-body overflow-x-hidden;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    @apply font-headline tracking-tight;
   }
 }
 
-/* Custom Hover Effects */
+/* Enhanced Button Hover Effects */
 .btn-hover-effect {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_20px_rgba(0,188,212,0.3)] active:scale-95;
+  @apply transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-primary/20;
 }
 
 /* Sparkle Movement Animation */
@@ -56,24 +56,28 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(var(--secondary));
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.3);
+  background: hsl(var(--primary) / 0.2);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.4);
 }
 
-/* Glassmorphism for light theme */
 .glass-card {
-  @apply bg-white/70 backdrop-blur-lg border border-white/40 shadow-xl;
+  @apply bg-white/60 backdrop-blur-md border border-white/40 shadow-xl;
 }
 
-.neon-text-glow {
-  text-shadow: 0 0 10px rgba(0, 172, 193, 0.4);
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
 }
