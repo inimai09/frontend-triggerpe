@@ -4,24 +4,24 @@
 
 @layer base {
   :root {
-    --background: 180 67% 93%; /* #E0F7FA */
+    --background: 180 67% 93%; /* #E0F7FA fallback */
     --foreground: 183 100% 19%; /* #006064 */
-    --card: 0 0% 100%; /* #FFFFFF */
-    --card-foreground: 183 100% 19%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 183 100% 19%;
+    --card: 183 100% 5%; /* Dark for translucency base */
+    --card-foreground: 0 0% 100%;
+    --popover: 183 100% 5%;
+    --popover-foreground: 0 0% 100%;
     --primary: 187 100% 38%; /* #00ACC1 */
     --primary-foreground: 0 0% 100%;
     --secondary: 184 80% 28%; /* #00838F */
     --secondary-foreground: 0 0% 100%;
-    --muted: 180 20% 90%;
-    --muted-foreground: 183 100% 30%;
+    --muted: 183 100% 10%;
+    --muted-foreground: 183 20% 70%;
     --accent: 33 100% 65%; /* #FFB74D */
     --accent-foreground: 183 100% 19%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 180 20% 85%;
-    --input: 180 20% 85%;
+    --border: 180 20% 20%;
+    --input: 180 20% 20%;
     --ring: 187 100% 38%;
     --radius: 1.5rem;
   }
@@ -33,7 +33,7 @@
   }
   body {
     @apply font-body antialiased min-h-screen text-foreground;
-    background: linear-gradient(180deg, #004D40 0%, #00838F 40%, #E0F7FA 100%) fixed;
+    background: linear-gradient(180deg, #001A1A 0%, #004D40 40%, #006064 100%) fixed;
   }
 }
 
@@ -45,12 +45,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.btn-hover-effect {
-  @apply transition-all duration-300 hover:scale-[1.05] active:scale-95 !important;
+.card-glass {
+  @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl !important;
 }
 
-.card-shadow {
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+.btn-hover-effect {
+  @apply transition-all duration-300 hover:scale-[1.05] active:scale-95 !important;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -73,16 +73,11 @@
 }
 
 .text-glow {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(0, 172, 193, 0.4);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(0, 172, 193, 0.3);
 }
 
-/* Custom rounded corners for all interactive elements as requested */
-button, .button, .rounded-full-force {
+button, .button {
   @apply rounded-full !important;
-}
-
-.icon-container-rounded {
-  @apply rounded-full flex items-center justify-center !important;
 }
 
 html {

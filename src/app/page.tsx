@@ -43,9 +43,9 @@ export default function LandingPage() {
   ];
 
   const pricingPlans = [
-    { name: 'BASIC', price: '49', features: ['Rain Coverage', 'Heat Protection', 'Standard Payouts'], color: 'bg-white' },
-    { name: 'STANDARD', price: '79', features: ['All Basic Features', 'AQI Alerts', 'Priority Verification', 'Curfew Shield'], color: 'bg-[#E0F7FA]' },
-    { name: 'PREMIUM', price: '99', features: ['Full Trigger Suite', 'Outage Protection', 'Instant UPI Payouts', 'Custom Risk Profile'], color: 'bg-white' },
+    { name: 'BASIC', price: '49', features: ['Rain Coverage', 'Heat Protection', 'Standard Payouts'], color: 'bg-black/40' },
+    { name: 'STANDARD', price: '79', features: ['All Basic Features', 'AQI Alerts', 'Priority Verification', 'Curfew Shield'], color: 'bg-[#00ACC1]/10' },
+    { name: 'PREMIUM', price: '99', features: ['Full Trigger Suite', 'Outage Protection', 'Instant UPI Payouts', 'Custom Risk Profile'], color: 'bg-black/40' },
   ];
 
   const handlePriceClick = () => {
@@ -53,7 +53,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-body text-[#006064]">
+    <div className="flex flex-col min-h-screen font-body text-white">
       {/* Hero Section */}
       <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[95vh] items-center px-6 lg:px-24 py-20 gap-20">
         <div className="flex-1 space-y-10 animate-in fade-in slide-in-from-left-8 duration-1000">
@@ -75,7 +75,7 @@ export default function LandingPage() {
             </h1>
           </div>
           
-          <p className="text-xl text-white/90 max-w-xl font-medium leading-relaxed">
+          <p className="text-xl text-white/70 max-w-xl font-medium leading-relaxed">
             India's first zero-touch parametric insurance for delivery workers. No forms, no waiting, automatic payouts.
           </p>
           
@@ -93,11 +93,11 @@ export default function LandingPage() {
             <CarouselContent>
               {weatherCards.map((card, idx) => (
                 <CarouselItem key={idx}>
-                  <Card className="border-none bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[3.5rem] overflow-hidden">
+                  <Card className="border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl rounded-[3.5rem] overflow-hidden">
                     <CardContent className="p-12 flex flex-col items-center text-center">
                       <div className="w-full flex justify-between items-center mb-10">
-                        <Badge variant="outline" className="text-[10px] font-black text-[#00838F]/40 border-[#00838F]/10 rounded-full px-4">SENSOR MODE {idx + 1}</Badge>
-                        <div className={cn("p-4 rounded-full flex items-center justify-center bg-[#E0F7FA]", card.bg)}>
+                        <Badge variant="outline" className="text-[10px] font-black text-white/40 border-white/10 rounded-full px-4">SENSOR MODE {idx + 1}</Badge>
+                        <div className={cn("p-4 rounded-full flex items-center justify-center bg-white/5", card.bg)}>
                           <card.icon className={cn("w-8 h-8", card.color)} />
                         </div>
                       </div>
@@ -105,7 +105,7 @@ export default function LandingPage() {
                         <DeliveryGuy weather={card.type as any} className="w-full h-full" />
                       </div>
                       <div className="space-y-4">
-                        <h3 className="text-3xl font-black text-[#006064] uppercase tracking-tighter font-headline">{card.label}</h3>
+                        <h3 className="text-3xl font-black text-white uppercase tracking-tighter font-headline">{card.label}</h3>
                         <p className={cn("text-xl font-black uppercase tracking-tighter", card.color)}>{card.trigger}</p>
                       </div>
                     </CardContent>
@@ -114,20 +114,20 @@ export default function LandingPage() {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-6 mt-10">
-              <CarouselPrevious className="static translate-y-0 bg-white border-none shadow-lg w-14 h-14 rounded-full text-primary hover:text-primary/80 flex items-center justify-center" />
-              <CarouselNext className="static translate-y-0 bg-white border-none shadow-lg w-14 h-14 rounded-full text-primary hover:text-primary/80 flex items-center justify-center" />
+              <CarouselPrevious className="static translate-y-0 bg-white/5 border-white/10 shadow-lg w-14 h-14 rounded-full text-primary hover:text-primary/80 flex items-center justify-center backdrop-blur-md" />
+              <CarouselNext className="static translate-y-0 bg-white/5 border-white/10 shadow-lg w-14 h-14 rounded-full text-primary hover:text-primary/80 flex items-center justify-center backdrop-blur-md" />
             </div>
           </Carousel>
         </div>
       </section>
 
       {/* Steps Section: How it Works */}
-      <section className="py-32 px-6 lg:px-24 bg-white/40 backdrop-blur-md">
+      <section className="py-32 px-6 lg:px-24 bg-white/5 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <h2 className="text-5xl font-black tracking-tighter font-headline text-[#006064] uppercase">Three Steps to Safety</h2>
+            <h2 className="text-5xl font-black tracking-tighter font-headline text-white uppercase">Three Steps to Safety</h2>
             <div className="w-24 h-1.5 bg-primary mx-auto rounded-full" />
-            <p className="text-[#00838F] font-bold uppercase tracking-widest text-xs">A zero-touch experience for every hero</p>
+            <p className="text-white/50 font-bold uppercase tracking-widest text-xs">A zero-touch experience for every hero</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -137,12 +137,12 @@ export default function LandingPage() {
               { title: 'Auto Payout', desc: 'When triggers hit, money is pushed instantly to your wallet.', icon: Zap, delay: 'delay-300' },
             ].map((step, i) => (
               <div key={i} className={cn("space-y-8 text-center md:text-left group animate-in fade-in slide-in-from-bottom-8 duration-700 transition-all hover:scale-105", step.delay)}>
-                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border-2 border-primary/20 mx-auto md:mx-0 shadow-inner group-hover:border-primary transition-colors">
+                <div className="w-20 h-20 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border-2 border-white/10 mx-auto md:mx-0 shadow-inner group-hover:border-primary transition-colors">
                   <step.icon className="w-10 h-10 text-primary" />
                 </div>
-                <div className="p-10 border-2 border-primary/20 rounded-[3rem] bg-white/50 backdrop-blur-sm group-hover:border-primary/50 transition-colors shadow-sm">
-                  <h3 className="text-3xl font-black font-headline text-[#006064] mb-4">{step.title}</h3>
-                  <p className="text-lg font-medium text-[#00838F] leading-relaxed">{step.desc}</p>
+                <div className="p-10 border-2 border-white/10 rounded-[3rem] bg-black/40 backdrop-blur-xl group-hover:border-primary/50 transition-colors shadow-xl">
+                  <h3 className="text-3xl font-black font-headline text-white mb-4">{step.title}</h3>
+                  <p className="text-lg font-medium text-white/60 leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -151,17 +151,17 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-32 px-6 lg:px-24 bg-white/10 backdrop-blur-md">
+      <section className="py-32 px-6 lg:px-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <h2 className="text-5xl font-black tracking-tighter font-headline text-[#006064] uppercase">Simple Pricing</h2>
+            <h2 className="text-5xl font-black tracking-tighter font-headline text-white uppercase">Simple Pricing</h2>
             <div className="w-24 h-1.5 bg-primary mx-auto rounded-full" />
-            <p className="text-[#00838F] font-bold uppercase tracking-widest text-xs">Choose your shield tier</p>
+            <p className="text-white/50 font-bold uppercase tracking-widest text-xs">Choose your shield tier</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingPlans.map((plan, i) => (
-              <Card key={i} className={cn("border-none shadow-xl rounded-[3.5rem] overflow-hidden flex flex-col transition-all hover:scale-105 duration-300 animate-in fade-in slide-in-from-bottom-12", plan.color)}>
+              <Card key={i} className={cn("border-white/10 backdrop-blur-xl shadow-2xl rounded-[3.5rem] overflow-hidden flex flex-col transition-all hover:scale-105 duration-300 animate-in fade-in slide-in-from-bottom-12", plan.color)}>
                 <CardContent className="p-12 flex flex-col flex-1">
                   <span className="text-[10px] font-black uppercase text-primary tracking-[0.3em] mb-4">{plan.name}</span>
                   <div 
@@ -169,16 +169,16 @@ export default function LandingPage() {
                     className="group mb-8 cursor-pointer flex flex-col items-start"
                   >
                     <div className="flex items-baseline gap-1 group-hover:scale-110 transition-transform origin-left">
-                      <IndianRupee className="w-6 h-6 text-[#006064] mb-2" />
-                      <span className="text-6xl font-black text-[#006064] tracking-tighter">{plan.price}</span>
-                      <span className="text-sm font-bold text-[#00838F]">/week</span>
+                      <IndianRupee className="w-6 h-6 text-white mb-2" />
+                      <span className="text-6xl font-black text-white tracking-tighter">{plan.price}</span>
+                      <span className="text-sm font-bold text-white/50">/week</span>
                     </div>
                     <p className="text-[10px] font-black text-primary uppercase mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Click to Refresh</p>
                   </div>
                   <div className="space-y-4 flex-1">
                     {plan.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-3 text-sm font-bold text-[#006064]">
-                        <div className="p-1 bg-[#E0F7FA] rounded-full flex items-center justify-center border border-[#00ACC1]/20">
+                      <div key={idx} className="flex items-center gap-3 text-sm font-bold text-white/80">
+                        <div className="p-1 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
                           <CircleCheck className="w-3.5 h-3.5 text-primary" />
                         </div>
                         {feature}
@@ -199,17 +199,17 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-32 px-6 lg:px-24 bg-transparent">
+      <section className="py-32 px-6 lg:px-24 bg-white/5 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border border-[#00ACC1]/20">
+            <div className="w-16 h-16 bg-white/5 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border border-white/10">
               <CircleHelp className="w-8 h-8 text-primary" />
             </div>
-            <h2 className="text-5xl font-black tracking-tighter font-headline text-[#006064] uppercase">Common Questions</h2>
+            <h2 className="text-5xl font-black tracking-tighter font-headline text-white uppercase">Common Questions</h2>
             <div className="w-24 h-1.5 bg-primary mx-auto rounded-full" />
           </div>
 
-          <Card className="bg-white border-none shadow-2xl rounded-[3.5rem] p-12 animate-in fade-in slide-in-from-bottom-12 duration-1000">
+          <Card className="bg-black/40 backdrop-blur-xl border-white/10 shadow-2xl rounded-[3.5rem] p-12 animate-in fade-in slide-in-from-bottom-12 duration-1000">
             <Accordion type="single" collapsible className="w-full">
               {[
                 { q: "How fast is the payout?", a: "TriggerPe uses parametric triggers. As soon as the weather station or platform data hits the threshold, the payout is triggered and pushed to your linked UPI ID within 5-10 minutes." },
@@ -218,11 +218,11 @@ export default function LandingPage() {
                 { q: "Is this IRDAI registered?", a: "Yes, TriggerPe services are provided through IRDAI registered insurance partners and brokers to ensure complete regulatory safety." },
                 { q: "Can I cancel my subscription?", a: "Absolutely. TriggerPe is a weekly subscription. You can pause or cancel your coverage anytime through the Settings tab in your dashboard." }
               ].map((item, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border-border/50 px-4 py-2">
-                  <AccordionTrigger className="text-xl font-black text-[#006064] hover:no-underline font-headline text-left">
+                <AccordionItem key={i} value={`item-${i}`} className="border-white/10 px-4 py-2">
+                  <AccordionTrigger className="text-xl font-black text-white hover:no-underline font-headline text-left">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-lg font-medium text-[#00838F] leading-relaxed pt-4">
+                  <AccordionContent className="text-lg font-medium text-white/60 leading-relaxed pt-4">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -232,7 +232,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="py-20 px-6 lg:px-24 bg-[#006064] text-white">
+      <footer className="py-20 px-6 lg:px-24 bg-[#001A1A]/80 backdrop-blur-xl text-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="text-center md:text-left">
             <h2 className="text-4xl font-black tracking-tighter font-headline uppercase">TRIGGERPE</h2>
