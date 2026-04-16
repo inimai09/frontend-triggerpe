@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CloudRain, Sun, Wind, Droplets, MapPin, Navigation, Clock, AlertTriangle, ThermometerSun, Zap } from 'lucide-react';
+import { CloudRain, Sun, Wind, Droplets, MapPin, Clock, ThermometerSun, Zap, Navigation } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
@@ -12,98 +12,99 @@ import { cn } from '@/lib/utils';
 export default function WeatherPage() {
   return (
     <DashboardLayout>
-      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10">
-        {/* Header Box */}
-        <Card className="card-neon-glow p-6 rounded-[2rem] border-none">
-          <header className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-            <div className="p-6 bg-black/40 rounded-[1.5rem] border border-white/5 w-full lg:w-auto btn-hover-effect">
-              <h1 className="text-2xl font-black text-white uppercase tracking-tighter mb-3 font-headline">Climate Monitor</h1>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#00ACC1]" />
-                <p className="text-primary font-black uppercase tracking-widest text-[9px] icon-neon-glow">Live Telemetry Active</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4 bg-black/40 border border-white/10 p-6 rounded-full w-full lg:w-auto btn-hover-effect">
-              <div className="p-4 bg-primary/10 rounded-full border border-primary/20 flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5 text-primary icon-neon-glow" />
-              </div>
-              <div>
-                <p className="text-[8px] font-black text-white/40 uppercase tracking-widest mb-1">Active Zone</p>
-                <p className="text-base font-black text-white font-headline">Chennai Central (CHN)</p>
-              </div>
-            </div>
-          </header>
-        </Card>
+      <div className="space-y-6 animate-in fade-in duration-500">
+        <header className="flex justify-between items-end">
+          <div>
+            <h1 className="text-3xl font-black text-[#006064]">Climate Monitor</h1>
+            <p className="text-[#00838F] font-medium mt-1">Live telemetry for your operational zone.</p>
+          </div>
+          <Badge className="bg-[#E0F7FA] text-[#00ACC1] hover:bg-[#E0F7FA] border-none font-bold px-4 py-2 flex items-center gap-2">
+            <MapPin className="w-4 h-4" /> CHENNAI CENTRAL
+          </Badge>
+        </header>
 
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
-          <Card className="xl:col-span-8 card-neon-glow border-none overflow-hidden relative rounded-[2.5rem]">
-            <CardContent className="p-8 relative z-10 space-y-8">
-              <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
-                <div className="p-8 bg-black/60 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] w-full lg:w-auto shadow-2xl relative btn-hover-effect">
-                  <Badge className="bg-warning/20 text-warning border-warning/30 font-black px-4 py-1.5 uppercase tracking-widest text-[8px] rounded-full mb-6">
-                    <div className="p-1 bg-warning/20 rounded-full border border-warning/30 mr-2 flex items-center justify-center shrink-0">
-                      <ThermometerSun className="w-3.5 h-3.5" />
-                    </div> High Heat Index
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Main Weather Card */}
+          <Card className="lg:col-span-8 bg-white border-none card-shadow rounded-xl">
+            <CardContent className="p-10 flex flex-col md:flex-row justify-between items-center gap-10">
+              <div className="text-center md:text-left">
+                <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
+                  <Badge className="bg-[#FFB74D]/10 text-[#FFB74D] border-none font-bold text-[10px] uppercase">
+                    High Heat Index
                   </Badge>
-                  <div className="flex items-end gap-5">
-                    <span className="text-[60px] md:text-[80px] font-black leading-none tracking-tighter text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] font-headline">38°</span>
-                    <div className="mb-3 space-y-1">
-                      <p className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-none font-headline">Partly<br/>Cloudy</p>
-                      <p className="text-primary font-black uppercase tracking-widest text-[8px] icon-neon-glow">Feels 41.2°C</p>
-                    </div>
+                  <span className="text-[#00838F]/40 text-[10px] font-bold flex items-center gap-1"><Clock className="w-3 h-3"/> UPDATED 4 MINS AGO</span>
+                </div>
+                <div className="flex items-end gap-6 justify-center md:justify-start">
+                  <span className="text-8xl font-black text-[#006064]">38°</span>
+                  <div className="mb-3">
+                    <p className="text-3xl font-black text-[#00ACC1]">Partly Cloudy</p>
+                    <p className="text-sm font-bold text-[#00838F]">Feels like 41.2°C</p>
                   </div>
                 </div>
-                
-                <div className="grid grid-cols-2 gap-3 w-full lg:w-auto">
-                  {[
-                    { icon: Droplets, label: 'Humidity', value: '72%', color: 'text-primary' },
-                    { icon: Wind, label: 'Wind', value: '14 kph', color: 'text-white' },
-                    { icon: CloudRain, label: 'Precip.', value: '12%', color: 'text-primary' },
-                    { icon: Navigation, label: 'UV Index', value: '9 High', color: 'text-warning' },
-                  ].map((item, i) => (
-                    <div key={i} className="p-6 bg-black/40 backdrop-blur-md rounded-full flex flex-col items-center border border-white/5 btn-hover-effect min-w-[110px]">
-                      <div className="p-2.5 bg-white/5 rounded-full mb-2 border border-white/10 flex items-center justify-center shrink-0">
-                        <item.icon className={cn("w-5 h-5 icon-neon-glow", item.color)} />
-                      </div>
-                      <span className="text-[8px] font-black text-white/30 uppercase tracking-widest mb-1">{item.label}</span>
-                      <span className="text-base font-black text-white font-headline">{item.value}</span>
-                    </div>
-                  ))}
-                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 w-full md:w-auto">
+                {[
+                  { icon: Droplets, label: 'Humidity', value: '72%', color: 'text-[#00ACC1]' },
+                  { icon: Wind, label: 'Wind', value: '14 kph', color: 'text-[#00ACC1]' },
+                  { icon: CloudRain, label: 'Precip.', value: '12%', color: 'text-[#00ACC1]' },
+                  { icon: Navigation, label: 'UV Index', value: '9 High', color: 'text-[#FFB74D]' },
+                ].map((item, i) => (
+                  <div key={i} className="p-5 bg-[#F1F5F9]/50 rounded-xl flex flex-col items-center min-w-[120px]">
+                    <item.icon className={cn("w-6 h-6 mb-2", item.color)} />
+                    <span className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest mb-1">{item.label}</span>
+                    <span className="text-lg font-black text-[#006064]">{item.value}</span>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
 
-          <Card className="xl:col-span-4 card-neon-glow border-none flex flex-col overflow-hidden rounded-[2.5rem]">
-            <CardHeader className="bg-primary/10 border-b border-white/5 px-8 py-5">
-              <CardTitle className="text-base font-black text-white uppercase tracking-widest flex items-center gap-3 font-headline">
-                <div className="p-1.5 bg-primary/20 rounded-full border border-primary/30 flex items-center justify-center shrink-0">
-                  <Zap className="w-4 h-4 text-primary icon-neon-glow" />
-                </div> Thresholds
+          {/* Threshold Progress */}
+          <Card className="lg:col-span-4 bg-white border-none card-shadow rounded-xl">
+            <CardHeader className="px-8 py-6 border-b border-border">
+              <CardTitle className="text-lg font-black text-[#006064] flex items-center gap-3">
+                <Zap className="w-5 h-5 text-[#FFB74D]" /> Trigger Thresholds
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex-1 p-6 space-y-6">
+            <CardContent className="p-8 space-y-8">
               {[
-                { label: 'Extreme Heat', current: '38°C', target: '42°C', progress: 78, color: 'bg-warning' },
-                { label: 'Heavy Rain', current: '2.4mm', target: '15mm', progress: 12, color: 'bg-primary' },
-                { label: 'AQI Warning', current: '184', target: '300', progress: 55, color: 'bg-primary/60' },
+                { label: 'Extreme Heat', current: '38°C', target: '42°C', progress: 78, color: 'bg-[#FFB74D]' },
+                { label: 'Heavy Rain', current: '2.4mm', target: '15mm', progress: 12, color: 'bg-[#00ACC1]' },
+                { label: 'AQI Warning', current: '184', target: '300', progress: 55, color: 'bg-[#00838F]' },
               ].map((t, i) => (
-                <div key={i} className="p-6 bg-black/40 border border-white/5 rounded-full space-y-3 btn-hover-effect">
-                  <div className="flex justify-between items-center px-1">
-                    <span className="text-xs font-black text-white uppercase tracking-tight font-headline">{t.label}</span>
-                    <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">{t.current} / {t.target}</span>
+                <div key={i} className="space-y-3">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="font-bold text-[#006064]">{t.label}</span>
+                    <span className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest">{t.current} / {t.target}</span>
                   </div>
-                  <Progress 
-                    value={t.progress} 
-                    className="h-2 bg-white/5" 
-                    indicatorClassName={cn(t.color, "shadow-[0_0_10px_currentColor]")}
-                  />
+                  <Progress value={t.progress} className="h-2.5 bg-[#E0F7FA]" indicatorClassName={t.color} />
                 </div>
               ))}
             </CardContent>
           </Card>
         </div>
+
+        {/* Hourly Forecast */}
+        <Card className="bg-white border-none card-shadow rounded-xl">
+          <CardHeader className="px-8 py-6">
+            <CardTitle className="text-lg font-black text-[#006064]">Hourly Forecast</CardTitle>
+          </CardHeader>
+          <CardContent className="px-8 pb-8">
+            <ScrollArea className="w-full whitespace-nowrap">
+              <div className="flex gap-8">
+                {[...Array(24)].map((_, i) => (
+                  <div key={i} className="flex flex-col items-center gap-2">
+                    <span className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest">{i}:00</span>
+                    <Sun className="w-6 h-6 text-[#FFB74D]" />
+                    <span className="text-lg font-black text-[#006064]">{30 + Math.floor(Math.random() * 5)}°</span>
+                  </div>
+                ))}
+              </div>
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
+          </CardContent>
+        </Card>
       </div>
     </DashboardLayout>
   );

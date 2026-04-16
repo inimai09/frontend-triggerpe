@@ -12,11 +12,12 @@ import {
   Settings, 
   ShieldAlert,
   LogOut,
-  BadgeCheck
+  ChevronRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 
 const navItems = [
   { label: 'Dashboard', icon: LayoutDashboard, href: '/dashboard' },
@@ -38,9 +39,7 @@ export function DashboardSidebar() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (parsed.name) {
-          setUser(parsed);
-        }
+        if (parsed.name) setUser(parsed);
       } catch (e) {
         console.error("Failed to parse user session");
       }
@@ -53,72 +52,63 @@ export function DashboardSidebar() {
   };
 
   return (
-    <aside className="w-[260px] min-w-[260px] max-w-[260px] bg-black/95 backdrop-blur-3xl border-r border-primary/20 h-screen flex flex-col sticky top-0 overflow-hidden z-50">
+    <aside className="w-[280px] bg-white border-r border-border h-screen flex flex-col sticky top-0 shrink-0">
       {/* Logo Section */}
-      <div className="px-7 py-6 shrink-0">
-        <h1 className="text-2xl font-headline font-black text-primary tracking-tighter uppercase drop-shadow-[0_0_15px_rgba(0,172,193,0.5)]">TRIGGERPE</h1>
-        <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em] mt-1">Shield v2.0</p>
+      <div className="p-8">
+        <h1 className="text-2xl font-black text-[#006064] tracking-tighter uppercase font-headline">TRIGGERPE</h1>
       </div>
 
-      {/* Navigation - Compact & Larger Icons */}
-      <nav className="flex-1 px-3 space-y-1 py-1 overflow-y-auto no-scrollbar">
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={cn(
-              "flex items-center gap-4 px-4 py-1.5 rounded-full transition-all duration-300 font-bold group relative overflow-hidden btn-hover-effect",
-              pathname === item.href 
-                ? "bg-primary/10 text-white border border-primary/30 shadow-[0_0_20px_rgba(0,172,193,0.15)]" 
-                : "text-white/40 hover:bg-white/5 hover:text-white border border-transparent hover:border-white/5"
-            )}
-          >
-            <div className={cn(
-              "p-2.5 rounded-full transition-all duration-300 flex items-center justify-center shrink-0",
-              pathname === item.href ? "bg-primary/20 shadow-[0_0_10px_rgba(0,172,193,0.3)]" : "bg-white/5"
-            )}>
-              <item.icon className={cn(
-                "w-5 h-5 transition-all duration-300",
-                pathname === item.href 
-                  ? "text-primary drop-shadow-[0_0_10px_rgba(0,172,193,0.8)] scale-110" 
-                  : "text-white/20 group-hover:text-primary/70"
-              )} />
-            </div>
-            <span className={cn(
-              "text-[10px] uppercase tracking-[0.15em] transition-colors font-headline",
-              pathname === item.href ? "text-white" : "text-inherit"
-            )}>{item.label}</span>
-            {pathname === item.href && (
-              <div className="absolute left-0 top-1 bottom-1 w-1 bg-primary rounded-full shadow-[0_0_10px_#00ACC1]" />
-            )}
-          </Link>
-        ))}
+      {/* Navigation */}
+      <nav className="flex-1 px-4 space-y-1">
+        {navItems.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all font-bold text-xs group",
+                isActive 
+                  ? "bg-[#E0F7FA] text-primary" 
+                  : "text-[#00838F] hover:bg-[#F1F5F9]"
+              )}
+            >
+              <div className={cn(
+                "p-2 rounded-full transition-colors",
+                isActive ? "bg-white/50" : "bg-[#F1F5F9] group-hover:bg-white"
+              )}>
+                <item.icon className={cn("w-5 h-5", isActive ? "text-primary" : "text-[#00838F]")} />
+              </div>
+              <span className="uppercase tracking-widest">{item.label}</span>
+              {isActive && <ChevronRight className="ml-auto w-4 h-4" />}
+            </Link>
+          );
+        })}
       </nav>
 
       {/* Footer Section */}
-      <div className="p-3 mt-auto bg-black/40 border-t border-white/5 shrink-0">
-        <div className="flex items-center gap-3 mb-2 p-2.5 bg-white/5 rounded-full border border-white/5 btn-hover-effect cursor-pointer group">
-          <Avatar className="w-8 h-8 border border-primary/30 bg-black rounded-full overflow-hidden shrink-0 shadow-[0_0_15px_rgba(0,172,193,0.2)]">
+      <div className="p-6 border-t border-border mt-auto">
+        <div className="flex items-center gap-3 mb-4 p-2">
+          <Avatar className="w-10 h-10 border border-border shadow-sm">
             <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
-            <AvatarFallback className="bg-primary/10 text-primary font-black text-[10px] rounded-full">{user.name[0] || 'P'}</AvatarFallback>
+            <AvatarFallback className="bg-[#E0F7FA] text-primary font-black uppercase">{user.name[0]}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col min-w-0">
-            <span className="text-[10px] font-black text-white truncate uppercase tracking-tight font-headline group-hover:text-primary transition-colors">{user.name}</span>
-            <div className="flex items-center gap-1.5">
-              <span className="text-[7px] px-2 py-0.5 bg-primary/20 text-primary font-black rounded-full uppercase tracking-tighter border border-primary/20">{user.platform}</span>
-              <BadgeCheck className="w-2.5 h-2.5 text-primary icon-neon-glow" />
-            </div>
+            <span className="text-sm font-black text-[#006064] truncate uppercase tracking-tighter">{user.name}</span>
+            <Badge variant="secondary" className="bg-[#E0F7FA] text-[#00838F] hover:bg-[#E0F7FA] text-[9px] w-fit px-2 font-black uppercase">
+              {user.platform}
+            </Badge>
           </div>
         </div>
         <Button 
           variant="ghost" 
           onClick={handleLogout}
-          className="w-full h-10 flex items-center justify-start gap-4 px-4 py-2 text-destructive/50 hover:text-destructive hover:bg-destructive/10 rounded-full font-black transition-all duration-300 border border-transparent btn-hover-effect"
+          className="w-full justify-start gap-4 text-destructive hover:bg-destructive/10 rounded-full h-11 px-4"
         >
-          <div className="p-2 bg-destructive/10 rounded-full flex items-center justify-center shrink-0">
+          <div className="p-2 bg-destructive/10 rounded-full">
             <LogOut className="w-4 h-4" />
           </div>
-          <span className="text-[9px] uppercase tracking-widest font-headline">Logout</span>
+          <span className="font-black text-xs uppercase tracking-widest">Logout</span>
         </Button>
       </div>
     </aside>

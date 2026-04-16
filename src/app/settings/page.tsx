@@ -1,10 +1,9 @@
-
 "use client"
 
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { User, Bell, Shield, Smartphone, CreditCard, ChevronRight, Save, Trash2, Key, HelpCircle } from 'lucide-react';
+import { User, Bell, Shield, CreditCard, HelpCircle, Save, Trash2, Key, ChevronRight } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,14 +12,7 @@ import { DashboardLayout } from '@/components/DashboardLayout';
 import { useToast } from '@/hooks/use-toast';
 
 export default function SettingsPage() {
-  const [activeTab, setActiveTab] = useState('profile');
-  const [userData, setUserData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    city: '',
-    platform: ''
-  });
+  const [userData, setUserData] = useState({ name: '', phone: '', email: '', city: '', platform: '' });
   const { toast } = useToast();
 
   useEffect(() => {
@@ -35,98 +27,78 @@ export default function SettingsPage() {
           city: parsed.city || 'Chennai',
           platform: parsed.platform || 'Swiggy'
         });
-      } catch (e) {
-        console.error("Failed to parse user session");
-      }
+      } catch (e) {}
     }
   }, []);
 
-  const handleSaveProfile = () => {
+  const handleSave = () => {
     localStorage.setItem('tp_user', JSON.stringify(userData));
-    toast({
-      title: "Profile Updated!",
-      description: "Your information has been successfully saved."
-    });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUserData(prev => ({ ...prev, [name]: value }));
+    toast({ title: "Settings Saved!", description: "Your profile has been updated." });
   };
 
   return (
     <DashboardLayout>
-      <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10">
+      <div className="max-w-4xl space-y-6 animate-in fade-in duration-500">
         <header>
-          <div className="p-6 bg-black/40 border border-white/5 rounded-[2rem] w-fit btn-hover-effect">
-            <h1 className="text-3xl font-black text-white uppercase tracking-tighter">Settings</h1>
-            <p className="text-primary font-bold uppercase tracking-widest text-[9px] icon-neon-glow">Manage your account and app preferences.</p>
-          </div>
+          <h1 className="text-3xl font-black text-[#006064]">Settings</h1>
+          <p className="text-[#00838F] font-medium mt-1">Manage your account and preferences.</p>
         </header>
 
-        <Tabs defaultValue="profile" onValueChange={setActiveTab} className="w-full">
-          <TabsList className="flex overflow-x-auto bg-black/40 backdrop-blur-xl border border-white/10 p-1.5 h-16 rounded-[1.75rem] mb-8">
-            {[
-              { id: 'profile', icon: User, label: 'Profile' },
-              { id: 'notifications', icon: Bell, label: 'Alerts' },
-              { id: 'payments', icon: CreditCard, label: 'Payouts' },
-              { id: 'privacy', icon: Shield, label: 'Privacy' },
-              { id: 'support', icon: HelpCircle, label: 'Support' },
-            ].map(tab => (
-              <TabsTrigger key={tab.id} value={tab.id} className="flex-1 rounded-[1.25rem] font-black data-[state=active]:bg-primary data-[state=active]:text-white gap-2 min-w-[120px] text-[11px] text-white/60 btn-hover-effect">
-                <tab.icon className="w-4 h-4" /> {tab.label}
-              </TabsTrigger>
-            ))}
+        <Tabs defaultValue="profile" className="w-full">
+          <TabsList className="grid grid-cols-5 bg-white card-shadow border-none p-1.5 h-16 rounded-xl mb-8">
+            <TabsTrigger value="profile" className="rounded-lg font-bold text-xs flex gap-2 data-[state=active]:bg-[#E0F7FA] data-[state=active]:text-[#00ACC1]"><User className="w-4 h-4" /> Profile</TabsTrigger>
+            <TabsTrigger value="notifications" className="rounded-lg font-bold text-xs flex gap-2 data-[state=active]:bg-[#E0F7FA] data-[state=active]:text-[#00ACC1]"><Bell className="w-4 h-4" /> Alerts</TabsTrigger>
+            <TabsTrigger value="payments" className="rounded-lg font-bold text-xs flex gap-2 data-[state=active]:bg-[#E0F7FA] data-[state=active]:text-[#00ACC1]"><CreditCard className="w-4 h-4" /> Payouts</TabsTrigger>
+            <TabsTrigger value="privacy" className="rounded-lg font-bold text-xs flex gap-2 data-[state=active]:bg-[#E0F7FA] data-[state=active]:text-[#00ACC1]"><Shield className="w-4 h-4" /> Privacy</TabsTrigger>
+            <TabsTrigger value="support" className="rounded-lg font-bold text-xs flex gap-2 data-[state=active]:bg-[#E0F7FA] data-[state=active]:text-[#00ACC1]"><HelpCircle className="w-4 h-4" /> Support</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="profile" className="space-y-6">
-            <Card className="card-neon-glow rounded-[2rem]">
-              <CardHeader className="border-b border-white/5 px-8 py-6">
-                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Personal Information</CardTitle>
+          <TabsContent value="profile">
+            <Card className="bg-white border-none card-shadow rounded-xl">
+              <CardHeader className="px-8 py-6 border-b border-border">
+                <CardTitle className="text-lg font-black text-[#006064]">Profile Information</CardTitle>
               </CardHeader>
               <CardContent className="p-8 space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[
-                    { label: 'Full Name', name: 'name', value: userData.name },
-                    { label: 'Phone Number', name: 'phone', value: userData.phone },
-                    { label: 'Email Address', name: 'email', value: userData.email },
-                    { label: 'City', name: 'city', value: userData.city },
-                  ].map((field) => (
-                    <div key={field.name} className="space-y-2">
-                      <label className="text-[9px] font-black text-white/40 uppercase tracking-widest ml-1">{field.label}</label>
-                      <Input name={field.name} value={field.value} onChange={handleChange} className="h-14 bg-white/5 border-white/10 rounded-[1rem] font-black text-white focus:border-primary/40 px-5 text-base" />
+                  {['name', 'phone', 'email', 'city'].map((key) => (
+                    <div key={key} className="space-y-2">
+                      <label className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest">{key}</label>
+                      <Input 
+                        value={userData[key as keyof typeof userData]} 
+                        onChange={(e) => setUserData({...userData, [key]: e.target.value})}
+                        className="h-12 bg-[#F1F5F9]/30 rounded-lg font-medium" 
+                      />
                     </div>
                   ))}
                   <div className="space-y-2">
-                    <label className="text-[9px] font-black text-white/40 uppercase tracking-widest ml-1">Delivery Platform</label>
-                    <Input value={userData.platform} disabled className="h-14 bg-black/40 border-white/5 rounded-[1rem] font-black text-primary opacity-60 px-5 text-base cursor-not-allowed" />
+                    <label className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest">Platform</label>
+                    <Input value={userData.platform} disabled className="h-12 bg-muted rounded-lg font-bold text-[#006064]/40" />
                   </div>
                 </div>
-                <Button onClick={handleSaveProfile} className="rounded-full bg-primary text-white font-black px-10 h-16 btn-hover-effect text-lg shadow-xl">
-                  <Save className="w-5 h-5 mr-3" /> Save Changes
-                </Button>
+                <Button onClick={handleSave} className="bg-[#00ACC1] hover:bg-[#00ACC1]/90 text-white rounded-full font-bold h-12 px-10">Save Profile</Button>
               </CardContent>
             </Card>
           </TabsContent>
 
           <TabsContent value="notifications">
-            <Card className="card-neon-glow rounded-[2rem]">
-              <CardHeader className="border-b border-white/5 px-8 py-6">
-                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Notification Channels</CardTitle>
+            <Card className="bg-white border-none card-shadow rounded-xl">
+              <CardHeader className="px-8 py-6 border-b border-border">
+                <CardTitle className="text-lg font-black text-[#006064]">Notification Toggles</CardTitle>
               </CardHeader>
-              <CardContent className="p-8 space-y-8">
+              <CardContent className="p-8 space-y-6">
                 {[
-                  { label: 'SMS Notifications', desc: 'Real-time alerts for weather triggers' },
-                  { label: 'Email Alerts', desc: 'Policy renewal and weekly summaries' },
-                  { label: 'Push Notifications', desc: 'Live payout status and app updates' },
-                  { label: 'Premium Due Alerts', desc: 'Reminders before auto-debit' },
+                  { label: 'SMS Notifications', desc: 'Alerts for weather triggers' },
+                  { label: 'Email Summaries', desc: 'Weekly earning reports' },
+                  { label: 'Push Notifications', desc: 'Live payout status' },
+                  { label: 'Claim Alerts', desc: 'Verification updates' },
+                  { label: 'Premium Reminders', desc: 'Before weekly auto-debit' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between p-6 bg-white/5 rounded-[1.25rem] border border-white/5 btn-hover-effect">
-                    <div className="space-y-1">
-                      <p className="font-black text-white text-base">{item.label}</p>
-                      <p className="text-xs font-bold text-white/40">{item.desc}</p>
+                  <div key={i} className="flex items-center justify-between p-4 bg-[#F1F5F9]/30 rounded-lg">
+                    <div>
+                      <p className="font-bold text-[#006064]">{item.label}</p>
+                      <p className="text-xs text-[#00838F]">{item.desc}</p>
                     </div>
-                    <Switch defaultChecked className="data-[state=checked]:bg-primary scale-90" />
+                    <Switch defaultChecked />
                   </div>
                 ))}
               </CardContent>
@@ -134,94 +106,60 @@ export default function SettingsPage() {
           </TabsContent>
 
           <TabsContent value="payments">
-            <Card className="card-neon-glow rounded-[2rem]">
-              <CardHeader className="border-b border-white/5 px-8 py-6">
-                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Payout Methods</CardTitle>
-              </CardHeader>
+            <Card className="bg-white border-none card-shadow rounded-xl">
               <CardContent className="p-8 space-y-6">
-                <div className="p-8 bg-primary/10 rounded-[1.5rem] border border-primary/20 flex items-center justify-between group btn-hover-effect">
-                  <div className="flex items-center gap-6">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center font-black text-primary border-2 border-primary/30 text-lg shadow-[0_0_15px_rgba(0,172,193,0.3)]">UPI</div>
+                <div className="p-6 border border-[#00ACC1]/20 rounded-lg flex justify-between items-center">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-[#E0F7FA] rounded-full text-[#00ACC1] font-black">UPI</div>
                     <div>
-                      <p className="font-black text-white text-lg">rajesh.kumar@okaxis</p>
-                      <p className="text-[9px] font-black text-primary uppercase tracking-widest mt-0.5 icon-neon-glow">Primary Payout Method</p>
+                      <p className="font-black text-[#006064]">rajesh.kumar@okaxis</p>
+                      <p className="text-[10px] font-bold text-[#00ACC1] uppercase">Primary Payout Method</p>
                     </div>
                   </div>
-                  <Button variant="ghost" className="font-black text-primary hover:text-white uppercase tracking-widest text-[10px] btn-hover-effect">Edit</Button>
+                  <Button variant="ghost" className="text-[#00ACC1] font-bold">Edit</Button>
                 </div>
-                <div className="p-8 bg-white/5 rounded-[1.5rem] border border-white/10 flex items-center justify-between opacity-60 btn-hover-effect">
-                  <div className="flex items-center gap-6">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center font-black text-white/20 border-2 border-white/10 text-lg">BANK</div>
-                    <div>
-                      <p className="font-black text-white">ICICI Bank • **** 8841</p>
-                      <p className="text-[9px] font-black text-white/30 uppercase tracking-widest mt-0.5">Secondary Account</p>
-                    </div>
-                  </div>
-                  <Button variant="ghost" className="font-black text-white/30 hover:text-destructive uppercase tracking-widest text-[10px] btn-hover-effect">Remove</Button>
-                </div>
-                <Button variant="outline" className="w-full h-16 rounded-[1.5rem] border-2 border-primary/30 border-dashed font-black text-primary hover:bg-primary/5 text-base btn-hover-effect">
-                  + Link New Payment Method
+                <Button variant="outline" className="w-full h-14 border-dashed border-[#00ACC1] text-[#00ACC1] rounded-lg font-bold hover:bg-[#E0F7FA]">
+                  + Add New Bank Account
                 </Button>
               </CardContent>
             </Card>
           </TabsContent>
 
           <TabsContent value="privacy">
-            <Card className="card-neon-glow rounded-[2rem]">
-              <CardHeader className="border-b border-white/5 px-8 py-6">
-                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Security Controls</CardTitle>
-              </CardHeader>
-              <CardContent className="p-8 space-y-8">
-                <div className="flex items-center justify-between p-8 bg-white/5 rounded-[1.5rem] border border-white/10 btn-hover-effect">
-                  <div className="flex items-center gap-6">
-                    <div className="p-4 bg-primary/20 rounded-xl">
-                      <Key className="w-6 h-6 text-primary icon-neon-glow" />
-                    </div>
-                    <div>
-                      <p className="font-black text-white text-lg">Two-Factor Authentication</p>
-                      <p className="text-xs font-bold text-white/40">Highly recommended for payout safety</p>
-                    </div>
+            <Card className="bg-white border-none card-shadow rounded-xl p-8 space-y-6">
+              <div className="flex items-center justify-between p-6 bg-[#F1F5F9]/30 rounded-lg">
+                <div className="flex items-center gap-4">
+                  <Key className="w-6 h-6 text-[#00ACC1]" />
+                  <div>
+                    <p className="font-bold text-[#006064]">Two-Factor Authentication</p>
+                    <p className="text-xs text-[#00838F]">Extra security for payout changes</p>
                   </div>
-                  <Switch className="data-[state=checked]:bg-primary scale-90" />
                 </div>
-                <div className="space-y-4">
-                  <Button variant="outline" className="w-full h-16 rounded-[1.25rem] font-black justify-between btn-hover-effect px-8 text-base border-white/10 bg-white/5">
-                    Change Password <ChevronRight className="w-5 h-5 text-white/20" />
-                  </Button>
-                  <Button variant="outline" className="w-full h-16 rounded-[1.25rem] font-black justify-between btn-hover-effect px-8 text-base border-white/10 bg-white/5">
-                    Manage Sessions <ChevronRight className="w-5 h-5 text-white/20" />
-                  </Button>
-                  <Button variant="ghost" className="w-full h-16 rounded-[1.25rem] font-black text-destructive/60 hover:text-destructive justify-between hover:bg-destructive/10 px-8 text-base mt-6 btn-hover-effect">
-                    Delete Account <Trash2 className="w-5 h-5" />
-                  </Button>
-                </div>
-              </CardContent>
+                <Switch />
+              </div>
+              <Button variant="outline" className="w-full justify-between h-14 px-8 font-bold text-[#006064]">
+                Change Password <ChevronRight className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" className="w-full justify-between h-14 px-8 font-bold text-destructive hover:bg-destructive/10">
+                Delete Account <Trash2 className="w-4 h-4" />
+              </Button>
             </Card>
           </TabsContent>
 
           <TabsContent value="support">
-            <Card className="card-neon-glow rounded-[2rem]">
-              <CardHeader className="border-b border-white/5 px-8 py-6">
-                <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Help & Support</CardTitle>
-              </CardHeader>
-              <CardContent className="p-8 space-y-8">
-                <Accordion type="single" collapsible className="w-full space-y-3">
-                  {[
-                    { q: "How do I update my UPI ID?", a: "Go to the Payouts tab and click 'Edit' on your primary UPI method. Verification takes 2 minutes." },
-                    { q: "What if a trigger occurred but I didn't get paid?", a: "Parametric verification takes up to 15 mins. Check the 'Claims' tab for live status." },
-                    { q: "How to pause my coverage?", a: "You can pause coverage from the 'My Policy' page if you're taking a break from work." },
-                  ].map((item, i) => (
-                    <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white/5 rounded-[1.25rem] px-8 overflow-hidden btn-hover-effect">
-                      <AccordionTrigger className="font-black text-white text-base hover:no-underline py-6">{item.q}</AccordionTrigger>
-                      <AccordionContent className="font-bold text-white/50 text-sm pb-6">{item.a}</AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-                <div className="flex flex-col gap-4 pt-6">
-                  <Button className="h-16 rounded-full bg-primary text-white font-black text-lg btn-hover-effect shadow-xl">Contact Live Support</Button>
-                  <p className="text-center text-[9px] font-black text-white/20 uppercase tracking-widest">TriggerPe Build v2.8.4 • Stable Distribution</p>
-                </div>
-              </CardContent>
+            <Card className="bg-white border-none card-shadow rounded-xl p-8 space-y-8">
+              <Accordion type="single" collapsible className="w-full">
+                {[
+                  { q: "How do I update my UPI?", a: "Go to Payouts and click Edit." },
+                  { q: "What triggers a payout?", a: "Heavy rain, heat, or outages." },
+                ].map((item, i) => (
+                  <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                    <AccordionTrigger className="font-bold text-[#006064]">{item.q}</AccordionTrigger>
+                    <AccordionContent className="text-[#00838F]">{item.a}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+              <Button className="w-full h-14 bg-[#00ACC1] text-white font-bold rounded-full">Contact Support</Button>
             </Card>
           </TabsContent>
         </Tabs>

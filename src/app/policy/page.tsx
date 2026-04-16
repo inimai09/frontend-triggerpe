@@ -2,98 +2,134 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FileText, ShieldCheck, Download, ExternalLink, RefreshCw, Pause, ArrowRightLeft, CreditCard, Activity } from 'lucide-react';
+import { ShieldCheck, RefreshCw, Pause, ArrowRightLeft, Clock, Zap, History } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { cn } from '@/lib/utils';
 import { DashboardLayout } from '@/components/DashboardLayout';
 
 export default function PolicyPage() {
   return (
     <DashboardLayout>
-      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10">
-        <Card className="card-neon-glow p-6 rounded-[2rem] border-none">
-          <header className="space-y-4">
-            <div className="p-6 bg-black/40 border border-white/5 rounded-[1.75rem] w-full md:w-fit btn-hover-effect">
-              <h1 className="text-3xl font-black text-white uppercase tracking-tighter mb-2 font-headline">My Policy</h1>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#00ACC1]" />
-                <p className="text-primary font-black uppercase tracking-widest text-[9px] icon-neon-glow">Active Parametric Shield</p>
+      <div className="space-y-6 animate-in fade-in duration-500">
+        <header>
+          <h1 className="text-3xl font-black text-[#006064]">My Policy</h1>
+          <p className="text-[#00838F] font-medium mt-1">Manage your active parametric shield.</p>
+        </header>
+
+        {/* Policy Main Details */}
+        <Card className="bg-white border-none card-shadow rounded-xl">
+          <CardContent className="p-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-border pb-8 mb-8">
+              <div className="flex items-center gap-6">
+                <div className="p-4 rounded-full bg-[#E0F7FA] text-[#00ACC1]">
+                  <ShieldCheck className="w-10 h-10" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="text-xl font-black text-[#006064]">POL-C349A4</span>
+                    <Badge className="bg-success text-white border-none text-[10px] font-bold">ACTIVE</Badge>
+                  </div>
+                  <p className="text-sm font-medium text-[#00838F]">Standard Weekly Protection Plan</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div>
+                  <p className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest mb-1">Start Date</p>
+                  <p className="text-sm font-black text-[#006064]">04 Apr 2026</p>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest mb-1">End Date</p>
+                  <p className="text-sm font-black text-[#006064]">11 Apr 2026</p>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest mb-1">Validity</p>
+                  <p className="text-sm font-black text-[#00ACC1] flex items-center gap-1"><Clock className="w-4 h-4" /> 7 Days Left</p>
+                </div>
               </div>
             </div>
-          </header>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                { label: 'Coverage per event', value: '₹400', color: 'text-[#00ACC1]' },
+                { label: 'Total premium paid', value: '₹290', color: 'text-[#006064]' },
+                { label: 'Claims filed', value: '0', color: 'text-[#006064]' },
+              ].map((item, i) => (
+                <div key={i} className="p-6 bg-[#F1F5F9]/30 rounded-lg text-center">
+                  <p className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest mb-1">{item.label}</p>
+                  <p className={cn("text-2xl font-black", item.color)}>{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <Card className="lg:col-span-8 card-neon-glow rounded-[2.5rem] border-none overflow-hidden flex flex-col">
-            <CardHeader className="bg-primary/10 border-b border-white/10 px-8 py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-              <CardTitle className="text-lg font-black text-white flex items-center gap-4 uppercase tracking-widest font-headline">
-                <div className="p-3 bg-primary/20 rounded-full border border-primary/30">
-                  <ShieldCheck className="w-6 h-6 text-primary icon-neon-glow" />
-                </div> POL-C349A4
-              </CardTitle>
-              <Badge className="bg-success/20 text-success border-success/30 font-black px-5 py-2 uppercase tracking-widest text-[8px] rounded-full">SHIELD ACTIVE</Badge>
-            </CardHeader>
-            <CardContent className="p-8 space-y-8 flex-1">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { label: 'Issue Date', value: '04 Apr 2026' },
-                  { label: 'Renewal', value: '11 Apr 2026' },
-                  { label: 'Zone', value: 'Chennai' },
-                  { label: 'Validity', value: '7d Left' },
-                ].map((item, i) => (
-                  <div key={i} className="p-6 bg-black/40 rounded-full border border-white/5 flex flex-col items-center text-center group btn-hover-effect">
-                    <span className="text-[8px] font-black text-white/40 uppercase tracking-widest mb-1">{item.label}</span>
-                    <p className="text-[11px] font-black text-white group-hover:text-primary transition-colors font-headline uppercase">{item.value}</p>
-                  </div>
-                ))}
-              </div>
+        {/* Covered Triggers Grid */}
+        <Card className="bg-white border-none card-shadow rounded-xl">
+          <CardHeader className="px-8 pt-8 pb-4">
+            <CardTitle className="text-lg font-black text-[#006064] flex items-center gap-3">
+              <Zap className="w-5 h-5 text-[#FFB74D]" /> Covered Triggers
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {[
+                { name: 'Heavy Rain', payout: '₹300' },
+                { name: 'Extreme Heat', payout: '₹600' },
+                { name: 'High AQI', payout: '₹600' },
+                { name: 'Lockdown', payout: '₹400' },
+                { name: 'Outage', payout: '₹350' },
+              ].map((t, i) => (
+                <div key={i} className="p-5 border border-border rounded-lg text-center flex flex-col items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-success mb-2" />
+                  <p className="text-[11px] font-bold text-[#006064] uppercase">{t.name}</p>
+                  <p className="text-lg font-black text-[#00ACC1]">{t.payout}</p>
+                  <span className="text-[8px] font-black text-[#00838F]/50 uppercase">Active</span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
-              <div className="pt-8 border-t border-white/5 flex flex-wrap gap-4">
-                <Button className="flex-1 min-w-[140px] rounded-full bg-primary text-white font-black px-6 h-14 btn-hover-effect text-xs shadow-xl font-headline uppercase">
-                  <div className="p-1.5 bg-white/20 rounded-full mr-2">
-                    <RefreshCw className="w-4 h-4" />
-                  </div> RE-ACTIVATE
-                </Button>
-                <Button variant="outline" className="flex-1 min-w-[140px] rounded-full border-warning text-warning hover:bg-warning/20 font-black px-6 h-14 btn-hover-effect text-xs font-headline uppercase">
-                  <div className="p-1.5 bg-warning/10 rounded-full mr-2">
-                    <Pause className="w-4 h-4" />
-                  </div> PAUSE SHIELD
-                </Button>
-                <Button variant="outline" className="flex-1 min-w-[140px] rounded-full border-primary/40 text-white hover:bg-primary/10 font-black px-6 h-14 btn-hover-effect text-xs font-headline uppercase">
-                  <div className="p-1.5 bg-primary/10 rounded-full mr-2">
-                    <ArrowRightLeft className="w-4 h-4" />
-                  </div> SWITCH ZONE
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="lg:col-span-4 space-y-6">
-            <Card className="card-neon-glow rounded-[2.5rem] border-none overflow-hidden">
-              <CardHeader className="bg-white/5 border-b border-white/5 px-6 py-4">
-                <CardTitle className="text-base font-black text-white uppercase tracking-widest flex items-center gap-3 font-headline">
-                  <div className="p-2 bg-primary/20 rounded-full border border-primary/30">
-                    <CreditCard className="w-5 h-5 text-primary" />
-                  </div> Wallet
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6 space-y-4">
-                {[
-                  { label: 'Coverage per event', value: '₹400', color: 'text-primary' },
-                  { label: 'Weekly Premium', value: '₹72.50', color: 'text-white' },
-                  { label: 'Settled Claims', value: '3', color: 'text-white/40' },
-                ].map((item, i) => (
-                  <div key={i} className="p-6 bg-black/40 rounded-full border border-white/5 flex flex-col gap-1 btn-hover-effect">
-                    <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">{item.label}</span>
-                    <span className={cn("text-2xl font-black font-headline", item.color, item.color === 'text-primary' && 'icon-neon-glow tracking-tighter')}>{item.value}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
+        {/* Policy Actions */}
+        <div className="flex flex-wrap gap-4">
+          <Button className="bg-[#00ACC1] hover:bg-[#00ACC1]/90 text-white rounded-full font-bold h-12 px-8 flex-1 sm:flex-none">Renew Policy</Button>
+          <Button className="bg-[#FFB74D] hover:bg-[#FFB74D]/90 text-white rounded-full font-bold h-12 px-8 flex-1 sm:flex-none">Pause Coverage</Button>
+          <Button variant="outline" className="border-[#00ACC1] text-[#00ACC1] rounded-full font-bold h-12 px-8 flex-1 sm:flex-none">Change Tier</Button>
         </div>
+
+        {/* Payment History */}
+        <Card className="bg-white border-none card-shadow rounded-xl overflow-hidden">
+          <CardHeader className="px-8 py-6 border-b border-border">
+            <CardTitle className="text-lg font-black text-[#006064] flex items-center gap-3">
+              <History className="w-5 h-5 text-[#00ACC1]" /> Payment History
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <Table>
+              <TableHeader className="bg-[#F1F5F9]/50">
+                <TableRow>
+                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Date</TableHead>
+                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Amount</TableHead>
+                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Status</TableHead>
+                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase text-right">Receipt</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="px-8 text-sm font-medium">04 Apr 2026</TableCell>
+                  <TableCell className="px-8 text-sm font-black">₹72.50</TableCell>
+                  <TableCell className="px-8">
+                    <Badge className="bg-success/10 text-success border-none text-[10px] font-bold">SUCCESS</Badge>
+                  </TableCell>
+                  <TableCell className="px-8 text-right">
+                    <Button variant="ghost" size="sm" className="text-[#00ACC1] font-bold">Download</Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
       </div>
     </DashboardLayout>
   );

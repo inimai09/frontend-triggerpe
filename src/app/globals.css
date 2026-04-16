@@ -4,44 +4,35 @@
 
 @layer base {
   :root {
-    --background: 187 71% 5%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 187 100% 38%;
+    --background: 180 67% 93%; /* #E0F7FA */
+    --foreground: 183 100% 19%; /* #006064 */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 183 100% 19%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 183 100% 19%;
+    --primary: 187 100% 38%; /* #00ACC1 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 187 40% 28%;
-    --secondary-foreground: 187 71% 93%;
-    --muted: 187 20% 10%;
-    --muted-foreground: 187 40% 60%;
-    --accent: 187 100% 38%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 63%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 187 20% 20%;
-    --input: 187 20% 20%;
+    --secondary: 184 80% 28%; /* #00838F */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 180 20% 90%;
+    --muted-foreground: 183 100% 30%;
+    --accent: 33 100% 65%; /* #FFB74D */
+    --accent-foreground: 183 100% 19%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 180 20% 85%;
+    --input: 180 20% 85%;
     --ring: 187 100% 38%;
-    --radius: 1.25rem;
+    --radius: 0.75rem;
   }
 }
 
 @layer base {
   * {
-    @apply border-white/10;
-  }
-  html {
-    background: linear-gradient(180deg, #001A1A 0%, #00332E 35%, #006064 70%, #00838F 100%) fixed !important;
-    min-height: 100vh;
-    color-scheme: dark;
-    scroll-behavior: smooth;
+    @apply border-border;
   }
   body {
-    background: transparent !important;
-    color: white;
-    @apply font-body antialiased;
-    min-height: 100vh;
+    @apply bg-background text-foreground font-body antialiased;
   }
 }
 
@@ -50,62 +41,15 @@
 }
 
 .font-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn-hover-effect {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,172,193,0.6)] active:scale-95 hover:-translate-y-1 !important;
-  border-radius: inherit !important;
-  transform-style: preserve-3d;
-  will-change: transform;
+  @apply transition-all duration-200 hover:scale-[1.02] active:scale-95 !important;
 }
 
-.card-neon-glow {
-  @apply bg-black/70 backdrop-blur-2xl border border-primary/30 shadow-[0_0_30px_rgba(0,172,193,0.15)] !important;
-  border-radius: 2.5rem !important;
-  overflow: hidden !important;
-}
-
-.icon-neon-glow {
-  filter: drop-shadow(0 0 10px rgba(0, 172, 193, 0.9));
-}
-
-@keyframes neon-pulse-white {
-  0%, 100% { 
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
-    opacity: 0.9;
-  }
-  50% { 
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
-    opacity: 1;
-  }
-}
-
-.animate-neon-white {
-  animation: neon-pulse-white 3s ease-in-out infinite;
-}
-
-@keyframes sparkle-float {
-  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
-  50% { opacity: 0.9; transform: translate(var(--move-x), var(--move-y)) scale(1.1); }
-  100% { transform: translate(0, 0) scale(0.5); opacity: 0; }
-}
-
-.animate-sparkle-float {
-  animation: sparkle-float var(--duration) ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.text-highlight-shimmer {
-  background: linear-gradient(90deg, #00ACC1 0%, #FFFFFF 50%, #00ACC1 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 4s linear infinite;
+.card-shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -114,4 +58,13 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count-up {
+  animation: countUp 0.5s ease-out forwards;
 }
