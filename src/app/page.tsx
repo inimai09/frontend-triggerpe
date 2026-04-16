@@ -1,3 +1,6 @@
+"use client"
+
+import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -17,8 +20,8 @@ import {
   ShieldCheck, 
   Smartphone, 
   Cpu,
-  CheckCircle2,
-  HelpCircle,
+  CircleCheck,
+  CircleHelp,
   IndianRupee
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -44,13 +47,17 @@ export default function LandingPage() {
     { name: 'PREMIUM', price: '99', features: ['Full Trigger Suite', 'Outage Protection', 'Instant UPI Payouts', 'Custom Risk Profile'], color: 'bg-white' },
   ];
 
+  const handlePriceClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="flex flex-col min-h-screen font-body text-[#006064]">
       {/* Hero Section */}
-      <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center px-6 lg:px-20 py-20 gap-20">
+      <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center px-6 lg:px-20 py-20 gap-20">
         <div className="flex-1 space-y-12 animate-in fade-in slide-in-from-left-8 duration-1000">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-white rounded-full shadow-sm flex items-center justify-center">
+            <div className="p-2 bg-white rounded-full shadow-sm flex items-center justify-center border border-[#00ACC1]/20">
               <ShieldCheck className="w-5 h-5 text-primary" />
             </div>
             <Badge className="bg-white/20 backdrop-blur-md text-[#006064] py-2 px-6 rounded-full font-black text-xs uppercase tracking-widest border border-white/30">
@@ -123,7 +130,7 @@ export default function LandingPage() {
               { title: 'Auto Payout', desc: 'When triggers hit, money is pushed instantly to your wallet.', icon: Zap, delay: 'delay-300' },
             ].map((step, i) => (
               <div key={i} className={cn("space-y-8 text-center md:text-left group animate-in fade-in slide-in-from-bottom-8 duration-700 transition-all hover:scale-105", step.delay)}>
-                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border border-primary/20 mx-auto md:mx-0 shadow-inner">
+                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border-2 border-primary/20 mx-auto md:mx-0 shadow-inner group-hover:border-primary transition-colors">
                   <step.icon className="w-10 h-10 text-primary" />
                 </div>
                 <div className="p-8 border-2 border-primary/20 rounded-[2.5rem] bg-white/50 backdrop-blur-sm group-hover:border-primary/50 transition-colors">
@@ -150,26 +157,32 @@ export default function LandingPage() {
               <Card key={i} className={cn("border-none shadow-xl rounded-[3rem] overflow-hidden flex flex-col transition-all hover:scale-105 duration-300 animate-in fade-in slide-in-from-bottom-12", plan.color)}>
                 <CardContent className="p-12 flex flex-col flex-1">
                   <span className="text-[10px] font-black uppercase text-primary tracking-[0.3em] mb-4">{plan.name}</span>
-                  <Link href="/" className="group mb-8 block">
+                  <div 
+                    onClick={handlePriceClick}
+                    className="group mb-8 cursor-pointer flex flex-col items-start"
+                  >
                     <div className="flex items-baseline gap-1 group-hover:scale-110 transition-transform origin-left">
                       <IndianRupee className="w-6 h-6 text-[#006064] mb-2" />
                       <span className="text-6xl font-black text-[#006064] tracking-tighter">{plan.price}</span>
                       <span className="text-sm font-bold text-[#00838F]">/week</span>
                     </div>
                     <p className="text-[10px] font-black text-primary uppercase mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Click to Refresh</p>
-                  </Link>
+                  </div>
                   <div className="space-y-4 flex-1">
                     {plan.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-3 text-sm font-bold text-[#006064]">
-                        <div className="p-1 bg-[#E0F7FA] rounded-full flex items-center justify-center">
-                          <CheckCircle2 className="w-3 h-3 text-primary" />
+                        <div className="p-1 bg-[#E0F7FA] rounded-full flex items-center justify-center border border-[#00ACC1]/20">
+                          <CircleCheck className="w-3 h-3 text-primary" />
                         </div>
                         {feature}
                       </div>
                     ))}
                   </div>
-                  <Button asChild className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-xs mt-12 shadow-lg btn-hover-effect">
-                    <Link href="/">Get {plan.name} Shield</Link>
+                  <Button 
+                    onClick={handlePriceClick}
+                    className="w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-xs mt-12 shadow-lg btn-hover-effect border-none"
+                  >
+                    Get {plan.name} Shield
                   </Button>
                 </CardContent>
               </Card>
@@ -182,8 +195,8 @@ export default function LandingPage() {
       <section className="py-32 px-6 lg:px-20 bg-transparent">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
-              <HelpCircle className="w-8 h-8 text-primary" />
+            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border border-[#00ACC1]/20">
+              <CircleHelp className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-5xl font-black tracking-tighter font-headline text-[#006064] uppercase">Common Questions</h2>
             <div className="w-24 h-1.5 bg-primary mx-auto rounded-full" />

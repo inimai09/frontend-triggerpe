@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, FileCheck, TrendingUp, Zap, Activity, ShieldAlert, BarChart3 } from 'lucide-react';
+import { Users, FileCheck, TrendingUp, Zap, Activity, ShieldAlert, BarChart3, ChevronRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 export default function AdminPage() {
   const stats = [
     { label: 'Total Workers', value: '2,847', icon: Users, color: 'text-primary' },
-    { label: 'Active Policies', value: '2,801', icon: FileCheck, color: 'text-success' },
+    { label: 'Active Policies', value: '2,801', icon: FileCheck, color: 'text-primary' },
     { label: 'Premium (Weekly)', value: '₹2.04L', icon: TrendingUp, color: 'text-primary' },
     { label: 'Total Payouts', value: '₹12.0L', icon: Zap, color: 'text-warning' },
     { label: 'Loss Ratio', value: '65%', icon: Activity, color: 'text-destructive' },
@@ -83,8 +83,8 @@ export default function AdminPage() {
                     <p className="text-[10px] font-black text-[#00838F] uppercase mb-4 tracking-widest">Claims by Trigger</p>
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={barData}>
-                        <XAxis dataKey="trigger" fontSize={10} fontWeight="bold" stroke="#00838F" />
-                        <YAxis fontSize={10} fontWeight="bold" stroke="#00838F" />
+                        <XAxis dataKey="trigger" fontSize={10} stroke="#00838F" />
+                        <YAxis fontSize={10} stroke="#00838F" />
                         <Tooltip />
                         <Bar dataKey="count" fill="#00ACC1" radius={[4, 4, 0, 0]} />
                       </BarChart>
@@ -120,8 +120,8 @@ export default function AdminPage() {
                           <Badge className="bg-destructive/10 text-destructive border-none font-black text-[10px]">{row.score}</Badge>
                         </TableCell>
                         <TableCell className="px-8 text-right space-x-2">
-                          <Button variant="outline" size="sm" className="h-8 rounded-full text-success border-success hover:bg-success/10 font-black text-[10px]">Approve</Button>
-                          <Button variant="outline" size="sm" className="h-8 rounded-full text-destructive border-destructive hover:bg-destructive/10 font-black text-[10px]">Reject</Button>
+                          <Button variant="outline" size="sm" className="h-8 rounded-full text-primary border-primary font-black text-[10px]">Approve</Button>
+                          <Button variant="outline" size="sm" className="h-8 rounded-full text-destructive border-destructive font-black text-[10px]">Reject</Button>
                         </TableCell>
                       </TableRow>
                     ))}
