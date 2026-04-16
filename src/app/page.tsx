@@ -9,7 +9,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { Sun, CloudRain, Snowflake, Zap, ArrowRight } from 'lucide-react';
+import { Sun, CloudRain, Snowflake, Zap, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -22,7 +22,7 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-transparent">
+    <div className="flex flex-col min-h-screen bg-transparent scroll-smooth">
       
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10 overflow-hidden">
@@ -33,20 +33,29 @@ export default function LandingPage() {
           <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6 drop-shadow-2xl font-headline">
             When storms stop you,<br />
             <span className="block mt-4">
-              <span className="animate-neon-white text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">we pay you instantly.</span>
+              <span className="text-white animate-neon-white">we pay you instantly.</span>
             </span>
           </h1>
           <p className="text-lg text-white/90 mt-8 mb-10 max-w-xl font-bold animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 drop-shadow">
             Zero-touch parametric insurance for delivery heroes. No forms, no waiting, automatic payouts.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
-            <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black">
-              <Link href="/register" className="flex items-center gap-3">Get Protected <ArrowRight className="w-6 h-6" /></Link>
-            </Button>
+          <div id="get-protected-now" className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+            <div className="flex items-center gap-4 text-primary group">
+               <div className="p-3 bg-primary/10 rounded-2xl border border-primary/20 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(0,172,193,0.3)]">
+                 <ShieldCheck className="w-8 h-8 icon-neon-glow" />
+               </div>
+               <span className="text-2xl font-black uppercase tracking-tighter text-white drop-shadow-sm">GET PROTECTED NOW</span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-2xl">
+                <Link href="/register" className="flex items-center gap-3">Start Coverage <ArrowRight className="w-6 h-6" /></Link>
+              </Button>
+            </div>
           </div>
           
-          <div className="space-y-4 animate-in fade-in duration-1000 delay-500">
+          <div className="mt-12 space-y-4 animate-in fade-in duration-1000 delay-500">
             <p className="text-sm font-bold text-white/80">
               <span className="text-primary font-black">2,847+</span> Partners • ₹12L+ Auto-Paid • 99.9% Payout Rate
             </p>
@@ -93,7 +102,7 @@ export default function LandingPage() {
               { title: 'Live Monitoring', desc: 'Our engine tracks live satellite weather data 24/7 for your specific zone.' },
               { title: 'Auto Payouts', desc: 'Money hits your UPI automatically within minutes of the weather trigger.' }
             ].map((item, idx) => (
-              <Card key={idx} className="p-10 text-center card-neon-glow rounded-2xl btn-hover-effect group overflow-hidden">
+              <Card key={idx} className="p-10 text-center card-neon-glow rounded-2xl btn-hover-effect group overflow-hidden border-none shadow-2xl">
                 <div className="relative z-10">
                   <h3 className="text-2xl font-black mb-6 uppercase tracking-tight text-highlight-shimmer transition-transform group-hover:scale-110 duration-500 font-headline">
                     {item.title}
@@ -112,9 +121,9 @@ export default function LandingPage() {
           <h2 className="text-5xl font-black text-white text-center mb-20 uppercase tracking-tighter font-headline">Simple Pricing</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: 'BASIC', price: '₹49', coverage: '₹800 max', perks: ['Rain + Heat triggers'], btn: 'Get Basic' },
-              { name: 'STANDARD', price: '₹79', coverage: '₹1400 max', perks: ['All 5 triggers'], badge: 'MOST POPULAR', btn: 'Get Standard' },
-              { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + Priority'], btn: 'Get Premium' },
+              { name: 'BASIC', price: '₹49', coverage: '₹800 max', perks: ['Rain + Heat triggers'], btn: 'Get Protected' },
+              { name: 'STANDARD', price: '₹79', coverage: '₹1400 max', perks: ['All 5 triggers'], badge: 'MOST POPULAR', btn: 'Get Protected' },
+              { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + Priority'], btn: 'Get Protected' },
             ].map((plan, i) => (
               <Card key={i} className={`p-12 flex flex-col items-center card-neon-glow border-2 rounded-2xl btn-hover-effect ${plan.badge ? 'border-primary shadow-[0_0_30px_rgba(0,172,193,0.3)] scale-105' : 'border-primary/10'}`}>
                 {plan.badge && <Badge className="bg-primary text-white mb-6 font-black py-1 px-4">{plan.badge}</Badge>}
@@ -124,8 +133,8 @@ export default function LandingPage() {
                 <ul className="space-y-4 mb-10 w-full">
                   {plan.perks.map((p, j) => <li key={j} className="text-sm font-bold text-center text-white/70">✓ {p}</li>)}
                 </ul>
-                <Button asChild className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-14 text-lg text-white btn-hover-effect">
-                  <Link href="/register">{plan.btn}</Link>
+                <Button asChild className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-14 text-lg text-white btn-hover-effect shadow-xl border-none">
+                  <Link href="#get-protected-now">{plan.btn}</Link>
                 </Button>
               </Card>
             ))}
@@ -144,7 +153,7 @@ export default function LandingPage() {
               { q: "How do I get paid?", a: "Payouts are pushed directly to your registered UPI ID (GPay/PhonePe/Paytm) within minutes." },
               { q: "Can I cancel anytime?", a: "Yes. Coverage is weekly, you can stop renewal at any time through your dashboard." }
             ].map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="card-neon-glow rounded-2xl px-8 mb-4 transition-all" style={{ animationDelay: `${i * 100}ms` }}>
+              <AccordionItem key={i} value={`item-${i}`} className="card-neon-glow rounded-2xl px-8 mb-4 border-none shadow-lg transition-all" style={{ animationDelay: `${i * 100}ms` }}>
                 <AccordionTrigger className="font-black text-white hover:no-underline text-lg font-headline">{item.q}</AccordionTrigger>
                 <AccordionContent className="font-bold text-white/60 leading-relaxed">{item.a}</AccordionContent>
               </AccordionItem>

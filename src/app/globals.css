@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 187 71% 10%;
+    --background: 187 71% 5%;
     --foreground: 0 0% 100%;
     --card: 0 0% 0%;
     --card-foreground: 0 0% 100%;
@@ -35,6 +35,7 @@
     background: linear-gradient(180deg, #001A1C 0%, #003033 35%, #006064 70%, #00ACC1 100%) fixed !important;
     min-height: 100vh;
     color-scheme: dark;
+    scroll-behavior: smooth;
   }
   body {
     background: transparent !important;
@@ -53,11 +54,22 @@
 }
 
 .icon-neon-glow {
-  filter: drop-shadow(0 0 5px rgba(0, 172, 193, 0.8));
+  filter: drop-shadow(0 0 8px rgba(0, 172, 193, 0.9));
 }
 
-.text-neon-white {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 172, 193, 0.3);
+@keyframes neon-pulse-white {
+  0%, 100% { 
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+    opacity: 0.95;
+  }
+  50% { 
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9));
+    opacity: 1;
+  }
+}
+
+.animate-neon-white {
+  animation: neon-pulse-white 2.5s ease-in-out infinite;
 }
 
 @keyframes sparkle-float {
@@ -68,15 +80,6 @@
 
 .animate-sparkle-float {
   animation: sparkle-float var(--duration) ease-in-out infinite;
-}
-
-@keyframes neon-pulse {
-  0%, 100% { opacity: 0.9; filter: drop-shadow(0 0 5px white); }
-  50% { opacity: 1; filter: drop-shadow(0 0 15px white); }
-}
-
-.animate-neon-white {
-  animation: neon-pulse 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
