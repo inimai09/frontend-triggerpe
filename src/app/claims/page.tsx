@@ -10,6 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Zap, CheckCircle2, Clock, ShieldAlert, Search, Filter, ChevronRight, MapPin } from 'lucide-react';
 import { DashboardLayout } from '@/components/DashboardLayout';
+import { cn } from '@/lib/utils';
 
 export default function ClaimsPage() {
   const [selectedClaim, setSelectedClaim] = useState<any>(null);
@@ -40,15 +41,15 @@ export default function ClaimsPage() {
     <DashboardLayout>
       <div className="space-y-6 animate-in fade-in duration-500">
         <header>
-          <h1 className="text-3xl font-black text-[#006064]">Claims Log</h1>
+          <h1 className="text-3xl font-black text-[#006064] font-headline">Claims Log</h1>
           <p className="text-[#00838F] font-medium mt-1">Full history of parametric payouts.</p>
         </header>
 
         {/* Summary Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {summary.map((item, i) => (
-            <Card key={i} className="bg-white border-none card-shadow rounded-xl p-6 flex items-center gap-5">
-              <div className={cn("p-3 rounded-full bg-[#E0F7FA]", item.color)}>
+            <Card key={i} className="bg-white border-none card-shadow rounded-[2rem] p-6 flex items-center gap-5">
+              <div className={cn("p-4 rounded-full bg-[#E0F7FA] flex items-center justify-center", item.color)}>
                 <item.icon className="w-6 h-6" />
               </div>
               <div className="flex flex-col">
@@ -60,16 +61,16 @@ export default function ClaimsPage() {
         </div>
 
         {/* Filter Bar */}
-        <Card className="bg-white border-none card-shadow rounded-xl">
+        <Card className="bg-white border-none card-shadow rounded-[2rem]">
           <CardContent className="p-6">
             <div className="flex flex-col xl:flex-row gap-4">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#00838F]/40" />
-                <Input className="pl-12 h-12 bg-[#F1F5F9]/50 border-border rounded-lg text-sm font-medium" placeholder="Search by Claim ID..." />
+                <Input className="pl-12 h-14 bg-[#F1F5F9]/50 border-border rounded-full text-sm font-medium" placeholder="Search by Claim ID..." />
               </div>
               <div className="flex flex-wrap gap-4">
                 <Select>
-                  <SelectTrigger className="w-[160px] h-12 bg-white rounded-lg font-medium text-xs">
+                  <SelectTrigger className="w-[180px] h-14 bg-white rounded-full font-medium text-xs">
                     <SelectValue placeholder="Trigger Type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -78,7 +79,7 @@ export default function ClaimsPage() {
                   </SelectContent>
                 </Select>
                 <Select>
-                  <SelectTrigger className="w-[140px] h-12 bg-white rounded-lg font-medium text-xs">
+                  <SelectTrigger className="w-[160px] h-14 bg-white rounded-full font-medium text-xs">
                     <SelectValue placeholder="Status" />
                   </SelectTrigger>
                   <SelectContent>
@@ -86,7 +87,7 @@ export default function ClaimsPage() {
                     <SelectItem value="pending">Pending</SelectItem>
                   </SelectContent>
                 </Select>
-                <Button variant="outline" className="h-12 w-12 rounded-lg border-border bg-white text-[#00838F]">
+                <Button variant="outline" className="h-14 w-14 rounded-full border-border bg-white text-[#00838F]">
                   <Filter className="w-5 h-5" />
                 </Button>
               </div>
@@ -95,18 +96,18 @@ export default function ClaimsPage() {
         </Card>
 
         {/* Claims Table */}
-        <Card className="bg-white border-none card-shadow rounded-xl overflow-hidden">
+        <Card className="bg-white border-none card-shadow rounded-[2.5rem] overflow-hidden">
           <CardContent className="p-0">
             <Table>
               <TableHeader className="bg-[#F1F5F9]/50">
                 <TableRow>
-                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Claim ID</TableHead>
-                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Date</TableHead>
-                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Trigger</TableHead>
-                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Zone</TableHead>
-                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Payout</TableHead>
-                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase">Status</TableHead>
-                  <TableHead className="px-8 font-bold text-[#00838F] text-[10px] uppercase text-right">Action</TableHead>
+                  <TableHead className="px-10 font-bold text-[#00838F] text-[10px] uppercase h-14">Claim ID</TableHead>
+                  <TableHead className="px-10 font-bold text-[#00838F] text-[10px] uppercase h-14">Date</TableHead>
+                  <TableHead className="px-10 font-bold text-[#00838F] text-[10px] uppercase h-14">Trigger</TableHead>
+                  <TableHead className="px-10 font-bold text-[#00838F] text-[10px] uppercase h-14">Zone</TableHead>
+                  <TableHead className="px-10 font-bold text-[#00838F] text-[10px] uppercase h-14">Payout</TableHead>
+                  <TableHead className="px-10 font-bold text-[#00838F] text-[10px] uppercase h-14">Status</TableHead>
+                  <TableHead className="px-10 font-bold text-[#00838F] text-[10px] uppercase h-14 text-right">Action</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -116,15 +117,17 @@ export default function ClaimsPage() {
                     className="cursor-pointer hover:bg-[#F1F5F9]/30 transition-colors group" 
                     onClick={() => setSelectedClaim(claim)}
                   >
-                    <TableCell className="px-8 py-5 text-sm font-black text-[#006064]">{claim.id}</TableCell>
-                    <TableCell className="px-8 py-5 text-xs font-medium text-[#00838F]">{claim.date}</TableCell>
-                    <TableCell className="px-8 py-5">
-                      <Badge className="bg-[#E0F7FA] text-[#00ACC1] border-none text-[10px] font-bold">{claim.trigger}</Badge>
+                    <TableCell className="px-10 py-6 text-sm font-black text-[#006064]">{claim.id}</TableCell>
+                    <TableCell className="px-10 py-6 text-xs font-medium text-[#00838F]">{claim.date}</TableCell>
+                    <TableCell className="px-10 py-6">
+                      <Badge className="bg-[#E0F7FA] text-[#00ACC1] border-none text-[10px] font-bold px-3">
+                        {claim.trigger}
+                      </Badge>
                     </TableCell>
-                    <TableCell className="px-8 py-5 text-sm font-bold text-[#006064]">{claim.location}</TableCell>
-                    <TableCell className="px-8 py-5 text-lg font-black text-[#006064]">{claim.amount}</TableCell>
-                    <TableCell className="px-8 py-5">{getStatusBadge(claim.status)}</TableCell>
-                    <TableCell className="px-8 py-5 text-right">
+                    <TableCell className="px-10 py-6 text-sm font-bold text-[#006064]">{claim.location}</TableCell>
+                    <TableCell className="px-10 py-6 text-lg font-black text-[#006064]">{claim.amount}</TableCell>
+                    <TableCell className="px-10 py-6">{getStatusBadge(claim.status)}</TableCell>
+                    <TableCell className="px-10 py-6 text-right">
                       <ChevronRight className="w-5 h-5 text-[#00838F]/30 ml-auto group-hover:text-[#00ACC1] transition-colors" />
                     </TableCell>
                   </TableRow>
@@ -136,59 +139,62 @@ export default function ClaimsPage() {
 
         {/* Claim Detail Modal */}
         <Dialog open={!!selectedClaim} onOpenChange={() => setSelectedClaim(null)}>
-          <DialogContent className="max-w-xl bg-white p-0 overflow-hidden rounded-xl border-none">
-            <DialogHeader className="bg-[#E0F7FA] p-8">
+          <DialogContent className="max-w-xl bg-white p-0 overflow-hidden rounded-[3rem] border-none shadow-2xl">
+            <DialogHeader className="bg-[#E0F7FA] p-10">
               <div className="flex justify-between items-center">
-                <DialogTitle className="text-2xl font-black text-[#006064]">Claim: {selectedClaim?.id}</DialogTitle>
-                <Badge className="bg-success text-white border-none font-bold">PAID</Badge>
+                <DialogTitle className="text-2xl font-black text-[#006064] font-headline">Claim Detail: {selectedClaim?.id}</DialogTitle>
+                <Badge className="bg-success text-white border-none font-bold px-4 py-1.5">PAID</Badge>
               </div>
             </DialogHeader>
-            <div className="p-8 space-y-8">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-5 bg-[#F1F5F9]/50 rounded-lg">
-                  <span className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest block mb-1">Trigger Event</span>
-                  <p className="font-black text-[#006064] text-lg">{selectedClaim?.trigger}</p>
+            <div className="p-10 space-y-10">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="p-6 bg-[#F1F5F9]/50 rounded-[2rem]">
+                  <span className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest block mb-2">Trigger Event</span>
+                  <p className="font-black text-[#006064] text-xl">{selectedClaim?.trigger}</p>
                 </div>
-                <div className="p-5 bg-[#F1F5F9]/50 rounded-lg text-right">
-                  <span className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest block mb-1">Payout Amount</span>
-                  <p className="font-black text-[#00ACC1] text-2xl">{selectedClaim?.amount}</p>
+                <div className="p-6 bg-[#F1F5F9]/50 rounded-[2rem] text-right">
+                  <span className="text-[10px] font-bold text-[#00838F] uppercase tracking-widest block mb-2">Payout Amount</span>
+                  <p className="font-black text-[#00ACC1] text-3xl">{selectedClaim?.amount}</p>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="text-sm font-bold text-[#006064] flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#00ACC1]" /> Verification Timeline
+              <div className="space-y-6">
+                <h4 className="text-sm font-bold text-[#006064] flex items-center gap-3">
+                  <div className="p-2 bg-[#E0F7FA] rounded-full"><Clock className="w-4 h-4 text-[#00ACC1]" /></div>
+                  Verification Timeline
                 </h4>
-                <div className="space-y-6 relative before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[1px] before:bg-[#E2E8F0]">
+                <div className="space-y-8 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-[#E2E8F0]">
                   {[
                     { label: 'Claim Created via Trigger', time: '14:21 PM', status: 'Done' },
                     { label: 'Neural Fraud Check Passed', time: '14:21 PM', status: 'Done' },
                     { label: 'UPI Transaction Initiated', time: '14:22 PM', status: 'Done' },
                     { label: 'Payment Settled', time: '14:25 PM', status: 'Done' },
                   ].map((step, i) => (
-                    <div key={i} className="flex items-start gap-6 relative z-10">
-                      <div className="w-4 h-4 rounded-full bg-success border-4 border-white shadow-sm" />
+                    <div key={i} className="flex items-start gap-8 relative z-10">
+                      <div className="w-6 h-6 rounded-full bg-success border-4 border-white shadow-md" />
                       <div className="flex-1 flex justify-between items-center">
                         <div>
                           <p className="text-sm font-bold text-[#006064]">{step.label}</p>
                           <p className="text-[10px] font-medium text-[#00838F]">{step.time}</p>
                         </div>
-                        <CheckCircle2 className="w-4 h-4 text-success" />
+                        <CheckCircle2 className="w-5 h-5 text-success" />
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="p-4 bg-[#E0F7FA] rounded-lg border border-[#00ACC1]/20 flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-[#00ACC1]" />
+              <div className="p-6 bg-[#E0F7FA] rounded-[2rem] border border-[#00ACC1]/20 flex items-center gap-5">
+                <div className="p-3 bg-white rounded-full shadow-sm">
+                  <MapPin className="w-6 h-6 text-[#00ACC1]" />
+                </div>
                 <div>
-                  <p className="text-xs font-bold text-[#006064]">Zone Verified: Chennai Central</p>
+                  <p className="text-sm font-black text-[#006064]">Zone Verified: Chennai Central</p>
                   <p className="text-[10px] font-medium text-[#00838F]">Validated via high-fidelity weather telemetry</p>
                 </div>
               </div>
               
-              <Button onClick={() => setSelectedClaim(null)} className="w-full bg-[#00ACC1] hover:bg-[#00ACC1]/90 text-white rounded-full font-bold h-12">Close Detail</Button>
+              <Button onClick={() => setSelectedClaim(null)} className="w-full bg-[#00ACC1] hover:bg-[#00ACC1]/90 text-white rounded-full font-black h-16 uppercase text-lg tracking-tight shadow-xl btn-hover-effect">Close Detail</Button>
             </div>
           </DialogContent>
         </Dialog>

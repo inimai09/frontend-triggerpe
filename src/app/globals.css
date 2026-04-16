@@ -23,7 +23,7 @@
     --border: 180 20% 85%;
     --input: 180 20% 85%;
     --ring: 187 100% 38%;
-    --radius: 0.75rem;
+    --radius: 1.5rem;
   }
 }
 
@@ -32,7 +32,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply font-body antialiased min-h-screen text-foreground;
+    background: linear-gradient(180deg, #004D40 0%, #00838F 40%, #E0F7FA 100%) fixed;
   }
 }
 
@@ -45,11 +46,11 @@
 }
 
 .btn-hover-effect {
-  @apply transition-all duration-200 hover:scale-[1.02] active:scale-95 !important;
+  @apply transition-all duration-300 hover:scale-[1.05] active:scale-95 !important;
 }
 
 .card-shadow {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -58,6 +59,17 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@keyframes sparkle-float {
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  20% { opacity: 0.8; }
+  50% { transform: translate(var(--move-x), var(--move-y)) scale(1.2); opacity: 0.4; }
+  100% { transform: translate(calc(var(--move-x) * 1.5), calc(var(--move-y) * 1.5)) scale(0); opacity: 0; }
+}
+
+.animate-sparkle-float {
+  animation: sparkle-float var(--duration) linear infinite;
 }
 
 @keyframes countUp {
