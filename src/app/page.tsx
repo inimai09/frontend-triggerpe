@@ -27,12 +27,12 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center">
         <div className="flex-1 flex flex-col justify-center px-12 lg:px-24 py-12">
-          <Badge className="w-fit mb-6 bg-primary/10 text-primary border-primary/20 py-1.5 px-4 rounded-full font-black">
+          <Badge className="w-fit mb-6 bg-primary/20 text-white border-white/20 py-1.5 px-4 rounded-full font-black">
             INDIA'S FIRST PARAMETRIC INSURANCE
           </Badge>
           <h1 className="text-5xl md:text-6xl font-black text-[#006064] leading-tight mb-6">
             When storms stop you,<br />
-            <span className="text-primary">we pay you instantly.</span>
+            <span className="text-white drop-shadow-md">we pay you instantly.</span>
           </h1>
           <p className="text-lg text-[#00838F] mb-10 max-w-xl font-bold">
             India's first zero-touch parametric insurance for delivery workers. No forms, no waiting, automatic payouts.
@@ -46,12 +46,12 @@ export default function LandingPage() {
           
           <div className="space-y-4">
             <p className="text-sm font-bold text-[#00838F]">
-              <span className="text-primary">2,847+</span> Workers Protected • ₹12L+ Auto-Paid • 99% Uptime
+              <span className="text-white font-black">2,847+</span> Workers Protected • ₹12L+ Auto-Paid • 99% Uptime
             </p>
             <div className="flex gap-4 text-xs font-black text-[#006064] uppercase tracking-widest">
-              <span>✓ Auto Claims</span>
-              <span>✓ Zero Forms</span>
-              <span>✓ Instant Payout</span>
+              <span className="flex items-center gap-1">✓ Auto Claims</span>
+              <span className="flex items-center gap-1">✓ Zero Forms</span>
+              <span className="flex items-center gap-1">✓ Instant Payout</span>
             </div>
           </div>
         </div>
@@ -79,17 +79,17 @@ export default function LandingPage() {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-8">
-              <CarouselPrevious className="static translate-y-0 bg-white shadow-md border border-border w-12 h-12 rounded-full" />
-              <CarouselNext className="static translate-y-0 bg-white shadow-md border border-border w-12 h-12 rounded-full" />
+              <CarouselPrevious className="static translate-y-0 bg-white shadow-md border border-border w-12 h-12 rounded-full text-primary" />
+              <CarouselNext className="static translate-y-0 bg-white shadow-md border border-border w-12 h-12 rounded-full text-primary" />
             </div>
           </Carousel>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-24 px-12 bg-white border-t border-border">
+      <section className="py-24 px-12 bg-white/40 backdrop-blur-sm border-t border-white/20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-black text-[#006064] text-center mb-16">How TriggerPe Works</h2>
+          <h2 className="text-4xl font-black text-[#006064] text-center mb-16 uppercase tracking-tighter">How TriggerPe Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { icon: WalletCards, title: '📝 Register', desc: 'Sign up in 2 minutes, choose your platform & link UPI.' },
@@ -97,7 +97,7 @@ export default function LandingPage() {
               { icon: ZapIcon, title: '💰 Auto Payout', desc: 'Claim fires automatically when trigger is hit. Money in UPI.' }
             ].map((item, idx) => (
               <Card key={idx} className="p-10 text-center bg-white border border-border shadow-sm rounded-xl">
-                <h3 className="text-2xl font-black text-[#006064] mb-4">{item.title}</h3>
+                <h3 className="text-2xl font-black text-[#006064] mb-4 uppercase tracking-tight">{item.title}</h3>
                 <p className="text-[#00838F] font-bold leading-relaxed">{item.desc}</p>
               </Card>
             ))}
@@ -105,45 +105,19 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 px-12 bg-transparent">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-black text-[#006064] text-center mb-12 uppercase tracking-tight">Worker Stories</h2>
-          <Carousel className="w-full">
-            <CarouselContent>
-              {[
-                { text: "TriggerPe paid me ₹600 when Chennai floods hit. No forms, no calls.", author: "Rajesh K., Swiggy Chennai" },
-                { text: "I got ₹300 during heat wave. Money came within minutes.", author: "Priya S., Zomato Delhi" },
-                { text: "Finally insurance that actually pays when I can't work.", author: "Ankit M., Blinkit Bangalore" }
-              ].map((t, i) => (
-                <CarouselItem key={i}>
-                  <Card className="bg-white p-12 text-center rounded-2xl shadow-sm border-none">
-                    <div className="flex justify-center gap-1 mb-6">
-                      {[1,2,3,4,5].map(s => <Star key={s} className="w-5 h-5 fill-warning text-warning" />)}
-                    </div>
-                    <p className="text-2xl font-bold text-[#006064] italic mb-6">"{t.text}"</p>
-                    <p className="text-sm font-black text-[#00838F] uppercase tracking-widest">— {t.author}</p>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-      </section>
-
       {/* Pricing */}
-      <section className="py-24 px-12 bg-white border-y border-border">
+      <section className="py-24 px-12 bg-white/20 border-y border-white/10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-black text-[#006064] text-center mb-16">Simple Pricing</h2>
+          <h2 className="text-4xl font-black text-[#006064] text-center mb-16 uppercase tracking-tighter">Simple Pricing</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { name: 'BASIC', price: '₹49', coverage: '₹800 max', perks: ['Rain + Heat triggers'], btn: 'Get Basic' },
               { name: 'STANDARD', price: '₹79', coverage: '₹1400 max', perks: ['All 5 triggers'], badge: 'MOST POPULAR', btn: 'Get Standard' },
               { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + priority'], btn: 'Get Premium' },
             ].map((plan, i) => (
-              <Card key={i} className={`p-10 flex flex-col items-center bg-white border-2 rounded-2xl ${plan.badge ? 'border-primary shadow-lg scale-105' : 'border-border shadow-sm'}`}>
-                {plan.badge && <Badge className="bg-primary text-white mb-4">{plan.badge}</Badge>}
-                <h3 className="text-xl font-black text-[#00838F] mb-2">{plan.name}</h3>
+              <Card key={i} className={`p-10 flex flex-col items-center bg-white border-2 rounded-2xl ${plan.badge ? 'border-primary shadow-xl scale-105' : 'border-border shadow-sm'}`}>
+                {plan.badge && <Badge className="bg-primary text-white mb-4 font-black">{plan.badge}</Badge>}
+                <h3 className="text-xl font-black text-[#00838F] mb-2 uppercase tracking-widest">{plan.name}</h3>
                 <p className="text-4xl font-black text-[#006064] mb-1">{plan.price}<span className="text-sm">/week</span></p>
                 <p className="text-sm font-bold text-primary mb-6">{plan.coverage}</p>
                 <ul className="space-y-3 mb-8 w-full">
@@ -159,7 +133,7 @@ export default function LandingPage() {
       {/* FAQ */}
       <section className="py-24 px-12 bg-transparent">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-black text-[#006064] text-center mb-12">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-black text-[#006064] text-center mb-12 uppercase tracking-tighter">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="w-full space-y-4">
             {[
               { q: "How does TriggerPe work?", a: "We monitor real-time weather data. If a city-wide trigger (like heavy rain) is reached, we automatically initiate a payout to all covered partners in that zone." },
@@ -169,7 +143,7 @@ export default function LandingPage() {
               { q: "What is NOT covered?", a: "Vehicle breakdowns, personal health issues, accidents, or platform suspensions not related to systemic outages." },
               { q: "Can I cancel anytime?", a: "Yes. Since coverage is weekly, you can stop renewal at any time through the settings." }
             ].map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="bg-white border-none rounded-xl px-6">
+              <AccordionItem key={i} value={`item-${i}`} className="bg-white/80 border-none rounded-xl px-6 shadow-sm mb-4">
                 <AccordionTrigger className="font-black text-[#006064] hover:no-underline">{item.q}</AccordionTrigger>
                 <AccordionContent className="font-bold text-[#00838F]">{item.a}</AccordionContent>
               </AccordionItem>
@@ -178,10 +152,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-white py-16 px-12 border-t border-border">
+      <footer className="bg-white/90 backdrop-blur-md py-16 px-12 border-t border-border">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
           <div>
-            <h4 className="font-black text-[#006064] mb-4">Product</h4>
+            <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Product</h4>
             <ul className="space-y-2 text-sm font-bold text-[#00838F]">
               <li><Link href="#">How it Works</Link></li>
               <li><Link href="#">Coverage Tiers</Link></li>
@@ -189,7 +163,7 @@ export default function LandingPage() {
             </ul>
           </div>
           <div>
-            <h4 className="font-black text-[#006064] mb-4">Company</h4>
+            <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Company</h4>
             <ul className="space-y-2 text-sm font-bold text-[#00838F]">
               <li><Link href="#">About Us</Link></li>
               <li><Link href="#">Newsroom</Link></li>
@@ -197,7 +171,7 @@ export default function LandingPage() {
             </ul>
           </div>
           <div>
-            <h4 className="font-black text-[#006064] mb-4">Support</h4>
+            <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Support</h4>
             <ul className="space-y-2 text-sm font-bold text-[#00838F]">
               <li><Link href="#">Help Center</Link></li>
               <li><Link href="#">Contact Support</Link></li>
@@ -205,7 +179,7 @@ export default function LandingPage() {
             </ul>
           </div>
           <div>
-            <h4 className="font-black text-[#006064] mb-4">Legal</h4>
+            <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Legal</h4>
             <ul className="space-y-2 text-sm font-bold text-[#00838F]">
               <li><Link href="#">Privacy Policy</Link></li>
               <li><Link href="#">Terms of Service</Link></li>
@@ -214,8 +188,8 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="max-w-6xl mx-auto pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
-          <h2 className="text-2xl font-black text-primary">TRIGGERPE</h2>
-          <p className="text-xs font-black text-[#00838F] uppercase tracking-widest opacity-60">© 2026 TriggerPe Parametric Insurance. Built for Bharat.</p>
+          <h2 className="text-2xl font-black text-primary uppercase tracking-tighter">TRIGGERPE</h2>
+          <p className="text-[10px] font-black text-[#00838F] uppercase tracking-widest opacity-60">© 2026 TriggerPe Parametric Insurance. Built for Bharat.</p>
         </div>
       </footer>
     </div>
