@@ -72,15 +72,6 @@
   animation: sparkle-float var(--duration) linear infinite;
 }
 
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-count-up {
-  animation: countUp 0.5s ease-out forwards;
-}
-
 .text-glow {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(0, 172, 193, 0.4);
 }
@@ -94,7 +85,6 @@ button, .button, .rounded-full-force {
   @apply rounded-full flex items-center justify-center !important;
 }
 
-/* Smooth Scrolling for entire app */
 html {
   scroll-behavior: smooth;
 }
