@@ -48,7 +48,7 @@
   @apply transition-all duration-200 hover:scale-[1.02] active:scale-95;
 }
 
-/* Strict solid rules - NO transparency */
+/* Strict solid rules - NO transparency for content cards */
 .card, .popover, .dialog, .sheet {
   @apply bg-white opacity-100 shadow-sm !important;
   backdrop-filter: none !important;

@@ -39,8 +39,8 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button asChild size="lg" className="rounded-full px-8 py-7 text-lg bg-primary hover:bg-primary/90 btn-hover-effect">
-              <Link href="/login" className="flex items-center gap-2">Get Protected Now <ArrowRight className="w-5 h-5" /></Link>
+            <Button asChild size="lg" className="rounded-full px-8 py-7 text-lg bg-primary hover:bg-primary/90 btn-hover-effect text-white">
+              <Link href="/login" className="flex items-center gap-2">Get Protected Now <ArrowRight className="w-5 h-5 text-white" /></Link>
             </Button>
           </div>
           
@@ -149,7 +149,7 @@ export default function LandingPage() {
                 <ul className="space-y-3 mb-8 w-full">
                   {plan.perks.map((p, j) => <li key={j} className="text-sm font-bold text-center text-[#00838F]">✓ {p}</li>)}
                 </ul>
-                <Button className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-12 btn-hover-effect">{plan.btn}</Button>
+                <Button className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-12 btn-hover-effect text-white">{plan.btn}</Button>
               </Card>
             ))}
           </div>
