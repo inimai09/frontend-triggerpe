@@ -57,27 +57,27 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen font-body text-white">
       {/* Hero Section */}
       <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[95vh] items-center px-6 lg:px-24 py-20 gap-20">
-        <div className="flex-1 space-y-10 animate-in fade-in slide-in-from-left-8 duration-1000">
+        <div className="flex-1 space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000">
           <div className="flex items-center gap-3">
             <Badge className="bg-white/10 backdrop-blur-md text-white py-2.5 px-8 rounded-full font-bold text-xs uppercase tracking-widest border border-white/20">
               INDIA'S FIRST PARAMETRIC INSURANCE
             </Badge>
           </div>
           
-          <div className="space-y-6">
-            <h1 className="text-7xl md:text-8xl font-black leading-[1] tracking-tighter font-headline text-white">
+          <div className="space-y-4">
+            <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter font-headline text-white">
               When <br />
               storms stop <br />
               you,
             </h1>
-            <h1 className="text-7xl md:text-8xl font-black leading-[1] tracking-tighter font-headline text-white text-glow">
+            <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter font-headline text-white text-glow">
               we pay you <br />
               instantly.
             </h1>
           </div>
           
-          <p className="text-xl text-white/70 max-w-xl font-medium leading-relaxed">
-            India's first zero-touch parametric insurance for delivery workers. No forms, no waiting, automatic payouts.
+          <p className="text-lg text-white/70 max-w-lg font-medium leading-relaxed">
+            India's first zero-touch parametric insurance for delivery workers. No forms, no waiting, automatic payouts pushed straight to your wallet.
           </p>
           
           <div className="flex flex-col sm:flex-row items-start gap-6 pt-4">
@@ -131,21 +131,24 @@ export default function LandingPage() {
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-5xl font-black tracking-tighter font-headline text-white uppercase">Three Steps to Safety</h2>
             <div className="w-24 h-1.5 bg-primary mx-auto rounded-full" />
-            <p className="text-white/50 font-bold uppercase tracking-widest text-xs">A zero-touch experience for every hero</p>
+            <p className="text-white/50 font-bold uppercase tracking-widest text-xs">The parametric revolution for every partner</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { title: 'One-Time Setup', desc: 'Link your platform ID and UPI in 30 seconds. No paperwork.', icon: Smartphone, delay: 'delay-100' },
-              { title: 'Live Monitoring', desc: 'Our neural engine watches weather and platform status in your zone.', icon: Cpu, delay: 'delay-200' },
-              { title: 'Auto Payout', desc: 'When triggers hit, money is pushed instantly to your wallet.', icon: Zap, delay: 'delay-300' },
+              { title: 'One-Time Setup', desc: 'Link your platform ID and UPI in 30 seconds. No paperwork or long forms.', icon: Smartphone, step: '01' },
+              { title: 'Live Monitoring', desc: 'Our neural engine watches weather telemetry and platform status in your specific zone.', icon: Cpu, step: '02' },
+              { title: 'Auto Payout', desc: 'When data triggers hit thresholds, money is pushed instantly to your linked wallet.', icon: Zap, step: '03' },
             ].map((step, i) => (
-              <div key={i} className={cn("space-y-8 text-center md:text-left group animate-in fade-in slide-in-from-bottom-8 duration-700 transition-all hover:scale-105", step.delay)}>
-                <div className="w-20 h-20 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border-2 border-white/10 mx-auto md:mx-0 shadow-inner group-hover:border-primary transition-colors">
-                  <step.icon className="w-10 h-10 text-primary" />
+              <div key={i} className="group relative animate-in fade-in slide-in-from-bottom-8 duration-700 transition-all hover:scale-[1.03] cursor-default">
+                <div className="absolute -top-6 -left-4 z-20 w-14 h-14 rounded-full bg-primary flex items-center justify-center font-black text-white text-xl shadow-xl border-4 border-[#001A1A]">
+                  {step.step}
                 </div>
-                <div className="p-10 border-2 border-white/10 rounded-[3rem] bg-black/40 backdrop-blur-xl group-hover:border-primary/50 transition-colors shadow-xl h-full">
-                  <h3 className="text-3xl font-black font-headline text-white mb-4">{step.title}</h3>
+                <div className="p-10 border-2 border-white/10 rounded-[3rem] bg-black/40 backdrop-blur-xl group-hover:border-primary/50 transition-all shadow-2xl h-full flex flex-col items-center md:items-start">
+                  <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center border-2 border-white/10 mb-8 shadow-inner group-hover:bg-primary/10 transition-colors">
+                    <step.icon className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-3xl font-black font-headline text-white mb-4 uppercase tracking-tighter">{step.title}</h3>
                   <p className="text-lg font-medium text-white/60 leading-relaxed">{step.desc}</p>
                 </div>
               </div>
@@ -160,7 +163,7 @@ export default function LandingPage() {
           <div className="text-center mb-24 space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
             <h2 className="text-5xl font-black tracking-tighter font-headline text-white uppercase">Simple Pricing</h2>
             <div className="w-24 h-1.5 bg-primary mx-auto rounded-full" />
-            <p className="text-white/50 font-bold uppercase tracking-widest text-xs">Choose your shield tier</p>
+            <p className="text-white/50 font-bold uppercase tracking-widest text-xs">Transparent protection tiers</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
