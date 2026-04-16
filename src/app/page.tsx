@@ -22,7 +22,7 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-transparent">
       
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center">
@@ -106,7 +106,7 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 px-12 bg-[#E0F7FA]">
+      <section className="py-24 px-12 bg-transparent">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-black text-[#006064] text-center mb-12 uppercase tracking-tight">Worker Stories</h2>
           <Carousel className="w-full">
@@ -157,7 +157,7 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-12 bg-[#E0F7FA]">
+      <section className="py-24 px-12 bg-transparent">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-black text-[#006064] text-center mb-12">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="w-full space-y-4">
