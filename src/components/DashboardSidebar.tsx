@@ -50,14 +50,14 @@ export function DashboardSidebar() {
   };
 
   return (
-    <aside className="w-[260px] bg-white border-r border-border h-screen flex flex-col sticky top-0 shrink-0 z-50 overflow-hidden">
+    <aside className="w-[280px] bg-white border-r border-border h-screen flex flex-col sticky top-0 shrink-0 z-50 overflow-hidden shadow-2xl">
       {/* Logo Section */}
       <div className="p-8 pb-4">
         <h1 className="text-2xl font-black text-[#006064] tracking-tighter uppercase font-headline">TRIGGERPE</h1>
       </div>
 
-      {/* Navigation - Non-scrolling with optimized spacing */}
-      <nav className="flex-1 px-3 space-y-1.5 py-4 overflow-hidden">
+      {/* Navigation - Non-scrolling with optimized density */}
+      <nav className="flex-1 px-4 space-y-1.5 py-4 overflow-hidden">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -65,14 +65,14 @@ export function DashboardSidebar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 px-4 py-2.5 rounded-full transition-all duration-300 font-bold text-[11px] group",
+                "flex items-center gap-3 px-4 py-2.5 rounded-2xl transition-all duration-300 font-bold text-[11px] group relative overflow-hidden",
                 isActive 
                   ? "bg-[#E0F7FA] text-primary shadow-sm" 
-                  : "text-[#00838F] hover:bg-[#F1F5F9] hover:text-[#006064]"
+                  : "text-[#00838F] hover:bg-[#F1F5F9] hover:text-[#006064] hover:translate-x-1"
               )}
             >
               <div className={cn(
-                "w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110",
+                "w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-md",
                 isActive ? "bg-white text-primary shadow-inner" : "bg-[#F1F5F9] text-[#00838F]"
               )}>
                 <item.icon className="w-5 h-5" />
@@ -86,8 +86,8 @@ export function DashboardSidebar() {
 
       {/* Footer Section */}
       <div className="p-6 border-t border-border mt-auto bg-white">
-        <div className="flex items-center gap-3 mb-4 p-2 rounded-2xl bg-[#F1F5F9]/50">
-          <Avatar className="w-9 h-9 border-2 border-white shadow-sm">
+        <div className="flex items-center gap-3 mb-4 p-2 rounded-2xl bg-[#F1F5F9]/50 hover:bg-[#E0F7FA]/30 transition-colors cursor-default group">
+          <Avatar className="w-9 h-9 border-2 border-white shadow-sm transition-transform group-hover:scale-110">
             <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
             <AvatarFallback className="bg-[#E0F7FA] text-primary font-black uppercase">{user.name[0]}</AvatarFallback>
           </Avatar>
