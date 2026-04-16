@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from 'react';
@@ -43,7 +44,7 @@ export default function ClaimsPage() {
         {/* Boxed Header Card */}
         <Card className="card-neon-glow p-10 rounded-[2.5rem] border-none">
           <header className="space-y-6">
-            <div className="p-8 bg-black/40 border border-white/5 rounded-[2rem] w-full md:w-fit">
+            <div className="p-8 bg-black/40 border border-white/5 rounded-[2rem] w-full md:w-fit btn-hover-effect">
               <h1 className="text-4xl font-black text-white uppercase tracking-tighter mb-4">Claims History</h1>
               <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-primary/10 border border-primary/20">
                 <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#00ACC1]" />
@@ -56,7 +57,7 @@ export default function ClaimsPage() {
         {/* Summary Boxes Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {summary.map((item, i) => (
-            <Card key={i} className="card-neon-glow overflow-hidden rounded-[2.5rem] border-none group transition-all duration-300">
+            <Card key={i} className="card-neon-glow overflow-hidden rounded-[2.5rem] border-none group btn-hover-effect">
               <CardContent className="p-8 flex items-center gap-6">
                 <div className={cn("p-5 rounded-2xl bg-black/40 border border-white/5 shadow-inner transition-colors group-hover:bg-black/60", item.color)}>
                   <item.icon className="w-8 h-8 icon-neon-glow" />
@@ -80,7 +81,7 @@ export default function ClaimsPage() {
               </div>
               <div className="flex gap-4">
                 <Select>
-                  <SelectTrigger className="w-[200px] h-18 font-black bg-black/40 border-white/10 text-white rounded-[1.5rem] text-xs px-6">
+                  <SelectTrigger className="w-[200px] h-18 font-black bg-black/40 border-white/10 text-white rounded-[1.5rem] text-xs px-6 btn-hover-effect">
                     <SelectValue placeholder="Trigger Type" />
                   </SelectTrigger>
                   <SelectContent className="bg-black/95 backdrop-blur-3xl border-white/10 text-white">
@@ -119,7 +120,7 @@ export default function ClaimsPage() {
                 {claims.map((claim) => (
                   <TableRow 
                     key={claim.id} 
-                    className="cursor-pointer border-white/5 hover:bg-white/5 transition-colors group" 
+                    className="cursor-pointer border-white/5 hover:bg-white/5 transition-colors group btn-hover-effect" 
                     onClick={() => setSelectedClaim(claim)}
                   >
                     <TableCell className="px-12 py-10 font-mono text-[13px] font-black text-white">{claim.id}</TableCell>
@@ -165,11 +166,11 @@ export default function ClaimsPage() {
             </DialogHeader>
             <div className="p-12 space-y-12">
               <div className="grid grid-cols-2 gap-8">
-                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/5">
+                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/5 btn-hover-effect">
                   <span className="text-[10px] font-black text-white/40 uppercase tracking-widest block mb-2">Event</span>
                   <p className="font-black text-white text-xl uppercase tracking-tighter">{selectedClaim?.trigger}</p>
                 </div>
-                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/5 text-right">
+                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/5 text-right btn-hover-effect">
                   <span className="text-[10px] font-black text-white/40 uppercase tracking-widest block mb-2">Payout</span>
                   <p className="font-black text-primary text-3xl icon-neon-glow tracking-tighter">{selectedClaim?.amount}</p>
                 </div>
@@ -187,7 +188,7 @@ export default function ClaimsPage() {
                   ].map((step, i) => (
                     <div key={i} className="flex items-start gap-8 relative z-10">
                       <div className="w-[22px] h-[22px] rounded-full bg-primary border-4 border-black shadow-[0_0_15px_rgba(0,172,193,0.6)]" />
-                      <div className="flex-1 bg-white/5 p-6 rounded-2xl border border-white/5 flex justify-between items-center">
+                      <div className="flex-1 bg-white/5 p-6 rounded-2xl border border-white/5 flex justify-between items-center btn-hover-effect">
                         <div>
                           <p className="text-lg font-black text-white leading-none mb-2">{step.label}</p>
                           <p className="text-[10px] font-black text-white/30 uppercase tracking-widest">{step.time}</p>
@@ -199,7 +200,7 @@ export default function ClaimsPage() {
                 </div>
               </div>
 
-              <div className="p-6 bg-primary/5 rounded-2xl border border-primary/20 flex items-center justify-between">
+              <div className="p-6 bg-primary/5 rounded-2xl border border-primary/20 flex items-center justify-between btn-hover-effect">
                 <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">Ref: UPI/2026/88410</span>
                 <span className="text-[10px] font-black text-primary uppercase tracking-widest icon-neon-glow">Secured</span>
               </div>

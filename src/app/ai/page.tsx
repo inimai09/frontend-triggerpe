@@ -42,8 +42,10 @@ export default function PremiumAIPage() {
     <DashboardLayout>
       <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <header>
-          <h1 className="text-4xl font-black text-white uppercase tracking-tighter">Premium AI Insights</h1>
-          <p className="text-primary font-bold uppercase tracking-widest text-[11px] icon-neon-glow">Deep dive into your dynamic premium calculation.</p>
+          <div className="p-8 bg-black/40 border border-white/5 rounded-[2.5rem] w-fit btn-hover-effect">
+            <h1 className="text-4xl font-black text-white uppercase tracking-tighter">Premium AI Insights</h1>
+            <p className="text-primary font-bold uppercase tracking-widest text-[11px] icon-neon-glow">Deep dive into your dynamic premium calculation.</p>
+          </div>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -67,17 +69,17 @@ export default function PremiumAIPage() {
                   { label: 'Risk loading', value: mockData.riskLoading },
                   { label: 'Weather loading', value: mockData.weatherLoading },
                 ].map((item, i) => (
-                  <div key={i} className="flex justify-between items-center group">
+                  <div key={i} className="flex justify-between items-center group btn-hover-effect p-4 bg-white/5 rounded-2xl border border-white/5">
                     <span className="text-lg font-bold text-white/60 group-hover:text-white transition-colors">{item.label}</span>
                     <span className="font-black text-white text-xl">₹{item.value.toFixed(2)}</span>
                   </div>
                 ))}
-                <div className="pt-10 border-t-2 border-primary/20 flex justify-between items-center">
+                <div className="pt-10 border-t-2 border-primary/20 flex justify-between items-center btn-hover-effect">
                   <span className="text-2xl font-black text-white uppercase tracking-tighter">Total Weekly</span>
                   <span className="text-5xl font-black text-primary icon-neon-glow tracking-tighter">₹{mockData.totalPremium.toFixed(2)}</span>
                 </div>
               </div>
-              <div className="bg-primary/5 p-10 rounded-[2rem] border border-primary/20 flex items-start gap-6">
+              <div className="bg-primary/5 p-10 rounded-[2rem] border border-primary/20 flex items-start gap-6 btn-hover-effect">
                 <Info className="w-8 h-8 text-primary shrink-0 icon-neon-glow" />
                 <p className="text-[13px] font-bold text-white/80 leading-relaxed">
                   Monthly projection is <span className="font-black text-primary">₹290.00</span>. Rates re-calibrate every Monday based on regional macro-risk indices.
@@ -91,7 +93,7 @@ export default function PremiumAIPage() {
               <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Risk Profiling</CardTitle>
             </CardHeader>
             <CardContent className="p-16 space-y-16">
-              <div className="flex flex-col items-center gap-10">
+              <div className="flex flex-col items-center gap-10 btn-hover-effect">
                 <div className="relative w-56 h-56 flex items-center justify-center">
                   <svg className="w-full h-full transform -rotate-90">
                     <circle cx="112" cy="112" r="100" stroke="rgba(255,255,255,0.05)" strokeWidth="20" fill="transparent" />
@@ -106,11 +108,11 @@ export default function PremiumAIPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-8">
-                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/5">
+                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/5 btn-hover-effect">
                   <span className="text-[10px] font-black text-white/30 uppercase block mb-3 tracking-widest">Zone Status</span>
                   <span className="text-lg font-black text-white">{mockData.zone}</span>
                 </div>
-                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/5">
+                <div className="p-8 bg-white/5 rounded-[2rem] border border-white/5 btn-hover-effect">
                   <span className="text-[10px] font-black text-white/30 uppercase block mb-3 tracking-widest">Platform Feed</span>
                   <span className="text-lg font-black text-white">{mockData.platform}</span>
                 </div>
@@ -120,7 +122,7 @@ export default function PremiumAIPage() {
                 <h3 className="text-[11px] font-black text-white/40 uppercase tracking-widest mb-6">Historical Risk Volatility</h3>
                 <div className="h-32 flex items-end gap-5 px-4">
                   {[45, 42, 38, 35].map((val, i) => (
-                    <div key={i} className="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-[1rem] relative group" style={{ height: `${val}%` }}>
+                    <div key={i} className="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-[1rem] relative group btn-hover-effect" style={{ height: `${val}%` }}>
                       <div className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-white text-black text-[11px] font-black px-3 py-1 rounded-full shadow-2xl transition-all">0.{val}</div>
                     </div>
                   ))}
@@ -137,7 +139,7 @@ export default function PremiumAIPage() {
         <Card className="card-neon-glow rounded-[3rem] overflow-hidden">
           <CardContent className="p-16">
             <div className="flex flex-col md:flex-row items-center gap-16">
-              <div className="w-32 h-32 rounded-[2.5rem] bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20 shadow-[0_0_30px_rgba(0,172,193,0.3)]">
+              <div className="w-32 h-32 rounded-[2.5rem] bg-primary/10 flex items-center justify-center shrink-0 border-2 border-primary/20 shadow-[0_0_30px_rgba(0,172,193,0.3)] btn-hover-effect">
                 <BrainCircuit className="w-16 h-16 text-primary icon-neon-glow" />
               </div>
               <div className="flex-1 space-y-8 text-center md:text-left">
@@ -155,7 +157,7 @@ export default function PremiumAIPage() {
                     <div className="prose prose-invert prose-lg max-w-none text-white/80 font-bold leading-relaxed whitespace-pre-wrap">
                       {explanation}
                     </div>
-                    <Button variant="ghost" onClick={() => setExplanation(null)} className="mt-12 text-primary font-black uppercase tracking-widest text-xs hover:text-white transition-colors">
+                    <Button variant="ghost" onClick={() => setExplanation(null)} className="mt-12 text-primary font-black uppercase tracking-widest text-xs hover:text-white transition-colors btn-hover-effect">
                       Re-calculate Insights
                     </Button>
                   </div>

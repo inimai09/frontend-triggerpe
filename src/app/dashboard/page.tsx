@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from 'react';
@@ -58,7 +59,7 @@ export default function Dashboard() {
         <Card className="card-neon-glow overflow-hidden rounded-[3rem]">
           <CardContent className="p-10 flex flex-col xl:flex-row justify-between items-center gap-12">
             {/* Big Temp Box */}
-            <div className="p-10 bg-black/40 border border-white/5 rounded-[3rem] w-full xl:w-auto">
+            <div className="p-10 bg-black/40 border border-white/5 rounded-[3rem] w-full xl:w-auto btn-hover-effect">
               <div className="flex items-center gap-4 mb-6">
                 <Badge className="bg-primary/20 text-primary border-primary/30 font-black px-5 py-1.5 uppercase tracking-widest text-[9px] rounded-full">CHENNAI CENTRAL</Badge>
                 <span className="text-white/40 text-[9px] font-black uppercase tracking-widest flex items-center gap-2">
@@ -150,11 +151,11 @@ export default function Dashboard() {
           <Card className="lg:col-span-2 card-neon-glow rounded-[3rem] overflow-hidden">
             <CardHeader className="flex flex-row items-center justify-between border-b border-white/5 px-10 py-8 bg-white/5">
               <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Recent Claims</CardTitle>
-              <Button variant="ghost" className="text-[10px] font-black text-primary hover:text-white hover:bg-primary/20 uppercase tracking-widest">View History</Button>
+              <Button variant="ghost" className="text-[10px] font-black text-primary hover:text-white hover:bg-primary/20 uppercase tracking-widest btn-hover-effect">View History</Button>
             </CardHeader>
             <CardContent className="p-0">
               <div className="p-20 text-center">
-                <div className="w-24 h-24 bg-black/40 rounded-full flex items-center justify-center mx-auto mb-8 border border-white/10">
+                <div className="w-24 h-24 bg-black/40 rounded-full flex items-center justify-center mx-auto mb-8 border border-white/10 btn-hover-effect">
                   <History className="w-12 h-12 text-primary opacity-20 icon-neon-glow" />
                 </div>
                 <p className="text-2xl font-black text-white mb-3 tracking-tight">No active claims found</p>
@@ -168,7 +169,7 @@ export default function Dashboard() {
               <CardTitle className="text-lg font-black text-white uppercase tracking-widest">System Health</CardTitle>
             </CardHeader>
             <CardContent className="p-10 space-y-10">
-              <div className="flex items-center justify-between p-6 bg-black/40 border border-white/5 rounded-[2rem]">
+              <div className="flex items-center justify-between p-6 bg-black/40 border border-white/5 rounded-[2rem] btn-hover-effect">
                 <div className="flex items-center gap-4">
                   <div className="w-3.5 h-3.5 bg-success rounded-full animate-pulse shadow-[0_0_10px_#26A69A]" />
                   <span className="text-sm font-black text-white">Neural Watchdog</span>
@@ -176,7 +177,7 @@ export default function Dashboard() {
                 <Badge className="bg-success/20 text-success border-success/30 font-black text-[9px]">ACTIVE</Badge>
               </div>
               
-              <div className="p-6 bg-black/40 border border-white/5 rounded-[2rem] space-y-5">
+              <div className="p-6 bg-black/40 border border-white/5 rounded-[2rem] space-y-5 btn-hover-effect">
                 <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
                   <span className="text-white/40">Macro-Risk Score</span>
                   <span className="text-white">0.35 / 1.0</span>
@@ -185,7 +186,7 @@ export default function Dashboard() {
                 <p className="text-[9px] text-white/20 font-black uppercase tracking-widest">Safe operational window</p>
               </div>
 
-              <div className="p-6 bg-primary/5 rounded-[1.5rem] border border-primary/20 flex items-center justify-between">
+              <div className="p-6 bg-primary/5 rounded-[1.5rem] border border-primary/20 flex items-center justify-between btn-hover-effect">
                 <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">Premium Model</span>
                 <span className="text-sm font-black text-primary flex items-center gap-2 icon-neon-glow">
                   DYNAMIC <ArrowUpRight className="w-4 h-4" />

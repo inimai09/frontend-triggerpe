@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from 'react';
@@ -13,10 +14,10 @@ export default function WeatherPage() {
   return (
     <DashboardLayout>
       <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
-        {/* Header Box - Every piece of text is now strictly contained */}
+        {/* Header Box */}
         <Card className="card-neon-glow p-8 rounded-[2.5rem] border-none">
           <header className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
-            <div className="p-6 bg-black/40 rounded-[2rem] border border-white/5 w-full lg:w-auto">
+            <div className="p-6 bg-black/40 rounded-[2rem] border border-white/5 w-full lg:w-auto btn-hover-effect">
               <h1 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Climate Monitor</h1>
               <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-primary/10 border border-primary/20">
                 <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#00ACC1]" />
@@ -24,7 +25,7 @@ export default function WeatherPage() {
               </div>
             </div>
             
-            <div className="flex items-center gap-5 bg-black/40 border border-white/10 p-6 rounded-[2rem] w-full lg:w-auto">
+            <div className="flex items-center gap-5 bg-black/40 border border-white/10 p-6 rounded-[2rem] w-full lg:w-auto btn-hover-effect">
               <div className="p-4 bg-primary/10 rounded-2xl border border-primary/20">
                 <MapPin className="w-6 h-6 text-primary icon-neon-glow" />
               </div>
@@ -37,14 +38,14 @@ export default function WeatherPage() {
         </Card>
 
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-10">
-          {/* Main Weather Hero - Boxed display */}
+          {/* Main Weather Hero */}
           <Card className="xl:col-span-8 card-neon-glow border-none overflow-hidden relative group rounded-[3rem]">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-50 pointer-events-none" />
             
             <CardContent className="p-10 md:p-12 relative z-10 space-y-10">
               <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
                 {/* Big Temperature Box */}
-                <div className="p-10 bg-black/60 backdrop-blur-3xl border border-white/10 rounded-[3rem] w-full lg:w-auto shadow-2xl relative">
+                <div className="p-10 bg-black/60 backdrop-blur-3xl border border-white/10 rounded-[3rem] w-full lg:w-auto shadow-2xl relative btn-hover-effect">
                   <Badge className="bg-warning/20 text-warning border-warning/30 font-black px-6 py-2 uppercase tracking-widest text-[9px] rounded-full mb-8">
                     <ThermometerSun className="w-4 h-4 mr-2" /> High Heat Index
                   </Badge>
@@ -90,7 +91,7 @@ export default function WeatherPage() {
                 { label: 'Heavy Rain', current: '2.4mm', target: '15mm', progress: 12, color: 'bg-primary' },
                 { label: 'AQI Warning', current: '184', target: '300', progress: 55, color: 'bg-primary/60' },
               ].map((t, i) => (
-                <div key={i} className="p-6 bg-black/40 border border-white/5 rounded-[2rem] space-y-4">
+                <div key={i} className="p-6 bg-black/40 border border-white/5 rounded-[2rem] space-y-4 btn-hover-effect">
                   <div className="flex justify-between items-center px-1">
                     <span className="text-sm font-black text-white uppercase tracking-tight">{t.label}</span>
                     <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">{t.current} / {t.target}</span>
@@ -103,7 +104,7 @@ export default function WeatherPage() {
                 </div>
               ))}
               
-              <div className="p-6 bg-primary/5 rounded-2xl border border-primary/20 flex items-start gap-4">
+              <div className="p-6 bg-primary/5 rounded-2xl border border-primary/20 flex items-start gap-4 btn-hover-effect">
                 <AlertTriangle className="w-6 h-6 text-primary shrink-0 icon-neon-glow mt-0.5" /> 
                 <p className="text-[10px] font-bold text-white/60 leading-relaxed uppercase tracking-tight">
                   Verification via <span className="text-white font-black">ISRO Telemetry</span>. Claims auto-initiate at 100%.

@@ -58,8 +58,10 @@ export default function SettingsPage() {
     <DashboardLayout>
       <div className="max-w-5xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <header>
-          <h1 className="text-4xl font-black text-white uppercase tracking-tighter">Settings</h1>
-          <p className="text-primary font-bold uppercase tracking-widest text-[10px] icon-neon-glow">Manage your account and app preferences.</p>
+          <div className="p-8 bg-black/40 border border-white/5 rounded-[2.5rem] w-fit btn-hover-effect">
+            <h1 className="text-4xl font-black text-white uppercase tracking-tighter">Settings</h1>
+            <p className="text-primary font-bold uppercase tracking-widest text-[10px] icon-neon-glow">Manage your account and app preferences.</p>
+          </div>
         </header>
 
         <Tabs defaultValue="profile" onValueChange={setActiveTab} className="w-full">
@@ -71,7 +73,7 @@ export default function SettingsPage() {
               { id: 'privacy', icon: Shield, label: 'Privacy' },
               { id: 'support', icon: HelpCircle, label: 'Support' },
             ].map(tab => (
-              <TabsTrigger key={tab.id} value={tab.id} className="flex-1 rounded-[1.25rem] font-black data-[state=active]:bg-primary data-[state=active]:text-white gap-3 min-w-[140px] text-white/60">
+              <TabsTrigger key={tab.id} value={tab.id} className="flex-1 rounded-[1.25rem] font-black data-[state=active]:bg-primary data-[state=active]:text-white gap-3 min-w-[140px] text-white/60 btn-hover-effect">
                 <tab.icon className="w-5 h-5" /> {tab.label}
               </TabsTrigger>
             ))}
@@ -137,7 +139,7 @@ export default function SettingsPage() {
                 <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Payout Methods</CardTitle>
               </CardHeader>
               <CardContent className="p-12 space-y-10">
-                <div className="p-10 bg-primary/10 rounded-[2rem] border border-primary/20 flex items-center justify-between group">
+                <div className="p-10 bg-primary/10 rounded-[2rem] border border-primary/20 flex items-center justify-between group btn-hover-effect">
                   <div className="flex items-center gap-8">
                     <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center font-black text-primary border-2 border-primary/30 text-xl shadow-[0_0_15px_rgba(0,172,193,0.3)]">UPI</div>
                     <div>
@@ -145,9 +147,9 @@ export default function SettingsPage() {
                       <p className="text-[10px] font-black text-primary uppercase tracking-widest mt-1 icon-neon-glow">Primary Payout Method</p>
                     </div>
                   </div>
-                  <Button variant="ghost" className="font-black text-primary hover:text-white uppercase tracking-widest text-[11px] group-hover:scale-110 transition-transform">Edit</Button>
+                  <Button variant="ghost" className="font-black text-primary hover:text-white uppercase tracking-widest text-[11px] btn-hover-effect">Edit</Button>
                 </div>
-                <div className="p-10 bg-white/5 rounded-[2rem] border border-white/10 flex items-center justify-between opacity-60">
+                <div className="p-10 bg-white/5 rounded-[2rem] border border-white/10 flex items-center justify-between opacity-60 btn-hover-effect">
                   <div className="flex items-center gap-8">
                     <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center font-black text-white/20 border-2 border-white/10 text-xl">BANK</div>
                     <div>
@@ -155,7 +157,7 @@ export default function SettingsPage() {
                       <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mt-1">Secondary Account</p>
                     </div>
                   </div>
-                  <Button variant="ghost" className="font-black text-white/30 hover:text-destructive uppercase tracking-widest text-[11px]">Remove</Button>
+                  <Button variant="ghost" className="font-black text-white/30 hover:text-destructive uppercase tracking-widest text-[11px] btn-hover-effect">Remove</Button>
                 </div>
                 <Button variant="outline" className="w-full h-24 rounded-[2rem] border-2 border-primary/30 border-dashed font-black text-primary hover:bg-primary/5 text-lg btn-hover-effect">
                   + Link New Payment Method
@@ -189,7 +191,7 @@ export default function SettingsPage() {
                   <Button variant="outline" className="w-full h-20 rounded-[1.5rem] font-black justify-between btn-hover-effect px-10 text-lg border-white/10 bg-white/5">
                     Manage Active Sessions <ChevronRight className="w-6 h-6 text-white/20" />
                   </Button>
-                  <Button variant="ghost" className="w-full h-20 rounded-[1.5rem] font-black text-destructive/60 hover:text-destructive justify-between hover:bg-destructive/10 px-10 text-lg mt-10">
+                  <Button variant="ghost" className="w-full h-20 rounded-[1.5rem] font-black text-destructive/60 hover:text-destructive justify-between hover:bg-destructive/10 px-10 text-lg mt-10 btn-hover-effect">
                     Permanently Delete Account <Trash2 className="w-6 h-6" />
                   </Button>
                 </div>
@@ -209,7 +211,7 @@ export default function SettingsPage() {
                     { q: "What if a trigger occurred but I didn't get paid?", a: "Parametric verification takes up to 15 mins. Check the 'Claims' tab for live status." },
                     { q: "How to pause my coverage?", a: "You can pause coverage from the 'My Policy' page if you're taking a break from work." },
                   ].map((item, i) => (
-                    <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white/5 rounded-[1.5rem] px-10 overflow-hidden">
+                    <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white/5 rounded-[1.5rem] px-10 overflow-hidden btn-hover-effect">
                       <AccordionTrigger className="font-black text-white text-lg hover:no-underline py-8">{item.q}</AccordionTrigger>
                       <AccordionContent className="font-bold text-white/50 text-base pb-8">{item.a}</AccordionContent>
                     </AccordionItem>

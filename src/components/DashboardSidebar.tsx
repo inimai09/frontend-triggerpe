@@ -61,14 +61,14 @@ export function DashboardSidebar() {
         <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mt-1.5">Parametric Shield v2.0</p>
       </div>
 
-      {/* Navigation - Optimized spacing to avoid scrolling */}
+      {/* Navigation - Optimized spacing with pop effect */}
       <nav className="flex-1 px-4 space-y-2 overflow-y-auto no-scrollbar py-2">
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center gap-4 px-5 py-3.5 rounded-2xl transition-all duration-300 font-bold group relative overflow-hidden",
+              "flex items-center gap-4 px-5 py-3.5 rounded-2xl transition-all duration-300 font-bold group relative overflow-hidden btn-hover-effect",
               pathname === item.href 
                 ? "bg-primary/10 text-white border border-primary/30 shadow-[0_0_15px_rgba(0,172,193,0.2)]" 
                 : "text-white/40 hover:bg-white/5 hover:text-white border border-transparent hover:border-white/5"
@@ -93,7 +93,7 @@ export function DashboardSidebar() {
 
       {/* Footer / Profile Section - Clean & Fixed */}
       <div className="p-6 mt-auto bg-black/20 border-t border-white/5">
-        <div className="flex items-center gap-4 mb-6 p-3 bg-white/5 rounded-2xl border border-white/5">
+        <div className="flex items-center gap-4 mb-6 p-3 bg-white/5 rounded-2xl border border-white/5 btn-hover-effect cursor-pointer">
           <Avatar className="w-10 h-10 border border-primary/30 bg-black shadow-[0_0_10px_rgba(0,172,193,0.2)]">
             <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
             <AvatarFallback className="bg-primary/10 text-primary font-black text-sm">{user.name[0] || 'P'}</AvatarFallback>
@@ -109,7 +109,7 @@ export function DashboardSidebar() {
         <Button 
           variant="ghost" 
           onClick={handleLogout}
-          className="w-full flex items-center justify-start gap-4 px-5 py-4 text-destructive/50 hover:text-destructive hover:bg-destructive/10 rounded-xl font-black transition-all duration-300 border border-transparent"
+          className="w-full flex items-center justify-start gap-4 px-5 py-4 text-destructive/50 hover:text-destructive hover:bg-destructive/10 rounded-xl font-black transition-all duration-300 border border-transparent btn-hover-effect"
         >
           <LogOut className="w-5 h-5" />
           <span className="text-[10px] uppercase tracking-widest">Logout</span>

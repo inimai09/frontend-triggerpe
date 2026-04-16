@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from 'react';
@@ -16,7 +17,7 @@ export default function PolicyPage() {
         {/* Boxed Header Card */}
         <Card className="card-neon-glow p-10 rounded-[2.5rem] border-none">
           <header className="space-y-6">
-            <div className="p-8 bg-black/40 border border-white/5 rounded-[2rem] w-full md:w-fit">
+            <div className="p-8 bg-black/40 border border-white/5 rounded-[2rem] w-full md:w-fit btn-hover-effect">
               <h1 className="text-4xl font-black text-white uppercase tracking-tighter mb-4">My Policy</h1>
               <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-primary/10 border border-primary/20">
                 <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#00ACC1]" />
@@ -43,7 +44,7 @@ export default function PolicyPage() {
                   { label: 'Zone', value: 'Chennai' },
                   { label: 'Validity', value: '7d Left' },
                 ].map((item, i) => (
-                  <div key={i} className="p-6 bg-black/40 rounded-[2rem] border border-white/5 flex flex-col items-center text-center group hover:bg-black/60 transition-colors">
+                  <div key={i} className="p-6 bg-black/40 rounded-[2rem] border border-white/5 flex flex-col items-center text-center group btn-hover-effect">
                     <span className="text-[9px] font-black text-white/40 uppercase tracking-widest mb-2">{item.label}</span>
                     <p className="text-sm font-black text-white group-hover:text-primary transition-colors">{item.value}</p>
                   </div>
@@ -52,7 +53,7 @@ export default function PolicyPage() {
 
               {/* Boxed Coverage Matrix */}
               <div className="pt-10 border-t border-white/5 space-y-8">
-                <div className="p-4 bg-black/40 rounded-2xl border border-white/5 w-fit">
+                <div className="p-4 bg-black/40 rounded-2xl border border-white/5 w-fit btn-hover-effect">
                   <h3 className="font-black text-xl text-white uppercase tracking-tighter flex items-center gap-4">
                     <Activity className="w-6 h-6 text-primary icon-neon-glow" /> Coverage Matrix
                   </h3>
@@ -110,7 +111,7 @@ export default function PolicyPage() {
                   { label: 'Weekly Premium', value: '₹72.50', color: 'text-white' },
                   { label: 'Settled Claims', value: '3', color: 'text-white/40' },
                 ].map((item, i) => (
-                  <div key={i} className="p-6 bg-black/40 rounded-[2rem] border border-white/5 flex flex-col gap-2 group hover:bg-black/60 transition-colors">
+                  <div key={i} className="p-6 bg-black/40 rounded-[2rem] border border-white/5 flex flex-col gap-2 btn-hover-effect">
                     <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{item.label}</span>
                     <span className={cn("text-3xl font-black", item.color, item.color === 'text-primary' && 'icon-neon-glow tracking-tighter')}>{item.value}</span>
                   </div>
@@ -124,19 +125,19 @@ export default function PolicyPage() {
                 <CardTitle className="text-lg font-black text-white uppercase tracking-widest">Repository</CardTitle>
               </CardHeader>
               <CardContent className="p-8 space-y-6">
-                <div className="bg-black/40 rounded-2xl border border-white/5 group hover:bg-black/60 transition-colors">
+                <div className="bg-black/40 rounded-2xl border border-white/5 btn-hover-effect">
                   <Button variant="ghost" className="w-full justify-between h-16 rounded-2xl font-black px-6">
                     <span className="flex items-center gap-4 text-white text-sm"><FileText className="w-5 h-5 text-primary icon-neon-glow" /> Policy Schedule</span>
-                    <Download className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                    <Download className="w-5 h-5 text-white/40" />
                   </Button>
                 </div>
-                <div className="bg-black/40 rounded-2xl border border-white/5 group hover:bg-black/60 transition-colors">
+                <div className="bg-black/40 rounded-2xl border border-white/5 btn-hover-effect">
                   <Button variant="ghost" className="w-full justify-between h-16 rounded-2xl font-black px-6">
                     <span className="flex items-center gap-4 text-white text-sm"><FileText className="w-5 h-5 text-primary icon-neon-glow" /> PDS & Terms</span>
-                    <Download className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                    <Download className="w-5 h-5 text-white/40" />
                   </Button>
                 </div>
-                <Button variant="ghost" className="w-full text-primary font-black mt-4 hover:text-white uppercase tracking-widest text-[10px] icon-neon-glow">
+                <Button variant="ghost" className="w-full text-primary font-black mt-4 hover:text-white uppercase tracking-widest text-[10px] icon-neon-glow btn-hover-effect">
                   Policy Framework FAQ <ExternalLink className="w-4 h-4 ml-2" />
                 </Button>
               </CardContent>
@@ -148,7 +149,7 @@ export default function PolicyPage() {
         <Card className="card-neon-glow rounded-[3rem] border-none overflow-hidden">
           <CardHeader className="bg-white/5 border-b border-white/5 px-10 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Subscription Ledger</CardTitle>
-            <Button variant="outline" className="rounded-full border-primary/20 text-primary font-black uppercase text-[10px] px-8 h-12 bg-primary/5 hover:bg-primary hover:text-white transition-all">Download Audit</Button>
+            <Button variant="outline" className="rounded-full border-primary/20 text-primary font-black uppercase text-[10px] px-8 h-12 bg-primary/5 hover:bg-primary hover:text-white transition-all btn-hover-effect">Download Audit</Button>
           </CardHeader>
           <CardContent className="p-0">
             <Table>
@@ -166,7 +167,7 @@ export default function PolicyPage() {
                   { date: '04 Apr 2026', id: 'TXN-992011', amount: '₹72.50', status: 'Success', method: 'UPI' },
                   { date: '28 Mar 2026', id: 'TXN-984420', amount: '₹72.50', status: 'Success', method: 'UPI' },
                 ].map((row, i) => (
-                  <TableRow key={i} className="border-white/5 hover:bg-white/5 transition-colors group">
+                  <TableRow key={i} className="border-white/5 hover:bg-white/5 transition-colors group btn-hover-effect">
                     <TableCell className="px-10 py-8 font-black text-white text-lg">{row.date}</TableCell>
                     <TableCell className="px-10 py-8 font-mono text-[11px] font-black text-white/40 group-hover:text-white transition-colors">{row.id}</TableCell>
                     <TableCell className="px-10 py-8 font-black text-primary icon-neon-glow text-2xl tracking-tighter">{row.amount}</TableCell>
