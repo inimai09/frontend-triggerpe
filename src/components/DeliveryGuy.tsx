@@ -34,22 +34,22 @@ export function DeliveryGuy({ weather = 'SUNNY', className = "" }: DeliveryGuyPr
           </circle>
         </g>
 
-        {/* Chassis & Aerodynamic Bodywork */}
+        {/* Chassis & Aerodynamic Bodywork - More Rounded */}
         <path d="M60 190H180" stroke="#00ACC1" strokeWidth="14" strokeLinecap="round" />
-        <path d="M165 190L185 130H150" stroke="#006064" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M70 190L85 160H160L150 190H70Z" fill="#00ACC1" />
+        <path d="M165 190Q175 160 185 130H150" stroke="#006064" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M70 190C75 160 85 160 160 160Q155 190 150 190H70Z" fill="#00ACC1" />
         
-        {/* Comfortable Seat */}
-        <rect x="85" y="150" width="70" height="14" rx="6" fill="#1A1A1A" />
+        {/* Comfortable Seat - Very Rounded */}
+        <rect x="85" y="150" width="70" height="14" rx="7" fill="#1A1A1A" />
         
         {/* Steering Column */}
         <line x1="175" y1="135" x2="160" y2="105" stroke="#333" strokeWidth="6" strokeLinecap="round" />
         <rect x="150" y="100" width="20" height="6" rx="3" fill="#1A1A1A" />
 
-        {/* Premium Delivery Box with TP Logo */}
+        {/* Premium Delivery Box with TP Logo - High Fillet Radius */}
         <g id="delivery-box">
-          <rect x="35" y="105" width="60" height="60" rx="12" fill="#004D40" />
-          <rect x="40" y="110" width="50" height="50" rx="6" fill="#006064" />
+          <rect x="35" y="105" width="60" height="60" rx="15" fill="#004D40" />
+          <rect x="40" y="110" width="50" height="50" rx="10" fill="#006064" />
           <text x="47" y="145" fill="white" fontSize="24" fontWeight="900" fontFamily="Space Grotesk">TP</text>
         </g>
       </g>
@@ -71,9 +71,9 @@ export function DeliveryGuy({ weather = 'SUNNY', className = "" }: DeliveryGuyPr
           <path d="M115 92Q120 96 125 92" stroke="black" strokeWidth="2" fill="none" />
         </g>
         
-        {/* Helmet with Aerodynamic Visor */}
+        {/* Helmet with Aerodynamic Visor - More Rounded */}
         <path d="M102 85C102 75 110 67 120 67C130 67 138 75 138 85H102Z" fill="#00ACC1" />
-        <rect x="105" y="75" width="30" height="8" rx="3" fill="#E0F7FA" opacity="0.9" />
+        <rect x="105" y="75" width="30" height="8" rx="4" fill="#E0F7FA" opacity="0.9" />
       </g>
 
       {/* DYNAMIC WEATHER EFFECTS */}

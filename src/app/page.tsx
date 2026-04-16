@@ -34,7 +34,7 @@ export default function LandingPage() {
       <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10 px-6 lg:px-20 py-12 gap-12 lg:gap-20">
         <div className="flex-1 flex flex-col justify-center animate-in fade-in slide-in-from-left-8 duration-1000">
           <div className="inline-block w-fit mb-8">
-            <div className="p-2 bg-black/40 border border-white/5 rounded-[1.5rem]">
+            <div className="p-2 bg-black/40 border border-white/5 rounded-full">
               <Badge className="bg-primary/20 text-white border-primary/40 py-1.5 px-5 rounded-full font-bold uppercase tracking-[0.2em] text-[8px] icon-neon-glow">
                 INDIA'S FIRST PARAMETRIC INSURANCE
               </Badge>
@@ -54,7 +54,7 @@ export default function LandingPage() {
             <Button asChild size="lg" className="rounded-full px-10 py-8 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_30px_rgba(0,172,193,0.4)] h-20">
               <Link href="/login" className="flex items-center gap-6 uppercase">
                 Start Coverage 
-                <div className="p-2 bg-white/20 rounded-xl">
+                <div className="p-2 bg-white/20 rounded-full">
                   <ArrowRight className="w-6 h-6" />
                 </div>
               </Link>
@@ -67,9 +67,9 @@ export default function LandingPage() {
             </Button>
           </div>
           
-          <div className="mt-10 p-5 bg-white/5 border border-white/10 rounded-[1.75rem] w-fit btn-hover-effect cursor-default group backdrop-blur-md">
+          <div className="mt-10 p-5 bg-white/5 border border-white/10 rounded-full w-fit btn-hover-effect cursor-default group backdrop-blur-md">
             <div className="flex items-center gap-4">
-              <div className="p-2.5 bg-primary/10 rounded-xl border border-primary/20">
+              <div className="p-2.5 bg-primary/10 rounded-full border border-primary/20">
                 <ShieldCheck className="w-5 h-5 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
               </div>
               <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">IRDAI REGISTERED</span>
@@ -87,13 +87,13 @@ export default function LandingPage() {
               {weatherCards.map((card, idx) => (
                 <CarouselItem key={idx} className="basis-full">
                   <div className="p-2">
-                    <Card className={`overflow-hidden card-neon-glow border-none rounded-[2.5rem] btn-hover-effect transition-all duration-300 shadow-2xl ${card.bg}`}>
+                    <Card className={`overflow-hidden card-neon-glow border-none rounded-[3rem] btn-hover-effect transition-all duration-300 shadow-2xl ${card.bg}`}>
                       <CardContent className="p-6 flex flex-col items-center text-center h-full">
                         <div className="w-full flex justify-between items-center mb-4">
                           <Badge variant="outline" className="text-[7px] font-black tracking-[0.3em] text-white/20 uppercase border-white/5 px-3 py-1 rounded-full">
                             MODE {idx + 1}
                           </Badge>
-                          <div className={`p-2.5 rounded-xl bg-black/60 border border-white/10 ${card.iconColor}`}>
+                          <div className={`p-2.5 rounded-full bg-black/60 border border-white/10 ${card.iconColor}`}>
                             <card.icon className="w-5 h-5 icon-neon-glow" />
                           </div>
                         </div>
@@ -102,7 +102,7 @@ export default function LandingPage() {
                           <DeliveryGuy weather={card.type as any} className="w-full h-full" />
                         </div>
                         
-                        <div className="space-y-2 p-5 bg-black/80 rounded-[1.75rem] border border-white/10 w-full shadow-inner">
+                        <div className="space-y-2 p-5 bg-black/80 rounded-[2rem] border border-white/10 w-full shadow-inner">
                           <h3 className="text-lg font-black text-white font-headline uppercase tracking-tight">{card.label}</h3>
                           <p className={`text-sm font-black ${card.iconColor} uppercase tracking-tighter icon-neon-glow`}>{card.trigger}</p>
                         </div>
@@ -114,8 +114,8 @@ export default function LandingPage() {
             </CarouselContent>
             
             <div className="flex justify-center gap-4 mt-6">
-              <CarouselPrevious className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-xl text-primary btn-hover-effect hover:bg-primary hover:text-white" />
-              <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-xl text-primary btn-hover-effect hover:bg-primary hover:text-white" />
+              <CarouselPrevious className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
+              <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-10 h-10 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
             </div>
             <p className="text-center mt-3 text-[8px] font-black text-white/10 uppercase tracking-[0.4em] animate-pulse">SWIPE TO VIEW MODES</p>
           </Carousel>
@@ -132,8 +132,8 @@ export default function LandingPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step, i) => (
-              <Card key={i} className="card-neon-glow p-10 btn-hover-effect border-none group bg-black/60 backdrop-blur-3xl rounded-[2.5rem]">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary/20 transition-all shadow-lg">
+              <Card key={i} className="card-neon-glow p-10 btn-hover-effect border-none group bg-black/60 backdrop-blur-3xl rounded-[3rem]">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary/20 transition-all shadow-lg">
                   <step.icon className="w-8 h-8 text-primary icon-neon-glow" />
                 </div>
                 <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4 font-headline">{step.title}</h3>
@@ -160,7 +160,7 @@ export default function LandingPage() {
               { name: 'STANDARD', price: '₹79', coverage: '₹1400 max', perks: ['All 5 triggers'], badge: 'MOST POPULAR', btn: 'Get Protected' },
               { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + Priority'], btn: 'Get Protected' },
             ].map((plan, i) => (
-              <Card key={i} className={`p-10 flex flex-col items-center card-neon-glow border-2 rounded-[3rem] btn-hover-effect ${plan.badge ? 'border-primary shadow-[0_0_50px_rgba(0,172,193,0.3)] scale-105 z-20' : 'border-white/5'}`}>
+              <Card key={i} className={`p-10 flex flex-col items-center card-neon-glow border-2 rounded-[3.5rem] btn-hover-effect ${plan.badge ? 'border-primary shadow-[0_0_50px_rgba(0,172,193,0.3)] scale-105 z-20' : 'border-white/5'}`}>
                 {plan.badge && <Badge className="bg-primary text-white mb-8 font-black py-1.5 px-6 rounded-full text-[9px] tracking-[0.2em] shadow-lg">{plan.badge}</Badge>}
                 <h3 className="text-lg font-black text-primary mb-4 uppercase tracking-[0.2em] font-headline">{plan.name}</h3>
                 <div className="flex items-baseline gap-1 mb-3">
@@ -200,7 +200,7 @@ export default function LandingPage() {
               { q: "How do I get paid?", a: "Payouts are pushed directly to your registered UPI ID (GPay/PhonePe/Paytm) within minutes." },
               { q: "Can I cancel anytime?", a: "Yes. Coverage is weekly, you can stop renewal at any time through your dashboard." }
             ].map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="card-neon-glow rounded-3xl px-8 mb-4 border-none shadow-xl bg-black/40">
+              <AccordionItem key={i} value={`item-${i}`} className="card-neon-glow rounded-[2rem] px-8 mb-4 border-none shadow-xl bg-black/40">
                 <AccordionTrigger className="font-black text-white hover:no-underline text-base py-7 uppercase tracking-tight text-left font-headline">{item.q}</AccordionTrigger>
                 <AccordionContent className="font-medium text-white/40 leading-relaxed text-base pb-8">{item.a}</AccordionContent>
               </AccordionItem>
@@ -221,9 +221,9 @@ export default function LandingPage() {
               Protected by Neural Watchdog AI.
             </p>
             <div className="flex justify-center md:justify-end gap-6 opacity-40">
-              <div className="p-2 bg-white/5 rounded-xl border border-white/10"><ShieldCheck className="w-5 h-5 text-white" /></div>
-              <div className="w-8 h-8 rounded-xl border-2 border-white/20" />
-              <div className="w-8 h-8 bg-white/10 rounded-xl" />
+              <div className="p-2 bg-white/5 rounded-full border border-white/10"><ShieldCheck className="w-5 h-5 text-white" /></div>
+              <div className="w-8 h-8 rounded-full border-2 border-white/20" />
+              <div className="w-8 h-8 bg-white/10 rounded-full" />
             </div>
           </div>
         </div>
