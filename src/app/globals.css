@@ -31,10 +31,13 @@
   * {
     @apply border-border;
   }
+  html, body {
+    background-color: #E0F7FA !important;
+  }
   body {
     @apply font-body antialiased;
-    background-color: #E0F7FA !important;
     color: #006064;
+    min-height: 100vh;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline tracking-tight;
@@ -45,10 +48,11 @@
   @apply transition-all duration-200 hover:scale-[1.02] active:scale-95;
 }
 
-/* No transparency rule */
-.card, .popover, .dialog, .sheet {
-  @apply bg-white opacity-100 !important;
+/* Strict solid rules - NO transparency, NO glassmorphism */
+.card, .popover, .dialog, .sheet, .accordion-item {
+  @apply bg-white opacity-100 shadow-sm !important;
   backdrop-filter: none !important;
+  border: 1px solid #E2E8F0 !important;
 }
 
 @keyframes sparkle-float {
@@ -57,19 +61,19 @@
     opacity: 0;
   }
   20% {
-    opacity: 0.6;
+    opacity: 0.7;
     transform: translate(var(--move-x-20), var(--move-y-20)) scale(0.8);
   }
   50% {
-    opacity: 0.8;
-    transform: translate(var(--move-x-50), var(--move-y-50)) scale(1.1);
+    opacity: 1;
+    transform: translate(var(--move-x-50), var(--move-y-50)) scale(1.2);
   }
   80% {
-    opacity: 0.6;
+    opacity: 0.7;
     transform: translate(var(--move-x-80), var(--move-y-80)) scale(0.9);
   }
   100% {
-    transform: translate(var(--move-x-100), var(--move-y-100)) scale(0);
+    transform: translate(0, 0) scale(0);
     opacity: 0;
   }
 }

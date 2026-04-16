@@ -87,7 +87,7 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-24 px-12 bg-white/50 border-t border-border">
+      <section className="py-24 px-12 bg-white border-t border-border">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-black text-[#006064] text-center mb-16">How TriggerPe Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
