@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from 'react';
@@ -43,9 +44,9 @@ export default function LandingPage() {
   ];
 
   const pricingPlans = [
-    { name: 'BASIC', price: '49', features: ['Rain Coverage', 'Heat Protection', 'Standard Payouts'], color: 'bg-black/40' },
-    { name: 'STANDARD', price: '79', features: ['All Basic Features', 'AQI Alerts', 'Priority Verification', 'Curfew Shield'], color: 'bg-[#00ACC1]/10' },
-    { name: 'PREMIUM', price: '99', features: ['Full Trigger Suite', 'Outage Protection', 'Instant UPI Payouts', 'Custom Risk Profile'], color: 'bg-black/40' },
+    { name: 'BASIC', price: '49', features: ['Rain Coverage', 'Heat Protection', 'Standard Payouts'] },
+    { name: 'STANDARD', price: '79', features: ['All Basic Features', 'AQI Alerts', 'Priority Verification', 'Curfew Shield'] },
+    { name: 'PREMIUM', price: '99', features: ['Full Trigger Suite', 'Outage Protection', 'Instant UPI Payouts', 'Custom Risk Profile'] },
   ];
 
   const handlePriceClick = () => {
@@ -80,20 +81,23 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-start gap-6 pt-4">
-            <Button asChild size="lg" className="rounded-full px-12 h-18 text-xl bg-primary hover:bg-primary/90 text-white font-black shadow-2xl btn-hover-effect border-none flex items-center gap-4">
-              <Link href="/login">
-                Get Protected Now <ArrowRight className="w-6 h-6" />
+            <Button asChild size="lg" className="rounded-full px-12 h-20 text-xl bg-primary hover:bg-primary/90 text-white font-black shadow-2xl btn-hover-effect border-none flex items-center gap-6">
+              <Link href="/login" className="flex items-center gap-6">
+                Get Protected Now 
+                <div className="p-3 bg-white/20 rounded-full">
+                  <ArrowRight className="w-10 h-10 text-white drop-shadow-md" />
+                </div>
               </Link>
             </Button>
           </div>
         </div>
 
         <div className="w-full lg:w-[450px] animate-in fade-in zoom-in-95 duration-1000 delay-300">
-          <Carousel opts={{ loop: true }} className="w-full">
+          <Carousel opts={{ loop: true }} className="w-full cursor-grab active:cursor-grabbing">
             <CarouselContent>
               {weatherCards.map((card, idx) => (
                 <CarouselItem key={idx}>
-                  <Card className="border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl rounded-[3.5rem] overflow-hidden">
+                  <Card className="border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl rounded-[3.5rem] overflow-hidden transition-all duration-500">
                     <CardContent className="p-12 flex flex-col items-center text-center">
                       <div className="w-full flex justify-between items-center mb-10">
                         <Badge variant="outline" className="text-[10px] font-black text-white/40 border-white/10 rounded-full px-4">SENSOR MODE {idx + 1}</Badge>
@@ -101,7 +105,7 @@ export default function LandingPage() {
                           <card.icon className={cn("w-8 h-8", card.color)} />
                         </div>
                       </div>
-                      <div className="w-64 h-64 mb-10">
+                      <div className="w-64 h-64 mb-10 pointer-events-none">
                         <DeliveryGuy weather={card.type as any} className="w-full h-full" />
                       </div>
                       <div className="space-y-4">
@@ -140,7 +144,7 @@ export default function LandingPage() {
                 <div className="w-20 h-20 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border-2 border-white/10 mx-auto md:mx-0 shadow-inner group-hover:border-primary transition-colors">
                   <step.icon className="w-10 h-10 text-primary" />
                 </div>
-                <div className="p-10 border-2 border-white/10 rounded-[3rem] bg-black/40 backdrop-blur-xl group-hover:border-primary/50 transition-colors shadow-xl">
+                <div className="p-10 border-2 border-white/10 rounded-[3rem] bg-black/40 backdrop-blur-xl group-hover:border-primary/50 transition-colors shadow-xl h-full">
                   <h3 className="text-3xl font-black font-headline text-white mb-4">{step.title}</h3>
                   <p className="text-lg font-medium text-white/60 leading-relaxed">{step.desc}</p>
                 </div>
@@ -161,7 +165,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingPlans.map((plan, i) => (
-              <Card key={i} className={cn("border-white/10 backdrop-blur-xl shadow-2xl rounded-[3.5rem] overflow-hidden flex flex-col transition-all hover:scale-105 duration-300 animate-in fade-in slide-in-from-bottom-12", plan.color)}>
+              <Card key={i} className={cn("border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl rounded-[3.5rem] overflow-hidden flex flex-col transition-all hover:scale-105 duration-300 animate-in fade-in slide-in-from-bottom-12")}>
                 <CardContent className="p-12 flex flex-col flex-1">
                   <span className="text-[10px] font-black uppercase text-primary tracking-[0.3em] mb-4">{plan.name}</span>
                   <div 
