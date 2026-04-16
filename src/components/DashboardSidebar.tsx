@@ -74,7 +74,7 @@ export function DashboardSidebar() {
             )}
           >
             <div className={cn(
-              "p-2.5 !rounded-full transition-all duration-300",
+              "p-2.5 rounded-full transition-all duration-300",
               pathname === item.href ? "bg-primary/20" : "bg-white/5"
             )}>
               <item.icon className={cn(
@@ -115,7 +115,7 @@ export function DashboardSidebar() {
           onClick={handleLogout}
           className="w-full flex items-center justify-start gap-3 px-5 py-2 text-destructive/50 hover:text-destructive hover:bg-destructive/10 rounded-full font-black transition-all duration-300 border border-transparent btn-hover-effect h-10"
         >
-          <div className="p-2 bg-destructive/10 !rounded-full">
+          <div className="p-2 bg-destructive/10 rounded-full">
             <LogOut className="w-3.5 h-3.5" />
           </div>
           <span className="text-[9px] uppercase tracking-widest font-headline">Logout</span>

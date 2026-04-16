@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -69,7 +68,7 @@ export default function PremiumAIPage() {
                   { label: 'Risk loading', value: mockData.riskLoading },
                   { label: 'Weather loading', value: mockData.weatherLoading },
                 ].map((item, i) => (
-                  <div key={i} className="flex justify-between items-center group btn-hover-effect p-3 bg-white/5 rounded-xl border border-white/5">
+                  <div key={i} className="flex justify-between items-center group btn-hover-effect p-3 bg-white/5 rounded-full border border-white/5">
                     <span className="text-base font-bold text-white/60 group-hover:text-white transition-colors">{item.label}</span>
                     <span className="font-black text-white text-lg">₹{item.value.toFixed(2)}</span>
                   </div>
@@ -79,8 +78,10 @@ export default function PremiumAIPage() {
                   <span className="text-3xl font-black text-primary icon-neon-glow tracking-tighter">₹{mockData.totalPremium.toFixed(2)}</span>
                 </div>
               </div>
-              <div className="bg-primary/5 p-6 rounded-[1.5rem] border border-primary/20 flex items-start gap-4 btn-hover-effect">
-                <Info className="w-5 h-5 text-primary shrink-0 icon-neon-glow" />
+              <div className="bg-primary/5 p-6 rounded-full border border-primary/20 flex items-start gap-4 btn-hover-effect">
+                <div className="p-2 rounded-full bg-primary/20">
+                  <Info className="w-5 h-5 text-primary shrink-0 icon-neon-glow" />
+                </div>
                 <p className="text-[11px] font-bold text-white/80 leading-relaxed">
                   Monthly projection is <span className="font-black text-primary">₹290.00</span>. Rates re-calibrate every Monday based on regional macro-risk indices.
                 </p>
@@ -108,13 +109,13 @@ export default function PremiumAIPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-5 bg-white/5 rounded-[1.5rem] border border-white/5 btn-hover-effect">
-                  <span className="text-[9px] font-black text-white/30 uppercase block mb-2 tracking-widest">Zone Status</span>
-                  <span className="text-base font-black text-white">{mockData.zone}</span>
+                <div className="p-5 bg-white/5 rounded-full border border-white/5 btn-hover-effect">
+                  <span className="text-[9px] font-black text-white/30 uppercase block mb-2 tracking-widest text-center">Zone Status</span>
+                  <span className="text-base font-black text-white block text-center">{mockData.zone}</span>
                 </div>
-                <div className="p-5 bg-white/5 rounded-[1.5rem] border border-white/5 btn-hover-effect">
-                  <span className="text-[9px] font-black text-white/30 uppercase block mb-2 tracking-widest">Platform Feed</span>
-                  <span className="text-base font-black text-white">{mockData.platform}</span>
+                <div className="p-5 bg-white/5 rounded-full border border-white/5 btn-hover-effect">
+                  <span className="text-[9px] font-black text-white/30 uppercase block mb-2 tracking-widest text-center">Platform Feed</span>
+                  <span className="text-base font-black text-white block text-center">{mockData.platform}</span>
                 </div>
               </div>
 
@@ -122,7 +123,7 @@ export default function PremiumAIPage() {
                 <h3 className="text-[9px] font-black text-white/40 uppercase tracking-widest mb-4">Historical Risk Volatility</h3>
                 <div className="h-24 flex items-end gap-3 px-2">
                   {[45, 42, 38, 35].map((val, i) => (
-                    <div key={i} className="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-[0.75rem] relative group btn-hover-effect" style={{ height: `${val}%` }}>
+                    <div key={i} className="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-full relative group btn-hover-effect" style={{ height: `${val}%` }}>
                       <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-white text-black text-[9px] font-black px-2 py-0.5 rounded-full shadow-2xl transition-all">0.{val}</div>
                     </div>
                   ))}
@@ -139,7 +140,7 @@ export default function PremiumAIPage() {
         <Card className="card-neon-glow rounded-[2.5rem] overflow-hidden">
           <CardContent className="p-8">
             <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="w-20 h-20 rounded-[1.5rem] bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 shadow-[0_0_30px_rgba(0,172,193,0.3)] btn-hover-effect">
+              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 shadow-[0_0_30px_rgba(0,172,193,0.3)] btn-hover-effect">
                 <BrainCircuit className="w-10 h-10 text-primary icon-neon-glow" />
               </div>
               <div className="flex-1 space-y-4 text-center md:text-left">

@@ -92,8 +92,8 @@ export default function LoginPage() {
                     <div className="space-y-2">
                       <label className="text-[9px] font-black text-primary uppercase tracking-widest ml-1">Phone Number</label>
                       <div className="flex gap-2">
-                        <div className="flex items-center justify-center px-5 bg-white/5 border border-primary/20 rounded-2xl text-primary font-black">+91</div>
-                        <Input placeholder="98765 43210" className="h-14 border-primary/20 bg-white/5 focus-visible:ring-primary rounded-2xl font-bold text-white px-6 text-lg" maxLength={10} />
+                        <div className="flex items-center justify-center px-5 bg-white/5 border border-primary/20 rounded-full text-primary font-black">+91</div>
+                        <Input placeholder="98765 43210" className="h-14 border-primary/20 bg-white/5 focus-visible:ring-primary rounded-full font-bold text-white px-6 text-lg" maxLength={10} />
                       </div>
                     </div>
                     <Button onClick={handleSendOtp} className="w-full h-16 bg-primary hover:bg-primary/90 rounded-full font-black shadow-lg btn-hover-effect text-white uppercase text-lg" disabled={loading}>
@@ -110,7 +110,7 @@ export default function LoginPage() {
                           id={`otp-${i}`}
                           value={digit}
                           onChange={(e) => handleOtpChange(i, e.target.value)}
-                          className="w-12 h-16 text-center text-2xl font-black border-primary/20 bg-white/5 rounded-2xl text-white focus:border-primary"
+                          className="w-12 h-16 text-center text-2xl font-black border-primary/20 bg-white/5 rounded-full text-white focus:border-primary"
                           maxLength={1}
                         />
                       ))}
@@ -130,7 +130,7 @@ export default function LoginPage() {
                   <>
                     <div className="space-y-2">
                       <label className="text-[9px] font-black text-primary uppercase tracking-widest ml-1">Email Address</label>
-                      <Input placeholder="partner@triggerpe.com" className="h-14 border-primary/20 bg-white/5 focus-visible:ring-primary rounded-2xl font-bold text-white px-6 text-lg" type="email" />
+                      <Input placeholder="partner@triggerpe.com" className="h-14 border-primary/20 bg-white/5 focus-visible:ring-primary rounded-full font-bold text-white px-6 text-lg" type="email" />
                     </div>
                     <Button onClick={handleSendOtp} className="w-full h-16 bg-primary hover:bg-primary/90 rounded-full font-black shadow-lg btn-hover-effect text-white uppercase text-lg" disabled={loading}>
                       {loading ? <Loader2 className="w-6 h-6 animate-spin mr-3" /> : "Send OTP"}
@@ -146,7 +146,7 @@ export default function LoginPage() {
                           id={`otp-email-${i}`}
                           value={digit}
                           onChange={(e) => handleOtpChange(i, e.target.value)}
-                          className="w-12 h-16 text-center text-2xl font-black border-primary/20 bg-white/5 rounded-2xl text-white focus:border-primary"
+                          className="w-12 h-16 text-center text-2xl font-black border-primary/20 bg-white/5 rounded-full text-white focus:border-primary"
                           maxLength={1}
                         />
                       ))}

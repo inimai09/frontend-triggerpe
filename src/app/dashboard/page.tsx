@@ -61,7 +61,7 @@ export default function Dashboard() {
               <div className="flex items-center gap-4 mb-6">
                 <Badge className="bg-primary/20 text-primary border-primary/30 font-black px-5 py-2 uppercase tracking-widest text-[8px] rounded-full">CHENNAI CENTRAL</Badge>
                 <span className="text-white/40 text-[8px] font-black uppercase tracking-widest flex items-center gap-2">
-                  <div className="p-1 bg-white/5 rounded-md border border-white/10">
+                  <div className="p-1 bg-white/5 rounded-full border border-white/10">
                     <Clock className="w-3.5 h-3.5" />
                   </div> 4 MINS AGO
                 </span>
@@ -82,8 +82,8 @@ export default function Dashboard() {
                 { label: 'Wind', value: '12km/h', icon: TrendingUp },
                 { label: 'Humidity', value: '64%', icon: Droplets },
               ].map((m, i) => (
-                <div key={i} className="flex flex-col items-center p-6 rounded-[2.5rem] bg-black/40 border border-white/5 btn-hover-effect min-w-[120px]">
-                  <div className="p-3 rounded-2xl bg-white/5 mb-3 border border-white/10">
+                <div key={i} className="flex flex-col items-center p-6 rounded-full bg-black/40 border border-white/5 btn-hover-effect min-w-[120px]">
+                  <div className="p-3 rounded-full bg-white/5 mb-3 border border-white/10">
                     <m.icon className="w-7 h-7 text-primary icon-neon-glow" />
                   </div>
                   <span className="text-[9px] font-black text-white/40 uppercase tracking-widest mb-1">{m.label}</span>
@@ -102,8 +102,8 @@ export default function Dashboard() {
             { label: 'Weekly premium', value: '₹72.5', icon: Activity, color: 'text-warning' },
             { label: 'Claims this week', value: '0', icon: History, color: 'text-destructive' },
           ].map((stat, i) => (
-            <Card key={i} className="card-neon-glow flex items-center p-8 gap-6 rounded-[3rem] btn-hover-effect">
-              <div className={cn("p-4 rounded-2xl bg-black/40 border border-white/5", stat.color)}>
+            <Card key={i} className="card-neon-glow flex items-center p-8 gap-6 rounded-full btn-hover-effect">
+              <div className={cn("p-4 rounded-full bg-black/40 border border-white/5", stat.color)}>
                 <stat.icon className="w-8 h-8 icon-neon-glow" />
               </div>
               <div className="flex flex-col">
@@ -117,7 +117,7 @@ export default function Dashboard() {
         {/* Trigger Monitor Boxed Group */}
         <Card className="card-neon-glow p-10 rounded-[3.5rem] space-y-10 border-none">
           <h2 className="text-2xl font-black text-white flex items-center gap-5 uppercase tracking-tighter font-headline">
-            <div className="p-3 bg-primary/20 rounded-2xl border border-primary/30">
+            <div className="p-3 bg-primary/20 rounded-full border border-primary/30">
               <Activity className="w-8 h-8 text-primary icon-neon-glow" />
             </div> Live Trigger Monitor
           </h2>

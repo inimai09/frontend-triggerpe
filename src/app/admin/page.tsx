@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react';
@@ -36,8 +35,8 @@ export default function AdminPage() {
             { label: 'Total Payouts', value: '₹12.0L', icon: Zap, color: 'text-warning' },
             { label: 'Loss Ratio', value: '65%', icon: Activity, color: 'text-destructive' },
           ].map((stat, i) => (
-            <Card key={i} className="card-neon-glow p-6 flex flex-col items-center gap-4 rounded-[2rem] btn-hover-effect group">
-              <div className={cn("p-4 rounded-xl bg-white/5 transition-all group-hover:bg-primary/10", stat.color)}>
+            <Card key={i} className="card-neon-glow p-6 flex flex-col items-center gap-4 rounded-full btn-hover-effect group">
+              <div className={cn("p-4 rounded-full bg-white/5 transition-all group-hover:bg-primary/10", stat.color)}>
                 <stat.icon className="w-8 h-8 icon-neon-glow" />
               </div>
               <div className="flex flex-col items-center text-center">
@@ -52,19 +51,21 @@ export default function AdminPage() {
           <Card className="lg:col-span-2 card-neon-glow rounded-[2.5rem] border-none overflow-hidden">
             <CardHeader className="bg-primary/10 border-b border-white/10 px-8 py-6">
               <CardTitle className="text-xl font-black text-white uppercase tracking-widest flex items-center gap-4">
-                <Zap className="w-6 h-6 text-primary icon-neon-glow" /> Trigger Control Center
+                <div className="p-2 rounded-full bg-primary/20">
+                  <Zap className="w-6 h-6 text-primary icon-neon-glow" />
+                </div> Trigger Control Center
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Curfew Control */}
-                <div className="space-y-6 p-6 bg-white/5 rounded-[2rem] border border-white/10 hover:border-primary/20 transition-all">
+                <div className="space-y-6 p-6 bg-white/5 rounded-full border border-white/10 hover:border-primary/20 transition-all">
                   <div className="flex justify-between items-center">
                     <h3 className="font-black text-white/60 uppercase tracking-widest text-[9px]">Curfew / Lockdown</h3>
                     <Badge variant="outline" className="font-black bg-white/5 text-primary border-primary/20 text-[8px] px-3 py-0.5">AUTO-PILOT</Badge>
                   </div>
                   <Select>
-                    <SelectTrigger className="h-14 font-black bg-black border-white/10 text-white rounded-[1rem] px-6 text-lg">
+                    <SelectTrigger className="h-14 font-black bg-black border-white/10 text-white rounded-full px-6 text-lg">
                       <SelectValue placeholder="Select Target City" />
                     </SelectTrigger>
                     <SelectContent className="bg-black/95 backdrop-blur-3xl text-white border-white/10">
@@ -77,13 +78,13 @@ export default function AdminPage() {
                 </div>
 
                 {/* Outage Control */}
-                <div className="space-y-6 p-6 bg-white/5 rounded-[2rem] border border-white/10 hover:border-primary/20 transition-all">
+                <div className="space-y-6 p-6 bg-white/5 rounded-full border border-white/10 hover:border-primary/20 transition-all">
                   <div className="flex justify-between items-center">
                     <h3 className="font-black text-white/60 uppercase tracking-widest text-[9px]">Platform Outage</h3>
                     <Badge variant="outline" className="font-black bg-white/5 text-primary border-primary/20 text-[8px] px-3 py-0.5">ACTIVE FEED</Badge>
                   </div>
                   <Select>
-                    <SelectTrigger className="h-14 font-black bg-black border-white/10 text-white rounded-[1rem] px-6 text-lg">
+                    <SelectTrigger className="h-14 font-black bg-black border-white/10 text-white rounded-full px-6 text-lg">
                       <SelectValue placeholder="Select Platform" />
                     </SelectTrigger>
                     <SelectContent className="bg-black/95 backdrop-blur-3xl text-white border-white/10">
@@ -98,12 +99,14 @@ export default function AdminPage() {
 
               <div className="pt-8 border-t border-white/5 space-y-6">
                 <div className="flex items-center gap-3">
-                  <Terminal className="w-6 h-6 text-white/20" />
+                  <div className="p-2 rounded-full bg-white/5">
+                    <Terminal className="w-6 h-6 text-white/20" />
+                  </div>
                   <h3 className="font-black text-white/30 uppercase tracking-widest text-[10px]">System Debugger / Simulation</h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <Select><SelectTrigger className="h-14 font-black bg-black border-white/10 text-white rounded-[1rem] px-6 text-sm"><SelectValue placeholder="Event Type" /></SelectTrigger></Select>
-                  <Select><SelectTrigger className="h-14 font-black bg-black border-white/10 text-white rounded-[1rem] px-6 text-sm"><SelectValue placeholder="Region" /></SelectTrigger></Select>
+                  <Select><SelectTrigger className="h-14 font-black bg-black border-white/10 text-white rounded-full px-6 text-sm"><SelectValue placeholder="Event Type" /></SelectTrigger></Select>
+                  <Select><SelectTrigger className="h-14 font-black bg-black border-white/10 text-white rounded-full px-6 text-sm"><SelectValue placeholder="Region" /></SelectTrigger></Select>
                   <Button className="h-14 bg-destructive/10 border-2 border-destructive/20 text-destructive font-black text-[10px] uppercase rounded-full btn-hover-effect">SIMULATE PAYOUT</Button>
                 </div>
               </div>
@@ -116,7 +119,9 @@ export default function AdminPage() {
             </CardHeader>
             <CardContent className="p-0">
               <div className="p-12 text-center text-white/10">
-                <ShieldAlert className="w-16 h-16 mx-auto mb-4 opacity-20 icon-neon-glow" />
+                <div className="p-4 rounded-full bg-white/5 w-fit mx-auto mb-4 border border-white/10">
+                  <ShieldAlert className="w-16 h-16 opacity-20 icon-neon-glow" />
+                </div>
                 <p className="text-[10px] font-black uppercase tracking-widest">Neural Watchdog Active</p>
               </div>
               <Table>
@@ -152,7 +157,7 @@ export default function AdminPage() {
           <CardHeader className="bg-white/5 border-b border-white/10 px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <CardTitle className="text-xl font-black text-white uppercase tracking-widest">Worker Management</CardTitle>
             <div className="flex gap-4 w-full md:w-auto">
-              <Input className="flex-1 md:w-72 h-14 font-black bg-white/5 border-white/10 text-white rounded-[1.25rem] px-6 text-lg placeholder:text-white/20" placeholder="Search Global ID..." />
+              <Input className="flex-1 md:w-72 h-14 font-black bg-white/5 border-white/10 text-white rounded-full px-6 text-lg placeholder:text-white/20" placeholder="Search Global ID..." />
               <Button className="h-14 bg-primary text-white font-black uppercase text-[10px] rounded-full px-10 btn-hover-effect shadow-xl">Bulk Export</Button>
             </div>
           </CardHeader>
