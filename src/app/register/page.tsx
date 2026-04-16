@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState } from 'react';
@@ -15,20 +16,35 @@ export default function RegisterPage() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [earnings, setEarnings] = useState([500]);
   const [agreed, setAgreed] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('Standard');
 
+  // Form State
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [platform, setPlatform] = useState('Swiggy');
+  const [city, setCity] = useState('Chennai (TN)');
+  const [earnings, setEarnings] = useState([500]);
+
   const platforms = ['Swiggy', 'Zomato', 'Blinkit', 'Zepto', 'Amazon', 'Dunzo', 'BigBasket', 'Flipkart'];
 
-  const nextStep = () => setStep(s => Math.min(s + 1, 5));
+  const nextStep = () => {
+    if (step === 1 && (!name || !phone)) return;
+    setStep(s => Math.min(s + 1, 5));
+  };
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
   const handleActivate = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      localStorage.setItem('tp_user', JSON.stringify({ name: 'Rahul Sharma', platform: 'Zomato' }));
+      const userData = { 
+        name: name || 'Partner', 
+        platform: platform || 'Swiggy',
+        city: city || 'Chennai'
+      };
+      localStorage.setItem('tp_user', JSON.stringify(userData));
       router.push('/dashboard');
     }, 2000);
   };
@@ -58,15 +74,35 @@ export default function RegisterPage() {
           <div className="space-y-8 animate-in fade-in slide-in-from-right duration-300">
             <h2 className="text-2xl font-black text-[#006064]">Personal Details</h2>
             <div className="space-y-4">
-              <Input placeholder="Full Name" className="h-12 font-bold border-2" />
-              <Input placeholder="Phone Number (+91)" className="h-12 font-bold border-2" />
-              <Input placeholder="Email Address" className="h-12 font-bold border-2" />
+              <Input 
+                placeholder="Full Name" 
+                className="h-12 font-bold border-2" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Input 
+                placeholder="Phone Number (+91)" 
+                className="h-12 font-bold border-2" 
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <Input 
+                placeholder="Email Address" 
+                className="h-12 font-bold border-2" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="space-y-3">
               <label className="text-xs font-black text-muted-foreground uppercase">Select Platform</label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {platforms.map(p => (
-                  <Button key={p} variant="outline" className="h-12 font-bold hover:bg-primary/10 hover:text-primary">
+                  <Button 
+                    key={p} 
+                    variant={platform === p ? "default" : "outline"} 
+                    onClick={() => setPlatform(p)}
+                    className="h-12 font-bold transition-all"
+                  >
                     {p}
                   </Button>
                 ))}
@@ -84,9 +120,13 @@ export default function RegisterPage() {
                 <MapPin className="w-10 h-10 text-primary animate-bounce" />
               </div>
               <Button variant="outline" className="font-black h-12 rounded-full px-8">Detect My Location</Button>
-              <p className="text-sm font-bold text-[#00838F]">Current City: <span className="text-primary">Chennai (TN)</span></p>
+              <p className="text-sm font-bold text-[#00838F]">Current City: <span className="text-primary">{city}</span></p>
             </div>
-            <Input placeholder="Enter City Manually (if required)" className="h-12 font-bold border-2" />
+            <Input 
+              placeholder="Enter City Manually" 
+              className="h-12 font-bold border-2" 
+              onChange={(e) => setCity(e.target.value)}
+            />
             <div className="flex gap-4">
               <Button variant="ghost" onClick={prevStep} className="flex-1 h-14 font-black">Back</Button>
               <Button onClick={nextStep} className="flex-[2] h-14 bg-primary font-black rounded-full btn-hover-effect">Next</Button>

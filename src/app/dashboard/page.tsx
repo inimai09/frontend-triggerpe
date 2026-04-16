@@ -31,7 +31,10 @@ export default function Dashboard() {
     const saved = localStorage.getItem('tp_user');
     if (saved) {
       try {
-        setUser(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (parsed.name) {
+          setUser(parsed);
+        }
       } catch (e) {
         console.error("Failed to parse user session");
       }
@@ -47,7 +50,7 @@ export default function Dashboard() {
         </header>
 
         {/* Weather Widget */}
-        <Card className="border-none shadow-lg bg-white overflow-hidden group">
+        <Card className="border-none shadow-lg bg-white overflow-hidden rounded-2xl">
           <CardContent className="p-10 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -65,14 +68,14 @@ export default function Dashboard() {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full md:w-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full md:w-auto">
               {[
                 { label: 'Rainfall', value: '0.2mm', icon: CloudRain },
                 { label: 'AQI', value: '150', icon: Wind },
                 { label: 'Wind', value: '12km/h', icon: TrendingUp },
                 { label: 'Humidity', value: '64%', icon: Droplets },
               ].map((m, i) => (
-                <div key={i} className="flex flex-col items-center p-4 rounded-2xl bg-[#E0F7FA] border border-primary/10">
+                <div key={i} className="flex flex-col items-center p-5 rounded-2xl bg-[#E0F7FA] border border-primary/5">
                   <m.icon className="w-6 h-6 mb-2 text-primary" />
                   <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{m.label}</span>
                   <span className="text-sm font-black text-[#006064]">{m.value}</span>
@@ -90,7 +93,7 @@ export default function Dashboard() {
             { label: 'Weekly premium', value: '₹72.5', icon: Activity, color: 'text-warning' },
             { label: 'Claims this week', value: '0', icon: History, color: 'text-destructive' },
           ].map((stat, i) => (
-            <Card key={i} className="bg-white border border-border shadow-sm flex items-center p-6 gap-5">
+            <Card key={i} className="bg-white border border-border shadow-sm flex items-center p-6 gap-5 rounded-2xl transition-all hover:shadow-md">
               <div className={cn("p-4 rounded-2xl bg-[#E0F7FA]", stat.color)}>
                 <stat.icon className="w-7 h-7" />
               </div>
@@ -115,10 +118,10 @@ export default function Dashboard() {
               { label: 'Curfew', current: 'Inactive', progress: 0, payout: '₹400' },
               { label: 'Outage', current: 'Inactive', progress: 0, payout: '₹350' },
             ].map((t, i) => (
-              <Card key={i} className="bg-white border border-border shadow-sm p-6 space-y-5">
+              <Card key={i} className="bg-white border border-border shadow-sm p-6 space-y-5 rounded-2xl transition-all hover:border-primary/20">
                 <div className="flex justify-between items-start">
                   <span className="text-sm font-black text-[#006064]">{t.label}</span>
-                  <Badge variant="outline" className="text-[10px] font-black text-primary border-primary/20">{t.payout}</Badge>
+                  <Badge variant="outline" className="text-[10px] font-black text-primary border-primary/20 bg-[#E0F7FA]">{t.payout}</Badge>
                 </div>
                 <div className="space-y-3">
                   <div className="flex justify-between text-[10px] font-black">
@@ -138,25 +141,25 @@ export default function Dashboard() {
 
         {/* Bottom Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <Card className="lg:col-span-2 bg-white border border-border shadow-sm">
+          <Card className="lg:col-span-2 bg-white border border-border shadow-sm rounded-2xl overflow-hidden">
             <CardHeader className="flex flex-row items-center justify-between border-b px-8 py-6">
               <CardTitle className="text-lg font-black text-[#006064] uppercase tracking-widest">Recent Claims</CardTitle>
-              <Button variant="ghost" className="text-xs font-black text-primary hover:text-primary hover:bg-[#E0F7FA]">View All Claims</Button>
+              <Button variant="ghost" className="text-xs font-black text-primary hover:text-primary hover:bg-[#E0F7FA] uppercase tracking-widest">View All</Button>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="p-12 text-center">
-                <div className="w-20 h-20 bg-[#E0F7FA] rounded-full flex items-center justify-center mx-auto mb-6">
-                  <History className="w-10 h-10 text-primary opacity-30" />
+              <div className="p-16 text-center">
+                <div className="w-24 h-24 bg-[#E0F7FA] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <History className="w-12 h-12 text-primary opacity-30" />
                 </div>
-                <p className="text-lg font-black text-[#006064] mb-2">No claims this week</p>
+                <p className="text-xl font-black text-[#006064] mb-2">No active claims found</p>
                 <p className="text-sm font-bold text-[#00838F]">Your payouts happen automatically when triggers are met.</p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border border-border shadow-sm">
+          <Card className="bg-white border border-border shadow-sm rounded-2xl">
             <CardHeader className="border-b px-8 py-6">
-              <CardTitle className="text-lg font-black text-[#006064] uppercase tracking-widest">AI Status</CardTitle>
+              <CardTitle className="text-lg font-black text-[#006064] uppercase tracking-widest">System Health</CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-8">
               <div className="flex items-center justify-between">
@@ -164,7 +167,7 @@ export default function Dashboard() {
                   <div className="w-3 h-3 bg-success rounded-full animate-pulse" />
                   <span className="text-sm font-black text-[#006064]">Fraud Detection</span>
                 </div>
-                <Badge className="bg-success text-white font-black">ACTIVE</Badge>
+                <Badge className="bg-success text-white font-black text-[10px]">ACTIVE</Badge>
               </div>
               
               <div className="space-y-4">
@@ -173,7 +176,7 @@ export default function Dashboard() {
                   <span className="text-[#006064]">0.35 / 1.0</span>
                 </div>
                 <Progress value={35} className="h-2 bg-[#E0F7FA]" />
-                <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest">Based on your last 100 deliveries</p>
+                <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest">Based on historical performance</p>
               </div>
 
               <div className="pt-6 border-t border-border flex items-center justify-between">

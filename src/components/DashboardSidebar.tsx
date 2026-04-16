@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from 'react';
@@ -37,7 +38,10 @@ export function DashboardSidebar() {
     const saved = localStorage.getItem('tp_user');
     if (saved) {
       try {
-        setUser(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (parsed.name) {
+          setUser(parsed);
+        }
       } catch (e) {
         console.error("Failed to parse user session");
       }
@@ -52,7 +56,7 @@ export function DashboardSidebar() {
   return (
     <aside className="w-[280px] bg-white border-r border-border h-screen flex flex-col sticky top-0 overflow-y-auto z-50">
       <div className="p-8">
-        <h1 className="text-2xl font-headline font-black text-foreground tracking-tighter uppercase">TRIGGERPE</h1>
+        <h1 className="text-2xl font-headline font-black text-[#006064] tracking-tighter uppercase">TRIGGERPE</h1>
       </div>
 
       <nav className="flex-1 px-4 py-4 space-y-1">
@@ -61,10 +65,10 @@ export function DashboardSidebar() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center gap-3 px-5 py-3.5 rounded-xl transition-all font-bold text-secondary group",
+              "flex items-center gap-3 px-5 py-3.5 rounded-xl transition-all font-bold group",
               pathname === item.href 
-                ? "bg-background text-primary" 
-                : "hover:bg-muted/50 hover:text-foreground"
+                ? "bg-[#E0F7FA] text-primary shadow-sm" 
+                : "text-secondary hover:bg-muted/50 hover:text-foreground"
             )}
           >
             <item.icon className={cn(
@@ -78,9 +82,9 @@ export function DashboardSidebar() {
 
       <div className="p-6 border-t border-border mt-auto">
         <div className="flex items-center gap-3 mb-6">
-          <Avatar className="w-10 h-10 border-2 border-primary/20">
+          <Avatar className="w-10 h-10 border-2 border-primary/20 bg-muted">
             <AvatarImage src={`https://picsum.photos/seed/${user.name}/100/100`} />
-            <AvatarFallback>{user.name[0] || 'P'}</AvatarFallback>
+            <AvatarFallback className="bg-primary/10 text-primary font-black">{user.name[0] || 'P'}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col min-w-0">
             <span className="text-sm font-black text-foreground truncate">{user.name}</span>
@@ -93,7 +97,7 @@ export function DashboardSidebar() {
         <Button 
           variant="ghost" 
           onClick={handleLogout}
-          className="w-full flex items-center justify-start gap-3 px-5 py-3 text-destructive hover:text-destructive hover:bg-destructive/10 rounded-xl font-black"
+          className="w-full flex items-center justify-start gap-3 px-5 py-3 text-destructive hover:text-destructive hover:bg-destructive/10 rounded-xl font-black transition-all"
         >
           <LogOut className="w-5 h-5" />
           Logout

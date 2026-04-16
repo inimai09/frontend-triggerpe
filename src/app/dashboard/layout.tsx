@@ -1,16 +1,10 @@
-import { DashboardSidebar } from '@/components/DashboardSidebar';
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="flex min-h-screen bg-[#E0F7FA]">
-      <DashboardSidebar />
-      <main className="flex-grow p-8 overflow-x-hidden">
-        {children}
-      </main>
-    </div>
-  );
+  // This layout is redundant because the individual pages use DashboardLayout component
+  // which already includes the Sidebar. We return just children to avoid double navbars.
+  return <>{children}</>;
 }
