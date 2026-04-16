@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -59,7 +58,7 @@ export default function ClaimsPage() {
           {summary.map((item, i) => (
             <Card key={i} className="card-neon-glow overflow-hidden rounded-[2rem] border-none group btn-hover-effect">
               <CardContent className="p-6 flex items-center gap-4">
-                <div className={cn("p-4 rounded-xl bg-black/40 border border-white/5 transition-colors group-hover:bg-black/60", item.color)}>
+                <div className={cn("p-4 rounded-2xl bg-black/40 border border-white/5 transition-colors group-hover:bg-black/60", item.color)}>
                   <item.icon className="w-6 h-6 icon-neon-glow" />
                 </div>
                 <div className="flex flex-col">
@@ -76,8 +75,10 @@ export default function ClaimsPage() {
           <CardContent className="p-0">
             <div className="flex flex-col xl:flex-row gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
-                <Input className="pl-14 h-14 font-black bg-black/40 border-white/10 text-white rounded-[1.25rem] focus:border-primary/40 text-lg placeholder:text-white/20" placeholder="Search Global ID..." />
+                <div className="absolute left-5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 border border-white/10">
+                  <Search className="w-4 h-4 text-white/40" />
+                </div>
+                <Input className="pl-16 h-14 font-black bg-black/40 border-white/10 text-white rounded-[1.25rem] focus:border-primary/40 text-lg placeholder:text-white/20" placeholder="Search Global ID..." />
               </div>
               <div className="flex gap-4">
                 <Select>
@@ -91,7 +92,9 @@ export default function ClaimsPage() {
                   </SelectContent>
                 </Select>
                 <Button variant="outline" className="h-14 w-14 rounded-[1.25rem] border-white/10 bg-black/40 text-white hover:bg-primary/20 btn-hover-effect shrink-0">
-                  <Filter className="w-5 h-5" />
+                  <div className="p-2 rounded-xl bg-white/5 border border-white/10">
+                    <Filter className="w-5 h-5" />
+                  </div>
                 </Button>
               </div>
             </div>
@@ -126,7 +129,7 @@ export default function ClaimsPage() {
                     <TableCell className="px-8 py-6 font-mono text-[11px] font-black text-white">{claim.id}</TableCell>
                     <TableCell className="px-8 py-6 font-black text-white/60 text-xs uppercase">{claim.date}</TableCell>
                     <TableCell className="px-8 py-6">
-                      <div className="inline-flex px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-xl">
+                      <div className="inline-flex px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-2xl">
                         <span className="text-[9px] font-black text-primary uppercase tracking-tight icon-neon-glow">{claim.trigger}</span>
                       </div>
                     </TableCell>
@@ -136,7 +139,7 @@ export default function ClaimsPage() {
                     </TableCell>
                     <TableCell className="px-8 py-6">{getStatusBadge(claim.status)}</TableCell>
                     <TableCell className="px-8 py-6 text-right">
-                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors ml-auto">
+                      <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors ml-auto border border-white/10">
                         <ChevronRight className="w-5 h-5 text-white/40 group-hover:text-white" />
                       </div>
                     </TableCell>
@@ -146,7 +149,9 @@ export default function ClaimsPage() {
             </Table>
             {claims.length === 0 && (
               <div className="p-16 text-center flex flex-col items-center gap-4">
-                <AlertCircle className="w-12 h-12 text-white/10" />
+                <div className="p-4 rounded-3xl bg-white/5 border border-white/10">
+                  <AlertCircle className="w-12 h-12 text-white/10" />
+                </div>
                 <p className="text-xl font-black text-white/20 uppercase tracking-widest">No claims detected.</p>
               </div>
             )}
@@ -159,7 +164,7 @@ export default function ClaimsPage() {
             <DialogHeader className="bg-primary/10 p-8 border-b border-white/10">
               <div className="flex justify-between items-center">
                 <DialogTitle className="text-2xl font-black text-white uppercase tracking-tighter">Claim: {selectedClaim?.id}</DialogTitle>
-                <div className="p-2 bg-primary/20 rounded-xl border border-primary/30">
+                <div className="p-2 bg-primary/20 rounded-2xl border border-primary/30">
                   <CheckCircle2 className="w-6 h-6 text-primary icon-neon-glow" />
                 </div>
               </div>
@@ -178,7 +183,9 @@ export default function ClaimsPage() {
 
               <div className="space-y-6">
                 <h4 className="text-[10px] font-black text-white/40 uppercase tracking-widest flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-primary" /> Verification Lifecycle
+                  <div className="p-1.5 bg-primary/20 rounded-lg border border-primary/30">
+                    <Clock className="w-4 h-4 text-primary" />
+                  </div> Verification Lifecycle
                 </h4>
                 <div className="space-y-6 relative before:absolute before:left-[9px] before:top-3 before:bottom-3 before:w-[1.5px] before:bg-white/5">
                   {[
@@ -188,7 +195,7 @@ export default function ClaimsPage() {
                   ].map((step, i) => (
                     <div key={i} className="flex items-start gap-6 relative z-10">
                       <div className="w-[18px] h-[18px] rounded-full bg-primary border-[3px] border-black shadow-[0_0_10px_rgba(0,172,193,0.6)]" />
-                      <div className="flex-1 bg-white/5 p-4 rounded-xl border border-white/5 flex justify-between items-center btn-hover-effect">
+                      <div className="flex-1 bg-white/5 p-4 rounded-2xl border border-white/5 flex justify-between items-center btn-hover-effect">
                         <div>
                           <p className="text-sm font-black text-white leading-none mb-1">{step.label}</p>
                           <p className="text-[9px] font-black text-white/30 uppercase tracking-widest">{step.time}</p>
@@ -200,7 +207,7 @@ export default function ClaimsPage() {
                 </div>
               </div>
 
-              <div className="p-4 bg-primary/5 rounded-xl border border-primary/20 flex items-center justify-between btn-hover-effect">
+              <div className="p-4 bg-primary/5 rounded-2xl border border-primary/20 flex items-center justify-between btn-hover-effect">
                 <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">Ref: UPI/2026/88410</span>
                 <span className="text-[8px] font-black text-primary uppercase tracking-widest icon-neon-glow">Secured</span>
               </div>

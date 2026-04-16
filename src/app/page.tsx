@@ -51,7 +51,7 @@ export default function LandingPage() {
           </p>
           
           <div className="flex items-center">
-            <Button asChild size="lg" className="!rounded-full px-12 py-6 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_50px_rgba(0,172,193,0.5)] h-20">
+            <Button asChild size="lg" className="rounded-full px-12 py-6 text-xl bg-primary hover:bg-primary/90 btn-hover-effect text-white border-none font-black shadow-[0_0_50px_rgba(0,172,193,0.5)] h-20">
               <Link href="/login" className="flex items-center justify-center uppercase tracking-tighter">
                 Start Coverage 
               </Link>
@@ -60,7 +60,7 @@ export default function LandingPage() {
           
           <div className="mt-12 p-6 bg-white/5 border border-white/10 rounded-full w-fit btn-hover-effect cursor-default group backdrop-blur-md">
             <div className="flex items-center gap-5">
-              <div className="p-3 bg-primary/10 rounded-full border border-primary/20">
+              <div className="p-3 bg-primary/10 rounded-2xl border border-primary/20">
                 <ShieldCheck className="w-6 h-6 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
               </div>
               <span className="text-[11px] font-black text-white/40 uppercase tracking-[0.3em]">IRDAI REGISTERED SERVICE</span>
@@ -84,7 +84,7 @@ export default function LandingPage() {
                           <Badge variant="outline" className="text-[8px] font-black tracking-[0.4em] text-white/20 uppercase border-white/5 px-4 py-1.5 rounded-full">
                             MODE {idx + 1}
                           </Badge>
-                          <div className={`p-4 rounded-full bg-black/60 border border-white/10 ${card.iconColor}`}>
+                          <div className={`p-4 rounded-2xl bg-black/60 border border-white/10 ${card.iconColor}`}>
                             <card.icon className="w-6 h-6 icon-neon-glow" />
                           </div>
                         </div>
@@ -124,7 +124,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {steps.map((step, i) => (
               <Card key={i} className="card-neon-glow p-12 btn-hover-effect border-none bg-black/60 backdrop-blur-3xl rounded-[4rem]">
-                <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mb-10 border border-primary/20 group-hover:bg-primary/20 transition-all shadow-xl">
+                <div className="w-24 h-24 rounded-3xl bg-primary/10 flex items-center justify-center mb-10 border border-primary/20 group-hover:bg-primary/20 transition-all shadow-xl">
                   <step.icon className="w-12 h-12 text-primary icon-neon-glow" />
                 </div>
                 <h3 className="text-3xl font-black text-white uppercase tracking-tight mb-5 font-headline">{step.title}</h3>
@@ -212,9 +212,9 @@ export default function LandingPage() {
               Protected by Neural Watchdog AI.
             </p>
             <div className="flex justify-center md:justify-end gap-8 opacity-40">
-              <div className="p-3 bg-white/5 rounded-full border border-white/10"><ShieldCheck className="w-7 h-7 text-white" /></div>
-              <div className="w-12 h-12 rounded-full border-2 border-white/20" />
-              <div className="w-12 h-12 bg-white/10 rounded-full" />
+              <div className="p-3 bg-white/5 rounded-2xl border border-white/10"><ShieldCheck className="w-7 h-7 text-white" /></div>
+              <div className="w-12 h-12 rounded-2xl border-2 border-white/20" />
+              <div className="w-12 h-12 bg-white/10 rounded-2xl" />
             </div>
           </div>
         </div>
