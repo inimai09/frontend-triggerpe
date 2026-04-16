@@ -11,19 +11,19 @@ export default {
     extend: {
       fontFamily: {
         body: ["'Inter'", 'sans-serif'],
-        headline: ["'Space Grotesk'", 'sans-serif'],
+        headline: ["'Fraunces'", 'serif'],
         code: ['monospace'],
       },
       colors: {
-        background: '#E0F7FA',
-        foreground: '#006064',
+        background: '#001A1A',
+        foreground: '#FFFFFF',
         card: {
-          DEFAULT: '#FFFFFF',
-          foreground: '#006064',
+          DEFAULT: '#000000',
+          foreground: '#FFFFFF',
         },
         popover: {
-          DEFAULT: '#FFFFFF',
-          foreground: '#006064',
+          DEFAULT: '#000000',
+          foreground: '#FFFFFF',
         },
         primary: {
           DEFAULT: '#00ACC1',
@@ -34,8 +34,8 @@ export default {
           foreground: '#E0F7FA',
         },
         muted: {
-          DEFAULT: '#F0FDFD',
-          foreground: '#00838F',
+          DEFAULT: '#111827',
+          foreground: '#9CA3AF',
         },
         accent: {
           DEFAULT: '#00ACC1',
@@ -57,17 +57,17 @@ export default {
           DEFAULT: '#EF5350',
           foreground: '#FFFFFF',
         },
-        border: '#E2E8F0',
-        input: '#E2E8F0',
+        border: 'rgba(255,255,255,0.1)',
+        input: 'rgba(255,255,255,0.1)',
         ring: '#00ACC1',
         sidebar: {
-          DEFAULT: '#FFFFFF',
-          foreground: '#006064',
+          DEFAULT: '#000000',
+          foreground: '#FFFFFF',
           primary: '#00ACC1',
           'primary-foreground': '#FFFFFF',
-          accent: '#E0F7FA',
+          accent: 'rgba(0,172,193,0.1)',
           'accent-foreground': '#00ACC1',
-          border: '#E2E8F0',
+          border: 'rgba(255,255,255,0.1)',
           ring: '#00ACC1',
         },
       },

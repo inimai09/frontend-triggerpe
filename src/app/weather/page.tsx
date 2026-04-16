@@ -25,7 +25,7 @@ export default function WeatherPage() {
             </div>
             
             <div className="flex items-center gap-4 bg-black/40 border border-white/10 p-6 rounded-full w-full lg:w-auto btn-hover-effect">
-              <div className="p-4 bg-primary/10 rounded-full border border-primary/20 flex items-center justify-center">
+              <div className="p-4 bg-primary/10 rounded-full border border-primary/20 flex items-center justify-center shrink-0">
                 <MapPin className="w-5 h-5 text-primary icon-neon-glow" />
               </div>
               <div>
@@ -42,7 +42,7 @@ export default function WeatherPage() {
               <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
                 <div className="p-8 bg-black/60 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] w-full lg:w-auto shadow-2xl relative btn-hover-effect">
                   <Badge className="bg-warning/20 text-warning border-warning/30 font-black px-4 py-1.5 uppercase tracking-widest text-[8px] rounded-full mb-6">
-                    <div className="p-1 bg-warning/20 rounded-full border border-warning/30 mr-2 flex items-center justify-center">
+                    <div className="p-1 bg-warning/20 rounded-full border border-warning/30 mr-2 flex items-center justify-center shrink-0">
                       <ThermometerSun className="w-3.5 h-3.5" />
                     </div> High Heat Index
                   </Badge>
@@ -63,7 +63,7 @@ export default function WeatherPage() {
                     { icon: Navigation, label: 'UV Index', value: '9 High', color: 'text-warning' },
                   ].map((item, i) => (
                     <div key={i} className="p-6 bg-black/40 backdrop-blur-md rounded-full flex flex-col items-center border border-white/5 btn-hover-effect min-w-[110px]">
-                      <div className="p-2.5 bg-white/5 rounded-full mb-2 border border-white/10 flex items-center justify-center">
+                      <div className="p-2.5 bg-white/5 rounded-full mb-2 border border-white/10 flex items-center justify-center shrink-0">
                         <item.icon className={cn("w-5 h-5 icon-neon-glow", item.color)} />
                       </div>
                       <span className="text-[8px] font-black text-white/30 uppercase tracking-widest mb-1">{item.label}</span>
@@ -78,7 +78,7 @@ export default function WeatherPage() {
           <Card className="xl:col-span-4 card-neon-glow border-none flex flex-col overflow-hidden rounded-[2.5rem]">
             <CardHeader className="bg-primary/10 border-b border-white/5 px-8 py-5">
               <CardTitle className="text-base font-black text-white uppercase tracking-widest flex items-center gap-3 font-headline">
-                <div className="p-1.5 bg-primary/20 rounded-full border border-primary/30 flex items-center justify-center">
+                <div className="p-1.5 bg-primary/20 rounded-full border border-primary/30 flex items-center justify-center shrink-0">
                   <Zap className="w-4 h-4 text-primary icon-neon-glow" />
                 </div> Thresholds
               </CardTitle>

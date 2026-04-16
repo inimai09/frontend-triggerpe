@@ -41,7 +41,7 @@ export default function LandingPage() {
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-8xl font-black text-white leading-tight mb-8 font-headline uppercase tracking-tight">
+          <h1 className="text-6xl md:text-8xl font-black text-white leading-tight mb-8 font-headline uppercase tracking-tight">
             When storms stop <span className="text-highlight-shimmer">you,</span><br />
             <span className="text-primary icon-neon-glow">WE PAY YOU INSTANTLY.</span>
           </h1>
@@ -60,7 +60,7 @@ export default function LandingPage() {
           
           <div className="mt-12 p-6 bg-white/5 border border-white/10 rounded-full w-fit btn-hover-effect cursor-default group backdrop-blur-md">
             <div className="flex items-center gap-5">
-              <div className="p-3 bg-primary/10 rounded-full border border-primary/20">
+              <div className="p-3 bg-primary/10 rounded-full border border-primary/20 flex items-center justify-center shrink-0">
                 <ShieldCheck className="w-6 h-6 text-primary icon-neon-glow group-hover:scale-110 transition-transform" />
               </div>
               <span className="text-[11px] font-black text-white/40 uppercase tracking-[0.3em]">IRDAI REGISTERED SERVICE</span>
@@ -68,7 +68,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Right Side - Compact Swipeable Weather Cards */}
+        {/* Right Side - Compact Carousel */}
         <div className="w-full lg:w-[320px] shrink-0 animate-in fade-in zoom-in-95 duration-1000 delay-300">
           <Carousel 
             opts={{ align: "start", loop: true }}
@@ -84,7 +84,7 @@ export default function LandingPage() {
                           <Badge variant="outline" className="text-[8px] font-black tracking-[0.4em] text-white/20 uppercase border-white/5 px-4 py-1.5 rounded-full">
                             MODE {idx + 1}
                           </Badge>
-                          <div className={`p-4 rounded-full bg-black/60 border border-white/10 ${card.iconColor}`}>
+                          <div className={`p-4 rounded-full bg-black/60 border border-white/10 flex items-center justify-center shrink-0 ${card.iconColor}`}>
                             <card.icon className="w-6 h-6 icon-neon-glow" />
                           </div>
                         </div>
@@ -105,8 +105,8 @@ export default function LandingPage() {
             </CarouselContent>
             
             <div className="flex justify-center gap-5 mt-8">
-              <CarouselPrevious className="static translate-y-0 bg-black/60 border border-white/10 w-12 h-12 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
-              <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-12 h-12 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
+              <CarouselPrevious className="static translate-y-0 bg-black/60 border border-white/10 w-12 h-12 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white flex items-center justify-center" />
+              <CarouselNext className="static translate-y-0 bg-black/60 border border-white/10 w-12 h-12 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white flex items-center justify-center" />
             </div>
             <p className="text-center mt-4 text-[9px] font-black text-white/10 uppercase tracking-[0.5em] animate-pulse">SWIPE TO VIEW TRIGGER MODES</p>
           </Carousel>
@@ -212,9 +212,7 @@ export default function LandingPage() {
               Protected by Neural Watchdog AI.
             </p>
             <div className="flex justify-center md:justify-end gap-8 opacity-40">
-              <div className="p-3 bg-white/5 rounded-full border border-white/10"><ShieldCheck className="w-7 h-7 text-white" /></div>
-              <div className="w-12 h-12 rounded-full border-2 border-white/20" />
-              <div className="w-12 h-12 bg-white/10 rounded-full" />
+              <div className="p-3 bg-white/5 rounded-full border border-white/10 flex items-center justify-center"><ShieldCheck className="w-7 h-7 text-white" /></div>
             </div>
           </div>
         </div>
