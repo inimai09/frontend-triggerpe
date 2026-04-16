@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,12 +47,15 @@
 
 .btn-hover-effect {
   @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,172,193,0.5)] active:scale-95 hover:-translate-y-1 !important;
-  border-radius: inherit; /* Ensure rounded corners are inherited during transition */
+  border-radius: inherit !important;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .card-neon-glow {
   @apply bg-black/70 backdrop-blur-2xl border border-primary/30 shadow-[0_0_30px_rgba(0,172,193,0.15)] !important;
-  border-radius: 2.5rem; /* Explicitly lock the radius to prevent squaring */
+  border-radius: 2.5rem !important;
+  overflow: hidden !important;
 }
 
 .icon-neon-glow {

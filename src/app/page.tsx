@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -52,18 +51,6 @@ export default function LandingPage() {
               <span className="text-[10px] font-black text-white/60 uppercase tracking-widest">IRDAI REGISTERED</span>
             </div>
           </div>
-          
-          <div className="mt-16 flex items-center gap-8">
-            <div className="space-y-1">
-              <p className="text-3xl font-black text-white tracking-tighter">2,847+</p>
-              <p className="text-[9px] font-black text-primary uppercase tracking-widest">Active Partners</p>
-            </div>
-            <div className="w-px h-12 bg-white/10" />
-            <div className="space-y-1">
-              <p className="text-3xl font-black text-white tracking-tighter">₹12.0L+</p>
-              <p className="text-[9px] font-black text-primary uppercase tracking-widest">Total Payouts</p>
-            </div>
-          </div>
         </div>
 
         {/* Right Side - Swipeable Weather Flashcards */}
@@ -75,7 +62,7 @@ export default function LandingPage() {
             <CarouselContent>
               {weatherCards.map((card, idx) => (
                 <CarouselItem key={idx} className="basis-full">
-                  <div className="p-2"> {/* Added padding to container to prevent clipping during pop effect */}
+                  <div className="p-4">
                     <Card className={`overflow-hidden card-neon-glow border-t-[8px] ${card.border} rounded-[2.5rem] btn-hover-effect transition-all duration-300 shadow-2xl ${card.bg}`}>
                       <CardContent className="p-10 flex flex-col items-center text-center">
                         <div className="w-full flex justify-between items-center mb-8">
@@ -111,35 +98,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-24 px-8 bg-black/40 backdrop-blur-3xl border-y border-white/5 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="p-8 bg-black/60 border border-white/10 rounded-[2.5rem] text-center mb-20 w-fit mx-auto btn-hover-effect">
-            <h2 className="text-5xl font-black text-white uppercase tracking-tighter font-headline mb-2">How TriggerPe Works</h2>
-            <p className="text-primary font-black uppercase tracking-[0.3em] text-[10px]">Simple • Automated • Instant</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {[
-              { title: 'Easy Registration', desc: 'Sign up in 2 minutes, choose your platform & link UPI. No long forms.', icon: '01' },
-              { title: 'Live Monitoring', desc: 'Our engine tracks live satellite weather data 24/7 for your specific zone.', icon: '02' },
-              { title: 'Auto Payouts', desc: 'Money hits your UPI automatically within minutes of the weather trigger.', icon: '03' }
-            ].map((item, idx) => (
-              <Card key={idx} className="p-10 text-center card-neon-glow rounded-[2.5rem] btn-hover-effect group border-none shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-8 text-8xl font-black text-white/5 font-headline pointer-events-none group-hover:text-primary/10 transition-colors">{item.icon}</div>
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-black mb-6 uppercase tracking-tight text-white font-headline group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-white/60 font-bold leading-relaxed">{item.desc}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Simple Pricing */}
+      {/* Pricing Section - Links back to Landing Page as requested */}
       <section className="py-32 px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24">
@@ -149,9 +108,9 @@ export default function LandingPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { name: 'BASIC', price: '₹49', coverage: '₹800 max', perks: ['Rain + Heat triggers'], btn: 'Get Protected' },
-              { name: 'STANDARD', price: '₹79', coverage: '₹1400 max', perks: ['All 5 triggers'], badge: 'MOST POPULAR', btn: 'Get Protected' },
-              { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + Priority'], btn: 'Get Protected' },
+              { name: 'BASIC', price: '₹49', coverage: '₹800 max', perks: ['Rain + Heat triggers'], btn: 'Stay Covered' },
+              { name: 'STANDARD', price: '₹79', coverage: '₹1400 max', perks: ['All 5 triggers'], badge: 'MOST POPULAR', btn: 'Stay Covered' },
+              { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + Priority'], btn: 'Stay Covered' },
             ].map((plan, i) => (
               <Card key={i} className={`p-10 flex flex-col items-center card-neon-glow border-2 rounded-[2.5rem] btn-hover-effect ${plan.badge ? 'border-primary shadow-[0_0_50px_rgba(0,172,193,0.3)] scale-105 z-20' : 'border-white/5 opacity-80 hover:opacity-100'}`}>
                 {plan.badge && <Badge className="bg-primary text-white mb-8 font-black py-2 px-6 rounded-full text-[10px] tracking-widest icon-neon-glow">{plan.badge}</Badge>}
@@ -171,7 +130,7 @@ export default function LandingPage() {
                 </ul>
                 
                 <Button asChild className="w-full rounded-full bg-primary hover:bg-primary/90 font-black h-16 text-xl text-white btn-hover-effect shadow-2xl border-none uppercase tracking-tighter">
-                  <Link href="/register">{plan.btn}</Link>
+                  <Link href="#hero">{plan.btn}</Link>
                 </Button>
               </Card>
             ))}
@@ -180,7 +139,7 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-8 relative z-10">
+      <section className="py-24 px-8 relative z-10" id="faq">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-black text-white text-center mb-16 uppercase tracking-tighter font-headline">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="w-full space-y-6">
@@ -200,41 +159,7 @@ export default function LandingPage() {
       </section>
 
       <footer className="bg-black/80 backdrop-blur-3xl py-24 px-8 border-t border-primary/20 relative z-10">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
-          <div>
-            <h4 className="font-black text-primary mb-8 uppercase tracking-[0.3em] text-[10px]">Product</h4>
-            <ul className="space-y-4 text-sm font-bold text-white/40">
-              <li><Link href="#" className="hover:text-primary transition-colors">How it Works</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Weather Triggers</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">API for Platforms</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-black text-primary mb-8 uppercase tracking-[0.3em] text-[10px]">Company</h4>
-            <ul className="space-y-4 text-sm font-bold text-white/40">
-              <li><Link href="#" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Press Kit</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-black text-primary mb-8 uppercase tracking-[0.3em] text-[10px]">Support</h4>
-            <ul className="space-y-4 text-sm font-bold text-white/40">
-              <li><Link href="#" className="hover:text-primary transition-colors">Help Center</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Partner Dashboard</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Community</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-black text-primary mb-8 uppercase tracking-[0.3em] text-[10px]">Legal</h4>
-            <ul className="space-y-4 text-sm font-bold text-white/40">
-              <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">IRDAI Compliance</Link></li>
-            </ul>
-          </div>
-        </div>
-        <div className="max-w-6xl mx-auto pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col items-center md:items-start">
             <h2 className="text-4xl font-black text-primary uppercase tracking-tighter font-headline icon-neon-glow">TRIGGERPE</h2>
             <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] mt-2">Parametric Shield for Bharat</p>
