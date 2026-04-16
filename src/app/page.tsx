@@ -25,15 +25,15 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen bg-transparent">
       
       {/* Hero Section */}
-      <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10">
-        <div className="flex-1 flex flex-col justify-center px-12 lg:px-24 py-12">
+      <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10 overflow-hidden">
+        <div className="flex-1 flex flex-col justify-center px-12 lg:px-24 py-12 animate-in fade-in slide-in-from-left-8 duration-1000">
           <Badge className="w-fit mb-6 bg-primary/20 text-white border-white/20 py-1.5 px-4 rounded-full font-black">
             INDIA'S FIRST PARAMETRIC INSURANCE
           </Badge>
           <h1 className="text-5xl md:text-6xl font-black text-[#006064] leading-tight mb-6">
             When storms stop you,<br />
             <span className="text-white block mt-4">
-              <span className="animate-neon">we pay you instantly.</span>
+              <span className="animate-neon-white">we pay you instantly.</span>
             </span>
           </h1>
           <p className="text-lg text-[#00838F] mt-8 mb-10 max-w-xl font-bold">
@@ -59,7 +59,7 @@ export default function LandingPage() {
         </div>
 
         {/* Right Side - Weather Flashcards */}
-        <div className="flex-1 w-full max-w-lg mx-auto py-12 px-6">
+        <div className="flex-1 w-full max-w-lg mx-auto py-12 px-6 animate-in fade-in zoom-in-95 duration-1000 delay-300">
           <Carousel className="w-full">
             <CarouselContent>
               {weatherCards.map((card, idx) => (
@@ -81,15 +81,15 @@ export default function LandingPage() {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-8">
-              <CarouselPrevious className="static translate-y-0 bg-white shadow-md border border-border w-12 h-12 rounded-full text-primary" />
-              <CarouselNext className="static translate-y-0 bg-white shadow-md border border-border w-12 h-12 rounded-full text-primary" />
+              <CarouselPrevious className="static translate-y-0 bg-white shadow-md border border-border w-12 h-12 rounded-full text-primary btn-hover-effect" />
+              <CarouselNext className="static translate-y-0 bg-white shadow-md border border-border w-12 h-12 rounded-full text-primary btn-hover-effect" />
             </div>
           </Carousel>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-24 px-12 bg-white/40 backdrop-blur-sm border-t border-white/20 relative z-10">
+      <section className="py-24 px-12 bg-white/40 backdrop-blur-sm border-t border-white/20 relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-black text-[#006064] text-center mb-16 uppercase tracking-tighter">How TriggerPe Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -98,7 +98,7 @@ export default function LandingPage() {
               { icon: ShieldCheck, title: '🤖 We Monitor', desc: 'Our AI engine tracks live weather data 24/7 for your city.' },
               { icon: ZapIcon, title: '💰 Auto Payout', desc: 'Claim fires automatically when trigger is hit. Money in UPI.' }
             ].map((item, idx) => (
-              <Card key={idx} className="p-10 text-center bg-white border border-border shadow-sm rounded-xl">
+              <Card key={idx} className="p-10 text-center bg-white border border-border shadow-sm rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 <h3 className="text-2xl font-black text-[#006064] mb-4 uppercase tracking-tight">{item.title}</h3>
                 <p className="text-[#00838F] font-bold leading-relaxed">{item.desc}</p>
               </Card>
@@ -108,7 +108,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-24 px-12 bg-white/20 border-y border-white/10 relative z-10">
+      <section className="py-24 px-12 bg-white/20 border-y border-white/10 relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-black text-[#006064] text-center mb-16 uppercase tracking-tighter">Simple Pricing</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -117,7 +117,7 @@ export default function LandingPage() {
               { name: 'STANDARD', price: '₹79', coverage: '₹1400 max', perks: ['All 5 triggers'], badge: 'MOST POPULAR', btn: 'Get Standard' },
               { name: 'PREMIUM', price: '₹99', coverage: '₹2000 max', perks: ['All triggers + priority'], btn: 'Get Premium' },
             ].map((plan, i) => (
-              <Card key={i} className={`p-10 flex flex-col items-center bg-white border-2 rounded-2xl ${plan.badge ? 'border-primary shadow-xl scale-105' : 'border-border shadow-sm'}`}>
+              <Card key={i} className={`p-10 flex flex-col items-center bg-white border-2 rounded-2xl transition-all duration-500 hover:scale-110 hover:shadow-2xl ${plan.badge ? 'border-primary shadow-xl scale-105' : 'border-border shadow-sm'}`}>
                 {plan.badge && <Badge className="bg-primary text-white mb-4 font-black">{plan.badge}</Badge>}
                 <h3 className="text-xl font-black text-[#00838F] mb-2 uppercase tracking-widest">{plan.name}</h3>
                 <p className="text-4xl font-black text-[#006064] mb-1">{plan.price}<span className="text-sm">/week</span></p>
@@ -133,7 +133,7 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-12 bg-transparent relative z-10">
+      <section className="py-24 px-12 bg-transparent relative z-10 animate-in fade-in duration-1000">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-black text-[#006064] text-center mb-12 uppercase tracking-tighter">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="w-full space-y-4">
@@ -145,7 +145,7 @@ export default function LandingPage() {
               { q: "What is NOT covered?", a: "Vehicle breakdowns, personal health issues, accidents, or platform suspensions not related to systemic outages." },
               { q: "Can I cancel anytime?", a: "Yes. Since coverage is weekly, you can stop renewal at any time through the settings." }
             ].map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="bg-white/80 border-none rounded-xl px-6 shadow-sm mb-4">
+              <AccordionItem key={i} value={`item-${i}`} className="bg-white/80 border-none rounded-xl px-6 shadow-sm mb-4 transition-all hover:bg-white">
                 <AccordionTrigger className="font-black text-[#006064] hover:no-underline">{item.q}</AccordionTrigger>
                 <AccordionContent className="font-bold text-[#00838F]">{item.a}</AccordionContent>
               </AccordionItem>
@@ -159,33 +159,33 @@ export default function LandingPage() {
           <div>
             <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Product</h4>
             <ul className="space-y-2 text-sm font-bold text-[#00838F]">
-              <li><Link href="#">How it Works</Link></li>
-              <li><Link href="#">Coverage Tiers</Link></li>
-              <li><Link href="#">Weather API</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">How it Works</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Coverage Tiers</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Weather API</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Company</h4>
             <ul className="space-y-2 text-sm font-bold text-[#00838F]">
-              <li><Link href="#">About Us</Link></li>
-              <li><Link href="#">Newsroom</Link></li>
-              <li><Link href="#">Careers</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Newsroom</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Careers</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Support</h4>
             <ul className="space-y-2 text-sm font-bold text-[#00838F]">
-              <li><Link href="#">Help Center</Link></li>
-              <li><Link href="#">Contact Support</Link></li>
-              <li><Link href="#">FAQ</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Help Center</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Contact Support</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">FAQ</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Legal</h4>
             <ul className="space-y-2 text-sm font-bold text-[#00838F]">
-              <li><Link href="#">Privacy Policy</Link></li>
-              <li><Link href="#">Terms of Service</Link></li>
-              <li><Link href="#">Claims Policy</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+              <li><Link href="#" className="hover:text-primary transition-colors">Claims Policy</Link></li>
             </ul>
           </div>
         </div>

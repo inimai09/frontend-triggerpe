@@ -45,7 +45,7 @@
 }
 
 .btn-hover-effect {
-  @apply transition-all duration-200 hover:scale-[1.02] active:scale-95;
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95;
 }
 
 /* Ensure all primary icons on blue backgrounds are crisp white */
@@ -89,17 +89,17 @@
   animation: sparkle-float var(--duration) ease-in-out infinite;
 }
 
-@keyframes neon-pulse {
+@keyframes neon-white-glow {
   0%, 100% {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e5ff, 0 0 40px #00e5ff, 0 0 70px #00e5ff, 0 0 80px #00e5ff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00e5ff;
     color: #fff;
   }
   50% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00e5ff, 0 0 20px #00e5ff, 0 0 35px #00e5ff, 0 0 40px #00e5ff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00e5ff;
     color: #fff;
   }
 }
 
-.animate-neon {
-  animation: neon-pulse 2s ease-in-out infinite;
+.animate-neon-white {
+  animation: neon-white-glow 2.5s ease-in-out infinite;
 }
