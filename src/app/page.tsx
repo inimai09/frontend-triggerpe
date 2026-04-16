@@ -9,7 +9,7 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from '@/components/ui/carousel';
-import { Sun, CloudRain, Snowflake, Zap, ShieldCheck, ZapIcon, WalletCards, ArrowRight } from 'lucide-react';
+import { Sun, CloudRain, Snowflake, Zap, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -27,7 +27,7 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10 overflow-hidden">
         <div className="flex-1 flex flex-col justify-center px-12 lg:px-24 py-12 animate-in fade-in slide-in-from-left-8 duration-1000">
-          <Badge className="w-fit mb-6 bg-primary/20 text-white border-white/20 py-1.5 px-4 rounded-full font-black animate-in fade-in zoom-in duration-700">
+          <Badge className="w-fit mb-6 bg-white/10 text-white border-white/20 py-1.5 px-4 rounded-full font-black animate-in fade-in zoom-in duration-700">
             INDIA'S FIRST PARAMETRIC INSURANCE
           </Badge>
           <h1 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6 drop-shadow-lg">
@@ -94,13 +94,18 @@ export default function LandingPage() {
           <h2 className="text-4xl font-black text-white text-center mb-16 uppercase tracking-tighter drop-shadow-md">How TriggerPe Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: WalletCards, title: '📝 Register', desc: 'Sign up in 2 minutes, choose your platform & link UPI.' },
-              { icon: ShieldCheck, title: '🤖 We Monitor', desc: 'Our AI engine tracks live weather data 24/7 for your city.' },
-              { icon: ZapIcon, title: '💰 Auto Payout', desc: 'Claim fires automatically when trigger is hit. Money in UPI.' }
+              { title: 'Easy Registration', desc: 'Sign up in 2 minutes, choose your platform & link UPI.' },
+              { title: 'Live Monitoring', desc: 'Our AI engine tracks live weather data 24/7 for your city.' },
+              { title: 'Auto Payouts', desc: 'Claim fires automatically when trigger is hit. Money in UPI.' }
             ].map((item, idx) => (
-              <Card key={idx} className="p-10 text-center bg-white border border-border shadow-xl rounded-xl btn-hover-effect">
-                <h3 className="text-2xl font-black text-[#006064] mb-4 uppercase tracking-tight">{item.title}</h3>
-                <p className="text-[#00838F] font-bold leading-relaxed">{item.desc}</p>
+              <Card key={idx} className="p-10 text-center bg-white border border-border shadow-xl rounded-xl btn-hover-effect group overflow-hidden">
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-black mb-4 uppercase tracking-tight text-highlight-shimmer transition-transform group-hover:scale-110 duration-500">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#00838F] font-bold leading-relaxed">{item.desc}</p>
+                  <div className="mt-6 h-1 w-0 bg-primary mx-auto transition-all group-hover:w-16 duration-500" />
+                </div>
               </Card>
             ))}
           </div>

@@ -7,16 +7,16 @@ export function Sparkles() {
 
   useEffect(() => {
     // Generate sparkles on mount to avoid hydration mismatch
-    const sparkleCount = 50; 
+    const sparkleCount = 40; 
     const newSparkles = Array.from({ length: sparkleCount }).map((_, i) => ({
       id: i,
-      size: Math.random() * 2 + 1.5, // Slightly larger for visibility
+      size: Math.random() * 1.5 + 0.8, // Smaller, more delicate sparkles
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
-      duration: `${10 + Math.random() * 15}s`, // Slightly faster movement
-      delay: `${Math.random() * -20}s`,
-      moveX: `${(Math.random() - 0.5) * 400}px`,
-      moveY: `${(Math.random() - 0.5) * 400}px`,
+      duration: `${15 + Math.random() * 20}s`, // Slow, graceful movement
+      delay: `${Math.random() * -30}s`,
+      moveX: `${(Math.random() - 0.5) * 300}px`,
+      moveY: `${(Math.random() - 0.5) * 300}px`,
       glowColor: i % 2 === 0 ? '#FFFFFF' : '#80DEEA', // White and Cyan glow
     }));
     setSparkles(newSparkles);
@@ -34,7 +34,7 @@ export function Sparkles() {
             width: `${s.size}px`,
             height: `${s.size}px`,
             backgroundColor: '#FFFFFF',
-            boxShadow: `0 0 10px 2px ${s.glowColor}, 0 0 20px 4px rgba(255, 255, 255, 0.4)`,
+            boxShadow: `0 0 6px 1px ${s.glowColor}, 0 0 12px 2px rgba(255, 255, 255, 0.4)`,
             '--duration': s.duration,
             '--move-x': s.moveX,
             '--move-y': s.moveY,

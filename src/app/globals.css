@@ -32,8 +32,8 @@
     @apply border-border;
   }
   html {
-    /* Dark to Light Maldives Ocean Gradient */
-    background: linear-gradient(180deg, #00838F 0%, #B2EBF2 100%) fixed !important;
+    /* Dark Ocean to Light Maldives Gradient */
+    background: linear-gradient(180deg, #006064 0%, #00838F 30%, #E0F7FA 100%) fixed !important;
     min-height: 100vh;
     color-scheme: light;
   }
@@ -73,14 +73,14 @@
     opacity: 0;
   }
   25% {
-    opacity: 0.8;
+    opacity: 0.6;
   }
   50% {
-    opacity: 1;
+    opacity: 0.8;
     transform: translate(var(--move-x), var(--move-y)) scale(1);
   }
   75% {
-    opacity: 0.8;
+    opacity: 0.6;
   }
   100% {
     transform: translate(0, 0) scale(0.5);
@@ -94,15 +94,28 @@
 
 @keyframes neon-white-glow {
   0%, 100% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff;
-    color: #fff;
+    text-shadow: 0 0 2px #fff, 0 0 5px #fff;
+    color: #ffffff;
   }
   50% {
-    text-shadow: 0 0 8px #fff, 0 0 15px #fff, 0 0 20px #fff;
-    color: #fff;
+    text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 15px rgba(255,255,255,0.5);
+    color: #ffffff;
   }
 }
 
 .animate-neon-white {
-  animation: neon-white-glow 2s ease-in-out infinite;
+  animation: neon-white-glow 3s ease-in-out infinite;
+}
+
+@keyframes text-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.text-highlight-shimmer {
+  background: linear-gradient(90deg, #006064 0%, #00ACC1 50%, #006064 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 4s linear infinite;
 }
