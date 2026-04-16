@@ -33,13 +33,13 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10 px-6 lg:px-20 py-12 gap-12 lg:gap-20">
         <div className="flex-1 flex flex-col justify-center animate-in fade-in slide-in-from-left-8 duration-1000">
-          <Link href="/register" className="inline-block w-fit mb-8 group">
-            <div className="p-2.5 bg-black/40 border border-white/5 rounded-2xl btn-hover-effect">
+          <div className="inline-block w-fit mb-8">
+            <div className="p-2.5 bg-black/40 border border-white/5 rounded-2xl">
               <Badge className="bg-primary/20 text-white border-primary/40 py-1.5 px-5 rounded-full font-bold uppercase tracking-[0.2em] text-[8px] icon-neon-glow">
                 INDIA'S FIRST PARAMETRIC INSURANCE
               </Badge>
             </div>
-          </Link>
+          </div>
           
           <h1 className="text-4xl md:text-7xl font-bold text-white leading-tight mb-8 font-headline uppercase tracking-tight">
             When storms stop you,<br />
