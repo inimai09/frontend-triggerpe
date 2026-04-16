@@ -88,3 +88,18 @@
 .animate-sparkle-float {
   animation: sparkle-float var(--duration) ease-in-out infinite;
 }
+
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
+    color: #00E5FF;
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 229, 255, 1), 0 0 40px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 229, 255, 0.4);
+    color: #FFFFFF;
+  }
+}
+
+.animate-neon {
+  animation: neon-pulse 2s ease-in-out infinite;
+}

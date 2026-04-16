@@ -25,7 +25,7 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen bg-transparent">
       
       {/* Hero Section */}
-      <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center">
+      <section className="flex flex-col lg:flex-row w-full min-h-[90vh] items-center relative z-10">
         <div className="flex-1 flex flex-col justify-center px-12 lg:px-24 py-12">
           <Badge className="w-fit mb-6 bg-primary/20 text-white border-white/20 py-1.5 px-4 rounded-full font-black">
             INDIA'S FIRST PARAMETRIC INSURANCE
@@ -33,7 +33,7 @@ export default function LandingPage() {
           <h1 className="text-5xl md:text-6xl font-black text-[#006064] leading-tight mb-6">
             When storms stop you,<br />
             <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] brightness-125">we pay you </span>
-            <span className="text-[#00E5FF] drop-shadow-[0_0_20px_rgba(0,229,255,0.9)] brightness-150 underline decoration-white/20">instantly.</span>
+            <span className="animate-neon underline decoration-white/20">instantly.</span>
           </h1>
           <p className="text-lg text-[#00838F] mb-10 max-w-xl font-bold">
             India's first zero-touch parametric insurance for delivery workers. No forms, no waiting, automatic payouts.
@@ -88,7 +88,7 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-24 px-12 bg-white/40 backdrop-blur-sm border-t border-white/20">
+      <section className="py-24 px-12 bg-white/40 backdrop-blur-sm border-t border-white/20 relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-black text-[#006064] text-center mb-16 uppercase tracking-tighter">How TriggerPe Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -107,7 +107,7 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-24 px-12 bg-white/20 border-y border-white/10">
+      <section className="py-24 px-12 bg-white/20 border-y border-white/10 relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-black text-[#006064] text-center mb-16 uppercase tracking-tighter">Simple Pricing</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -132,7 +132,7 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-12 bg-transparent">
+      <section className="py-24 px-12 bg-transparent relative z-10">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-black text-[#006064] text-center mb-12 uppercase tracking-tighter">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="w-full space-y-4">
@@ -153,7 +153,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-white/90 backdrop-blur-md py-16 px-12 border-t border-border">
+      <footer className="bg-white/90 backdrop-blur-md py-16 px-12 border-t border-border relative z-10">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
           <div>
             <h4 className="font-black text-[#006064] mb-4 uppercase tracking-widest text-xs">Product</h4>

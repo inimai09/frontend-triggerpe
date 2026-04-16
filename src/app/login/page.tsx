@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -56,7 +55,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#E0F7FA] p-6">
+    <div className="min-h-screen flex items-center justify-center bg-transparent p-6 relative z-10">
       <Card className="w-full max-w-md bg-white border border-border shadow-2xl rounded-2xl overflow-hidden">
         <div className="bg-[#00ACC1] p-10 text-white text-center">
           <h1 className="text-3xl font-black mb-2 uppercase tracking-tight">Welcome Back</h1>
