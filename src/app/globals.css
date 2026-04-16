@@ -80,3 +80,12 @@
 .animate-count-up {
   animation: countUp 0.5s ease-out forwards;
 }
+
+/* Custom rounded corners for all interactive elements as requested */
+button, .button, .rounded-full-force {
+  @apply rounded-full !important;
+}
+
+.icon-container-rounded {
+  @apply rounded-full flex items-center justify-center !important;
+}
