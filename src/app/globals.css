@@ -33,7 +33,6 @@
     @apply border-white/10;
   }
   html {
-    /* Refined Maldives Gradient: Dark Teal to Light Teal */
     background: linear-gradient(180deg, #001A1A 0%, #00332E 35%, #006064 70%, #00838F 100%) fixed !important;
     min-height: 100vh;
     color-scheme: dark;
@@ -48,15 +47,17 @@
 }
 
 .btn-hover-effect {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,172,193,0.5)] active:scale-95 hover:-translate-y-1;
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,172,193,0.5)] active:scale-95 hover:-translate-y-1 !important;
+  border-radius: inherit; /* Ensure rounded corners are inherited during transition */
 }
 
 .card-neon-glow {
-  @apply bg-black/60 backdrop-blur-xl border border-primary/20 shadow-[0_0_25px_rgba(0,172,193,0.1)] !important;
+  @apply bg-black/70 backdrop-blur-2xl border border-primary/30 shadow-[0_0_30px_rgba(0,172,193,0.15)] !important;
+  border-radius: 2.5rem; /* Explicitly lock the radius to prevent squaring */
 }
 
 .icon-neon-glow {
-  filter: drop-shadow(0 0 8px rgba(0, 172, 193, 0.9));
+  filter: drop-shadow(0 0 10px rgba(0, 172, 193, 0.9));
 }
 
 @keyframes neon-pulse-white {

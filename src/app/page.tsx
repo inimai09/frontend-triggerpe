@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -15,10 +16,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 export default function LandingPage() {
   const weatherCards = [
-    { type: 'SUNNY', label: 'Extreme Heat', trigger: '>42°C triggers ₹600', icon: Sun, border: 'border-t-[#FFB74D]', iconColor: 'text-[#FFB74D]', bg: 'bg-[#FFB74D]/5' },
-    { type: 'RAIN', label: 'Heavy Rain', trigger: '>15mm/hr triggers ₹300', icon: CloudRain, border: 'border-t-[#4FC3F7]', iconColor: 'text-[#4FC3F7]', bg: 'bg-[#4FC3F7]/5' },
-    { type: 'SNOW', label: 'Snow Fall', trigger: '>5mm triggers ₹400', icon: Snowflake, border: 'border-t-[#C5CAE9]', iconColor: 'text-[#C5CAE9]', bg: 'bg-[#C5CAE9]/5' },
-    { type: 'THUNDER', label: 'Thunder Storm', trigger: 'Storm triggers ₹500', icon: Zap, border: 'border-t-[#BA68C8]', iconColor: 'text-[#BA68C8]', bg: 'bg-[#BA68C8]/5' },
+    { type: 'SUNNY', label: 'Extreme Heat', trigger: '>42°C triggers ₹600', icon: Sun, border: 'border-t-[#FFB74D]', iconColor: 'text-[#FFB74D]', bg: 'bg-[#FFB74D]/10' },
+    { type: 'RAIN', label: 'Heavy Rain', trigger: '>15mm/hr triggers ₹300', icon: CloudRain, border: 'border-t-[#4FC3F7]', iconColor: 'text-[#4FC3F7]', bg: 'bg-[#4FC3F7]/10' },
+    { type: 'SNOW', label: 'Snow Fall', trigger: '>5mm triggers ₹400', icon: Snowflake, border: 'border-t-[#C5CAE9]', iconColor: 'text-[#C5CAE9]', bg: 'bg-[#C5CAE9]/10' },
+    { type: 'THUNDER', label: 'Thunder Storm', trigger: 'Storm triggers ₹500', icon: Zap, border: 'border-t-[#BA68C8]', iconColor: 'text-[#BA68C8]', bg: 'bg-[#BA68C8]/10' },
   ];
 
   return (
@@ -73,28 +74,30 @@ export default function LandingPage() {
           >
             <CarouselContent>
               {weatherCards.map((card, idx) => (
-                <CarouselItem key={idx}>
-                  <Card className={`overflow-hidden card-neon-glow border-t-[8px] ${card.border} rounded-[2.5rem] btn-hover-effect transition-all duration-500 shadow-2xl ${card.bg}`}>
-                    <CardContent className="p-10 flex flex-col items-center text-center">
-                      <div className="w-full flex justify-between items-center mb-8">
-                        <Badge variant="outline" className="text-[9px] font-black tracking-[0.2em] text-white/40 uppercase border-white/10 px-4 py-1.5 rounded-full">
-                          TRIGGER UNIT {idx + 1}
-                        </Badge>
-                        <div className={`p-4 rounded-2xl bg-black/40 border border-white/10 ${card.iconColor}`}>
-                          <card.icon className="w-8 h-8 icon-neon-glow" />
+                <CarouselItem key={idx} className="basis-full">
+                  <div className="p-2"> {/* Added padding to container to prevent clipping during pop effect */}
+                    <Card className={`overflow-hidden card-neon-glow border-t-[8px] ${card.border} rounded-[2.5rem] btn-hover-effect transition-all duration-300 shadow-2xl ${card.bg}`}>
+                      <CardContent className="p-10 flex flex-col items-center text-center">
+                        <div className="w-full flex justify-between items-center mb-8">
+                          <Badge variant="outline" className="text-[9px] font-black tracking-[0.2em] text-white/40 uppercase border-white/10 px-4 py-1.5 rounded-full">
+                            TRIGGER UNIT {idx + 1}
+                          </Badge>
+                          <div className={`p-4 rounded-2xl bg-black/60 border border-white/10 ${card.iconColor}`}>
+                            <card.icon className="w-8 h-8 icon-neon-glow" />
+                          </div>
                         </div>
-                      </div>
-                      
-                      <div className="w-64 h-64 mb-10 drop-shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                        <DeliveryGuy weather={card.type as any} className="w-full h-full" />
-                      </div>
-                      
-                      <div className="space-y-3 p-6 bg-black/40 rounded-[2rem] border border-white/5 w-full">
-                        <h3 className="text-4xl font-black text-white font-headline uppercase tracking-tighter">{card.label}</h3>
-                        <p className={`text-xl font-black ${card.iconColor} uppercase tracking-tight`}>{card.trigger}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                        
+                        <div className="w-full max-w-[280px] h-auto aspect-square mb-10 drop-shadow-[0_0_30px_rgba(0,0,0,0.6)]">
+                          <DeliveryGuy weather={card.type as any} className="w-full h-full" />
+                        </div>
+                        
+                        <div className="space-y-4 p-8 bg-black/60 rounded-[2rem] border border-white/10 w-full shadow-inner">
+                          <h3 className="text-4xl font-black text-white font-headline uppercase tracking-tighter">{card.label}</h3>
+                          <p className={`text-xl font-black ${card.iconColor} uppercase tracking-tight icon-neon-glow`}>{card.trigger}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -104,7 +107,7 @@ export default function LandingPage() {
               <CarouselNext className="static translate-y-0 bg-black/60 shadow-xl border border-primary/20 w-16 h-16 rounded-full text-primary btn-hover-effect hover:bg-primary hover:text-white" />
             </div>
           </Carousel>
-          <p className="text-center mt-6 text-[9px] font-black text-white/20 uppercase tracking-[0.3em] animate-pulse">SWIPE TO EXPLORE TRIGGERS</p>
+          <p className="text-center mt-6 text-[9px] font-black text-white/20 uppercase tracking-[0.3em] animate-pulse">DRAG TO SWIPE TRIGGERS</p>
         </div>
       </section>
 
