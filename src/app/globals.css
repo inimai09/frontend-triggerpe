@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 187 70% 85%; /* Maldives Light Ocean Blue */
+    --background: 187 70% 93%; /* #E0F7FA */
     --foreground: 187 100% 19%; /* #006064 */
     --card: 0 0% 100%;
     --card-foreground: 187 100% 19%;
@@ -32,8 +32,9 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body overflow-x-hidden;
-    background-color: #E0F7FA; /* Solid Maldives Ocean Base */
+    @apply font-body antialiased;
+    background-color: #E0F7FA !important;
+    color: #006064;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline tracking-tight;
@@ -50,31 +51,22 @@
   backdrop-filter: none !important;
 }
 
-@keyframes count-up {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-count {
-  animation: count-up 0.5s ease-out forwards;
-}
-
 @keyframes sparkle-float {
   0% {
     transform: translate(0, 0) scale(0);
     opacity: 0;
   }
   20% {
-    opacity: 0.8;
-    transform: translate(var(--move-x-20), var(--move-y-20)) scale(1);
+    opacity: 0.6;
+    transform: translate(var(--move-x-20), var(--move-y-20)) scale(0.8);
   }
   50% {
-    opacity: 1;
-    transform: translate(var(--move-x-50), var(--move-y-50)) scale(1.2);
+    opacity: 0.8;
+    transform: translate(var(--move-x-50), var(--move-y-50)) scale(1.1);
   }
   80% {
-    opacity: 0.8;
-    transform: translate(var(--move-x-80), var(--move-y-80)) scale(1);
+    opacity: 0.6;
+    transform: translate(var(--move-x-80), var(--move-y-80)) scale(0.9);
   }
   100% {
     transform: translate(var(--move-x-100), var(--move-y-100)) scale(0);

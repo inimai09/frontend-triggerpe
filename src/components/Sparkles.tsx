@@ -6,22 +6,22 @@ export function Sparkles() {
   const [sparkles, setSparkles] = useState<any[]>([]);
 
   useEffect(() => {
-    const sparkleCount = 30;
+    const sparkleCount = 40;
     const newSparkles = Array.from({ length: sparkleCount }).map((_, i) => ({
       id: i,
-      size: Math.random() * 4 + 2,
+      size: Math.random() * 6 + 4, // Slightly larger sparkles
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
-      duration: `${10 + Math.random() * 15}s`,
+      duration: `${15 + Math.random() * 20}s`, // Slower, more graceful movement
       delay: `${Math.random() * 10}s`,
-      moveX20: `${(Math.random() - 0.5) * 50}px`,
-      moveY20: `${(Math.random() - 0.5) * 50}px`,
-      moveX50: `${(Math.random() - 0.5) * 150}px`,
-      moveY50: `${(Math.random() - 0.5) * 150}px`,
-      moveX80: `${(Math.random() - 0.5) * 50}px`,
-      moveY80: `${(Math.random() - 0.5) * 50}px`,
-      moveX100: `${(Math.random() - 0.5) * 20}px`,
-      moveY100: `${(Math.random() - 0.5) * 20}px`,
+      moveX20: `${(Math.random() - 0.5) * 100}px`,
+      moveY20: `${(Math.random() - 0.5) * 100}px`,
+      moveX50: `${(Math.random() - 0.5) * 300}px`,
+      moveY50: `${(Math.random() - 0.5) * 300}px`,
+      moveX80: `${(Math.random() - 0.5) * 100}px`,
+      moveY80: `${(Math.random() - 0.5) * 100}px`,
+      moveX100: `${(Math.random() - 0.5) * 50}px`,
+      moveY100: `${(Math.random() - 0.5) * 50}px`,
     }));
     setSparkles(newSparkles);
   }, []);
@@ -31,7 +31,7 @@ export function Sparkles() {
       {sparkles.map((s) => (
         <div
           key={s.id}
-          className="absolute bg-white rounded-full animate-sparkle-float opacity-0 shadow-[0_0_8px_2px_rgba(255,255,255,0.4)]"
+          className="absolute bg-white rounded-full animate-sparkle-float opacity-0 shadow-[0_0_12px_4px_rgba(255,255,255,0.6)]"
           style={{
             top: s.top,
             left: s.left,
