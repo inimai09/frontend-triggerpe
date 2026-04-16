@@ -32,8 +32,8 @@
     @apply border-border;
   }
   html {
-    /* Maldives Light Teal to Ocean Blue Gradient */
-    background: linear-gradient(180deg, #B2EBF2 0%, #00ACC1 100%) fixed !important;
+    /* Dark to Light Maldives Ocean Gradient */
+    background: linear-gradient(180deg, #00838F 0%, #B2EBF2 100%) fixed !important;
     min-height: 100vh;
     color-scheme: light;
   }
@@ -53,7 +53,9 @@
 .bg-primary .lucide, 
 .bg-primary svg,
 [data-state=active] .lucide,
-[data-state=active] svg {
+[data-state=active] svg,
+.btn-hover-effect:hover .lucide,
+.btn-hover-effect:hover svg {
   color: white !important;
   stroke: white !important;
 }
@@ -92,11 +94,11 @@
 
 @keyframes neon-white-glow {
   0%, 100% {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff;
     color: #fff;
   }
   50% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+    text-shadow: 0 0 8px #fff, 0 0 15px #fff, 0 0 20px #fff;
     color: #fff;
   }
 }
