@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState } from 'react';
@@ -9,7 +8,19 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Zap, CheckCircle2, Clock, ShieldAlert, Search, Filter, ChevronRight, MapPin, BrainCircuit, Fingerprint } from 'lucide-react';
+import { 
+  Zap, 
+  CheckCircle2, 
+  Clock, 
+  ShieldAlert, 
+  Search, 
+  Filter, 
+  ChevronRight, 
+  MapPin, 
+  BrainCircuit, 
+  Fingerprint,
+  Activity 
+} from 'lucide-react';
 import { DashboardLayout } from '@/components/DashboardLayout';
 import { cn } from '@/lib/utils';
 
