@@ -1,6 +1,7 @@
+
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
@@ -16,8 +17,13 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
+  const [identifier, setIdentifier] = useState('');
 
   const handleSendOtp = () => {
+    if (!identifier) {
+      toast({ variant: "destructive", title: "Error", description: "Please enter your mobile or email." });
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -30,26 +36,50 @@ export default function LoginPage() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      const mockUser = { 
-        name: 'Rajesh Kumar', 
+      
+      // Intelligent User Restoration
+      const savedUser = localStorage.getItem('tp_user');
+      let userToLog = { 
+        name: 'Partner', 
         platform: 'Swiggy',
-        phone: '+91 98765 43210',
-        email: 'rajesh.kumar@swiggy.com',
+        phone: identifier.includes('@') ? '' : identifier,
+        email: identifier.includes('@') ? identifier : '',
         city: 'Chennai'
       };
-      localStorage.setItem('tp_user', JSON.stringify(mockUser));
+
+      if (savedUser) {
+        try {
+          const parsed = JSON.parse(savedUser);
+          // If the identifier matches or we just want to restore the last registered user for the prototype
+          userToLog = parsed;
+        } catch (e) {}
+      }
+
+      localStorage.setItem('tp_user', JSON.stringify(userToLog));
+      toast({ title: "Welcome back!", description: `Logged in as ${userToLog.name}` });
       router.push('/dashboard');
     }, 1200);
   };
 
   const handleOtpChange = (index: number, value: string) => {
-    if (value.length > 1) value = value[0];
+    if (value.length > 1) value = value[value.length - 1];
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
+
+    // Auto-focus next field
     if (value && index < 5) {
       const nextInput = document.getElementById(`otp-${index + 1}`) as HTMLInputElement;
       if (nextInput) nextInput.focus();
+    }
+  };
+
+  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace' && !otp[index] && index > 0) {
+      const prevInput = document.getElementById(`otp-${index - 1}`) as HTMLInputElement;
+      if (prevInput) {
+        prevInput.focus();
+      }
     }
   };
 
@@ -62,10 +92,10 @@ export default function LoginPage() {
         Back to Home
       </Link>
 
-      <Card className="w-full max-w-md bg-black border border-primary/20 shadow-2xl rounded-[3.5rem] overflow-hidden card-neon-glow">
+      <Card className="w-full max-w-md bg-black/60 backdrop-blur-xl border border-primary/20 shadow-2xl rounded-[3.5rem] overflow-hidden">
         <div className="bg-primary/10 p-8 text-white text-center border-b border-primary/20">
           <h1 className="text-3xl font-black mb-2 uppercase tracking-tighter font-headline">Partner Login</h1>
-          <p className="text-primary font-bold uppercase tracking-widest text-[9px] icon-neon-glow">Access your Parametric Shield</p>
+          <p className="text-primary font-bold uppercase tracking-widest text-[9px]">Access your Parametric Shield</p>
         </div>
         
         <CardContent className="p-8">
@@ -93,7 +123,13 @@ export default function LoginPage() {
                       <label className="text-[9px] font-black text-primary uppercase tracking-widest ml-1">Phone Number</label>
                       <div className="flex gap-2">
                         <div className="flex items-center justify-center px-5 bg-white/5 border border-primary/20 rounded-full text-primary font-black">+91</div>
-                        <Input placeholder="98765 43210" className="h-14 border-primary/20 bg-white/5 focus-visible:ring-primary rounded-full font-bold text-white px-6 text-lg" maxLength={10} />
+                        <Input 
+                          placeholder="98765 43210" 
+                          className="h-14 border-primary/20 bg-white/5 focus-visible:ring-primary rounded-full font-bold text-white px-6 text-lg" 
+                          maxLength={10} 
+                          value={identifier}
+                          onChange={(e) => setIdentifier(e.target.value)}
+                        />
                       </div>
                     </div>
                     <Button onClick={handleSendOtp} className="w-full h-16 bg-primary hover:bg-primary/90 rounded-full font-black shadow-lg btn-hover-effect text-white uppercase text-lg" disabled={loading}>
@@ -110,7 +146,8 @@ export default function LoginPage() {
                           id={`otp-${i}`}
                           value={digit}
                           onChange={(e) => handleOtpChange(i, e.target.value)}
-                          className="w-12 h-16 text-center text-2xl font-black border-primary/20 bg-white/5 rounded-full text-white focus:border-primary"
+                          onKeyDown={(e) => handleKeyDown(i, e)}
+                          className="w-12 h-14 text-center text-xl font-black border-primary/20 bg-white/5 rounded-full text-white focus:border-primary"
                           maxLength={1}
                         />
                       ))}
@@ -130,7 +167,13 @@ export default function LoginPage() {
                   <>
                     <div className="space-y-2">
                       <label className="text-[9px] font-black text-primary uppercase tracking-widest ml-1">Email Address</label>
-                      <Input placeholder="partner@triggerpe.com" className="h-14 border-primary/20 bg-white/5 focus-visible:ring-primary rounded-full font-bold text-white px-6 text-lg" type="email" />
+                      <Input 
+                        placeholder="partner@triggerpe.com" 
+                        className="h-14 border-primary/20 bg-white/5 focus-visible:ring-primary rounded-full font-bold text-white px-6 text-lg" 
+                        type="email" 
+                        value={identifier}
+                        onChange={(e) => setIdentifier(e.target.value)}
+                      />
                     </div>
                     <Button onClick={handleSendOtp} className="w-full h-16 bg-primary hover:bg-primary/90 rounded-full font-black shadow-lg btn-hover-effect text-white uppercase text-lg" disabled={loading}>
                       {loading ? <Loader2 className="w-6 h-6 animate-spin mr-3" /> : "Send OTP"}
@@ -143,10 +186,11 @@ export default function LoginPage() {
                       {otp.map((digit, i) => (
                         <Input
                           key={i}
-                          id={`otp-email-${i}`}
+                          id={`otp-${i}`}
                           value={digit}
                           onChange={(e) => handleOtpChange(i, e.target.value)}
-                          className="w-12 h-16 text-center text-2xl font-black border-primary/20 bg-white/5 rounded-full text-white focus:border-primary"
+                          onKeyDown={(e) => handleKeyDown(i, e)}
+                          className="w-12 h-14 text-center text-xl font-black border-primary/20 bg-white/5 rounded-full text-white focus:border-primary"
                           maxLength={1}
                         />
                       ))}
