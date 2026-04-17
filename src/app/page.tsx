@@ -55,61 +55,64 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen font-body text-white">
       {/* Hero Section - Optimized for Viewport Visibility */}
-      <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[85vh] items-center px-6 lg:px-24 py-12 gap-12 max-w-7xl mx-auto">
-        <div className="flex-1 space-y-6 animate-in fade-in slide-in-from-left-8 duration-1000">
+      <section id="hero" className="flex flex-col lg:flex-row w-full min-h-[80vh] items-center px-6 lg:px-24 py-12 gap-8 max-w-7xl mx-auto">
+        <div className="flex-1 space-y-4 animate-in fade-in slide-in-from-left-8 duration-1000">
           <div className="flex items-center gap-3">
-            <Badge className="bg-white/10 backdrop-blur-md text-white py-2 px-6 rounded-full font-bold text-[10px] uppercase tracking-widest border border-white/20">
+            <Badge className="bg-white/5 backdrop-blur-md text-white py-1.5 px-5 rounded-full font-bold text-[9px] uppercase tracking-widest border border-white/10">
               INDIA'S FIRST PARAMETRIC INSURANCE
             </Badge>
           </div>
           
-          <div className="space-y-2">
-            <h1 className="text-4xl md:text-6xl font-black leading-[1.1] tracking-tighter font-headline text-white">
+          <div className="space-y-1">
+            <h1 className="text-4xl md:text-6xl font-black leading-[1.05] tracking-tighter font-headline text-white">
               When <br />
               storms stop <br />
               you,
             </h1>
-            <h1 className="text-4xl md:text-6xl font-black leading-[1.1] tracking-tighter font-headline text-white animate-highlight-glow">
+            <h1 className="text-4xl md:text-6xl font-black leading-[1.05] tracking-tighter font-headline text-white animate-highlight-glow">
               we pay you <br />
               instantly.
             </h1>
           </div>
           
-          <p className="text-base text-white/70 max-w-md font-medium leading-relaxed">
-            India's first zero-touch parametric insurance for delivery heroes. No forms, no waiting, automatic payouts pushed straight to your wallet.
+          <p className="text-sm md:text-base text-white/60 max-w-md font-medium leading-relaxed">
+            Zero-touch parametric insurance for delivery heroes. No forms, no waiting, automatic payouts pushed straight to your wallet.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
-            <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg bg-primary hover:bg-primary/90 text-white font-black shadow-2xl btn-hover-effect border-none flex items-center gap-4">
-              <Link href="/login" className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start gap-4 pt-4">
+            <Button asChild className="rounded-full px-10 h-16 text-lg bg-primary hover:bg-primary/90 text-white font-black shadow-2xl btn-hover-effect border-none group">
+              <Link href="/login" className="flex items-center gap-6">
                 Get Protected Now 
-                <div className="p-2.5 bg-white/20 rounded-full">
-                  <ArrowRight className="w-8 h-8 text-white drop-shadow-md" />
+                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <ArrowRight className="w-6 h-6 text-white drop-shadow-md" />
                 </div>
               </Link>
             </Button>
           </div>
         </div>
 
-        <div className="w-full lg:w-[400px] animate-in fade-in zoom-in-95 duration-1000 delay-300">
+        <div className="w-full lg:w-[420px] animate-in fade-in zoom-in-95 duration-1000 delay-300">
           <Carousel opts={{ loop: true }} className="w-full cursor-grab active:cursor-grabbing">
             <CarouselContent>
               {weatherCards.map((card, idx) => (
                 <CarouselItem key={idx}>
-                  <Card className="border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl rounded-[3rem] overflow-hidden transition-all duration-500">
+                  <Card className="border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl rounded-[3.5rem] overflow-hidden transition-all duration-500 hover:border-primary/30 group">
                     <CardContent className="p-10 flex flex-col items-center text-center">
                       <div className="w-full flex justify-between items-center mb-8">
-                        <Badge variant="outline" className="text-[9px] font-black text-white/40 border-white/10 rounded-full px-3">SENSOR MODE {idx + 1}</Badge>
-                        <div className={cn("p-3 rounded-full flex items-center justify-center bg-white/5", card.bg)}>
+                        <div className="flex items-center gap-2">
+                           <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#00ACC1]" />
+                           <Badge variant="outline" className="text-[9px] font-black text-white/40 border-white/10 rounded-full px-3">SENSOR MODE {idx + 1}</Badge>
+                        </div>
+                        <div className={cn("p-4 rounded-full flex items-center justify-center bg-white/5 border border-white/5", card.bg)}>
                           <card.icon className={cn("w-6 h-6", card.color)} />
                         </div>
                       </div>
-                      <div className="w-56 h-56 mb-8 pointer-events-none">
+                      <div className="w-60 h-60 mb-8 pointer-events-none group-hover:scale-110 transition-transform duration-700">
                         <DeliveryGuy weather={card.type as any} className="w-full h-full" />
                       </div>
                       <div className="space-y-2">
                         <h3 className="text-2xl font-black text-white uppercase tracking-tighter font-headline">{card.label}</h3>
-                        <p className={cn("text-lg font-black uppercase tracking-tighter", card.color)}>{card.trigger}</p>
+                        <p className={cn("text-xl font-black uppercase tracking-tighter", card.color)}>{card.trigger}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -257,4 +260,3 @@ export default function LandingPage() {
     </div>
   );
 }
-

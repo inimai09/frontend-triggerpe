@@ -1,14 +1,14 @@
 
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { ShieldCheck, Loader2, Phone, Mail, ArrowLeft } from 'lucide-react';
+import { ShieldCheck, Loader2, Phone, Mail, ArrowLeft, ShieldAlert } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function LoginPage() {
@@ -21,9 +21,22 @@ export default function LoginPage() {
 
   const handleSendOtp = () => {
     if (!identifier) {
-      toast({ variant: "destructive", title: "Error", description: "Please enter your mobile or email." });
+      toast({ variant: "destructive", title: "Authentication Error", description: "Please enter your mobile or email." });
       return;
     }
+
+    // Logic Check: Does the account exist?
+    const savedUser = localStorage.getItem('tp_user');
+    if (!savedUser) {
+      toast({ 
+        variant: "destructive", 
+        title: "Account Not Found", 
+        description: "No partner account linked to this ID. Redirecting to registration..." 
+      });
+      setTimeout(() => router.push('/register'), 2000);
+      return;
+    }
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -37,27 +50,19 @@ export default function LoginPage() {
     setTimeout(() => {
       setLoading(false);
       
-      // Intelligent User Restoration
       const savedUser = localStorage.getItem('tp_user');
-      let userToLog = { 
-        name: 'Partner', 
-        platform: 'Swiggy',
-        phone: identifier.includes('@') ? '' : identifier,
-        email: identifier.includes('@') ? identifier : '',
-        city: 'Chennai'
-      };
-
       if (savedUser) {
         try {
-          const parsed = JSON.parse(savedUser);
-          // If the identifier matches or we just want to restore the last registered user for the prototype
-          userToLog = parsed;
-        } catch (e) {}
+          const userToLog = JSON.parse(savedUser);
+          toast({ title: "Welcome back!", description: `Authenticated as ${userToLog.name}` });
+          router.push('/dashboard');
+        } catch (e) {
+          toast({ variant: "destructive", title: "Session Error", description: "Corrupted profile data. Please register again." });
+          router.push('/register');
+        }
+      } else {
+        router.push('/register');
       }
-
-      localStorage.setItem('tp_user', JSON.stringify(userToLog));
-      toast({ title: "Welcome back!", description: `Logged in as ${userToLog.name}` });
-      router.push('/dashboard');
     }, 1200);
   };
 
@@ -67,7 +72,7 @@ export default function LoginPage() {
     newOtp[index] = value;
     setOtp(newOtp);
 
-    // Auto-focus next field
+    // High-fidelity Auto-focus
     if (value && index < 5) {
       const nextInput = document.getElementById(`otp-${index + 1}`) as HTMLInputElement;
       if (nextInput) nextInput.focus();
@@ -94,23 +99,21 @@ export default function LoginPage() {
 
       <Card className="w-full max-w-md bg-black/60 backdrop-blur-xl border border-primary/20 shadow-2xl rounded-[3.5rem] overflow-hidden">
         <div className="bg-primary/10 p-8 text-white text-center border-b border-primary/20">
-          <h1 className="text-3xl font-black mb-2 uppercase tracking-tighter font-headline">Partner Login</h1>
-          <p className="text-primary font-bold uppercase tracking-widest text-[9px]">Access your Parametric Shield</p>
+          <h1 className="text-3xl font-black mb-1 uppercase tracking-tighter font-headline">Partner Login</h1>
+          <p className="text-primary font-bold uppercase tracking-widest text-[9px] flex items-center justify-center gap-2">
+            <ShieldCheck className="w-3 h-3" /> Secure Access Portal
+          </p>
         </div>
         
         <CardContent className="p-8">
           <Tabs defaultValue="mobile" className="w-full">
             <TabsList className="grid grid-cols-2 mb-8 bg-white/5 p-1.5 h-14 rounded-full border border-white/5">
               <TabsTrigger value="mobile" className="rounded-full font-black data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-xl flex gap-2 uppercase tracking-tighter text-[10px]">
-                <div className="p-2 bg-white/10 rounded-full">
-                  <Phone className="w-3.5 h-3.5" />
-                </div>
+                <Phone className="w-3.5 h-3.5" />
                 Mobile
               </TabsTrigger>
               <TabsTrigger value="email" className="rounded-full font-black data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-xl flex gap-2 uppercase tracking-tighter text-[10px]">
-                <div className="p-2 bg-white/10 rounded-full">
-                  <Mail className="w-3.5 h-3.5" />
-                </div>
+                <Mail className="w-3.5 h-3.5" />
                 Email
               </TabsTrigger>
             </TabsList>
@@ -212,15 +215,11 @@ export default function LoginPage() {
           
           <div className="mt-8 flex justify-center gap-6 opacity-30">
             <div className="flex items-center gap-2 text-[8px] font-black text-white uppercase tracking-widest">
-              <div className="p-2 bg-white/10 rounded-full">
-                <ShieldCheck className="w-3.5 h-3.5" />
-              </div>
+              <ShieldCheck className="w-3.5 h-3.5" />
               PCI DSS
             </div>
             <div className="flex items-center gap-2 text-[8px] font-black text-white uppercase tracking-widest">
-              <div className="p-2 bg-white/10 rounded-full">
-                <ShieldCheck className="w-3.5 h-3.5" />
-              </div>
+              <ShieldCheck className="w-3.5 h-3.5" />
               IRDAI
             </div>
           </div>
